@@ -21,12 +21,12 @@ const dice = {
 
 }
 
-const hitTotal = computed(() => (attack.value || 1) * dice.attack(hit.value || 3))
-const woundTotal = computed(() => hitTotal.value * dice.attack(wound.value || 3))
+const hitTotal = computed(() => Math.floor((attack.value || 1) * dice.attack(hit.value || 3)))
+const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value || 3)))
 
-const saveTotal = computed(() => woundTotal.value * dice.defend(save.value || 3))
-const damageTotal = computed(() => saveTotal.value * damage.value || 1)
-const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
+const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(save.value || 3)))
+const damageTotal = computed(() => Math.floor(saveTotal.value * damage.value || 1))
+const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(pain.value)))
 </script>
 
 <template>
@@ -63,10 +63,10 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
         <tr>
           <td>{{ attack || 1 }}</td>
           <td>
-            {{ Math.floor(hitTotal) }}
+            {{ hitTotal }}
           </td>
           <td>
-            {{ Math.floor(woundTotal) }}
+            {{ woundTotal }}
           </td>
         </tr>
       </tbody>
@@ -100,13 +100,13 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
         </tr>
         <tr>
           <td>
-            {{ Math.floor(saveTotal) }}
+            {{ saveTotal }}
           </td>
           <td>
-            {{ Math.floor(damageTotal) }}
+            {{ damageTotal }}
           </td>
           <td v-if="pain">
-            {{ Math.floor(painTotal) }}
+            {{ painTotal }}
           </td>
         </tr>
       </tbody>
