@@ -17,9 +17,8 @@ const dice = {
   roll() {
     return Math.floor(Math.random() * this.sides) + 1
   },
-  attack(pass) {
-    const range = this.range().reverse()
-    return range[pass]
+  attack(x) {
+    return ((6 - x) + 1) / 6
   },
   defend(pass) {
     const range = this.range()
