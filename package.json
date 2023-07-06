@@ -1,4 +1,6 @@
 {
+  "name": "battle-calculator",
+  "description": "Tabletop battle simulation",
   "private": true,
   "packageManager": "pnpm@8.6.3",
   "scripts": {
