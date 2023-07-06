@@ -9,20 +9,14 @@ const pain = ref(5)
 
 const dice = {
   sides: 6,
-  range() {
-    const range = new Array(this.sides)
-    const probability = (x, i) => (i + 1) / this.sides
-    return Array.from(range, probability)
-  },
   roll() {
     return Math.floor(Math.random() * this.sides) + 1
   },
   attack(x) {
     return ((6 - x) + 1) / 6
   },
-  defend(pass) {
-    const range = this.range()
-    return range[pass]
+  defend(x) {
+    return (x - 1) / 6
   },
 
 }
