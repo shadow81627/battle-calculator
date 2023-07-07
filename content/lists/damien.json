@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Infantry Squad",
+    "models": 20,
+    "points": 130
+  },
+  {
+    "name": "Death Korps of Krieg",
+    "models": 20,
+    "points": 130
+  },
+  {
+    "name": "Death Korps Marshal",
+    "models": 1,
+    "points": 60
+  },
+  {
+    "name": "Platoon Command Squad",
+    "models": 4,
+    "points": 60
+  },
+  {
+    "name": "Earthshaker Carriage Battery",
+    "models": 3,
+    "points": 240
+  },
+  {
+    "name": "Hydra",
+    "models": 1,
+    "points": 95
+  },
+  {
+    "name": "Sentinels",
+    "models": 3,
+    "points": 150
+  },
+  {
+    "name": "Lord Solar",
+    "models": 1,
+    "points": 125
+  }
+]
