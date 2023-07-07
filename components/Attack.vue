@@ -1,7 +1,26 @@
 <script setup>
+const strength = ref(12)
+const toughness = ref(10)
+
 const attack = ref(18)
 const hit = ref(3)
-const wound = ref(3)
+const wound = computed(() => {
+  if (strength.value === toughness.value)
+    return 4
+  if (strength.value > toughness.value) {
+    if (strength.value > toughness.value * 2)
+      return 2
+
+    return 3
+  }
+  if (strength.value < toughness.value) {
+    if (strength.value < toughness.value / 2)
+      return 6
+
+    return 5
+  }
+})
+
 const save = ref(5)
 const damage = ref(4)
 const pain = ref(5)
@@ -26,6 +45,35 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(pain
 <template>
   <table>
     <thead>
+      <th>
+        <label>Strength</label>
+      </th>
+      <th>
+        <label>Toughness</label>
+      </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input v-model="strength" class="input" name="strength">
+        </td>
+        <td>
+          <input v-model="toughness" class="input" name="toughness">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{ strength }}
+        </td>
+        <td>
+          {{ toughness }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
       <tr>
         <th>
           <label>Attacks</label>
@@ -47,7 +95,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(pain
           <input v-model="hit" class="input">
         </td>
         <td>
-          <input v-model="wound" class="input">
+          <input :value="wound" class="input-disabled" readonly disabled>
         </td>
       </tr>
       <tr>
