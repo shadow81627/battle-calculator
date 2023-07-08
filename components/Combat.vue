@@ -10,6 +10,8 @@ const props = defineProps({
   pain: { type: Number },
 })
 
+const turns = ref(1)
+
 const wound = computed(() => {
   if (props.strength === props.toughness)
     return 4
@@ -37,7 +39,7 @@ const dice = {
   },
 }
 
-const hitTotal = computed(() => Math.floor((props.attack) * dice.attack(props.accuracy)))
+const hitTotal = computed(() => Math.floor((props.attack * turns.value) * dice.attack(props.accuracy)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(props.save)))
 const damageTotal = computed(() => Math.floor(saveTotal.value * props.damage))
@@ -45,6 +47,19 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
 </script>
 
 <template>
+  <table>
+    <tbody>
+      <tr>
+        <td class="p-1">
+          <label class="font-bold">Turns</label>
+        </td>
+        <td class="p-1">
+          <input v-model="turns" name="turns" class="input max-w-250px" type="number" max="5" min="1">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
   <table>
     <thead>
       <tr>
