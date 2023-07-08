@@ -31,6 +31,9 @@ const wound = computed(() => {
 
 const dice = {
   sides: 6,
+  roll() {
+    return Math.floor(Math.random() * this.sides) + 1
+  },
   attack(x) {
     return ((6 - x) + 1) / 6
   },
@@ -38,6 +41,22 @@ const dice = {
     return (x - 1) / 6
   },
 }
+
+function rolls(x = 1) {
+  return [...Array(x)].map(() => dice.roll())
+}
+
+const randomHitRolls = computed(() => rolls(props.attack * turns.value))
+const randomHitTotal = computed(() => randomHitRolls.value.reduce((sum, roll) => sum + (roll >= props.accuracy), 0))
+
+const randomWoundRolls = computed(() => rolls(randomHitTotal.value))
+const randomWoundTotal = computed(() => randomWoundRolls.value.reduce((sum, roll) => sum + (roll >= wound.value), 0))
+
+const randomSaveRolls = computed(() => rolls(randomWoundTotal.value))
+const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < props.save), 0))
+
+// const randomDamageRolls = rolls(randomSaveTotal)
+// const randomDamageTotal = randomDamageRolls.reduce((sum, roll) => sum + (roll >= props.save), 0)
 
 const hitTotal = computed(() => Math.floor((props.attack * turns.value) * dice.attack(props.accuracy)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
@@ -60,14 +79,67 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
     </tbody>
   </table>
 
+  <p class="text-left">
+    Random
+  </p>
+  <table>
+    <thead>
+      <th class="p-1">
+        Hits
+      </th>
+      <th class="p-1">
+        Wounds
+      </th>
+      <th class="p-1">
+        Save
+      </th>
+      <th class="p-1">
+        Damage
+      </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="p-1">
+          {{ randomHitRolls }}
+        </td>
+        <td class="p-1">
+          {{ randomWoundRolls }}
+        </td>
+        <td class="p-1">
+          {{ randomSaveRolls }}
+        </td>
+        <td class="p-1">
+          {{ randomSaveTotal }} x {{ damage }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{ randomHitTotal }}
+        </td>
+        <td>
+          {{ randomWoundTotal }}
+        </td>
+        <td class="p-1">
+          {{ randomSaveTotal }}
+        </td>
+        <td class="p-1">
+          {{ randomSaveTotal * damage }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="text-left">
+    Average
+  </p>
   <table>
     <thead>
       <tr>
         <th class="p-1">
-          <label>Hits</label>
+          Hits
         </th>
         <th class="p-1">
-          <label>Wounds</label>
+          Wounds
         </th>
       </tr>
     </thead>
