@@ -15,16 +15,16 @@ function squadPrice(item) {
   <table>
     <thead>
       <tr class="text-left">
-        <th>
+        <th class="p-1">
           Name
         </th>
-        <th>
+        <th class="p-1 text-right">
           Models
         </th>
-        <th>
+        <th class="p-1 text-right">
           Points
         </th>
-        <th>
+        <th class="p-1 text-right">
           Price
         </th>
       </tr>
