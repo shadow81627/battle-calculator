@@ -1,21 +1,31 @@
 <script setup>
-const attack = ref(18)
-const accuracy = ref(5)
-const strength = ref(12)
-const piercing = ref(2)
-const damage = ref(4)
-
-// const movement = ref(6)
-const toughness = ref(4)
-const save = ref(4)
-const wound = ref(3)
-// const control = ref(1)
+const props = defineProps({
+  strength: { type: Number },
+  toughness: { type: Number },
+  attack: { type: Number },
+  save: { type: Number },
+  wound: { type: Number },
+  accuracy: { type: Number },
+  piercing: { type: Number },
+  damage: { type: Number },
+  invulnerable: { type: Number },
+  pain: { type: Number },
+})
+defineEmits([
+  'update:strength',
+  'update:toughness',
+  'update:attack',
+  'update:accuracy',
+  'update:save',
+  'update:piercing',
+  'update:damage',
+  'update:wound',
+  'update:invulnerable',
+  'update:pain',
+])
 </script>
 
 <template>
-  <h2 class="h2 text-left">
-    Attributes
-  </h2>
   <table>
     <thead>
       <tr>
@@ -39,19 +49,19 @@ const wound = ref(3)
     <tbody>
       <tr>
         <td>
-          <input v-model="attack" class="input" name="attack">
+          <input :value="attack" class="input" name="attack" @input="$emit('update:attack', $event.target.value)">
         </td>
         <td>
-          <input v-model="accuracy" class="input" name="accuracy">
+          <input :value="accuracy" class="input" name="accuracy" @input="$emit('update:accuracy', $event.target.value)">
         </td>
         <td>
-          <input v-model="strength" class="input" name="strength">
+          <input :value="strength" class="input" name="strength" @input="$emit('update:strength', $event.target.value)">
         </td>
         <td>
-          <input v-model="piercing" class="input" name="piercing">
+          <input :value="piercing" class="input" name="piercing" @input="$emit('update:piercing', $event.target.value)">
         </td>
         <td>
-          <input v-model="damage" class="input" name="damage">
+          <input :value="damage" class="input" name="damage" @input="$emit('update:damage', $event.target.value)">
         </td>
       </tr>
     </tbody>
@@ -64,23 +74,35 @@ const wound = ref(3)
           Toughness
         </th>
         <th>
-          Save
+          Save Value
         </th>
         <th>
           Wounds
+        </th>
+        <th>
+          Invulnerable Save
+        </th>
+        <th>
+          Feel no Pain
         </th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>
-          <input v-model="toughness" class="input" name="toughness">
+          <input :value="toughness" class="input" name="toughness" @input="$emit('update:toughness', $event.target.value)">
         </td>
         <td>
-          <input v-model="save" class="input" name="save">
+          <input :value="save" class="input" name="save" @input="$emit('update:save', $event.target.value)">
         </td>
         <td>
-          <input v-model="wound" class="input" name="wound">
+          <input :value="wound" class="input" name="wound" @input="$emit('update:wound', $event.target.value)">
+        </td>
+        <td>
+          <input :value="invulnerable" class="input" name="invulnerable" @input="$emit('update:invulnerable', $event.target.value)">
+        </td>
+        <td>
+          <input :value="pain" class="input" name="pain" @input="$emit('update:pain', $event.target.value)">
         </td>
       </tr>
     </tbody>
