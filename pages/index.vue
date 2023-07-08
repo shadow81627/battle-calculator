@@ -74,7 +74,7 @@ const pain = ref(5)
       <h2 class="h2 text-left">
         Average Attack Rolls
       </h2>
-      <Attack
+      <Combat
         :strength="strength"
         :toughness="toughness"
         :attack="attack"
