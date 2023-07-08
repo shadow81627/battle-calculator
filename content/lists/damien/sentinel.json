@@ -13,5 +13,24 @@
       },
       "itemCondition": "NewCondition"
     }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 7,
+    "save": 3,
+    "wound": 7,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Autocannon",
+      "range": 48,
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 3 
+    }
   ]
 }
