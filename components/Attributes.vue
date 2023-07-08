@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   strength: { type: Number },
   toughness: { type: Number },
   attack: { type: Number },
