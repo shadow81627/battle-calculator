@@ -6,7 +6,7 @@ const { data } = await useAsyncData(`lists-${id}`, () => queryContent('lists', i
 
 <template>
   <h1 class="h2 text-left">
-    List: {{ data.title }}
+    {{ data.title }} List
   </h1>
   <table>
     <thead>
@@ -20,29 +20,43 @@ const { data } = await useAsyncData(`lists-${id}`, () => queryContent('lists', i
         <th>
           Points
         </th>
+        <th>
+          Price
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="item of data.body" :key="item.name">
-        <td class="text-left">
+        <td class="p-1 text-left">
           {{ item.name }}
         </td>
-        <td class="text-right">
+        <td class="p-1 text-right">
           {{ item.models }}
         </td>
-        <td class="text-right">
+        <td class="p-1 text-right">
           {{ item.points }}
+        </td>
+        <td v-if="item.offers" class="p-1 text-right">
+          ${{ item.offers.find((item) => item.price).price * Math.ceil(item.models / item.offers.find((item) => item.eligibleQuantity).eligibleQuantity ?? 1) }}
         </td>
       </tr>
       <tr>
-        <td class="text-left">
+        <td colspan="100%">
+          <hr>
+        </td>
+      </tr>
+      <tr>
+        <td class="p-1 text-left">
           Total
         </td>
-        <td class="text-right">
+        <td class="p-1 text-right">
           {{ data.body.reduce((sum, item) => sum + item.models, 0) }}
         </td>
-        <td class="text-right">
+        <td class="p-1 text-right">
           {{ data.body.reduce((sum, item) => sum + item.points, 0) }}
+        </td>
+        <td class="p-1 text-right">
+          ${{ data.body.reduce((sum, item) => sum + (item.offers?.find((offer) => offer.price)?.price ?? 0), 0) }}
         </td>
       </tr>
     </tbody>
