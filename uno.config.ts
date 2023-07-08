@@ -16,6 +16,7 @@ export default defineConfig({
     ['col', 'p-12px flex'],
     ['col-3', 'w-full md:w-1/2 xl:w-1/3 2xl:w-1/4'],
     ['col-6', 'w-full md:w-1/2'],
+    ['select', 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'],
     ['input-disabled', 'bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500'],
     ['h3', 'text-3xl font-bold dark:text-white'],
     ['h2', 'text-4xl font-extrabold dark:text-white'],
