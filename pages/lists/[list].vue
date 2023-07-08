@@ -2,6 +2,10 @@
 const { params } = useRoute()
 const id = params.list
 const { data } = await useAsyncData(`lists-${id}`, () => queryContent('lists', id).findOne())
+
+function squadPrice(item) {
+  return item.offers.find(item => item.price).price * Math.ceil(item.models / item.offers.find(item => item.eligibleQuantity).eligibleQuantity ?? 1)
+}
 </script>
 
 <template>
@@ -37,7 +41,7 @@ const { data } = await useAsyncData(`lists-${id}`, () => queryContent('lists', i
           {{ item.points }}
         </td>
         <td v-if="item.offers" class="p-1 text-right">
-          ${{ item.offers.find((item) => item.price).price * Math.ceil(item.models / item.offers.find((item) => item.eligibleQuantity).eligibleQuantity ?? 1) }}
+          ${{ squadPrice(item) }}
         </td>
       </tr>
       <tr>
@@ -56,7 +60,7 @@ const { data } = await useAsyncData(`lists-${id}`, () => queryContent('lists', i
           {{ data.body.reduce((sum, item) => sum + item.points, 0) }}
         </td>
         <td class="p-1 text-right">
-          ${{ data.body.reduce((sum, item) => sum + (item.offers?.find((offer) => offer.price)?.price ?? 0), 0) }}
+          ${{ data.body.reduce((sum, item) => sum + squadPrice(item) ?? 0, 0) }}
         </td>
       </tr>
     </tbody>
