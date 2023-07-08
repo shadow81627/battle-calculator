@@ -1,0 +1,17 @@
+{
+  "name": "Infantry Squad",
+  "models": 20,
+  "points": 130,
+  "offers": [
+    {
+      "price": 84,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ]
+}

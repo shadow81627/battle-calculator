@@ -1,0 +1,18 @@
+{
+  "name": "Earthshaker Carriage Battery",
+  "models": 3,
+  "points": 240,
+  "offers": [
+    {
+      "$comment": "price includes artillery crew for $64",
+      "price": 274,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Sentinels",
+  "models": 3,
+  "points": 150,
+  "offers": [
+    {
+      "price": 77,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Platoon Command Squad",
+  "models": 4,
+  "points": 60,
+  "offers": [
+    {
+      "price": 77,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 5,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Death Korps Marshal",
+  "models": 1,
+  "points": 60,
+  "offers": [
+    {
+      "price": 86,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ]
+}

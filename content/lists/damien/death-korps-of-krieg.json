@@ -1,0 +1,17 @@
+{
+  "name": "Death Korps of Krieg",
+  "models": 20,
+  "points": 130,
+  "offers": [
+    {
+      "price": 118,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ]
+}
