@@ -39,6 +39,10 @@ export default defineNuxtConfig({
     },
   },
 
+  routeRules: {
+    '/**': { isr: 60 },
+  },
+
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
