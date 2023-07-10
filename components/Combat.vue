@@ -130,7 +130,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
         <th class="p-1">
           Damage
         </th>
-        <th class="p-1">
+        <th v-if="pain" class="p-1">
           Feel no pain
         </th>
       </thead>
@@ -155,7 +155,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           <td class="p-1">
             {{ randomSaveTotal }} x {{ damage }}
           </td>
-          <td class="p-1">
+          <td v-if="pain" class="p-1">
             <DisplayRolls :rolls="randomPainRolls" />
           </td>
         </tr>
@@ -200,7 +200,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           <td class="p-1">
             {{ randomDamageTotal }}
           </td>
-          <td class="p-1">
+          <td v-if="pain" class="p-1">
             {{ randomPainTotal }}
           </td>
         </tr>
