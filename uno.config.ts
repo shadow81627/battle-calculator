@@ -13,7 +13,7 @@ export default defineConfig({
   shortcuts: [
     ['container', 'w-full p-12px mx-auto'],
     ['row', 'flex flex-auto flex-wrap -m-12px'],
-    ['col', 'p-12px flex'],
+    ['col', 'p-12px w-full'],
     ['col-3', 'w-full md:w-1/2 xl:w-1/3 2xl:w-1/4'],
     ['col-6', 'w-full md:w-1/2'],
     ['select', 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'],
