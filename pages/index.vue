@@ -1,4 +1,5 @@
 <script setup>
+const turns = ref(1)
 const attackerId = ref('lists/damien/sentinel')
 const defenderId = ref('lists/braydon/mutalith-vortex-beast')
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
@@ -114,6 +115,18 @@ const unitOptions = [
           <h2 class="h2 text-left">
             Attack Rolls
           </h2>
+          <table>
+            <tbody>
+              <tr>
+                <td class="p-1">
+                  <label class="font-bold">Turns</label>
+                </td>
+                <td class="p-1">
+                  <input v-model="turns" name="turns" class="input max-w-250px" type="number" max="5" min="1">
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div class="row">
@@ -132,6 +145,7 @@ const unitOptions = [
               :save="defender.attributes.save"
               :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
               :pain="getAbilityValue(defender, 'Feel No Pain')"
+              :turns="turns"
             />
           </div>
         </div>
@@ -150,6 +164,7 @@ const unitOptions = [
               :save="attacker.attributes.save"
               :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
               :pain="getAbilityValue(attacker, 'Feel No Pain')"
+              :turns="turns"
             />
           </div>
         </div>

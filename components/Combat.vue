@@ -12,11 +12,10 @@ const props = defineProps({
   pain: { type: Number },
   models: { type: Number, default: 1 },
   name: { type: String },
+  turns: { type: Number },
   modifiers: { type: Array, default: () => [] },
   abilities: { type: Array, default: () => [] },
 })
-
-const turns = ref(1)
 
 const wound = computed(() => {
   if (props.strength === props.toughness)
@@ -62,7 +61,7 @@ const sustainedHits = computed(() => {
 })
 const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
 
-const randomHitRolls = computed(() => rolls(props.attack * turns.value * props.models))
+const randomHitRolls = computed(() => rolls(props.attack * Math.min(props.turns, maxTurns.value) * props.models))
 const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
 const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy - heavy.value), 0))
@@ -83,7 +82,7 @@ const randomDamageTotal = computed(() => randomSaveTotal.value * props.damage)
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
 const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
 
-const hitTotal = computed(() => Math.floor((props.attack * turns.value * props.models) * dice.attack(props.accuracy - heavy.value)))
+const hitTotal = computed(() => Math.floor((props.attack * Math.min(props.turns, maxTurns.value) * props.models) * dice.attack(props.accuracy - heavy.value)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(props.save)))
 const damageTotal = computed(() => Math.floor(saveTotal.value * props.damage))
@@ -99,18 +98,6 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
       </span>]
     </template>
   </p>
-  <table>
-    <tbody>
-      <tr>
-        <td class="p-1">
-          <label class="font-bold">Turns</label>
-        </td>
-        <td class="p-1">
-          <input v-model="turns" name="turns" class="input max-w-250px" type="number" :max="maxTurns" min="1">
-        </td>
-      </tr>
-    </tbody>
-  </table>
 
   <div style="overflow-x:auto;" class="text-center">
     <table>
