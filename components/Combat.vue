@@ -55,6 +55,7 @@ function rolls(x = 1) {
 const maxTurns = computed(() => props.modifiers.find(modifier => modifier.name === 'ONE SHOT') ? 1 : 5)
 const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS'))
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
+const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
 
 const randomHitRolls = computed(() => rolls(props.attack * turns.value * props.models))
 const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
@@ -62,7 +63,9 @@ const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRo
 
 const lethalHits = computed(() => hasLethalHits ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
-const randomWoundTotal = computed(() => randomWoundRolls.value.reduce((sum, roll) => sum + (roll >= wound.value), 0) + lethalHits.value)
+const failedWoundRolls = computed(() => randomWoundRolls.value.reduce((sum, roll) => sum + (roll < wound.value), 0))
+const randomWoundReRolls = computed(() => hasTwinLinked.value ? rolls(failedWoundRolls.value) : [])
+const randomWoundTotal = computed(() => [...randomWoundRolls.value, ...randomWoundReRolls.value].reduce((sum, roll) => sum + (roll >= wound.value), 0) + lethalHits.value)
 
 const randomSaveRolls = computed(() => rolls(randomWoundTotal.value))
 const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < props.save), 0))
@@ -146,12 +149,21 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <DisplayRolls :rolls="randomPainRolls" />
           </td>
         </tr>
-        <tr v-show="randomHitReRolls.length">
+        <tr v-show="hasDaringRecon || hasTwinLinked">
           <td class="p-1 text-left">
             Re-rolls
           </td>
           <td class="p-1 text-left">
-            <DisplayRolls :rolls="randomHitReRolls" />
+            <DisplayRolls v-if="hasDaringRecon" :rolls="randomHitReRolls" />
+            <template v-else>
+&nbsp;
+            </template>
+          </td>
+          <td class="p-1 text-left">
+            <DisplayRolls v-if="hasTwinLinked" :rolls="randomWoundReRolls" />
+            <template v-else>
+&nbsp;
+            </template>
           </td>
         </tr>
         <tr>
