@@ -35,6 +35,9 @@ const pain = ref(5)
                 <option value="earthshaker-carriage-battery">
                   Earthshaker Carriage Battery
                 </option>
+                <option value="death-korps-of-krieg">
+                  Death Korps of Krieg
+                </option>
               </select>
             </td>
           </tr>
@@ -92,7 +95,7 @@ const pain = ref(5)
           v-bind="{ ...weapon }"
           :modifiers="[...weapon.modifiers ?? [], { name: 'LETHAL HITS' }]"
           :abilities="attacker.abilities"
-          :models="attacker.models"
+          :models="weapon.models ?? attacker.models"
           :toughness="toughness"
           :save="invulnerable"
           :pain="pain"
