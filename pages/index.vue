@@ -114,6 +114,7 @@ const unitOptions = [
               :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
               :pain="getAbilityValue(defender, 'Feel No Pain')"
               :turns="turns"
+              :target="defender"
             />
           </div>
         </div>
@@ -149,6 +150,7 @@ const unitOptions = [
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender) }].filter(item => item?.name)"
               :abilities="defender.abilities"
               :models="weapon.models ?? defender.models"
+              :target="attacker"
               :toughness="attacker.attributes.toughness"
               :save="attacker.attributes.save"
               :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"

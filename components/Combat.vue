@@ -15,6 +15,7 @@ const props = defineProps({
   turns: { type: Number },
   modifiers: { type: Array, default: () => [] },
   abilities: { type: Array, default: () => [] },
+  target: { type: Object },
 })
 
 const wound = computed(() => {
@@ -35,9 +36,8 @@ const wound = computed(() => {
 })
 
 const dice = {
-  sides: 6,
-  roll() {
-    return Math.floor(Math.random() * this.sides) + 1
+  roll(sides = 6) {
+    return Math.floor(Math.random() * sides) + 1
   },
   attack(x) {
     return ((6 - x) + 1) / 6
@@ -55,13 +55,17 @@ const maxTurns = computed(() => props.modifiers.find(modifier => modifier.name =
 const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS'))
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
 const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
+const hasBlast = computed(() => props.modifiers?.find(modifier => modifier.name === 'BLAST'))
 const sustainedHits = computed(() => {
   const modifier = props.modifiers?.find(modifier => modifier.name.startsWith('SUSTAINED HITS'))
   return modifier ? modifier.name.match(/\d+/)[0] : 0
 })
 const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
+const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
 
-const randomHitRolls = computed(() => rolls(props.attack * Math.min(props.turns, maxTurns.value) * props.models))
+const randomAttackRolls = computed(() => (props.attack * Math.min(props.turns, maxTurns.value) * props.models) + blast.value)
+const randomAttacksTotal = computed(() => randomAttackRolls.value)
+const randomHitRolls = computed(() => rolls(randomAttackRolls.value))
 const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
 const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy - heavy.value), 0))
@@ -82,7 +86,8 @@ const randomDamageTotal = computed(() => randomSaveTotal.value * props.damage)
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
 const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
 
-const hitTotal = computed(() => Math.floor((props.attack * Math.min(props.turns, maxTurns.value) * props.models) * dice.attack(props.accuracy - heavy.value)))
+const attacksTotal = computed(() => (props.attack * Math.min(props.turns, maxTurns.value) * props.models) + blast.value)
+const hitTotal = computed(() => Math.floor(attacksTotal.value * dice.attack(props.accuracy - heavy.value)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(props.save)))
 const damageTotal = computed(() => Math.floor(saveTotal.value * props.damage))
@@ -106,6 +111,9 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           Row type
         </th>
         <th class="p-1">
+          Attacks
+        </th>
+        <th class="p-1">
           Hits
         </th>
         <th class="p-1">
@@ -125,6 +133,9 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
         <tr>
           <td class="p-1 text-left">
             Random
+          </td>
+          <td class="p-1">
+            {{ randomAttackRolls - blast }}
           </td>
           <td class="p-1">
             <DisplayRolls :rolls="randomHitRolls" />
@@ -150,6 +161,9 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           <td class="p-1 text-left">
             Re-rolls
           </td>
+          <td class="p-1">
+            <!-- Attacks Re-rolls -->
+          </td>
           <td class="p-1 text-left">
             <DisplayRolls v-if="hasDaringRecon" :rolls="randomHitReRolls" />
             <template v-else>
@@ -166,6 +180,15 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
         <tr>
           <td class="p-1 text-left">
             Totals
+          </td>
+          <td class="p-1">
+            {{ randomAttacksTotal - blast }}
+            <template v-if="blast">
+              +
+            </template>
+            <template v-if="blast">
+              {{ blast }} Blast
+            </template>
           </td>
           <td class="p-1">
             {{ randomHitTotal }}
@@ -194,6 +217,9 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
         <tr>
           <td class="p-1 text-left">
             Average
+          </td>
+          <td class="p-1">
+            {{ attacksTotal }}
           </td>
           <td class="p-1">
             {{ hitTotal }}
