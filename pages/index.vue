@@ -46,40 +46,40 @@ const unitOptions = [
       Battle Calculator
     </h1>
 
-    <section>
-      <table>
-        <thead>
-          <th class="p-1">
-            <label class="font-bold">Attacker Unit</label>
-          </th>
-          <th class="p-1">
-            <label class="font-bold">Defender Unit</label>
-          </th>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="p-1">
-              <select v-model="attackerId" class="select w-250px" name="attacker" @change="refreshAttacker">
-                <option v-for="option of unitOptions" :key="option.value" :value="option.value">
-                  {{ option.label }}
-                </option>
-              </select>
-            </td>
-            <td class="p-1">
-              <select v-model="defenderId" class="select w-250px" name="defender" @change="refreshDefender">
-                <option v-for="option of unitOptions" :key="option.value" :value="option.value">
-                  {{ option.label }}
-                </option>
-              </select>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <section class="my-6 container">
+      <div class="row">
+        <div class="col col-6">
+          <label class="text-left font-bold">Attacker Unit</label>
+          <select v-model="attackerId" class="select w-250px" name="attacker" @change="refreshAttacker">
+            <option
+              v-for="option of unitOptions"
+              :key="option.value"
+              :value="option.value"
+              :selected="attackerId === option.value ? option.value : undefined"
+            >
+              {{ option.label }}
+            </option>
+          </select>
+        </div>
+        <div class="col col-6">
+          <label class="text-left font-bold">Defender Unit</label>
+          <select v-model="defenderId" class="select w-250px" name="defender" @change="refreshDefender">
+            <option
+              v-for="option of unitOptions"
+              :key="option.value"
+              :value="option.value"
+              :selected="defenderId === option.value ? option.value : undefined"
+            >
+              {{ option.label }}
+            </option>
+          </select>
+        </div>
+      </div>
     </section>
 
     <section class="my-6 container">
       <div class="row">
-        <div class="col-6">
+        <div class="col col-6">
           <div class="text-left">
             <h2 class="h2">
               Attacker Statistics
@@ -92,7 +92,7 @@ const unitOptions = [
             :pain="getAbilityValue(attacker, 'Feel No Pain')"
           />
         </div>
-        <div class="col-6">
+        <div class="col col-6">
           <div class="text-left">
             <h2 class="h2">
               Defender Statistics
@@ -108,26 +108,51 @@ const unitOptions = [
       </div>
     </section>
 
-    <section class="my-9">
-      <h2 class="h2 text-left">
-        Average Attack Rolls
-      </h2>
-
-      <div
-        v-for="weapon of attacker.weapons"
-        :key="weapon.name"
-        class="my-5"
-      >
-        <Combat
-          v-bind="{ ...weapon }"
-          :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker) }].filter(item => item?.name)"
-          :abilities="attacker.abilities"
-          :models="weapon.models ?? attacker.models"
-          :toughness="defender.attributes.toughness"
-          :save="defender.attributes.save"
-          :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
-          :pain="getAbilityValue(defender, 'Feel No Pain')"
-        />
+    <section class="my-9 container">
+      <div class="row">
+        <div class="col">
+          <h2 class="h2 text-left">
+            Attack Rolls
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-6">
+          <div
+            v-for="weapon of attacker.weapons"
+            :key="weapon.name"
+            class="my-5"
+          >
+            <Combat
+              v-bind="{ ...weapon }"
+              :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker) }].filter(item => item?.name)"
+              :abilities="attacker.abilities"
+              :models="weapon.models ?? attacker.models"
+              :toughness="defender.attributes.toughness"
+              :save="defender.attributes.save"
+              :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
+              :pain="getAbilityValue(defender, 'Feel No Pain')"
+            />
+          </div>
+        </div>
+        <div class="col col-6">
+          <div
+            v-for="weapon of defender.weapons"
+            :key="weapon.name"
+            class="my-5"
+          >
+            <Combat
+              v-bind="{ ...weapon }"
+              :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender) }].filter(item => item?.name)"
+              :abilities="defender.abilities"
+              :models="weapon.models ?? defender.models"
+              :toughness="attacker.attributes.toughness"
+              :save="attacker.attributes.save"
+              :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
+              :pain="getAbilityValue(attacker, 'Feel No Pain')"
+            />
+          </div>
+        </div>
       </div>
     </section>
   </div>
