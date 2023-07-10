@@ -1,12 +1,43 @@
 <script setup>
-const attackerId = ref('sentinel')
-const { data: attacker, refresh } = await useAsyncData('home', () => queryContent('lists/damien', attackerId.value).findOne())
+const attackerId = ref('lists/damien/sentinel')
+const defenderId = ref('lists/braydon/mutalith-vortex-beast')
+const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
+const { data: defender, refresh: refreshDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
 
-const toughness = ref(10)
-const wound = ref(13)
-const save = ref(4)
-const invulnerable = ref(5)
-const pain = ref(5)
+function getDetachmentRuleAttackModifier(unit) {
+  if (unit?.factions?.find(faction => faction.toUpperCase() === 'ASTRA MILITARUM'))
+    return 'LETHAL HITS'
+}
+
+function getAbilityValue(unit, name) {
+  const ability = unit.abilities?.find((ability) => {
+    return ability?.name?.toUpperCase()?.startsWith(name?.toUpperCase())
+  })
+  return Number(ability?.name?.match(/\d+/)[0] ?? 0)
+}
+
+const unitOptions = [
+  {
+    value: 'lists/damien/sentinel',
+    label: 'Sentinel',
+  },
+  {
+    value: 'lists/damien/hydra',
+    label: 'Hydra',
+  },
+  {
+    value: 'lists/damien/earthshaker-carriage-battery',
+    label: 'Earthshaker Carriage Battery',
+  },
+  {
+    value: 'lists/damien/death-korps-of-krieg',
+    label: 'Death Korps of Krieg',
+  },
+  {
+    value: 'lists/braydon/mutalith-vortex-beast',
+    label: 'Mutalith Vortex Beast',
+  },
+]
 </script>
 
 <template>
@@ -21,22 +52,23 @@ const pain = ref(5)
           <th class="p-1">
             <label class="font-bold">Attacker Unit</label>
           </th>
+          <th class="p-1">
+            <label class="font-bold">Defender Unit</label>
+          </th>
         </thead>
         <tbody>
           <tr>
             <td class="p-1">
-              <select v-model="attackerId" class="select w-250px" name="attacker" @change="refresh">
-                <option value="sentinel">
-                  Sentinel
+              <select v-model="attackerId" class="select w-250px" name="attacker" @change="refreshAttacker">
+                <option v-for="option of unitOptions" :key="option.value" :value="option.value">
+                  {{ option.label }}
                 </option>
-                <option value="hydra">
-                  Hydra
-                </option>
-                <option value="earthshaker-carriage-battery">
-                  Earthshaker Carriage Battery
-                </option>
-                <option value="death-korps-of-krieg">
-                  Death Korps of Krieg
+              </select>
+            </td>
+            <td class="p-1">
+              <select v-model="defenderId" class="select w-250px" name="defender" @change="refreshDefender">
+                <option v-for="option of unitOptions" :key="option.value" :value="option.value">
+                  {{ option.label }}
                 </option>
               </select>
             </td>
@@ -56,6 +88,8 @@ const pain = ref(5)
           </div>
           <Attributes
             v-bind="{ ...attacker.attributes, ...attacker.weapons[0] }"
+            :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
+            :pain="getAbilityValue(attacker, 'Feel No Pain')"
           />
         </div>
         <div class="col-6">
@@ -63,19 +97,12 @@ const pain = ref(5)
             <h2 class="h2">
               Defender Statistics
             </h2>
-            <p>1 Mutalith Vortex Beast {{ 145 }}pts</p>
+            <p>{{ defender.models }} {{ defender.name }} {{ defender.points }}pts</p>
           </div>
           <Attributes
-            v-model:wound="wound"
-            v-model:toughness="toughness"
-            v-model:save="save"
-            v-model:invulnerable="invulnerable"
-            :strength="9"
-            :attack="6"
-            :accuracy="3"
-            :piercing="2"
-            :damage="2"
-            :pain="5"
+            v-bind="{ ...defender.attributes, ...defender.weapons[0] }"
+            :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
+            :pain="getAbilityValue(defender, 'Feel No Pain')"
           />
         </div>
       </div>
@@ -93,12 +120,13 @@ const pain = ref(5)
       >
         <Combat
           v-bind="{ ...weapon }"
-          :modifiers="[...weapon.modifiers ?? [], { name: 'LETHAL HITS' }]"
+          :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker) }].filter(item => item?.name)"
           :abilities="attacker.abilities"
           :models="weapon.models ?? attacker.models"
-          :toughness="toughness"
-          :save="invulnerable"
-          :pain="pain"
+          :toughness="defender.attributes.toughness"
+          :save="defender.attributes.save"
+          :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
+          :pain="getAbilityValue(defender, 'Feel No Pain')"
         />
       </div>
     </section>
