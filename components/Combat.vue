@@ -66,7 +66,7 @@ const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
 const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy - heavy.value), 0))
 
-const lethalHits = computed(() => hasLethalHits ? occurrences(randomHitRolls.value)[6] : 0)
+const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
 const failedWoundRolls = computed(() => randomWoundRolls.value.reduce((sum, roll) => sum + (roll < wound.value), 0))
 const randomWoundReRolls = computed(() => hasTwinLinked.value ? rolls(failedWoundRolls.value) : [])
