@@ -104,7 +104,24 @@ const unitOptions = [
             :key="weapon.name"
             class="my-5"
           >
+            <template v-if="weapon.profiles && weapon.profiles.length">
+              <Combat
+                v-for="profile of weapon.profiles"
+                :key="profile.name"
+                v-bind="{ ...profile }"
+                :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker) }].filter(item => item?.name)"
+                :abilities="attacker.abilities"
+                :models="profile.models ?? attacker.models"
+                :toughness="defender.attributes.toughness"
+                :save="defender.attributes.save"
+                :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
+                :pain="getAbilityValue(defender, 'Feel No Pain')"
+                :turns="turns"
+                :target="defender"
+              />
+            </template>
             <Combat
+              v-else
               v-bind="{ ...weapon }"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker) }].filter(item => item?.name)"
               :abilities="attacker.abilities"
@@ -145,7 +162,24 @@ const unitOptions = [
             :key="weapon.name"
             class="my-5"
           >
+            <template v-if="weapon.profiles && weapon.profiles.length">
+              <Combat
+                v-for="profile of weapon.profiles"
+                v-bind="{ ...profile }"
+                :key="profile.name"
+                :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender) }].filter(item => item?.name)"
+                :abilities="defender.abilities"
+                :models="weapon.models ?? defender.models"
+                :target="attacker"
+                :toughness="attacker.attributes.toughness"
+                :save="attacker.attributes.save"
+                :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
+                :pain="getAbilityValue(attacker, 'Feel No Pain')"
+                :turns="turns"
+              />
+            </template>
             <Combat
+              v-else
               v-bind="{ ...weapon }"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender) }].filter(item => item?.name)"
               :abilities="defender.abilities"

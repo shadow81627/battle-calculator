@@ -1,6 +1,8 @@
 {
   "name": "Mutalith Vortex Beast",
-  "faction": ["Thousand Sons"],
+  "faction": [
+    "Thousand Sons"
+  ],
   "models": 1,
   "points": 145,
   "attributes": {
@@ -13,14 +15,65 @@
   },
   "weapons": [
     {
-      "name": "Warp vortex – blast",
-      "modifiers": [{"name": "BLAST"}],
+      "name": "Warp vortex",
+      "modifiers": [
+        {
+          "name": "BLAST"
+        }
+      ],
       "range": 24,
       "attack": "D6+3",
       "accuracy": 3,
       "strength": 9,
       "piercing": 2,
-      "damage": 2
+      "damage": 2,
+      "profiles": [
+        {
+          "name": "Warp vortex – blast",
+          "modifiers": [
+            {
+              "name": "BLAST"
+            }
+          ],
+          "range": 24,
+          "attack": "D6+3",
+          "accuracy": 3,
+          "strength": 9,
+          "piercing": 2,
+          "damage": 2
+        },
+        {
+          "name": "Warp vortex – beam",
+          "modifiers": [
+            {
+              "name": "DEVASTATING WOUNDS"
+            }
+          ],
+          "range": 24,
+          "attack": 1,
+          "accuracy": 3,
+          "strength": 18,
+          "piercing": 4,
+          "damage": "D6+6"
+        },
+        {
+          "name": "Warp vortex – torrent",
+          "modifiers": [
+            {
+              "name": "IGNORES COVER"
+            },
+            {
+              "name": "TORRENT"
+            }
+          ],
+          "range": 12,
+          "attack": "2D6",
+          "accuracy": 1,
+          "strength": 6,
+          "piercing": 1,
+          "damage": 1
+        }
+      ]
     }
   ],
   "abilities": [
@@ -28,7 +81,11 @@
       "name": "Deadly Demise",
       "damage": "D6"
     },
-    {"name": "Feel No Pain 5+"},
-    {"name": "Invulnerable Save 5+"}
+    {
+      "name": "Feel No Pain 5+"
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    }
   ]
 }

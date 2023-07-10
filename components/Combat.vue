@@ -4,7 +4,7 @@ import occurrences from '~/utils/occurrences'
 const props = defineProps({
   strength: { type: Number },
   toughness: { type: Number },
-  attack: { type: Number },
+  attack: { type: [Number, String] },
   save: { type: Number },
   accuracy: { type: Number },
   piercing: { type: Number },
@@ -64,11 +64,15 @@ const sustainedHits = computed(() => {
 const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
 
-const _attack = computed(() => {
-  const base = Number(String(props.attack).match(/\+(\d+)/)?.[1] ?? props.attack)
-  const rollType = Number(String(props.attack).match(/D(\d+)/)?.[1])
-  const rolls = Number(String(props.attack).match(/(\d+)D/)?.[1] ?? (rollType ? 1 : 0))
+function paseRolls(roll) {
+  const base = Number(String(roll).match(/\+(\d+)/)?.[1] ?? (typeof roll === 'number' ? roll : 0))
+  const rollType = Number(String(roll).match(/D(\d+)/)?.[1])
+  const rolls = Number(String(roll).match(/(\d+)D/)?.[1] ?? (rollType ? 1 : 0))
   return { rolls, base, rollType: rollType ?? 6 }
+}
+
+const _attack = computed(() => {
+  return paseRolls(props.attack)
 })
 const randomAttackRolls = computed(() => rolls(_attack.value.rolls, _attack.value.rollType))
 const randomAttacksTotal = computed(() => {
@@ -90,9 +94,10 @@ const randomWoundTotal = computed(() => [...randomWoundRolls.value, ...randomWou
 const randomSaveRolls = computed(() => rolls(randomWoundTotal.value))
 const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < props.save), 0))
 
-// const randomDamageRolls = rolls(randomSaveTotal)
-// const randomDamageTotal = randomDamageRolls.reduce((sum, roll) => sum + (roll >= props.save), 0)
-const randomDamageTotal = computed(() => randomSaveTotal.value * props.damage)
+const _damage = computed(() => paseRolls(props.damage))
+const randomDamageRolls = computed(() => rolls(_damage.value.rolls, _damage.value.rollType))
+const randomDamageTotal = computed(() => randomDamageRolls.value.reduce((sum, roll) => sum + roll, 0) + _damage.value.base)
+// const randomDamageTotal = computed(() => randomSaveTotal.value * props.damage)
 
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
 const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
@@ -101,7 +106,7 @@ const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * 3) + _at
 const hitTotal = computed(() => Math.floor(attacksTotal.value * dice.attack(props.accuracy - heavy.value)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(props.save)))
-const damageTotal = computed(() => Math.floor(saveTotal.value * props.damage))
+const damageTotal = computed(() => Math.floor(saveTotal.value * (Math.floor(_damage.value.rolls * 3) + _damage.value.base)))
 const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(props.pain)))
 </script>
 
@@ -143,6 +148,26 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
       <tbody>
         <tr>
           <td class="p-1 text-left">
+            Stats
+          </td>
+          <td class="p-1">
+            {{ attack }}
+          </td>
+          <td class="p-1">
+            {{ accuracy }}
+          </td>
+          <td class="p-1">
+            {{ strength }}
+          </td>
+          <td class="p-1">
+            {{ piercing }}
+          </td>
+          <td class="p-1">
+            {{ damage }}
+          </td>
+        </tr>
+        <tr>
+          <td class="p-1 text-left">
             Random
           </td>
           <td class="p-1">
@@ -165,7 +190,12 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <DisplayRolls :rolls="randomSaveRolls" />
           </td>
           <td class="p-1">
-            {{ randomSaveTotal }} x {{ damage }}
+            <template v-if="randomDamageRolls && randomDamageRolls.length">
+              <DisplayRolls :rolls="randomDamageRolls" />
+            </template>
+            <template v-else>
+              {{ randomSaveTotal }} x {{ damage }}
+            </template>
           </td>
           <td v-if="pain" class="p-1">
             <DisplayRolls :rolls="randomPainRolls" />
