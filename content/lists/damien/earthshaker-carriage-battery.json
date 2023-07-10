@@ -14,5 +14,44 @@
       },
       "itemCondition": "NewCondition"
     }
+  ],
+  "attributes": {
+    "movement": 4,
+    "toughness": 7,
+    "save": 4,
+    "wound": 6,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Earthshaker cannon",
+      "modifiers": [
+        {"name": "BLAST"},
+        {"name": "HEAVY"},
+        {"name": "INDIRECT FIRE"}
+      ],
+      "range": 240,
+      "attack": 6,
+      "accuracy": 5,
+      "strength": 8,
+      "piercing": 2,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Earthshaker Rounds",
+      "description": "In your Shooting phase, after this model has shot, if one or more of those attacks made with its earthshaker cannon scored a hit against an Infantry unit, until the end of your opponent’s next turn, that Infantry unit is shaken. While a unit is shaken, subtract 2\" from its Move characteristic and subtract 2 from Advance and Charge rolls made for it.",
+      "trigger": "Shooting phase",
+      "target": {
+        "quantity": 1,
+        "keyword": "INFANTRY"
+      },
+      "effects": [
+        {"name": "subtract 2\" from move"}
+      ]
+
+    }
   ]
 }
