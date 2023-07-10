@@ -87,6 +87,8 @@ const pain = ref(5)
       >
         <Combat
           v-bind="{ ...weapon }"
+          :modifiers="[...weapon.modifiers ?? [], { name: 'LETHAL HITS' }]"
+          :abilities="attacker.abilities"
           :models="attacker.models"
           :toughness="toughness"
           :save="invulnerable"

@@ -1,4 +1,6 @@
 <script setup>
+import occurrences from '~/utils/occurrences'
+
 const props = defineProps({
   strength: { type: Number },
   toughness: { type: Number },
@@ -11,6 +13,7 @@ const props = defineProps({
   models: { type: Number, default: 1 },
   name: { type: String },
   modifiers: { type: Array, default: () => [] },
+  abilities: { type: Array, default: () => [] },
 })
 
 const turns = ref(1)
@@ -50,12 +53,16 @@ function rolls(x = 1) {
 }
 
 const maxTurns = computed(() => props.modifiers.find(modifier => modifier.name === 'ONE SHOT') ? 1 : 5)
+const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS'))
+const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
 
 const randomHitRolls = computed(() => rolls(props.attack * turns.value * props.models))
-const randomHitTotal = computed(() => randomHitRolls.value.reduce((sum, roll) => sum + (roll >= props.accuracy), 0))
+const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
+const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy), 0))
 
-const randomWoundRolls = computed(() => rolls(randomHitTotal.value))
-const randomWoundTotal = computed(() => randomWoundRolls.value.reduce((sum, roll) => sum + (roll >= wound.value), 0))
+const lethalHits = computed(() => hasLethalHits ? occurrences(randomHitRolls.value)[6] : 0)
+const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
+const randomWoundTotal = computed(() => randomWoundRolls.value.reduce((sum, roll) => sum + (roll >= wound.value), 0) + lethalHits.value)
 
 const randomSaveRolls = computed(() => rolls(randomWoundTotal.value))
 const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < props.save), 0))
@@ -67,7 +74,7 @@ const randomDamageTotal = computed(() => randomSaveTotal.value * props.damage)
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
 const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
 
-const hitTotal = computed(() => Math.floor((props.attack * turns.value) * dice.attack(props.accuracy)))
+const hitTotal = computed(() => Math.floor((props.attack * turns.value * props.models) * dice.attack(props.accuracy)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(props.save)))
 const damageTotal = computed(() => Math.floor(saveTotal.value * props.damage))
@@ -139,6 +146,14 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <DisplayRolls :rolls="randomPainRolls" />
           </td>
         </tr>
+        <tr v-show="randomHitReRolls.length">
+          <td class="p-1 text-left">
+            Re-rolls
+          </td>
+          <td class="p-1 text-left">
+            <DisplayRolls :rolls="randomHitReRolls" />
+          </td>
+        </tr>
         <tr>
           <td class="p-1 text-left">
             Totals
@@ -147,7 +162,15 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ randomHitTotal }}
           </td>
           <td class="p-1">
-            {{ randomWoundTotal }}
+            <template v-if="randomWoundTotal - lethalHits">
+              {{ randomWoundTotal - lethalHits }}
+            </template>
+            <template v-if="randomWoundTotal - lethalHits && lethalHits">
+              +
+            </template>
+            <template v-if="lethalHits">
+              {{ lethalHits }} Lethal Hit(s)
+            </template>
           </td>
           <td class="p-1">
             {{ randomSaveTotal }}
