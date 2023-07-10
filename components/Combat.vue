@@ -8,6 +8,8 @@ const props = defineProps({
   piercing: { type: Number },
   damage: { type: Number },
   pain: { type: Number },
+  models: { type: Number, default: 1 },
+  name: { type: String },
 })
 
 const turns = ref(1)
@@ -46,7 +48,7 @@ function rolls(x = 1) {
   return [...Array(x)].map(() => dice.roll())
 }
 
-const randomHitRolls = computed(() => rolls(props.attack * turns.value))
+const randomHitRolls = computed(() => rolls(props.attack * turns.value * props.models))
 const randomHitTotal = computed(() => randomHitRolls.value.reduce((sum, roll) => sum + (roll >= props.accuracy), 0))
 
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value))
@@ -57,6 +59,10 @@ const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) 
 
 // const randomDamageRolls = rolls(randomSaveTotal)
 // const randomDamageTotal = randomDamageRolls.reduce((sum, roll) => sum + (roll >= props.save), 0)
+const randomDamageTotal = computed(() => randomSaveTotal.value * props.damage)
+
+const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
+const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
 
 const hitTotal = computed(() => Math.floor((props.attack * turns.value) * dice.attack(props.accuracy)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
@@ -66,6 +72,9 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
 </script>
 
 <template>
+  <p class="text-left">
+    {{ name }}
+  </p>
   <table>
     <tbody>
       <tr>
@@ -79,108 +88,90 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
     </tbody>
   </table>
 
-  <p class="text-left">
-    Random
-  </p>
-  <table>
-    <thead>
-      <th class="p-1">
-        Hits
-      </th>
-      <th class="p-1">
-        Wounds
-      </th>
-      <th class="p-1">
-        Save
-      </th>
-      <th class="p-1">
-        Damage
-      </th>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="p-1">
-          {{ randomHitRolls }}
-        </td>
-        <td class="p-1">
-          {{ randomWoundRolls }}
-        </td>
-        <td class="p-1">
-          {{ randomSaveRolls }}
-        </td>
-        <td class="p-1">
-          {{ randomSaveTotal }} x {{ damage }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{ randomHitTotal }}
-        </td>
-        <td>
-          {{ randomWoundTotal }}
-        </td>
-        <td class="p-1">
-          {{ randomSaveTotal }}
-        </td>
-        <td class="p-1">
-          {{ randomSaveTotal * damage }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p class="text-left">
-    Average
-  </p>
-  <table>
-    <thead>
-      <tr>
+  <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <th class="p-1 text-left">
+          Row type
+        </th>
         <th class="p-1">
           Hits
         </th>
         <th class="p-1">
           Wounds
         </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="p-1">
-          {{ hitTotal }}
-        </td>
-        <td class="p-1">
-          {{ woundTotal }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table>
-    <thead>
-      <tr>
         <th class="p-1">
-          <label>Saves</label>
+          Save
         </th>
         <th class="p-1">
-          <label>Damage</label>
+          Damage
         </th>
         <th class="p-1">
-          <label>Feel no Pain</label>
+          Feel no pain
         </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td v-if="save" class="p-1">
-          {{ saveTotal }}
-        </td>
-        <td v-if="damage" class="p-1">
-          {{ damageTotal }}
-        </td>
-        <td v-if="pain" class="p-1">
-          {{ painTotal }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="p-1 text-left">
+            Random
+          </td>
+          <td class="p-1">
+            <DisplayRolls :rolls="randomHitRolls" />
+          </td>
+          <td class="p-1">
+            <DisplayRolls :rolls="randomWoundRolls" />
+          </td>
+          <td class="p-1">
+            <DisplayRolls :rolls="randomSaveRolls" />
+          </td>
+          <td class="p-1">
+            {{ randomSaveTotal }} x {{ damage }}
+          </td>
+          <td class="p-1">
+            <DisplayRolls :rolls="randomPainRolls" />
+          </td>
+        </tr>
+        <tr>
+          <td class="p-1 text-left">
+            Totals
+          </td>
+          <td class="p-1">
+            {{ randomHitTotal }}
+          </td>
+          <td class="p-1">
+            {{ randomWoundTotal }}
+          </td>
+          <td class="p-1">
+            {{ randomSaveTotal }}
+          </td>
+          <td class="p-1">
+            {{ randomDamageTotal }}
+          </td>
+          <td class="p-1">
+            {{ randomPainTotal }}
+          </td>
+        </tr>
+        <tr>
+          <td class="p-1 text-left">
+            Average
+          </td>
+          <td class="p-1">
+            {{ hitTotal }}
+          </td>
+          <td class="p-1">
+            {{ woundTotal }}
+          </td>
+          <td v-if="save" class="p-1">
+            {{ saveTotal }}
+          </td>
+          <td v-if="damage" class="p-1">
+            {{ damageTotal }}
+          </td>
+          <td v-if="pain" class="p-1">
+            {{ painTotal }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>

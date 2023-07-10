@@ -83,13 +83,11 @@ const pain = ref(5)
       <div
         v-for="weapon of attacker.weapons"
         :key="weapon.name"
+        class="my-5"
       >
-        <p class="text-left">
-          {{ weapon.name }}
-        </p>
         <Combat
-
           v-bind="{ ...weapon }"
+          :models="attacker.models"
           :toughness="toughness"
           :save="invulnerable"
           :pain="pain"
