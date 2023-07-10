@@ -47,11 +47,12 @@ const dice = {
   },
 }
 
-function rolls(x = 1) {
-  return [...Array(x)].map(() => dice.roll())
+function rolls(x = 1, sides = 6) {
+  return [...Array(x)].map(() => dice.roll(sides))
 }
 
 const maxTurns = computed(() => props.modifiers.find(modifier => modifier.name === 'ONE SHOT') ? 1 : 5)
+const minTurns = computed(() => Math.min(props.turns, maxTurns.value))
 const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS'))
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
 const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
@@ -63,9 +64,19 @@ const sustainedHits = computed(() => {
 const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
 
-const randomAttackRolls = computed(() => (props.attack * Math.min(props.turns, maxTurns.value) * props.models) + blast.value)
-const randomAttacksTotal = computed(() => randomAttackRolls.value)
-const randomHitRolls = computed(() => rolls(randomAttackRolls.value))
+const _attack = computed(() => {
+  const base = Number(String(props.attack).match(/\+(\d+)/)?.[1] ?? props.attack)
+  const rollType = Number(String(props.attack).match(/D(\d+)/)?.[1])
+  const rolls = Number(String(props.attack).match(/(\d+)D/)?.[1] ?? (rollType ? 1 : 0))
+  return { rolls, base, rollType: rollType ?? 6 }
+})
+const randomAttackRolls = computed(() => rolls(_attack.value.rolls, _attack.value.rollType))
+const randomAttacksTotal = computed(() => {
+  const randomAttacksTotal = randomAttackRolls.value.reduce((sum, roll) => sum + roll, 0)
+  const randomAttacksTotalBonuses = randomAttacksTotal + _attack.value.base + blast.value
+  return randomAttacksTotalBonuses * minTurns.value * props.models
+})
+const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
 const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
 const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy - heavy.value), 0))
@@ -86,7 +97,7 @@ const randomDamageTotal = computed(() => randomSaveTotal.value * props.damage)
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
 const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
 
-const attacksTotal = computed(() => (props.attack * Math.min(props.turns, maxTurns.value) * props.models) + blast.value)
+const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * 3) + _attack.value.base) + blast.value) * minTurns.value * props.models))
 const hitTotal = computed(() => Math.floor(attacksTotal.value * dice.attack(props.accuracy - heavy.value)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(props.save)))
@@ -135,7 +146,10 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             Random
           </td>
           <td class="p-1">
-            {{ randomAttackRolls - blast }}
+            <DisplayRolls v-if="randomAttackRolls && randomAttackRolls.length" :rolls="randomAttackRolls" />
+            <template v-else>
+              {{ randomAttacksTotal }}
+            </template>
           </td>
           <td class="p-1">
             <DisplayRolls :rolls="randomHitRolls" />

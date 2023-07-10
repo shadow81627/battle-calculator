@@ -33,7 +33,7 @@
         {"name": "INDIRECT FIRE"}
       ],
       "range": 240,
-      "attack": 6,
+      "attack": "D6+3",
       "accuracy": 5,
       "strength": 8,
       "piercing": 2,

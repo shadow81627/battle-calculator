@@ -16,7 +16,7 @@
       "name": "Warp vortex – blast",
       "modifiers": [{"name": "BLAST"}],
       "range": 24,
-      "attack": 6,
+      "attack": "D6+3",
       "accuracy": 3,
       "strength": 9,
       "piercing": 2,
