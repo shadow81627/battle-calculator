@@ -60,11 +60,12 @@ const sustainedHits = computed(() => {
   const modifier = props.modifiers?.find(modifier => modifier.name.startsWith('SUSTAINED HITS'))
   return modifier ? modifier.name.match(/\d+/)[0] : 0
 })
+const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
 
 const randomHitRolls = computed(() => rolls(props.attack * turns.value * props.models))
 const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
-const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy), 0))
+const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy - heavy.value), 0))
 
 const lethalHits = computed(() => hasLethalHits ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
@@ -82,7 +83,7 @@ const randomDamageTotal = computed(() => randomSaveTotal.value * props.damage)
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
 const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
 
-const hitTotal = computed(() => Math.floor((props.attack * turns.value * props.models) * dice.attack(props.accuracy)))
+const hitTotal = computed(() => Math.floor((props.attack * turns.value * props.models) * dice.attack(props.accuracy - heavy.value)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(props.save)))
 const damageTotal = computed(() => Math.floor(saveTotal.value * props.damage))

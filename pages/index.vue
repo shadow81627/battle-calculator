@@ -32,6 +32,9 @@ const pain = ref(5)
                 <option value="hydra">
                   Hydra
                 </option>
+                <option value="earthshaker-carriage-battery">
+                  Earthshaker Carriage Battery
+                </option>
               </select>
             </td>
           </tr>
