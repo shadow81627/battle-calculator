@@ -1,5 +1,6 @@
 {
   "name": "Lord Solar Leontus",
+  "factions": ["Astra Militarum"],
   "models": 1,
   "points": 125,
   "offers": [

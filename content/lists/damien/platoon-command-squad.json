@@ -1,5 +1,6 @@
 {
   "name": "Platoon Command Squad",
+  "factions": ["Astra Militarum"],
   "models": 4,
   "points": 60,
   "offers": [

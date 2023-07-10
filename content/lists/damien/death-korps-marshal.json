@@ -1,5 +1,6 @@
 {
   "name": "Death Korps Marshal",
+  "factions": ["Astra Militarum"],
   "models": 1,
   "points": 60,
   "offers": [

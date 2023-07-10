@@ -1,5 +1,6 @@
 {
   "name": "Earthshaker Carriage Battery",
+  "factions": ["Astra Militarum"],
   "models": 3,
   "points": 240,
   "offers": [

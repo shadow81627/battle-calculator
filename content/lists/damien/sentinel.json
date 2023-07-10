@@ -1,5 +1,6 @@
 {
   "name": "Sentinels",
+  "factions": ["Astra Militarum"],
   "models": 3,
   "points": 150,
   "offers": [

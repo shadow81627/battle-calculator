@@ -1,5 +1,6 @@
 {
   "name": "Hydra",
+  "factions": ["Astra Militarum"],
   "models": 1,
   "points": 95,
   "offers": [

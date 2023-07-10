@@ -1,5 +1,6 @@
 {
   "name": "Infantry Squad",
+  "factions": ["Astra Militarum"],
   "models": 20,
   "points": 130,
   "offers": [
