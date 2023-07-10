@@ -7,7 +7,7 @@
       Damien's list
     </nuxt-link>
   </header>
-  <main class="px-10 py-20 text-center">
+  <main class="px-5 py-20 text-center">
     <slot />
   </main>
 </template>
