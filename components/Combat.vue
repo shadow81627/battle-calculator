@@ -112,7 +112,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
     </tbody>
   </table>
 
-  <div style="overflow-x:auto;">
+  <div style="overflow-x:auto;" class="text-center">
     <table>
       <thead>
         <th class="p-1 text-left">
