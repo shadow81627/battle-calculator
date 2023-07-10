@@ -1,0 +1,34 @@
+{
+  "name": "Mutalith Vortex Beast",
+  "faction": ["Thousand Sons"],
+  "models": 1,
+  "points": 145,
+  "attributes": {
+    "movement": 10,
+    "toughness": 10,
+    "save": 4,
+    "wound": 13,
+    "leadership": 6,
+    "control": 4
+  },
+  "weapons": [
+    {
+      "name": "Warp vortex – blast",
+      "modifiers": [{"name": "BLAST"}],
+      "range": 24,
+      "attack": 6,
+      "accuracy": 3,
+      "strength": 9,
+      "piercing": 2,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {"name": "Feel No Pain 5+"},
+    {"name": "Invulnerable Save 5+"}
+  ]
+}
