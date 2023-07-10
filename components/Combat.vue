@@ -10,6 +10,7 @@ const props = defineProps({
   pain: { type: Number },
   models: { type: Number, default: 1 },
   name: { type: String },
+  modifiers: { type: Array, default: () => [] },
 })
 
 const turns = ref(1)
@@ -48,6 +49,8 @@ function rolls(x = 1) {
   return [...Array(x)].map(() => dice.roll())
 }
 
+const maxTurns = computed(() => props.modifiers.find(modifier => modifier.name === 'ONE SHOT') ? 1 : 5)
+
 const randomHitRolls = computed(() => rolls(props.attack * turns.value * props.models))
 const randomHitTotal = computed(() => randomHitRolls.value.reduce((sum, roll) => sum + (roll >= props.accuracy), 0))
 
@@ -73,7 +76,12 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
 
 <template>
   <p class="text-left">
-    {{ name }}
+    <span>{{ name }}</span>
+
+    <template v-if="modifiers && modifiers.length">
+      [<span v-for="(modifier, index) of modifiers" :key="modifier.name">{{ modifier.name }}<template v-if="index + 1 !== modifiers.length">, </template>
+      </span>]
+    </template>
   </p>
   <table>
     <tbody>
@@ -82,7 +90,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           <label class="font-bold">Turns</label>
         </td>
         <td class="p-1">
-          <input v-model="turns" name="turns" class="input max-w-250px" type="number" max="5" min="1">
+          <input v-model="turns" name="turns" class="input max-w-250px" type="number" :max="maxTurns" min="1">
         </td>
       </tr>
     </tbody>
