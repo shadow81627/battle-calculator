@@ -1,5 +1,6 @@
 <script setup>
 const turns = ref(1)
+const range = ref(24)
 const attackerId = ref('lists/damien/sentinel')
 const defenderId = ref('lists/braydon/mutalith-vortex-beast')
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
@@ -47,33 +48,29 @@ const unitOptions = [
       Battle Calculator
     </h1>
 
-    <section class="my-6 container">
+    <section class="my-9 container">
       <div class="row">
-        <div class="col col-6">
-          <label class="text-left font-bold">Attacker Unit</label>
-          <select v-model="attackerId" class="select w-250px" name="attacker" @change="refreshAttacker">
-            <option
-              v-for="option of unitOptions"
-              :key="option.value"
-              :value="option.value"
-              :selected="attackerId === option.value ? option.value : undefined"
-            >
-              {{ option.label }}
-            </option>
-          </select>
-        </div>
-        <div class="col col-6">
-          <label class="text-left font-bold">Defender Unit</label>
-          <select v-model="defenderId" class="select w-250px" name="defender" @change="refreshDefender">
-            <option
-              v-for="option of unitOptions"
-              :key="option.value"
-              :value="option.value"
-              :selected="defenderId === option.value ? option.value : undefined"
-            >
-              {{ option.label }}
-            </option>
-          </select>
+        <div class="col">
+          <table class="text-left">
+            <thead>
+              <th class="p-1">
+                <label class="font-bold">Turns</label>
+              </th>
+              <th class="p-1">
+                <label class="font-bold">Range</label>
+              </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-1">
+                  <input v-model="turns" name="turns" class="input max-w-250px" type="number" max="5" min="1">
+                </td>
+                <td class="p-1">
+                  <input v-model="range" name="range" class="input max-w-250px" type="number" min="1">
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -83,7 +80,17 @@ const unitOptions = [
         <div class="col col-6">
           <div class="text-left">
             <h2 class="h2">
-              Attacker Statistics
+              Attacker
+              <select v-model="attackerId" class="select inline w-250px" name="attacker" @change="refreshAttacker">
+                <option
+                  v-for="option of unitOptions"
+                  :key="option.value"
+                  :value="option.value"
+                  :selected="attackerId === option.value ? option.value : undefined"
+                >
+                  {{ option.label }}
+                </option>
+              </select>
             </h2>
             <p>{{ attacker.models }} {{ attacker.name }} {{ attacker.points }}pts</p>
           </div>
@@ -92,45 +99,6 @@ const unitOptions = [
             :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
             :pain="getAbilityValue(attacker, 'Feel No Pain')"
           />
-        </div>
-        <div class="col col-6">
-          <div class="text-left">
-            <h2 class="h2">
-              Defender Statistics
-            </h2>
-            <p>{{ defender.models }} {{ defender.name }} {{ defender.points }}pts</p>
-          </div>
-          <Attributes
-            v-bind="{ ...defender.attributes, ...defender.weapons[0] }"
-            :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
-            :pain="getAbilityValue(defender, 'Feel No Pain')"
-          />
-        </div>
-      </div>
-    </section>
-
-    <section class="my-9 container">
-      <div class="row">
-        <div class="col">
-          <h2 class="h2 text-left">
-            Attack Rolls
-          </h2>
-          <table>
-            <tbody>
-              <tr>
-                <td class="p-1">
-                  <label class="font-bold">Turns</label>
-                </td>
-                <td class="p-1">
-                  <input v-model="turns" name="turns" class="input max-w-250px" type="number" max="5" min="1">
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-6">
           <div
             v-for="weapon of attacker.weapons"
             :key="weapon.name"
@@ -150,6 +118,27 @@ const unitOptions = [
           </div>
         </div>
         <div class="col col-6">
+          <div class="text-left">
+            <h2 class="h2">
+              Defender
+              <select v-model="defenderId" class="select inline w-250px" name="defender" @change="refreshDefender">
+                <option
+                  v-for="option of unitOptions"
+                  :key="option.value"
+                  :value="option.value"
+                  :selected="defenderId === option.value ? option.value : undefined"
+                >
+                  {{ option.label }}
+                </option>
+              </select>
+            </h2>
+            <p>{{ defender.models }} {{ defender.name }} {{ defender.points }}pts</p>
+          </div>
+          <Attributes
+            v-bind="{ ...defender.attributes, ...defender.weapons[0] }"
+            :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
+            :pain="getAbilityValue(defender, 'Feel No Pain')"
+          />
           <div
             v-for="weapon of defender.weapons"
             :key="weapon.name"
