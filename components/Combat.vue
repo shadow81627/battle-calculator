@@ -56,10 +56,15 @@ const maxTurns = computed(() => props.modifiers.find(modifier => modifier.name =
 const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS'))
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
 const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
+const sustainedHits = computed(() => {
+  const modifier = props.modifiers?.find(modifier => modifier.name.startsWith('SUSTAINED HITS'))
+  return modifier ? modifier.name.match(/\d+/)[0] : 0
+})
 
 const randomHitRolls = computed(() => rolls(props.attack * turns.value * props.models))
 const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
-const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy), 0))
+const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
+const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy), 0))
 
 const lethalHits = computed(() => hasLethalHits ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
@@ -135,6 +140,10 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           </td>
           <td class="p-1">
             <DisplayRolls :rolls="randomHitRolls" />
+            <template v-if="sustainedHitsRolls && sustainedHitsRolls.length">
+              Sustained Hits {{ sustainedHits }}
+              <DisplayRolls :rolls="sustainedHitsRolls" />
+            </template>
           </td>
           <td class="p-1">
             <DisplayRolls :rolls="randomWoundRolls" />
