@@ -1,13 +1,9 @@
 <script setup>
+import occurrences from '~/utils/occurrences'
+
 defineProps({
   rolls: { type: Array },
 })
-function occurrences(list) {
-  return list.sort().reduce((acc, curr) => {
-    acc[curr] ? ++acc[curr] : acc[curr] = 1
-    return acc
-  }, { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 })
-}
 </script>
 
 <template>
