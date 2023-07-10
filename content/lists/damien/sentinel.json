@@ -46,5 +46,29 @@
       "piercing": 3,
       "damage": 3
     }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": 1
+    },
+    {
+      "name": "Scouts",
+      "range": 9
+    },
+    {
+      "name": "Daring Recon",
+      "description": "At the start of your Shooting phase, select one enemy unit within 18\" of and visible to this unit. Until the end of the phase, each time a friendly Astra Militarum model makes an attack that targets that unit, re-roll a Hit roll of 1 and, if that attack has the [INDIRECT FIRE] ability, it does not suffer the penalty to the Hit roll for shooting at a target that is not visible to the attacking unit.",
+      "range": 18,
+      "trigger": "Shooting phase",
+      "target": {
+        "quantity": 1
+      },
+      "effects": [
+        {"name": "Re-roll Hit roll of 1"},
+        {"name": "Remove [INDIRECT FIRE] penalty"}
+      ]
+
+    }
   ]
 }
