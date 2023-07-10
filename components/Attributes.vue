@@ -27,7 +27,7 @@ defineEmits([
 
 <template>
   <div style="overflow-x:auto;">
-    <table>
+    <table style="display: none">
       <thead>
         <tr>
           <th>
