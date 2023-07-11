@@ -47,6 +47,17 @@
       "damage": 1
     },
     {
+      "name": "Plasma pistol",
+      "modifiers": [{"name": "PISTOL"}],
+      "models": 2,
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
       "name": "Sniper rifle",
       "modifiers": [{"name": "HEAVY"}, {"name": "PRECISION"}],
       "models": 2,
