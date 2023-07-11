@@ -89,7 +89,7 @@ const randomAttacksTotal = computed(() => {
 const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
 const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
-const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= props.accuracy - heavy.value), 0))
+const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= (props.accuracy - heavy.value)), 0))
 
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
@@ -98,8 +98,10 @@ const hasWoundReRolls = computed(() => hasTwinLinked.value || hasBringersOfChang
 const randomWoundReRolls = computed(() => hasWoundReRolls.value ? rolls(failedWoundRolls.value) : [])
 const randomWoundTotal = computed(() => [...randomWoundRolls.value, ...randomWoundReRolls.value].reduce((sum, roll) => sum + (roll >= wound.value), 0) + lethalHits.value)
 
-const randomSaveRolls = computed(() => rolls(randomWoundTotal.value))
-const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < _save.value), 0))
+const hasDevastatingWounds = computed(() => props.modifiers?.find(modifier => modifier.name === 'DEVASTATING WOUNDS'))
+const randomDevastatingWounds = computed(() => hasDevastatingWounds.value ? occurrences([...randomWoundRolls.value, ...randomWoundReRolls.value])[6] : 0)
+const randomSaveRolls = computed(() => rolls(randomWoundTotal.value - randomDevastatingWounds.value))
+const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < _save.value), 0) + randomDevastatingWounds.value)
 
 const _damage = computed(() => paseRolls(props.damage))
 const randomDamageRolls = computed(() => rolls(randomSaveTotal.value * _damage.value.rolls, _damage.value.rollType))
@@ -273,7 +275,15 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             </template>
           </td>
           <td class="p-1">
-            {{ randomSaveTotal }}
+            <template v-if="randomSaveTotal - randomDevastatingWounds || !randomDevastatingWounds">
+              {{ randomSaveTotal - randomDevastatingWounds }}
+            </template>
+            <template v-if="randomSaveTotal - randomDevastatingWounds && randomDevastatingWounds">
+              +
+            </template>
+            <template v-if="randomDevastatingWounds">
+              {{ randomDevastatingWounds }} Devastating Wound(s)
+            </template>
           </td>
           <td class="p-1">
             {{ randomDamageTotal }}
