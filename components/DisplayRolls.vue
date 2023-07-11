@@ -20,8 +20,8 @@ defineProps({
     <tbody>
       <tr>
         <td
-          v-for="(value, index) of Object.values(occurrences(rolls))"
-          :key="index"
+          v-for="[key, value] of Object.entries(occurrences(rolls))"
+          :key="`${key}-${value}`"
           class="px-1 text-right font-mono"
           v-html="String(value).padStart(2, '&nbsp;')"
         />
