@@ -154,13 +154,21 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ attack }} x {{ models }} models
           </td>
           <td class="p-1">
-            {{ accuracy }}
+            {{ accuracy }}+
           </td>
           <td class="p-1">
-            {{ strength }}
+            S{{ strength }}
+            T{{ toughness }}
+            =
+            {{ wound }}+
           </td>
           <td class="p-1">
-            {{ piercing }}
+            <template v-if="piercing">
+              SV{{ save }} AP-{{ piercing }} = {{ save + piercing }}+
+            </template>
+            <template v-else>
+              {{ save + piercing }}+
+            </template>
           </td>
           <td class="p-1">
             {{ damage }}
