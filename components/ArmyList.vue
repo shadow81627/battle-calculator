@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { minBy } from 'lodash-es'
+
 interface Squad {
   name: string
   models: number
@@ -18,8 +20,9 @@ interface Squad {
 }
 const props = defineProps<{ data: Squad[] }>()
 function squadPrice(item: Squad) {
-  const offer = item.offers?.find(item => item.price)
-  return (offer?.price ?? 0) * Math.ceil(item.models / (offer?.eligibleQuantity ?? 1))
+  const offers = item.offers?.filter(item => item.price)
+  const offer = minBy(offers, 'price')
+  return Math.ceil(offer?.price ?? 0) * Math.ceil(item.models / (offer?.eligibleQuantity ?? 1))
 }
 </script>
 
