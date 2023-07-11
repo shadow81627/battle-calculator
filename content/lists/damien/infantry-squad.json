@@ -13,6 +13,61 @@
         "name": "Games Workshop"
       },
       "itemCondition": "NewCondition"
+    },
+    {
+      "$comment": "Cadian",
+      "price": 66.36,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/astra-militarum/products/astra-militarum-cadian-shock-troops-pre-order-1"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 5,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Lasgun",
+      "modifiers": [{"name": "RAPID FIRE 1"}],
+      "models": 12,
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Plasma gun",
+      "modifiers": [{"name": "RAPID FIRE 1"}],
+      "models": 2,
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Plasma pistol",
+      "modifiers": [{"name": "PISTOL"}],
+      "models": 2,
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 1
     }
   ]
 }

@@ -14,6 +14,18 @@
         "name": "Games Workshop"
       },
       "itemCondition": "NewCondition"
+    },
+    {
+      "$comment": "Basilisk",
+      "price": 78.85,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/astra-militarum/products/astra-militarum-basilisk"
     }
   ],
   "attributes": {

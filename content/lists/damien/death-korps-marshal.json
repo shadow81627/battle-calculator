@@ -13,6 +13,17 @@
         "name": "Games Workshop"
       },
       "itemCondition": "NewCondition"
+    },
+    {
+      "price": 44.24,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap Games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/astra-militarum/products/astra-militarum-cadian-castellan-pre-order"
     }
   ],
   "leading": "lists/damien/death-korps-of-krieg",

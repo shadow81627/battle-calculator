@@ -13,6 +13,43 @@
         "name": "Games Workshop"
       },
       "itemCondition": "NewCondition"
+    },
+    {
+      "price": 82.95,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/astra-militarum/products/astra-militarum-lord-solar-leontus-pre-order"
+    }
+  ],
+  "attributes": {
+    "movement": 12,
+    "toughness": 4,
+    "save": 3,
+    "wound": 8,
+    "leadership": 6,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Sol’s Righteous Gaze",
+      "modifiers": [{"name": "PISTOL"}],
+      "models": 2,
+      "range": 12,
+      "attack": 2,
+      "accuracy": 2,
+      "strength": 8,
+      "piercing": 2,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Invulnerable Save 4+"
     }
   ]
 }
