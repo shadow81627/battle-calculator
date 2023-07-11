@@ -4,11 +4,11 @@ import occurrences from '~/utils/occurrences'
 const props = defineProps({
   strength: { type: Number },
   toughness: { type: Number },
-  attack: { type: [Number, String] },
+  attack: { type: [String, Number] },
   save: { type: Number },
   accuracy: { type: Number },
   piercing: { type: Number },
-  damage: { type: Number },
+  damage: { type: [String, Number] },
   pain: { type: Number },
   models: { type: Number, default: 1 },
   name: { type: String },
