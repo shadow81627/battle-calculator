@@ -43,6 +43,10 @@ const unitOptions = [
     value: 'lists/braydon/rubric-marines',
     label: 'Rubric Marines',
   },
+  {
+    value: 'lists/daniel/skarbrand',
+    label: 'Skarbrand',
+  },
 ]
 </script>
 

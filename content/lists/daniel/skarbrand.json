@@ -1,0 +1,65 @@
+{
+  "name": "Skarbrand",
+  "faction": [
+    "Legiones Daemonica"
+  ],
+  "models": 1,
+  "points": 365,
+  "offers": [
+    {
+      "price": 160,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ],
+  "attributes": {
+    "movement": 8,
+    "toughness": 11,
+    "save": 4,
+    "wound": 20,
+    "leadership": 6,
+    "control": 5
+  },
+  "weapons": [
+    {
+      "name": "Slaughter and Carnage",
+      "profiles": [
+        {
+          "name": "Slaughter and Carnage – strike",
+          "range": "Melee",
+          "attack": 8,
+          "accuracy": 2,
+          "strength": 16,
+          "piercing": 4,
+          "damage": 6
+        },
+        {
+          "name": "Slaughter and Carnage – sweep",
+          "range": "Melee",
+          "attack": 16,
+          "accuracy": 2,
+          "strength": 8,
+          "piercing": 1,
+          "damage": 2
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}
