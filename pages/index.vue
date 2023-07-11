@@ -48,6 +48,10 @@ const unitOptions = [
     label: 'Rubric Marines',
   },
   {
+    value: 'lists/braydon/thousand-sons-rhino',
+    label: 'Thousand Sons Rhino',
+  },
+  {
     value: 'lists/daniel/skarbrand',
     label: 'Skarbrand',
   },
