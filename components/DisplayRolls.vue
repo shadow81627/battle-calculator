@@ -19,12 +19,22 @@ defineProps({
     </thead>
     <tbody>
       <tr>
-        <td
-          v-for="[key, value] of Object.entries(occurrences(rolls))"
-          :key="`${key}-${value}`"
-          class="px-1 text-right font-mono"
-          v-html="String(value).padStart(2, '&nbsp;')"
-        />
+        <ClientOnly>
+          <td
+            v-for="[key, value] of Object.entries(occurrences(rolls))"
+            :key="`${key}-${value}`"
+            class="px-1 text-right font-mono"
+            v-html="String(value).padStart(2, '&nbsp;')"
+          />
+          <template #fallback>
+            <td
+              v-for="[key, value] of Object.entries(occurrences(rolls))"
+              :key="`${key}-${value}`"
+              class="px-1 text-right font-mono"
+              v-html="String(0).padStart(2, '&nbsp;')"
+            />
+          </template>
+        </ClientOnly>
       </tr>
     </tbody>
   </table>
