@@ -1,8 +1,8 @@
 <script setup>
 const turns = ref(1)
 const range = ref(24)
-const attackerId = ref('lists/damien/sentinel')
-const defenderId = ref('lists/braydon/mutalith-vortex-beast')
+const attackerId = ref('/lists/damien/sentinel')
+const defenderId = ref('/lists/braydon/mutalith-vortex-beast')
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
 const { data: defender, refresh: refreshDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
 
@@ -18,44 +18,11 @@ function getAbilityValue(unit, name) {
   return Number(ability?.name?.match(/\d+/)[0] ?? 0)
 }
 
-const unitOptions = [
-  {
-    value: 'lists/damien/sentinel',
-    label: 'Sentinel',
+const { data: unitOptions } = await useAsyncData('lists', () => queryContent('lists').find(), {
+  transform(data) {
+    return data.map(item => ({ value: item._path, label: item.name }))
   },
-  {
-    value: 'lists/damien/hydra',
-    label: 'Hydra',
-  },
-  {
-    value: 'lists/damien/earthshaker-carriage-battery',
-    label: 'Earthshaker Carriage Battery',
-  },
-  {
-    value: 'lists/damien/death-korps-marshal',
-    label: 'Death Korps Marshal',
-  },
-  {
-    value: 'lists/damien/death-korps-of-krieg',
-    label: 'Death Korps of Krieg',
-  },
-  {
-    value: 'lists/braydon/mutalith-vortex-beast',
-    label: 'Mutalith Vortex Beast',
-  },
-  {
-    value: 'lists/braydon/rubric-marines',
-    label: 'Rubric Marines',
-  },
-  {
-    value: 'lists/braydon/thousand-sons-rhino',
-    label: 'Thousand Sons Rhino',
-  },
-  {
-    value: 'lists/daniel/skarbrand',
-    label: 'Skarbrand',
-  },
-]
+})
 </script>
 
 <template>
