@@ -3,9 +3,7 @@
     <nuxt-link to="/">
       Home
     </nuxt-link>
-    <nuxt-link to="/lists/damien">
-      Damien's list
-    </nuxt-link>
+    <DropDown />
   </header>
   <main>
     <slot />

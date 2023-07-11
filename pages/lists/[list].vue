@@ -9,7 +9,7 @@ if (!hasData)
 
 <template>
   <h1 class="h2 text-left capitalize">
-    {{ id }} List
+    {{ id }}'s List
   </h1>
   <div v-if="pending">
     Loading ...
