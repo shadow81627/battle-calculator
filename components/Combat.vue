@@ -170,12 +170,12 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ wound }}+
           </td>
           <td class="p-1">
-            <template v-if="(save + piercing) > invulnerable">
+            <template v-if="(save + piercing) > invulnerable && invulnerable < 6">
               Invulnerable {{ invulnerable }}+
             </template>
-            <template v-else-if="piercing && (save + piercing) <= invulnerable">
-              SV{{ save }} AP-{{ piercing }} = {{ save + piercing }}+
-            </template>
+            <div v-if="piercing">
+              SV{{ save }} AP-{{ piercing }} = {{ Math.min(save + piercing, 6) }}+
+            </div>
             <template v-else>
               {{ _save }}+
             </template>
