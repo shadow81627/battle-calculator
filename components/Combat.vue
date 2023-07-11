@@ -256,7 +256,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ randomHitTotal }}
           </td>
           <td class="p-1">
-            <template v-if="randomWoundTotal - lethalHits">
+            <template v-if="randomWoundTotal - lethalHits || !lethalHits">
               {{ randomWoundTotal - lethalHits }}
             </template>
             <template v-if="randomWoundTotal - lethalHits && lethalHits">
