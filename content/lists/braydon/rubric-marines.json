@@ -15,6 +15,17 @@
         "name": "Games Workshop"
       },
       "itemCondition": "NewCondition"
+    },
+    {
+      "price": 76.63,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap Games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/thousand-sons/products/thousand-sons-rubric-marines"
     }
   ],
   "attributes": {

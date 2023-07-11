@@ -1,0 +1,97 @@
+{
+  "name": "Exalted Sorcerer",
+  "faction": [
+    "Thousand Sons"
+  ],
+  "models": 1,
+  "points": 90,
+  "offers": [
+    {
+      "price": 103,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 3,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/ahriman-arch-sorcerer-of-tzeentch"
+    },
+    {
+      "price": 81.37,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 3,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap Games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/thousand-sons/products/copy-of-thousand-sons-rubric-marines"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 5,
+    "leadership": 6,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Inferno bolt pistol",
+      "modifiers": [
+        {"name": "PISTOL"}
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 2,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Astral Blast",
+      "modifiers": [
+        {"name": "BLAST"},
+        {"name": "PSYCHIC"},
+        {"name": "DEVASTATING WOUNDS"}
+      ],
+      "range": 18,
+      "attack": "D6",
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 2,
+      "damage": "D3"
+    },
+    {
+      "name": "Force weapon",
+      "modifiers": [
+        {"name": "PSYCHIC"}
+      ],
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 1,
+      "damage": "D3"
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Arcane Shield",
+      "description": "While this model is leading a unit, models in that unit have a 4+ invulnerable save.",
+      "target": "bodyguard",
+      "effects": [
+        {"name": "Invulnerable Save 4+"}
+      ]
+
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    },
+    {
+      "name": "Athenaean Scrolls"
+    }
+  ]
+}

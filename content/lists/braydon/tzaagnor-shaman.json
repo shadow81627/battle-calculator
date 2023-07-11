@@ -1,0 +1,70 @@
+{
+  "name": "Tzaangor Shaman",
+  "faction": [
+    "Thousand Sons"
+  ],
+  "models": 1,
+  "points": 60,
+  "offers": [
+    {
+      "price": 59,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Tzaangor-Shaman"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 4,
+    "save": 5,
+    "wound": 4,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Mutating orbs",
+      "modifiers": [
+        {
+          "name": "BLAST"
+        },
+        {
+          "name": "DEVASTATING WOUNDS"
+        },
+        {
+          "name": "PSYCHIC"
+        }
+      ],
+      "range": 18,
+      "attack": "D6",
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Shaman’s stave",
+      "modifiers": [
+        {
+          "name": "PSYCHIC"
+        }
+      ],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": "D3"
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Invulnerable Save 6+"
+    }
+  ]
+}
