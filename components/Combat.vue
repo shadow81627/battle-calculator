@@ -151,7 +151,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             Stats
           </td>
           <td class="p-1">
-            {{ attack }}
+            {{ attack }} x {{ models }} models
           </td>
           <td class="p-1">
             {{ accuracy }}
