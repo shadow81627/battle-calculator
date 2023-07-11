@@ -14,5 +14,13 @@
       },
       "itemCondition": "NewCondition"
     }
+  ],
+  "abilities": [
+    {
+      "name": "Feel No Pain 5+"
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    }
   ]
 }
