@@ -99,6 +99,7 @@ const unitOptions = [
             <p>{{ attacker.models }} {{ attacker.name }} {{ attacker.points }}pts</p>
           </div>
           <Attributes
+            class="mb-5"
             v-bind="{ ...attacker.attributes, ...attacker.weapons[0] }"
             :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
             :pain="getAbilityValue(attacker, 'Feel No Pain')"
@@ -106,7 +107,7 @@ const unitOptions = [
           <div
             v-for="weapon of attacker.weapons"
             :key="weapon.name"
-            class="my-5"
+            class="border-y border-solid py-5"
           >
             <template v-if="weapon.profiles && weapon.profiles.length">
               <Combat
@@ -157,6 +158,7 @@ const unitOptions = [
             <p>{{ defender.models }} {{ defender.name }} {{ defender.points }}pts</p>
           </div>
           <Attributes
+            class="mb-5"
             v-bind="{ ...defender.attributes, ...defender.weapons[0] }"
             :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
             :pain="getAbilityValue(defender, 'Feel No Pain')"
@@ -164,7 +166,7 @@ const unitOptions = [
           <div
             v-for="weapon of defender.weapons"
             :key="weapon.name"
-            class="my-5"
+            class="border-y border-solid py-5"
           >
             <template v-if="weapon.profiles && weapon.profiles.length">
               <Combat
