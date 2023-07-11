@@ -1,0 +1,52 @@
+{
+  "name": "Tzaangor Enlightened",
+  "faction": [
+    "Thousand Sons"
+  ],
+  "models": 6,
+  "points": 90,
+  "offers": [
+    {
+      "price": 78,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 3,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 4,
+    "save": 5,
+    "wound": 2,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Divining spear",
+      "modifiers": [
+        {
+          "name": "LANCE"
+        },
+        {
+          "name": "PRECISION"
+        }
+      ],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 2,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Invulnerable Save 6+"
+    }
+  ]
+}
