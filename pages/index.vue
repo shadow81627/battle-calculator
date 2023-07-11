@@ -39,6 +39,10 @@ const unitOptions = [
     value: 'lists/braydon/mutalith-vortex-beast',
     label: 'Mutalith Vortex Beast',
   },
+  {
+    value: 'lists/braydon/rubric-marines',
+    label: 'Rubric Marines',
+  },
 ]
 </script>
 

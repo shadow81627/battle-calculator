@@ -1,0 +1,53 @@
+{
+  "name": "Rubric Marines",
+  "faction": [
+    "Thousand Sons"
+  ],
+  "models": 5,
+  "points": 95,
+  "offers": [
+    {
+      "price": 97,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ],
+  "attributes": {
+    "movement": 5,
+    "toughness": 4,
+    "save": 3,
+    "wound": 2,
+    "leadership": 6,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Inferno boltgun",
+      "range": 24,
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Bringers of Change",
+      "description": "Each time a model in this unit makes a ranged attack, re-roll a Wound roll of 1. If the target of that attack is within range of an objective marker you do not control, you can re-roll the Wound roll instead.",
+      "trigger": "ranged attack",
+      "effects": [
+        {"name": "Re-roll Wound roll of 1"}
+      ]
+
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    }
+  ]
+}
