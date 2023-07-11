@@ -32,6 +32,10 @@ const unitOptions = [
     label: 'Earthshaker Carriage Battery',
   },
   {
+    value: 'lists/damien/death-korps-marshal',
+    label: 'Death Korps Marshal',
+  },
+  {
     value: 'lists/damien/death-korps-of-krieg',
     label: 'Death Korps of Krieg',
   },
