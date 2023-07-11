@@ -76,7 +76,7 @@ function paseRolls(roll) {
   return { rolls, base, rollType: rollType ?? 6 }
 }
 
-const _save = computed(() => Math.min(props.save + props.piercing, 6, invulnerable.value))
+const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.value))
 const _attack = computed(() => {
   return paseRolls(props.attack)
 })
@@ -182,7 +182,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
               Invulnerable {{ invulnerable }}+
             </template>
             <div v-if="piercing">
-              SV{{ save }} AP-{{ piercing }} = {{ Math.min(save + piercing, 6) }}+
+              SV{{ save }} AP-{{ piercing }} = {{ save + piercing }}+
             </div>
             <template v-else>
               {{ _save }}+
