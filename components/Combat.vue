@@ -102,9 +102,8 @@ const randomSaveRolls = computed(() => rolls(randomWoundTotal.value))
 const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < _save.value), 0))
 
 const _damage = computed(() => paseRolls(props.damage))
-const randomDamageRolls = computed(() => rolls(_damage.value.rolls, _damage.value.rollType))
+const randomDamageRolls = computed(() => rolls(randomSaveTotal.value * _damage.value.rolls, _damage.value.rollType))
 const randomDamageTotal = computed(() => randomDamageRolls.value.reduce((sum, roll) => sum + roll, 0) + _damage.value.base)
-// const randomDamageTotal = computed(() => randomSaveTotal.value * props.damage)
 
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
 const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
