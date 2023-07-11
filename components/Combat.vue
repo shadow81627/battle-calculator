@@ -191,6 +191,9 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           <td class="p-1">
             {{ damage }}
           </td>
+          <td v-if="pain" class="p-1">
+            {{ pain }}+
+          </td>
         </tr>
         <tr>
           <td class="p-1 text-left">
