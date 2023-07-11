@@ -55,11 +55,16 @@ const maxTurns = computed(() => props.modifiers.find(modifier => modifier.name =
 const minTurns = computed(() => Math.min(props.turns, maxTurns.value))
 const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS'))
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
+const hasBringersOfChange = computed(() => props.abilities.find(ability => ability.name === 'Bringers of Change'))
 const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
 const hasBlast = computed(() => props.modifiers?.find(modifier => modifier.name === 'BLAST'))
 const sustainedHits = computed(() => {
   const modifier = props.modifiers?.find(modifier => modifier.name.startsWith('SUSTAINED HITS'))
-  return modifier ? modifier.name.match(/\d+/)[0] : 0
+  return modifier ? Number(modifier.name.match(/\d+/)[0]) : 0
+})
+const invulnerable = computed(() => {
+  const ability = props.target.abilities?.find(ability => ability.name.startsWith('Invulnerable Save'))
+  return ability ? Number(ability.name.match(/\d+/)[0]) : 6
 })
 const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
@@ -71,6 +76,7 @@ function paseRolls(roll) {
   return { rolls, base, rollType: rollType ?? 6 }
 }
 
+const _save = computed(() => Math.min(props.save + props.piercing, 6, invulnerable.value))
 const _attack = computed(() => {
   return paseRolls(props.attack)
 })
@@ -88,11 +94,12 @@ const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRo
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
 const failedWoundRolls = computed(() => randomWoundRolls.value.reduce((sum, roll) => sum + (roll < wound.value), 0))
-const randomWoundReRolls = computed(() => hasTwinLinked.value ? rolls(failedWoundRolls.value) : [])
+const hasWoundReRolls = computed(() => hasTwinLinked.value || hasBringersOfChange.value)
+const randomWoundReRolls = computed(() => hasWoundReRolls.value ? rolls(failedWoundRolls.value) : [])
 const randomWoundTotal = computed(() => [...randomWoundRolls.value, ...randomWoundReRolls.value].reduce((sum, roll) => sum + (roll >= wound.value), 0) + lethalHits.value)
 
 const randomSaveRolls = computed(() => rolls(randomWoundTotal.value))
-const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < props.save), 0))
+const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < _save.value), 0))
 
 const _damage = computed(() => paseRolls(props.damage))
 const randomDamageRolls = computed(() => rolls(_damage.value.rolls, _damage.value.rollType))
@@ -105,7 +112,7 @@ const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls
 const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * 3) + _attack.value.base) + blast.value) * minTurns.value * props.models))
 const hitTotal = computed(() => Math.floor(attacksTotal.value * dice.attack(props.accuracy - heavy.value)))
 const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
-const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(props.save)))
+const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(_save.value)))
 const damageTotal = computed(() => Math.floor(saveTotal.value * (Math.floor(_damage.value.rolls * 3) + _damage.value.base)))
 const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(props.pain)))
 </script>
@@ -163,11 +170,14 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ wound }}+
           </td>
           <td class="p-1">
-            <template v-if="piercing">
+            <template v-if="(save + piercing) > invulnerable">
+              Invulnerable {{ invulnerable }}+
+            </template>
+            <template v-else-if="piercing && (save + piercing) <= invulnerable">
               SV{{ save }} AP-{{ piercing }} = {{ save + piercing }}+
             </template>
             <template v-else>
-              {{ save + piercing }}+
+              {{ _save }}+
             </template>
           </td>
           <td class="p-1">
@@ -209,7 +219,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <DisplayRolls :rolls="randomPainRolls" />
           </td>
         </tr>
-        <tr v-show="hasDaringRecon || hasTwinLinked">
+        <tr v-show="hasDaringRecon || hasWoundReRolls">
           <td class="p-1 text-left">
             Re-rolls
           </td>
@@ -223,7 +233,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             </template>
           </td>
           <td class="p-1 text-left">
-            <DisplayRolls v-if="hasTwinLinked" :rolls="randomWoundReRolls" />
+            <DisplayRolls v-if="hasWoundReRolls" :rolls="randomWoundReRolls" />
             <template v-else>
 &nbsp;
             </template>
