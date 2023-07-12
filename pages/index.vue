@@ -1,4 +1,5 @@
 <script setup>
+const order = ref('')
 const turns = ref(1)
 const range = ref(24)
 const attackerId = ref('/lists/damien/sentinel')
@@ -6,8 +7,12 @@ const defenderId = ref('/lists/braydon/mutalith-vortex-beast')
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
 const { data: defender, refresh: refreshDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
 
+function hasFaction(unit, key) {
+  return unit?.factions?.find(faction => faction.toUpperCase() === key)
+}
+
 function getDetachmentRuleAttackModifier(unit) {
-  if (unit?.factions?.find(faction => faction.toUpperCase() === 'ASTRA MILITARUM'))
+  if (hasFaction(unit, 'ASTRA MILITARUM'))
     return 'LETHAL HITS'
 }
 
@@ -27,11 +32,11 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
 
 <template>
   <div>
-    <h1 class="h1 text-left">
+    <h1 class="text-left h1">
       Battle Calculator
     </h1>
 
-    <section class="my-9 container">
+    <section class="container my-9">
       <div class="row">
         <div class="col">
           <table class="text-left">
@@ -46,10 +51,10 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             <tbody>
               <tr>
                 <td class="p-1">
-                  <input v-model="turns" name="turns" class="input max-w-250px" type="number" max="5" min="1">
+                  <input v-model="turns" name="turns" class="max-w-250px input" type="number" max="5" min="1">
                 </td>
                 <td class="p-1">
-                  <input v-model="range" name="range" class="input max-w-250px" type="number" min="1">
+                  <input v-model="range" name="range" class="max-w-250px input" type="number" min="1">
                 </td>
               </tr>
             </tbody>
@@ -58,13 +63,13 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
       </div>
     </section>
 
-    <section class="my-6 container">
+    <section class="container my-6">
       <div class="row">
         <div class="col col-6">
           <div class="text-left">
             <h2 class="h2">
               Attacker
-              <select v-model="attackerId" class="select inline w-250px" name="attacker" @change="refreshAttacker">
+              <select v-model="attackerId" class="inline w-250px select" name="attacker" @change="refreshAttacker">
                 <option
                   v-for="option of unitOptions"
                   :key="option.value"
@@ -72,6 +77,18 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                   :selected="attackerId === option.value ? option.value : undefined"
                 >
                   {{ option.label }}
+                </option>
+              </select>
+              <select
+                v-if="hasFaction(attacker, 'ASTRA MILITARUM')"
+                v-model="order"
+                class="inline w-250px select"
+              >
+                <option value="">
+                  None
+                </option>
+                <option value="take-aim">
+                  Take Aim
                 </option>
               </select>
             </h2>
@@ -102,6 +119,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                 :pain="getAbilityValue(defender, 'Feel No Pain')"
                 :turns="turns"
                 :target="defender"
+                :order="hasFaction(attacker, 'ASTRA MILITARUM') ? order : undefined"
               />
             </template>
             <Combat
@@ -116,6 +134,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
               :pain="getAbilityValue(defender, 'Feel No Pain')"
               :turns="turns"
               :target="defender"
+              :order="hasFaction(attacker, 'ASTRA MILITARUM') ? order : undefined"
             />
           </div>
         </div>
@@ -123,7 +142,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
           <div class="text-left">
             <h2 class="h2">
               Defender
-              <select v-model="defenderId" class="select inline w-250px" name="defender" @change="refreshDefender">
+              <select v-model="defenderId" class="inline w-250px select" name="defender" @change="refreshDefender">
                 <option
                   v-for="option of unitOptions"
                   :key="option.value"

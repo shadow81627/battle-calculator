@@ -16,6 +16,7 @@ const props = defineProps({
   modifiers: { type: Array, default: () => [] },
   abilities: { type: Array, default: () => [] },
   target: { type: Object },
+  order: { type: String },
 })
 
 const wound = computed(() => {
@@ -86,10 +87,14 @@ const randomAttacksTotal = computed(() => {
   const randomAttacksTotalBonuses = randomAttacksTotal + _attack.value.base + blast.value
   return randomAttacksTotalBonuses * minTurns.value * props.models
 })
+const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * 3) + _attack.value.base) + blast.value) * minTurns.value * props.models))
+
+const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
 const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
 const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
-const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= (props.accuracy - heavy.value)), 0))
+const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= ((props.accuracy - heavy.value) - takeAim.value)), 0))
+const averageHitTotal = computed(() => Math.floor(attacksTotal.value * dice.attack((props.accuracy - heavy.value) - takeAim.value)))
 
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
@@ -117,9 +122,7 @@ const randomDamageTotal = computed(() => {
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
 const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
 
-const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * 3) + _attack.value.base) + blast.value) * minTurns.value * props.models))
-const hitTotal = computed(() => Math.floor(attacksTotal.value * dice.attack(props.accuracy - heavy.value)))
-const woundTotal = computed(() => Math.floor(hitTotal.value * dice.attack(wound.value)))
+const woundTotal = computed(() => Math.floor(averageHitTotal.value * dice.attack(wound.value)))
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(_save.value)))
 const damageTotal = computed(() => Math.floor(saveTotal.value * (Math.floor(_damage.value.rolls * 3) + _damage.value.base)))
 const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(props.pain)))
@@ -169,7 +172,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ attack }} x {{ models }} models
           </td>
           <td class="p-1">
-            {{ accuracy }}+
+            {{ accuracy - takeAim }}+
           </td>
           <td class="p-1">
             S{{ strength }}
@@ -303,7 +306,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ attacksTotal }}
           </td>
           <td class="p-1">
-            {{ hitTotal }}
+            {{ averageHitTotal }}
           </td>
           <td class="p-1">
             {{ woundTotal }}
