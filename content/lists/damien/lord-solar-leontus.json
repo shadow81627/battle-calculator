@@ -38,13 +38,34 @@
     {
       "name": "Sol’s Righteous Gaze",
       "modifiers": [{"name": "PISTOL"}],
-      "models": 2,
+      "models": 1,
       "range": 12,
       "attack": 2,
       "accuracy": 2,
       "strength": 8,
       "piercing": 2,
       "damage": 2
+    },
+    {
+      "name": "Conquest",
+      "range": "Melee",
+      "models": 1,
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Konstantin's hooves",
+      "modifiers": [{"name": "EXTRA ATTACKS"}],
+      "models": 1,
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
     }
   ],
   "abilities": [
