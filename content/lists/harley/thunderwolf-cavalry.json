@@ -1,0 +1,74 @@
+{
+  "name": "Thunderwolf Cavalry",
+  "faction": [
+    "Adeptus Astartes",
+    "Space Wolves",
+    "Oath of Moment"
+  ],
+  "models": 3,
+  "points": 100,
+  "offers": [
+    {
+      "price": 100,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 3,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Thunderwolf-Cavalry-2020"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 6,
+    "save": 3,
+    "wound": 4,
+    "leadership": 6,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Bolt pistol",
+      "modifiers": [
+        {"name": "PISTOL"}
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Crushing teeth and claws",
+      "modifiers":[{"name": "EXTRA ATTACKS"}],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Heirloom weapon",
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Ferocious Charge",
+      "description": "Each time this unit makes a Charge move, until the end of the turn, add 1 to the Damage characteristic of melee weapons equipped by models in this unit."
+    },
+    {
+      "name": "Storm Shield",
+      "description": "The bearer has a 4+ invulnerable save."
+    }
+  ]
+}
