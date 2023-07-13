@@ -8,11 +8,13 @@ if (!hasData)
 </script>
 
 <template>
-  <h1 class="h2 text-left capitalize">
-    {{ id }}'s List
-  </h1>
-  <div v-if="pending">
-    Loading ...
-  </div>
-  <ArmyList v-else-if="hasData" :data="data" />
+  <div class="m-10">
+    <h1 class="h2 text-left capitalize">
+      {{ id }}'s List
+    </h1>
+    <div v-if="pending">
+      Loading ...
+    </div>
+    <ArmyList v-else-if="hasData" :data="data" />
+</div>
 </template>
