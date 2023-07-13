@@ -34,6 +34,9 @@ const show = ref(false)
         <nuxt-link to="/lists/daniel" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
           Daniel's list
         </nuxt-link>
+        <nuxt-link to="/lists/harley" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
+          Harley's list
+        </nuxt-link>
         <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
       </div>
     </div>
