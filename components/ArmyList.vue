@@ -19,7 +19,7 @@ interface Weapon {
   damage: number | string,
   profiles?: Weapon[]
 }
-interface Squad {
+interface Unit {
   name: string
   models: number
   points: number
@@ -36,11 +36,12 @@ interface Squad {
       itemCondition: 'NewCondition'
     },
   ],
-  weapons: Weapon[],
-  enhancements: Enhancement[]
+  weapons?: Weapon[],
+  enhancements?: Enhancement[]
+  members?: Unit[]
 }
-const props = defineProps<{ data: Squad[] }>()
-function squadPrice(item: Squad) {
+const props = defineProps<{ data: Unit[] }>()
+function unitPrice(item: Unit) {
   const offers = item.offers?.filter(item => item.price)
   const offer = minBy(offers, 'price')
   const quantity = item.quantity ?? 1
@@ -101,7 +102,7 @@ const _data = computed(() => {
             {{ unit.points }}
           </td>
           <td v-if="unit.offers" class="p-1 text-right">
-            ${{ squadPrice(unit) }}
+            ${{ unitPrice(unit) }}
           </td>
         </tr>
         <tr v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
@@ -138,7 +139,7 @@ const _data = computed(() => {
           {{ totals.points }}
         </td>
         <td class="p-1 text-right">
-          ${{ props.data.reduce((sum, item) => sum + (squadPrice(item) ?? 0), 0) }}
+          ${{ props.data.reduce((sum, item) => sum + (unitPrice(item) ?? 0), 0) }}
         </td>
       </tr>
     </tbody>
@@ -156,6 +157,15 @@ const _data = computed(() => {
       <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
         <span>&nbsp;&nbsp;•&nbsp;</span>Enhancement:
         {{ enhancement.name }} ({{ enhancement.points }})
+      </div>
+      <div v-for="member of unit.members" :key="member.name">
+        <span>&nbsp;&nbsp;•&nbsp;</span>
+        {{ member.name }}
+        <div v-for="weapon of member.weapons" :key="weapon.name">
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;</span>
+          <span>{{ weapon.models ?? member.models ?? unit.models }}x&nbsp;</span>
+          <span>{{ weapon.name }}</span>
+        </div>
       </div>
       <br>
     </div>
