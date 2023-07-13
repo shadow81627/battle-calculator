@@ -1,0 +1,56 @@
+{
+  "name": "Long Fangs",
+  "faction": [
+    "Space Wolves",
+    "Oath of Moment"
+  ],
+  "quantity": 1,
+  "models": 5,
+  "points": 150,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 2,
+    "leadership": 6,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Bolt pistol",
+      "modifiers": [
+        {"name": "PISTOL"}
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Boltgun",
+      "range": 24,
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Close combat weapon",
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Armorium Cherub",
+      "description": "Once per battle, after making a Hit roll for a model in this unit, you can change that roll to an unmodified 6."
+    }
+  ]
+}
