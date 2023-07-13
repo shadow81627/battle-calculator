@@ -88,5 +88,8 @@
     {
       "name": "Invulnerable Save 4+"
     }
+  ],
+  "enhancements": [
+    {"name": "Athenaean Scrolls", "points": 20}
   ]
 }
