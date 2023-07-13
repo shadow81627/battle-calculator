@@ -105,9 +105,9 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             :key="weapon.name"
             class="border-y border-solid py-5"
           >
-            <template v-if="weapon.profiles && weapon.profiles.length">
+            <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
               <Combat
-                v-for="profile of weapon.profiles"
+                v-for="profile of (weapon.profiles ?? weapon.alternatives)"
                 :key="profile.name"
                 v-bind="{ ...profile }"
                 :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker) }].filter(item => item?.name)"
@@ -166,9 +166,9 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             :key="weapon.name"
             class="border-y border-solid py-5"
           >
-            <template v-if="weapon.profiles && weapon.profiles.length">
+            <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
               <Combat
-                v-for="profile of weapon.profiles"
+                v-for="profile of (weapon.profiles ?? weapon.alternatives)"
                 v-bind="{ ...profile }"
                 :key="profile.name"
                 :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender) }].filter(item => item?.name)"

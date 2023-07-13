@@ -36,13 +36,26 @@
   },
   "weapons": [
     {
-      "name": "Autocannon",
-      "range": 48,
-      "attack": 2,
-      "accuracy": 4,
-      "strength": 9,
-      "piercing": 1,
-      "damage": 3 
+      "alternatives": [
+        {
+          "name": "Autocannon",
+          "range": 48,
+          "attack": 2,
+          "accuracy": 4,
+          "strength": 9,
+          "piercing": 1,
+          "damage": 3
+        },
+        {
+          "name": "Lascannon",
+          "range": 48,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 12,
+          "piercing": 3,
+          "damage": "D6+1"
+        }
+      ]
     },
     {
       "name": "Hunter-killer missile",
