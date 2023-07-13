@@ -123,7 +123,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
               />
             </template>
             <Combat
-              v-else
+              v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
               v-bind="{ ...weapon }"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker) }].filter(item => item?.name)"
               :abilities="attacker.abilities"
@@ -183,7 +183,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
               />
             </template>
             <Combat
-              v-else
+              v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
               v-bind="{ ...weapon }"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender) }].filter(item => item?.name)"
               :abilities="defender.abilities"
