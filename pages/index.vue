@@ -2,7 +2,7 @@
 const order = ref('')
 const turns = ref(1)
 const range = ref(24)
-const attackerId = ref('/lists/damien/sentinel')
+const attackerId = ref('/lists/damien/scout-sentinels')
 const defenderId = ref('/lists/braydon/mutalith-vortex-beast')
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
 const { data: defender, refresh: refreshDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
