@@ -63,8 +63,8 @@
   ],
   "abilities": [
     {
-      "name": "Berserk Charge",
-      "description": "Each time this unit makes a Charge move, until the end of the turn, add 1 to the Attacks and Strength characteristics of melee weapons equipped by models in this unit."
+      "name": "Cunning Hunters",
+      "description": "This unit is eligible to shoot in a turn in which it Fell Back or Advanced."
     }
   ]
 }
