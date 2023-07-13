@@ -11,8 +11,8 @@ function hasFaction(unit, key) {
   return unit?.factions?.find(faction => faction.toUpperCase() === key)
 }
 
-function getDetachmentRuleAttackModifier(unit) {
-  if (hasFaction(unit, 'ASTRA MILITARUM'))
+function getDetachmentRuleAttackModifier(unit, weapon) {
+  if (hasFaction(unit, 'ASTRA MILITARUM') && weapon.range !== "Melee")
     return 'LETHAL HITS'
 }
 
@@ -110,7 +110,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                 v-for="profile of (weapon.profiles ?? weapon.alternatives)"
                 :key="profile.name"
                 v-bind="{ ...profile }"
-                :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker) }].filter(item => item?.name)"
+                :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, profile) }].filter(item => item?.name)"
                 :abilities="attacker.abilities"
                 :models="profile.models ?? attacker.models"
                 :toughness="defender.attributes.toughness"
@@ -125,7 +125,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             <Combat
               v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
               v-bind="{ ...weapon }"
-              :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker) }].filter(item => item?.name)"
+              :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, weapon) }].filter(item => item?.name)"
               :abilities="attacker.abilities"
               :models="weapon.models ?? attacker.models"
               :toughness="defender.attributes.toughness"
@@ -171,7 +171,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                 v-for="profile of (weapon.profiles ?? weapon.alternatives)"
                 v-bind="{ ...profile }"
                 :key="profile.name"
-                :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender) }].filter(item => item?.name)"
+                :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, profile) }].filter(item => item?.name)"
                 :abilities="defender.abilities"
                 :models="weapon.models ?? defender.models"
                 :target="attacker"
@@ -185,7 +185,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             <Combat
               v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
               v-bind="{ ...weapon }"
-              :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender) }].filter(item => item?.name)"
+              :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, weapon) }].filter(item => item?.name)"
               :abilities="defender.abilities"
               :models="weapon.models ?? defender.models"
               :target="attacker"
