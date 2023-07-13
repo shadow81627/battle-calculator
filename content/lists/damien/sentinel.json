@@ -70,6 +70,15 @@
       "strength": 14,
       "piercing": 3,
       "damage": "D6"
+    },
+    {
+      "name": "Sentinel chainsaw",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 1
     }
   ],
   "abilities": [
