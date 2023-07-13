@@ -49,7 +49,9 @@ function squadPrice(item: Squad) {
 const totals = computed(() => {
   const quantity = props.data.reduce((sum, item) => sum + (item.quantity ?? 1), 0)
   const models = props.data.reduce((sum, item) => sum + (item.models * (item.quantity ?? 1)), 0)
-  const points = props.data.reduce((sum, item) => sum + (item.points * (item.quantity ?? 1)), 0)
+  const unitPoints = props.data.reduce((sum, item) => sum + (item.points * (item.quantity ?? 1)), 0)
+  const enhancementPoints = props.data.reduce((sum, item) => sum + sumBy(item.enhancements, 'points'), 0) ?? 0
+  const points = unitPoints + enhancementPoints
   return {
     quantity,
     models,
@@ -58,7 +60,7 @@ const totals = computed(() => {
 })
 
 const _data = computed(() => {
-  return props.data.map(item => item.quantity ? [...Array(item.quantity)].map(()=> item) : [item]).flat()
+  return props.data.map(item => item.quantity ? [...Array(item.quantity)].map(() => item) : [item]).flat()
 })
 </script>
 
@@ -84,23 +86,39 @@ const _data = computed(() => {
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item of _data" :key="item.name">
-        <td class="p-1 text-left">
-          {{ item.name }}
-        </td>
-        <!-- <td class="p-1 text-right">
-          {{ item.quantity }}
+      <template v-for="unit of _data" :key="unit.name">
+        <tr>
+          <td class="p-1 text-left">
+            {{ unit.name }}
+          </td>
+          <!-- <td class="p-1 text-right">
+          {{ unit.quantity }}
         </td> -->
-        <td class="p-1 text-right">
-            {{ item.models }}
-        </td>
-        <td class="p-1 text-right">
-            {{ item.points }}
-        </td>
-        <td v-if="item.offers" class="p-1 text-right">
-          ${{ squadPrice(item) }}
-        </td>
-      </tr>
+          <td class="p-1 text-right">
+            {{ unit.models }}
+          </td>
+          <td class="p-1 text-right">
+            {{ unit.points }}
+          </td>
+          <td v-if="unit.offers" class="p-1 text-right">
+            ${{ squadPrice(unit) }}
+          </td>
+        </tr>
+        <tr v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
+          <td class="p-1 text-left">
+            Enhancement: {{ enhancement.name }}
+          </td>
+          <!-- <td class="p-1 text-right">
+            {{ enhancement.quantity }}
+          </td> -->
+          <td class="p-1 text-right">
+            <!-- {{ enhancement.models }} -->
+          </td>
+          <td class="p-1 text-right">
+            {{ enhancement.points }}
+          </td>
+        </tr>
+      </template>
       <tr>
         <td colspan="100%">
           <hr>
