@@ -1,0 +1,102 @@
+{
+  "name": "Librarian",
+  "faction": [
+    "Adeptus Astartes",
+    "Oath of Moment"
+  ],
+  "models": 1,
+  "points": 75,
+  "offers": [
+    {
+      "price": 36,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Space-Marine-Librarian-2020"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 4,
+    "leadership": 6,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Bolt pistol",
+      "modifiers": [
+        {"name": "PISTOL"}
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Smite",
+      "profiles": [
+        {
+          "name": "Smite – witchfire",
+          "modifiers": [
+            {"name": "PSYCHIC"}
+          ],
+          "range": 24,
+          "attack": "D6",
+          "accuracy": 3,
+          "strength": 5,
+          "piercing": 1,
+          "damage": "D3"
+        },
+        {
+          "name": "Smite – focused witchfire",
+          "modifiers": [
+            {"name": "PSYCHIC"}
+          ],
+          "range": 24,
+          "attack": "D6",
+          "accuracy": 3,
+          "strength": 6,
+          "piercing": 2,
+          "damage": "D3"
+        }
+      ]
+    },
+    {
+      "name": "Force weapon",
+      "modifiers": [
+        {"name": "PSYCHIC"}
+      ],
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 6,
+      "piercing": 1,
+      "damage": "D3"
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Leader"
+    },
+    {
+      "name": "Psychic Hood",
+      "description": " While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks."
+    },
+    {
+      "name": "Mental Fortress (Psychic)",
+      "description": "While this model is leading a unit, models in that unit have a 4+ invulnerable save.",
+      "target": "bodyguard",
+      "effects": [
+        "Invulnerable Save 4+"
+      ]
+    }
+  ]
+}
