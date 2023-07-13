@@ -1,12 +1,11 @@
 {
-  "name": "Bloodletters",
+  "name": "Bloodmaster",
   "faction": [
     "Legiones Daemonica",
     "The Shadow of Chaos"
   ],
-  "quantity": 3,
-  "models": 10,
-  "points": 160,
+  "models": 1,
+  "points": 85,
   "offers": [
     {
       "price": 57,
@@ -22,20 +21,20 @@
   "attributes": {
     "movement": 6,
     "toughness": 4,
-    "save": 7,
-    "wound": 1,
+    "save": 5,
+    "wound": 4,
     "leadership": 7,
-    "control": 2
+    "control": 1
   },
   "weapons": [
     {
-      "name": "Hellblade",
+      "name": "Blade of blood",
       "range": "Melee",
-      "attack": 2,
-      "accuracy": 3,
-      "strength": 5,
+      "attack": 5,
+      "accuracy": 2,
+      "strength": 6,
       "piercing": 2,
-      "damage": 2
+      "damage": 3
     }
   ],
   "abilities": [
@@ -43,7 +42,10 @@
       "name": "Deep Strike"
     },
     {
-      "name": "Invulnerable Save 5+"
+      "name": "Leader"
+    },
+    {
+      "name": "Invulnerable Save 4+"
     }
   ]
 }
