@@ -95,5 +95,8 @@
     {
       "name": "Invulnerable Save 4+"
     }
+  ],
+  "enhancements": [
+    {"name": "Frost Weapon", "points": 15}
   ]
 }
