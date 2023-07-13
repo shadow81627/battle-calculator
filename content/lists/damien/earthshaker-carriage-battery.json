@@ -1,8 +1,9 @@
 {
   "name": "Earthshaker Carriage Battery",
   "factions": ["Astra Militarum"],
-  "models": 3,
-  "points": 240,
+  "quantity": 3,
+  "models": 1,
+  "points": 80,
   "offers": [
     {
       "$comment": "price includes artillery crew for $64",

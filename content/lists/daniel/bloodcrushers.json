@@ -2,8 +2,9 @@
   "name": "Bloodcrushers",
   "faction": [
     "Legiones Daemonica",
-    " The Shadow of Chaos"
+    "The Shadow of Chaos"
   ],
+  "quantity": 2,
   "models": 3,
   "points": 120,
   "offers": [
