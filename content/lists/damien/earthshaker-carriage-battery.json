@@ -14,7 +14,8 @@
         "type": "Organization",
         "name": "Games Workshop"
       },
-      "itemCondition": "NewCondition"
+      "itemCondition": "NewCondition",
+      "url": "https://www.forgeworld.co.uk/en-AU/Heavy-Artillery-Carriage-with-Earth-Shaker-Cannon"
     },
     {
       "$comment": "Basilisk",
@@ -27,6 +28,17 @@
       },
       "itemCondition": "NewCondition",
       "url": "https://www.gapgames.com.au/collections/astra-militarum/products/astra-militarum-basilisk"
+    },
+    {
+      "price": 112.13,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Victoria Miniatures"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://victoriaminiatures.com/collections/artillery/products/bfg-sledgehammer"
     }
   ],
   "attributes": {
