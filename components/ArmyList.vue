@@ -1,6 +1,24 @@
 <script setup lang="ts">
-import { minBy } from 'lodash-es'
-
+import { minBy, sumBy } from 'lodash-es'
+interface Enhancement {
+  name: string
+  points: number
+}
+interface WeaponModifier {
+  name: string
+}
+interface Weapon {
+  name: string
+  modifiers: WeaponModifier
+  models: number
+  range: number | "Melee"
+  attack: number | string
+  accuracy: number
+  strength: number
+  piercing: number
+  damage: number | string,
+  profiles?: Weapon[]
+}
 interface Squad {
   name: string
   models: number
@@ -17,7 +35,9 @@ interface Squad {
       }
       itemCondition: 'NewCondition'
     },
-  ]
+  ],
+  weapons: Weapon[],
+  enhancements: Enhancement[]
 }
 const props = defineProps<{ data: Squad[] }>()
 function squadPrice(item: Squad) {
@@ -105,4 +125,21 @@ const _data = computed(() => {
       </tr>
     </tbody>
   </table>
+  <section class="my-5">
+    <div v-for="unit of _data" :key="unit.name">
+      <div>
+        {{ unit.name }} ({{ unit.points }})
+      </div>
+      <div v-for="weapon of unit.weapons" :key="weapon.name">
+        <span>&nbsp;&nbsp;•&nbsp;</span>
+        <span>{{ weapon.models ?? unit.models }}x&nbsp;</span>
+        <span>{{ weapon.name }}</span>
+      </div>
+      <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
+        <span>&nbsp;&nbsp;•&nbsp;</span>Enhancement:
+        {{ enhancement.name }} ({{ enhancement.points }})
+      </div>
+      <br>
+    </div>
+  </section>
 </template>
