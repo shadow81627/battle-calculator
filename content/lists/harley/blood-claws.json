@@ -1,0 +1,61 @@
+{
+  "name": "Blood Claws",
+  "faction": [
+    "Adeptus Astartes",
+    "Space Wolves",
+    "Oath of Moment"
+  ],
+  "quantity": 2,
+  "models": 10,
+  "points": 140,
+  "offers": [
+    {
+      "price": 92,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 15,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Space-Wolves-Blood-Claws-2016"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 2,
+    "leadership": 6,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Bolt pistol",
+      "modifiers": [
+        {"name": "PISTOL"}
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Astartes chainsword",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Berserk Charge",
+      "description": "Each time this unit makes a Charge move, until the end of the turn, add 1 to the Attacks and Strength characteristics of melee weapons equipped by models in this unit."
+    }
+  ]
+}

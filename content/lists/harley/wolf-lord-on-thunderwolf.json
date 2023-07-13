@@ -42,35 +42,6 @@
       "damage": 1
     },
     {
-      "name": "Smite",
-      "profiles": [
-        {
-          "name": "Smite – witchfire",
-          "modifiers": [
-            {"name": "PSYCHIC"}
-          ],
-          "range": 24,
-          "attack": "D6",
-          "accuracy": 3,
-          "strength": 5,
-          "piercing": 1,
-          "damage": "D3"
-        },
-        {
-          "name": "Smite – focused witchfire",
-          "modifiers": [
-            {"name": "PSYCHIC"}
-          ],
-          "range": 24,
-          "attack": "D6",
-          "accuracy": 3,
-          "strength": 6,
-          "piercing": 2,
-          "damage": "D3"
-        }
-      ]
-    },
-    {
       "name": "Close combat weapon",
       "range": "Melee",
       "attack": 6,
