@@ -68,6 +68,16 @@
       "strength": 7,
       "piercing": 2,
       "damage": 1
+    },
+    {
+      "name": "Close combat weapon",
+      "models": 20,
+      "range": "Melee",
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
     }
   ]
 }
