@@ -65,7 +65,7 @@ const sustainedHits = computed(() => {
 })
 const invulnerable = computed(() => {
   const ability = props.target.abilities?.find(ability => ability.name.startsWith('Invulnerable Save'))
-  return ability ? Number(ability.name.match(/\d+/)[0]) : 6
+  return ability ? Number(ability.name.match(/\d+/)[0]) : 7
 })
 const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
@@ -181,15 +181,12 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ wound }}+
           </td>
           <td class="p-1">
-            <template v-if="(save + piercing) > invulnerable && invulnerable < 6">
+            <template v-if="(save + piercing) > invulnerable && invulnerable < 7">
               Invulnerable {{ invulnerable }}+
             </template>
-            <div v-if="piercing">
+            <div v-else>
               SV{{ save }} AP-{{ piercing }} = {{ save + piercing }}+
             </div>
-            <template v-else>
-              {{ _save }}+
-            </template>
           </td>
           <td class="p-1">
             {{ damage }}
