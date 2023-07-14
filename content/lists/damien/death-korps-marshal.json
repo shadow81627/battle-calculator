@@ -45,6 +45,15 @@
       "strength": 7,
       "piercing": 2,
       "damage": 1
+    },
+    {
+      "name": "Power weapon",
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 2,
+      "damage": 1
     }
   ],
   "abilities": [
