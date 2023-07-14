@@ -33,7 +33,8 @@ interface Unit {
         type: 'Organization' | 'Person'
         name: string
       }
-      itemCondition: 'NewCondition'
+      itemCondition: 'NewCondition',
+      url?: string
     },
   ],
   weapons?: Weapon[],
@@ -41,9 +42,13 @@ interface Unit {
   members?: Unit[]
 }
 const props = defineProps<{ data: Unit[] }>()
-function unitPrice(item: Unit) {
-  const offers = item.offers?.filter(item => item.price)
+function unitBestOffer(unit: Unit) {
+  const offers = unit.offers?.filter(offer => offer.price)
   const offer = minBy(offers, 'price')
+  return offer
+}
+function unitPrice(item: Unit) {
+  const offer = unitBestOffer(item)
   const quantity = item.quantity ?? 1
   return Math.ceil(offer?.price ?? 0) * Math.ceil((item.models * quantity) / (offer?.eligibleQuantity ?? 1))
 }
@@ -102,7 +107,12 @@ const _data = computed(() => {
             {{ unit.points }}
           </td>
           <td v-if="unit.offers" class="p-1 text-right">
-            ${{ unitPrice(unit) }}
+            <a v-if="unitBestOffer(unit)?.url" :href="unitBestOffer(unit)?.url" class="dark:text-blue-300 text-blue-600">
+              ${{ unitPrice(unit) }}
+            </a>
+            <template v-else>
+              ${{ unitPrice(unit) }}
+            </template>
           </td>
         </tr>
         <tr v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
