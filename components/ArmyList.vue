@@ -49,8 +49,7 @@ function unitBestOffer(unit: Unit) {
 }
 function unitPrice(item: Unit) {
   const offer = unitBestOffer(item)
-  const quantity = item.quantity ?? 1
-  return Math.ceil(offer?.price ?? 0) * Math.ceil((item.models * quantity) / (offer?.eligibleQuantity ?? 1))
+  return Math.ceil(offer?.price ?? 0) * Math.ceil(item.models / (offer?.eligibleQuantity ?? 1))
 }
 const totals = computed(() => {
   const quantity = props.data.reduce((sum, item) => sum + (item.quantity ?? 1), 0)
