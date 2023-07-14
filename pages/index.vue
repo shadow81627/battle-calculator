@@ -96,9 +96,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
           </div>
           <Attributes
             class="mb-5"
-            v-bind="{ ...attacker.attributes, ...attacker.weapons[0] }"
-            :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
-            :pain="getAbilityValue(attacker, 'Feel No Pain')"
+            :attributes="attacker.attributes"
           />
           <div
             v-for="weapon of attacker.weapons"
@@ -157,9 +155,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
           </div>
           <Attributes
             class="mb-5"
-            v-bind="{ ...defender.attributes, ...defender.weapons[0] }"
-            :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
-            :pain="getAbilityValue(defender, 'Feel No Pain')"
+            :attributes="defender.attributes"
           />
           <div
             v-for="weapon of defender.weapons"
