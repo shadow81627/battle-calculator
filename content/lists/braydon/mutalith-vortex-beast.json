@@ -3,8 +3,9 @@
   "faction": [
     "Thousand Sons"
   ],
-  "models": 2,
-  "points": 290,
+  "quantity": 2,
+  "models": 1,
+  "points": 145,
   "offers": [
     {
       "price": 101,
