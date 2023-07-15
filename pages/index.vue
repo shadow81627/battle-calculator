@@ -16,13 +16,6 @@ function getDetachmentRuleAttackModifier(unit, weapon) {
     return 'LETHAL HITS'
 }
 
-function getAbilityValue(unit, name) {
-  const ability = unit.abilities?.find((ability) => {
-    return ability?.name?.toUpperCase()?.startsWith(name?.toUpperCase())
-  })
-  return Number(ability?.name?.match(/\d+/)[0] ?? 0)
-}
-
 const { data: unitOptions } = await useAsyncData('lists', () => queryContent('lists').find(), {
   transform(data) {
     return data.map(item => ({ value: item._path, label: item.name }))
@@ -97,6 +90,10 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
           <Attributes
             class="mb-5"
             :attributes="attacker.attributes"
+            :additions="{
+              invulnerable: getAbilityValue(attacker, 'INVULNERABLE SAVE') || undefined,
+              pain: getAbilityValue(attacker, 'Feel No Pain') || undefined
+            }"
           />
           <div
             v-for="weapon of attacker.weapons"
@@ -156,6 +153,10 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
           <Attributes
             class="mb-5"
             :attributes="defender.attributes"
+            :additions="{
+              invulnerable: getAbilityValue(defender, 'INVULNERABLE SAVE'),
+              pain: getAbilityValue(defender, 'Feel No Pain')
+            }"
           />
           <div
             v-for="weapon of defender.weapons"
