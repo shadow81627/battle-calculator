@@ -27,6 +27,7 @@ const totals = computed(() => {
 const _data = computed(() => {
   return props.data.map(item => item.quantity ? [...Array(item.quantity)].map(() => item) : [item]).flat()
 })
+const route = useRoute()
 </script>
 
 <template>
@@ -54,7 +55,9 @@ const _data = computed(() => {
       <template v-for="unit of _data" :key="unit.name">
         <tr>
           <td class="p-1 text-left">
-            {{ unit.name }}
+            <NuxtLink :to="`${route.path}/units/${unit._path.split('/').slice(-1)}`">
+              {{ unit.name }}
+            </NuxtLink>
           </td>
           <!-- <td class="p-1 text-right">
           {{ unit.quantity }}
@@ -116,7 +119,10 @@ const _data = computed(() => {
   <section class="my-5">
     <div v-for="unit of _data" :key="unit.name">
       <div>
-        {{ unit.name }} ({{ unit.points }})
+        <NuxtLink :to="`${route.path}/units/${unit._path.split('/').slice(-1)}`">
+              {{ unit.name }}
+        </NuxtLink>
+        ({{ unit.points }})
       </div>
       <div v-for="weapon of unit.weapons" :key="weapon.name">
         <span>&nbsp;&nbsp;•&nbsp;</span>
