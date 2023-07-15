@@ -91,8 +91,8 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             class="mb-5"
             :attributes="attacker.attributes"
             :additions="{
-              invulnerable: getAbilityValue(attacker, 'INVULNERABLE SAVE') || undefined,
-              pain: getAbilityValue(attacker, 'Feel No Pain') || undefined
+              invulnerable: getAbilityValue(attacker, 'INVULNERABLE SAVE'),
+              pain: getAbilityValue(attacker, 'Feel No Pain')
             }"
           />
           <div
