@@ -1,46 +1,6 @@
 <script setup lang="ts">
 import { minBy, sumBy } from 'lodash-es'
-interface Enhancement {
-  name: string
-  points: number
-}
-interface WeaponModifier {
-  name: string
-}
-interface Weapon {
-  name: string
-  modifiers: WeaponModifier
-  models: number
-  range: number | "Melee"
-  attack: number | string
-  accuracy: number
-  strength: number
-  piercing: number
-  damage: number | string,
-  profiles?: Weapon[]
-}
-interface Unit {
-  name: string
-  models: number
-  points: number
-  quantity?: number
-  offers: [
-    {
-      price: number
-      priceCurrency: 'AUD' | 'USD'
-      eligibleQuantity: number
-      offeredBy: {
-        type: 'Organization' | 'Person'
-        name: string
-      }
-      itemCondition: 'NewCondition',
-      url?: string
-    },
-  ],
-  weapons?: Weapon[],
-  enhancements?: Enhancement[]
-  members?: Unit[]
-}
+import Unit from '~/types/unit'
 const props = defineProps<{ data: Unit[] }>()
 function unitBestOffer(unit: Unit) {
   const offers = unit.offers?.filter(offer => offer.price)
