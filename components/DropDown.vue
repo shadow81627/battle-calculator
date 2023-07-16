@@ -1,4 +1,5 @@
 <script setup>
+import { uniqBy, startCase } from 'lodash-es';
 import { vOnClickOutside } from '@vueuse/components'
 const show = ref(false)
 function toggleShow() {
@@ -7,6 +8,17 @@ function toggleShow() {
 function close() {
   show.value = false
 }
+
+const { data: unitOptions } = await useAsyncData('lists-dropdown', () => queryContent('lists').find(), {
+  transform(data) {
+    const options = uniqBy(data.map(item => {
+      const value = item._path.split('/').slice(-2, -1)
+      const label = startCase(value)
+      return { value, label }
+    }), 'label').filter(item => item.label !== 'Lists')
+    return options
+  },
+})
 </script>
 
 <template>
@@ -32,20 +44,8 @@ function close() {
   -->
     <div v-show="show" :xclass="{ 'opacity-100': show, 'opacity-0': !show }" class="absolute left-0 z-10 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
       <div class="py-1" role="none">
-        <nuxt-link to="/lists/damien-infantry-artillery" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
-          Damien Infantry Artillery list
-        </nuxt-link>
-        <nuxt-link to="/lists/damien-ride-of-the-valkyries" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
-          Damien Ride of the Valkyries
-        </nuxt-link>
-        <nuxt-link to="/lists/braydon" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
-          Braydon's list
-        </nuxt-link>
-        <nuxt-link to="/lists/daniel" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
-          Daniel's list
-        </nuxt-link>
-        <nuxt-link to="/lists/harley" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
-          Harley's list
+        <nuxt-link v-for="option in unitOptions" :key="option.value" :to="`/lists/${option.value}`" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
+          {{ option.label }}
         </nuxt-link>
         <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
       </div>
