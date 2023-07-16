@@ -1,0 +1,56 @@
+{
+  "name": "Leman Russ Vanquisher",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "models": 1,
+  "points": 190,
+  "attributes": {
+    "movement": 10,
+    "toughness": 11,
+    "save": 2,
+    "wound": 13,
+    "leadership": 7,
+    "control": 3
+  },
+  "weapons": [
+    {
+      "name": "Vanquisher battle cannon",
+      "modifiers": [{"name": "HEAVY"}],
+      "range": 72,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 18,
+      "piercing": 4,
+      "damage": "D6+6"
+    },
+    {
+      "name": "Lascannon",
+      "range": 48,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 12,
+      "piercing": 3,
+      "damage": "D6+1"
+    },
+    {
+      "name": "Armoured tracks",
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": 1
+    },
+    {
+      "name": "Tank-killer",
+      "description": "Each time this model makes a ranged attack with its vanquisher battle cannon that targets a Monster or Vehicle unit, you can re-roll the Wound roll."
+    }
+  ]
+}
