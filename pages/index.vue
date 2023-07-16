@@ -13,7 +13,11 @@ function hasFaction(unit, key) {
 }
 
 function getDetachmentRuleAttackModifier(unit, weapon) {
-  if (hasFaction(unit, 'ASTRA MILITARUM') && weapon.range !== "Melee")
+  if (
+    hasFaction(unit, 'ASTRA MILITARUM') &&
+    weapon.range !== "Melee" &&
+    !unit.keywords?.find((item) => item.toUpperCase() === 'AIRCRAFT')
+  )
     return 'LETHAL HITS'
 }
 
