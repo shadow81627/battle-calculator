@@ -7,7 +7,7 @@
     {
       "price": 77,
       "priceCurrency": "AUD",
-      "eligibleQuantity": 1,
+      "eligibleQuantity": 5,
       "offeredBy": {
         "type": "Organization",
         "name": "Games Workshop"
