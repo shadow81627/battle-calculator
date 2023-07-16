@@ -12,9 +12,9 @@ function unitPrice(item: Unit) {
   return Math.ceil(offer?.price ?? 0) * Math.ceil(item.models / (offer?.eligibleQuantity ?? 1))
 }
 const totals = computed(() => {
-  const quantity = props.data.reduce((sum, item) => sum + (item.quantity ?? 1), 0)
-  const models = props.data.reduce((sum, item) => sum + (item.models * (item.quantity ?? 1)), 0)
-  const unitPoints = props.data.reduce((sum, item) => sum + (item.points * (item.quantity ?? 1)), 0)
+  const quantity = props.data.reduce((sum, item) => sum + Math.ceil((item.quantity ?? 1)), 0)
+  const models = props.data.reduce((sum, item) => sum + (item.models * Math.ceil(item.quantity ?? 1)), 0)
+  const unitPoints = props.data.reduce((sum, item) => sum + Math.ceil(item.points * (item.quantity ?? 1)), 0)
   const enhancementPoints = props.data.reduce((sum, item) => sum + sumBy(item.enhancements, 'points'), 0) ?? 0
   const points = unitPoints + enhancementPoints
   return {
@@ -25,7 +25,17 @@ const totals = computed(() => {
 })
 
 const _data = computed(() => {
-  return props.data.map(item => item.quantity ? [...Array(item.quantity)].map(() => item) : [item]).flat()
+  return props.data.map(item => {
+    if (!item.quantity) return [item]
+    const items = [...Array(Math.ceil(item.quantity))].map(() => JSON.parse(JSON.stringify(item)))
+    const decimal = item.quantity % 1
+    if (decimal) {
+      const last = items.slice(-1)[0]
+      last.models = Math.ceil((last.models ?? 1) * decimal)
+      last.points = Math.ceil(last.points  * decimal)
+    }
+    return items
+  }).flat()
 })
 const route = useRoute()
 </script>
