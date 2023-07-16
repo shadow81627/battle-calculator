@@ -1,0 +1,56 @@
+{
+  "name": "Nob On Smasha Squig",
+  "factions": ["Orks"],
+  "models": 3,
+  "points": 225,
+  "offers": [
+    {
+      "price": 105,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 3,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/nob-on-smasha-squig-2021"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 7,
+    "save": 4,
+    "wound": 5,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Slugga",
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Big Choppa",
+      "modifiers":[{"name": "ANTI-MONSTER 4+"}, {"name": "ANTI-VEHICLE 4+"}],
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 3,
+      "strength": 7,
+      "piercing": 1,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Leader"
+    },
+    {
+      "name": "Feel No Pain 5+"
+    }
+  ]
+}
