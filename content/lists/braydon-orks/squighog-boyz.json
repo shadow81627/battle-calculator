@@ -1,0 +1,74 @@
+{
+  "name": "Squighog Boyz",
+  "factions": ["Orks"],
+  "quantity": 3,
+  "models": 6,
+  "points": 110,
+  "offers": [
+    {
+      "price": 105,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 3,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/orks-squighog-boyz-2021"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 7,
+    "save": 4,
+    "wound": 3,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Saddlegit weapons",
+      "range": 9,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Stikka",
+      "modifiers":[{"name": "ASSAULT"},{"name": "ANTI-MONSTER 4+"}, {"name": "ANTI-VEHICLE 4+"}],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 5,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Stikka",
+      "modifiers":[{"name": "LANCE"},{"name": "ANTI-MONSTER 4+"}, {"name": "ANTI-VEHICLE 4+"}],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Squighog jaws and saddlegits",
+      "modifiers":[{"name": "EXTRA ATTACKS"}],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Feel No Pain 5+"
+    }
+  ]
+}
