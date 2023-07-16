@@ -1,0 +1,70 @@
+{
+  "name": "Tarantula Battery",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "models": 3,
+  "points": 105,
+  "attributes": {
+    "movement": 0,
+    "toughness": 5,
+    "save": 3,
+    "wound": 4,
+    "leadership": 7,
+    "control": 0
+  },
+  "weapons": [
+    {
+      "name": "Twin lascannon",
+      "modifiers": [
+        {
+          "name": "TWIN-LINKED"
+        }
+      ],
+      "range": 48,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 12,
+      "piercing": 3,
+      "damage": "D6+1",
+      "alternatives": [
+        {
+          "name": "Twin heavy bolter",
+          "modifiers": [
+            {
+              "name": "TWIN-LINKED"
+            },
+            {
+              "name": "SUSTAINED HITS 1"
+            }
+          ],
+          "range": 36,
+          "attack": 3,
+          "accuracy": 4,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "name": "Close combat weapon",
+      "range": "Melee",
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": 1
+    },
+    {
+      "name": "Sentry Programming",
+      "description": "You can target this unit with the Fire Overwatch Stratagem for 0CP, and can do so even if you have already used that Stratagem on a different unit this phase."
+    }
+  ]
+}
