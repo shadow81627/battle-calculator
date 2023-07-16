@@ -1,0 +1,81 @@
+{
+  "name": "Gargantuan Squiggoth",
+  "factions": ["Orks"],
+  "models": 1,
+  "points": 440,
+  "offers": [
+    {
+      "price": 86,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 13,
+    "save": 3,
+    "wound": 30,
+    "leadership": 7,
+    "control": 12
+  },
+  "weapons": [
+    {
+      "name": "Supa-kannon",
+      "modifiers": [{"name": "BLAST"}],
+      "range": 60,
+      "attack": "2D6",
+      "accuracy": 5,
+      "strength": 12,
+      "piercing": 2,
+      "damage": 3
+    },
+    {
+      "name": "Huge tusks",
+      "range": "Melee",
+      "profiles": [
+        {
+          "name": "Huge tusks – strike",
+          "modifiers": [{"name": "LANCE"}],
+          "range": "Melee",
+          "attack": 6,
+          "accuracy": 3,
+          "strength": 14,
+          "piercing": 3,
+          "damage": 12
+        },
+        {
+          "name": "Huge tusks – sweep",
+          "range": "Melee",
+          "attack": 18,
+          "accuracy": 3,
+          "strength": 9,
+          "piercing": 2,
+          "damage": 3
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Feel No Pain 5+"
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    },
+    {
+      "name": "Martial Dedication",
+      "description": "While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.",
+      "target": "bodyguard",
+      "effects": [
+        {
+          "name": "Feel No Pain 5+"
+        }
+      ]
+    }
+  ]
+}
