@@ -35,6 +35,9 @@ function close() {
         <nuxt-link to="/lists/damien-infantry-artillery" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
           Damien Infantry Artillery list
         </nuxt-link>
+        <nuxt-link to="/lists/damien-ride-of-the-valkyries" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
+          Damien Ride of the Valkyries
+        </nuxt-link>
         <nuxt-link to="/lists/braydon" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
           Braydon's list
         </nuxt-link>

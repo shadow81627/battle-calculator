@@ -1,0 +1,95 @@
+{
+  "name": "Vulture Gunship",
+  "factions": ["Astra Militarum"],
+  "quantity": 2,
+  "models": 1,
+  "points": 225,
+  "offers": [
+    {
+      "price": 90,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-WW/Imperial-Guard-Valkyrie"
+    }
+  ],
+  "attributes": {
+    "movement": 20,
+    "toughness": 10,
+    "save": 2,
+    "wound": 14,
+    "leadership": 7,
+    "control": 0
+  },
+  "weapons": [
+    {
+      "models": 2,
+      "name": "Vulture gatling cannon",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": 24,
+      "attack": 18,
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Heavy bolter",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Hellstrike missiles",
+      "modifiers": [
+        {
+          "name": "ANIT-FLY 2+"
+        }
+      ],
+      "range": 48,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 10,
+      "piercing": 3,
+      "damage": "D6"
+    },
+    {
+      "name": "Armoured hull",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Hover"
+    },
+    {
+      "name": "Grav Chute Insertion",
+      "description": "At the end of your opponent’s Movement phase, one or more units embarked within this Transport can disembark from it, provided every model in each of those disembarking units has the Deep Strike ability."
+    }
+  ]
+}
