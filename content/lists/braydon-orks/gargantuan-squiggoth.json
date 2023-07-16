@@ -1,18 +1,20 @@
 {
   "name": "Gargantuan Squiggoth",
   "factions": ["Orks"],
+  "keywords": ["Monster", "Titanic", "Towering", "Transport", "Gargantuan Squiggoth"],
   "models": 1,
   "points": 440,
   "offers": [
     {
-      "price": 86,
+      "price": 638,
       "priceCurrency": "AUD",
       "eligibleQuantity": 1,
       "offeredBy": {
         "type": "Organization",
         "name": "Games Workshop"
       },
-      "itemCondition": "NewCondition"
+      "itemCondition": "NewCondition",
+      "url": "https://www.forgeworld.co.uk/en-AU/Ork-Gargantuan-Squiggoth"
     }
   ],
   "attributes": {
@@ -62,20 +64,19 @@
   ],
   "abilities": [
     {
-      "name": "Feel No Pain 5+"
+      "name": "Deadly Demise",
+      "damage": "2D6"
     },
     {
-      "name": "Invulnerable Save 5+"
+      "name": "Firing Deck 20"
     },
     {
-      "name": "Martial Dedication",
-      "description": "While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.",
-      "target": "bodyguard",
-      "effects": [
-        {
-          "name": "Feel No Pain 5+"
-        }
-      ]
+      "name": "Gargantuan",
+      "description": "Each time this model makes a Normal, Advance or Fall Back move, it can move over models (excluding Titanic models) and terrain features that are 4\" or less in height as if they were not there."
+    },
+    {
+      "name": "Walking Bastion",
+      "description": "This model does not suffer the penalty to its Hit rolls for making ranged attacks while enemy units are within Engagement Range of it."
     }
   ]
 }
