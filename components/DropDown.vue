@@ -32,8 +32,8 @@ function close() {
   -->
     <div v-show="show" :xclass="{ 'opacity-100': show, 'opacity-0': !show }" class="absolute left-0 z-10 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
       <div class="py-1" role="none">
-        <nuxt-link to="/lists/damien" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
-          Damien's list
+        <nuxt-link to="/lists/damien-infantry-artillery" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
+          Damien Infantry Artillery list
         </nuxt-link>
         <nuxt-link to="/lists/braydon" class="block px-4 py-2 text-sm text-gray-700" @click="show = false">
           Braydon's list

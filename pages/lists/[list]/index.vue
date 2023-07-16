@@ -1,4 +1,5 @@
 <script setup>
+import { startCase } from 'lodash-es'
 const { params } = useRoute()
 const id = params.list
 const { data, pending } = await useAsyncData(`lists-${id}`, () => queryContent('lists', id).find())
@@ -10,7 +11,7 @@ if (!hasData)
 <template>
   <div class="m-10">
     <h1 class="h2 text-left capitalize">
-      {{ id }}'s List
+      {{ startCase(id) }} List
     </h1>
     <div v-if="pending">
       Loading ...
