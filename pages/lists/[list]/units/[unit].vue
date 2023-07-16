@@ -22,42 +22,14 @@ if (!unit.value)
       </div>
       <div class="row">
         <section class="my-5 md:col-6 col" style="overflow-x:auto;">
-          <table class="w-full">
-            <thead>
-              <th class="p-2">#</th>
-              <th class="p-2 text-left">Weapon</th>
-              <th class="p-2">Range</th>
-              <th class="p-2">A</th>
-              <th class="p-2">WS</th>
-              <th class="p-2">S</th>
-              <th class="p-2">AP</th>
-              <th class="p-2">D</th>
-            </thead>
-            <tbody>
-              <tr v-for="weapon of unit.weapons" :key="weapon.name" xclass="border-b-2 border-dashed">
-                <td class="p-2 text-center">{{ weapon.models ?? unit.models }}</td>
-                <td class="p-2">{{ weapon.name }}</td>
-                <td class="p-2 text-center">{{ weapon.range }}</td>
-                <td class="p-2 text-center">{{ weapon.attack }}</td>
-                <td class="p-2 text-center">{{ weapon.accuracy }}</td>
-                <td class="p-2 text-center">{{ weapon.strength }}</td>
-                <td class="p-2 text-center">{{ weapon.piercing }}</td>
-                <td class="p-2 text-center">{{ weapon.damage }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <WeaponAttributes v-if="unit.weapons?.length" :unit="unit" class="w-full"></WeaponAttributes>
           <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
-            <span>&nbsp;&nbsp;•&nbsp;</span>Enhancement:
+            Enhancement:
             {{ enhancement.name }} ({{ enhancement.points }})
           </div>
           <div v-for="member of unit.members" :key="member.name">
-            <span>&nbsp;&nbsp;•&nbsp;</span>
-            {{ member.name }}
-            <div v-for="weapon of member.weapons" :key="weapon.name">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;</span>
-              <span>{{ weapon.models ?? member.models ?? unit.models }}x&nbsp;</span>
-              <span>{{ weapon.name }}</span>
-            </div>
+            <div class="text-left uppercase font-barlow font-700">{{ member.name }}</div>
+            <WeaponAttributes :unit="member" class="w-full"></WeaponAttributes>
           </div>
           <br>
         </section>
