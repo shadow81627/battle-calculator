@@ -1,5 +1,5 @@
 <script setup>
-import { groupBy,startCase } from 'lodash-es';
+import { groupBy, startCase } from 'lodash-es';
 const order = ref('')
 const turns = ref(1)
 const range = ref(24)
@@ -73,21 +73,13 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
               Attacker
               <select v-model="attackerId" class="inline w-250px select" name="attacker" @change="refreshAttacker">
                 <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of unitOptions" :key="key">
-                  <option
-                    v-for="option of group"
-                    :key="option.value"
-                    :value="option.value"
-                    :selected="attackerId === option.value ? option.value : undefined"
-                  >
+                  <option v-for="option of group" :key="option.value" :value="option.value"
+                    :selected="attackerId === option.value ? option.value : undefined">
                     {{ option.label }}
                   </option>
                 </optgroup>
               </select>
-              <select
-                v-if="hasFaction(attacker, 'ASTRA MILITARUM')"
-                v-model="order"
-                class="inline w-250px select"
-              >
+              <select v-if="hasFaction(attacker, 'ASTRA MILITARUM')" v-model="order" class="inline w-250px select">
                 <option value="">
                   None
                 </option>
@@ -98,51 +90,38 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             </h2>
             <p>{{ attacker.models }} {{ attacker.name }} {{ attacker.points }}pts</p>
           </div>
-          <Attributes
-            class="mb-5"
-            :attributes="attacker.attributes"
-            :additions="{
-              invulnerable: getAbilityValue(attacker, 'INVULNERABLE SAVE'),
-              pain: getAbilityValue(attacker, 'Feel No Pain'),
-              points: attacker.points,
-            }"
-          />
-          <div
-            v-for="weapon of attacker.weapons"
-            :key="weapon.name"
-            class="border-y border-solid py-5"
-          >
+          <!-- <div class="container">
+            <div class="row">
+              <div class="col-3">
+                <label>Move ({{ attacker.moved }})</label>
+                <input name="movement" type="number" class="input" :max="attacker.movement" v-model="attacker.moved" />
+              </div>
+            </div>
+          </div> -->
+          <Attributes class="mb-5" :attributes="attacker.attributes" :additions="{
+            invulnerable: getAbilityValue(attacker, 'INVULNERABLE SAVE'),
+            pain: getAbilityValue(attacker, 'Feel No Pain'),
+            points: attacker.points,
+          }" />
+          <div v-for="weapon of attacker.weapons" :key="weapon.name" class="border-y border-solid py-5">
             <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
-              <Combat
-                v-for="profile of (weapon.profiles ?? weapon.alternatives)"
-                :key="profile.name"
+              <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" :key="profile.name"
                 v-bind="{ ...profile }"
                 :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, profile) }].filter(item => item?.name)"
-                :abilities="attacker.abilities"
-                :models="profile.models ?? attacker.models"
-                :toughness="defender.attributes.toughness"
-                :save="defender.attributes.save"
+                :abilities="attacker.abilities" :models="profile.models ?? attacker.models"
+                :toughness="defender.attributes.toughness" :save="defender.attributes.save"
                 :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
-                :pain="getAbilityValue(defender, 'Feel No Pain')"
-                :turns="turns"
-                :target="defender"
-                :order="hasFaction(attacker, 'ASTRA MILITARUM') ? order : undefined"
-              />
+                :pain="getAbilityValue(defender, 'Feel No Pain')" :turns="turns" :target="defender"
+                :order="hasFaction(attacker, 'ASTRA MILITARUM') ? order : undefined" />
             </template>
-            <Combat
-              v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
+            <Combat v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
               v-bind="{ ...weapon }"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, weapon) }].filter(item => item?.name)"
-              :abilities="attacker.abilities"
-              :models="weapon.models ?? attacker.models"
-              :toughness="defender.attributes.toughness"
-              :save="defender.attributes.save"
+              :abilities="attacker.abilities" :models="weapon.models ?? attacker.models"
+              :toughness="defender.attributes.toughness" :save="defender.attributes.save"
               :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
-              :pain="getAbilityValue(defender, 'Feel No Pain')"
-              :turns="turns"
-              :target="defender"
-              :order="hasFaction(attacker, 'ASTRA MILITARUM') ? order : undefined"
-            />
+              :pain="getAbilityValue(defender, 'Feel No Pain')" :turns="turns" :target="defender"
+              :order="hasFaction(attacker, 'ASTRA MILITARUM') ? order : undefined" />
           </div>
         </div>
         <div class="col md:col-6">
@@ -151,12 +130,8 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
               Defender
               <select v-model="defenderId" class="inline w-250px select" name="defender" @change="refreshDefender">
                 <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of unitOptions" :key="key">
-                  <option
-                    v-for="option of group"
-                    :key="option.value"
-                    :value="option.value"
-                    :selected="defenderId === option.value ? option.value : undefined"
-                  >
+                  <option v-for="option of group" :key="option.value" :value="option.value"
+                    :selected="defenderId === option.value ? option.value : undefined">
                     {{ option.label }}
                   </option>
                 </optgroup>
@@ -164,49 +139,28 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             </h2>
             <p>{{ defender.models }} {{ defender.name }} {{ defender.points }}pts</p>
           </div>
-          <Attributes
-            class="mb-5"
-            :attributes="defender.attributes"
-            :additions="{
-              invulnerable: getAbilityValue(defender, 'INVULNERABLE SAVE'),
-              pain: getAbilityValue(defender, 'Feel No Pain'),
-              points: defender.points,
-            }"
-          />
-          <div
-            v-for="weapon of defender.weapons"
-            :key="weapon.name"
-            class="border-y border-solid py-5"
-          >
+          <Attributes class="mb-5" :attributes="defender.attributes" :additions="{
+            invulnerable: getAbilityValue(defender, 'INVULNERABLE SAVE'),
+            pain: getAbilityValue(defender, 'Feel No Pain'),
+            points: defender.points,
+          }" />
+          <div v-for="weapon of defender.weapons" :key="weapon.name" class="border-y border-solid py-5">
             <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
-              <Combat
-                v-for="profile of (weapon.profiles ?? weapon.alternatives)"
-                v-bind="{ ...profile }"
+              <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" v-bind="{ ...profile }"
                 :key="profile.name"
                 :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, profile) }].filter(item => item?.name)"
-                :abilities="defender.abilities"
-                :models="weapon.models ?? defender.models"
-                :target="attacker"
-                :toughness="attacker.attributes.toughness"
-                :save="attacker.attributes.save"
+                :abilities="defender.abilities" :models="weapon.models ?? defender.models" :target="attacker"
+                :toughness="attacker.attributes.toughness" :save="attacker.attributes.save"
                 :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
-                :pain="getAbilityValue(attacker, 'Feel No Pain')"
-                :turns="turns"
-              />
+                :pain="getAbilityValue(attacker, 'Feel No Pain')" :turns="turns" />
             </template>
-            <Combat
-              v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
+            <Combat v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
               v-bind="{ ...weapon }"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, weapon) }].filter(item => item?.name)"
-              :abilities="defender.abilities"
-              :models="weapon.models ?? defender.models"
-              :target="attacker"
-              :toughness="attacker.attributes.toughness"
-              :save="attacker.attributes.save"
+              :abilities="defender.abilities" :models="weapon.models ?? defender.models" :target="attacker"
+              :toughness="attacker.attributes.toughness" :save="attacker.attributes.save"
               :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
-              :pain="getAbilityValue(attacker, 'Feel No Pain')"
-              :turns="turns"
-            />
+              :pain="getAbilityValue(attacker, 'Feel No Pain')" :turns="turns" />
           </div>
         </div>
       </div>
