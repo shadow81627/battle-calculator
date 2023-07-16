@@ -1,6 +1,15 @@
 {
   "name": "Vulture Gunship",
-  "factions": ["Astra Militarum"],
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Vehicle",
+    "Fly",
+    "Aircraft",
+    "Imperium",
+    "Vulture Gunship"
+  ],
   "quantity": 2,
   "models": 1,
   "points": 225,
