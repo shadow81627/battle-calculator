@@ -58,7 +58,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
 
     <section class="container my-6">
       <div class="row">
-        <div class="col col-6">
+        <div class="col md:col-6">
           <div class="text-left">
             <h2 class="h2">
               Attacker
@@ -134,7 +134,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             />
           </div>
         </div>
-        <div class="col col-6">
+        <div class="col md:col-6">
           <div class="text-left">
             <h2 class="h2">
               Defender
