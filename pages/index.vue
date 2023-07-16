@@ -1,4 +1,5 @@
 <script setup>
+import { groupBy,startCase } from 'lodash-es';
 const order = ref('')
 const turns = ref(1)
 const range = ref(24)
@@ -18,7 +19,11 @@ function getDetachmentRuleAttackModifier(unit, weapon) {
 
 const { data: unitOptions } = await useAsyncData('lists', () => queryContent('lists').find(), {
   transform(data) {
-    return data.map(item => ({ value: item._path, label: item.name }))
+    const options = data.map(item => ({ value: item._path, label: item.name }))
+    const grouped = groupBy(options, function (option) {
+      return startCase(option.value.split('/').slice(-2, -1))
+    })
+    return Object.entries(grouped)
   },
 })
 </script>
@@ -63,14 +68,16 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             <h2 class="h2">
               Attacker
               <select v-model="attackerId" class="inline w-250px select" name="attacker" @change="refreshAttacker">
-                <option
-                  v-for="option of unitOptions"
-                  :key="option.value"
-                  :value="option.value"
-                  :selected="attackerId === option.value ? option.value : undefined"
-                >
-                  {{ option.label }}
-                </option>
+                <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of unitOptions" :key="key">
+                  <option
+                    v-for="option of group"
+                    :key="option.value"
+                    :value="option.value"
+                    :selected="attackerId === option.value ? option.value : undefined"
+                  >
+                    {{ option.label }}
+                  </option>
+                </optgroup>
               </select>
               <select
                 v-if="hasFaction(attacker, 'ASTRA MILITARUM')"
@@ -139,14 +146,16 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             <h2 class="h2">
               Defender
               <select v-model="defenderId" class="inline w-250px select" name="defender" @change="refreshDefender">
-                <option
-                  v-for="option of unitOptions"
-                  :key="option.value"
-                  :value="option.value"
-                  :selected="defenderId === option.value ? option.value : undefined"
-                >
-                  {{ option.label }}
-                </option>
+                <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of unitOptions" :key="key">
+                  <option
+                    v-for="option of group"
+                    :key="option.value"
+                    :value="option.value"
+                    :selected="defenderId === option.value ? option.value : undefined"
+                  >
+                    {{ option.label }}
+                  </option>
+                </optgroup>
               </select>
             </h2>
             <p>{{ defender.models }} {{ defender.name }} {{ defender.points }}pts</p>
