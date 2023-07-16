@@ -1,0 +1,49 @@
+{
+  "name": "Flash Gitz",
+  "factions": ["Orks"],
+  "models": 10,
+  "points": 190,
+  "offers": [
+    {
+      "price": 77,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Flash-Gitz"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 5,
+    "save": 4,
+    "wound": 2,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Snazzgun",
+      "modifiers": [{"name": "HEAVY"}, {"name": "SUSTAINED HITS 1"}],
+      "range": 24,
+      "attack": 3,
+      "accuracy": 5,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Choppa",
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": []
+}

@@ -1,0 +1,77 @@
+{
+  "name": "Kaptin Badrukk",
+  "factions": ["Orks"],
+  "models": 1,
+  "points": 95,
+  "offers": [
+    {
+      "price": 37.05,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap Games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/products/orks-kaptin-badrukk"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 5,
+    "save": 3,
+    "wound": 6,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Snazzgun",
+      "profiles": [
+        {
+          "name": "Snazzgun – standard",
+          "modifiers": [{"name": "HEAVY"}, {"name": "SUSTAINED HITS 1"}],
+          "range": 24,
+          "attack": 3,
+          "accuracy": 5,
+          "strength": 7,
+          "piercing": 2,
+          "damage": 2
+        },
+        {
+          "name": "Snazzgun – supercharge",
+          "modifiers": [{"name": "HAZARDOUS"}, {"name": "HEAVY"}, {"name": "SUSTAINED HITS 1"}],
+          "range": 24,
+          "attack": 3,
+          "accuracy": 5,
+          "strength": 8,
+          "piercing": 3,
+          "damage": 3
+        }
+      ]
+    },
+    {
+      "name": "Slugga",
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Choppa",
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}
