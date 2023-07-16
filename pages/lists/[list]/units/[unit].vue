@@ -13,8 +13,9 @@ if (!unit.value)
     <section class="md:max-w-50%">
       <Attributes :attributes="unit.attributes"
       :additions="{
-        invulnerable: getAbilityValue(unit, 'INVULNERABLE SAVE') || undefined,
-        pain: getAbilityValue(unit, 'Feel No Pain') || undefined
+        invulnerable: getAbilityValue(unit, 'INVULNERABLE SAVE'),
+        pain: getAbilityValue(unit, 'Feel No Pain'),
+        points: unit.points
       }"
       />
     </section>
