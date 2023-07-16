@@ -32,13 +32,13 @@ function sortAdditions(a: [string, number], b: [string, number]) {
 <template>
   <div class="container">
     <div class="row" v-if="attributes">
-      <div v-for="[key, value] of Object.entries(attributes)" :key="`${key}-${value}`" class="pr-5 col col-2">
+      <div v-for="[key, value] of Object.entries(attributes)" :key="`${key}-${value}`" class="pr-5 col-6 sm:col-4 md:col-3 lg:col-2">
         <div class="text-center capitalize">{{ key }}</div>
         <div class="text-center font-barlow text-4xl font-700">{{ value }}</div>
       </div>
     </div>
     <div class="row" v-if="additions && Object.entries(pickBy(additions, Boolean)).length">
-      <div v-for="[key, value] of Object.entries(pickBy(additions, Boolean)).sort(sortAdditions)" :key="`${key}-${value}`" class="pr-5 col col-2">
+      <div v-for="[key, value] of Object.entries(pickBy(additions, Boolean)).sort(sortAdditions)" :key="`${key}-${value}`" class="pr-5 col-6 sm:col-4 md:col-3 lg:col-2">
         <div class="text-center capitalize">{{ labels[key] ?? key }}</div>
         <div class="text-center font-barlow text-4xl font-700">{{ value }}</div>
       </div>
