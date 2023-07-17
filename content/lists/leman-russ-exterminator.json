@@ -1,10 +1,10 @@
 {
-  "name": "Leman Russ Punisher",
+  "name": "Leman Russ Exterminator",
   "factions": [
     "Astra Militarum"
   ],
   "models": 1,
-  "points": 180,
+  "points": 200,
   "attributes": {
     "movement": 10,
     "toughness": 11,
@@ -15,13 +15,14 @@
   },
   "weapons": [
     {
-      "name": "Punisher gatling cannon",
-      "range": 24,
-      "attack": 20,
+      "name": "Exterminator autocannon",
+      "modifiers": [{"name": "RAPID FIRE 4"}, {"name": "TWIN-LINKED"}],
+      "range": 48,
+      "attack": 4,
       "accuracy": 4,
-      "strength": 6,
-      "piercing": 0,
-      "damage": 1
+      "strength": 9,
+      "piercing": 1,
+      "damage": 3
     },
     {
       "name": "Lascannon",

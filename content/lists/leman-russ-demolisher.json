@@ -34,6 +34,20 @@
       "damage": "D6+1"
     },
     {
+      "name": "Hunter-killer missile",
+      "modifiers": [
+        {
+          "name": "ONE SHOT"
+        }
+      ],
+      "range": 48,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 14,
+      "piercing": 3,
+      "damage": "D6"
+    },
+    {
       "name": "Armoured tracks",
       "range": "Melee",
       "attack": 6,
@@ -46,11 +60,7 @@
   "abilities": [
     {
       "name": "Deadly Demise",
-      "damage": 1
-    },
-    {
-      "name": "Sentry Programming",
-      "description": "You can target this unit with the Fire Overwatch Stratagem for 0CP, and can do so even if you have already used that Stratagem on a different unit this phase."
+      "damage": "D3"
     }
   ]
 }
