@@ -47,7 +47,8 @@ function rolls(x = 1, sides = 6) {
 
 const maxTurns = computed(() => props.modifiers.find(modifier => modifier.name === 'ONE SHOT') ? 1 : 5)
 const minTurns = computed(() => Math.min(props.turns, maxTurns.value))
-const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS'))
+const hasTorrent = computed(() => props.modifiers?.find(modifier => modifier.name === 'TORRENT'))
+const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS') && !hasTorrent.value)
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
 const hasBringersOfChange = computed(() => props.abilities.find(ability => ability.name === 'Bringers of Change'))
 const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && props.target.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
@@ -93,8 +94,8 @@ const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
 const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
 const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
-const randomHitTotal = computed(() => [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= ((props.accuracy - heavy.value) - takeAim.value)), 0))
-const averageHitTotal = computed(() => Math.floor(attacksTotal.value * dice.attack((props.accuracy - heavy.value) - takeAim.value)))
+const randomHitTotal = computed(() => hasTorrent.value ? randomAttacksTotal.value : [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= ((props.accuracy - heavy.value) - takeAim.value)), 0))
+const averageHitTotal = computed(() => hasTorrent.value ? attacksTotal.value : Math.floor(attacksTotal.value * dice.attack((props.accuracy - heavy.value) - takeAim.value)))
 
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
@@ -133,9 +134,12 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
     <span>{{ name }}</span>
 
     <template v-if="modifiers && modifiers.length">
-      [<span v-for="(modifier, index) of modifiers" :key="modifier.name"><span
-          :class="{ 'text-red-500': rapidFire && modifier.name.startsWith('RAPID FIRE') }">{{ modifier.name
-          }}</span><template v-if="index + 1 !== modifiers.length">, </template>
+      [<span v-for="(modifier, index) of modifiers" :key="modifier.name"><span :class="{
+        'text-red-500': rapidFire && modifier.name.startsWith('RAPID FIRE'),
+        'text-gray-500': !hasLethalHits && modifier.name.startsWith('LETHAL HITS')
+      }">{{
+  modifier.name
+}}</span><template v-if="index + 1 !== modifiers.length">, </template>
       </span>]
     </template>
   </p>
@@ -187,7 +191,8 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             x {{ models }} models
           </td>
           <td class="p-1">
-            {{ accuracy - takeAim }}+
+            <template v-if="hasTorrent">N/A</template>
+            <template v-else>{{ accuracy - takeAim }}+</template>
           </td>
           <td class="p-1">
             S{{ strength }}
@@ -221,10 +226,13 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             </template>
           </td>
           <td class="p-1">
-            <DisplayRolls :rolls="randomHitRolls" />
-            <template v-if="sustainedHitsRolls && sustainedHitsRolls.length">
-              Sustained Hits {{ sustainedHits }}
-              <DisplayRolls :rolls="sustainedHitsRolls" />
+            <template v-if="hasTorrent">N/A</template>
+            <template v-else>
+              <DisplayRolls :rolls="randomHitRolls" />
+              <template v-if="sustainedHitsRolls && sustainedHitsRolls.length">
+                Sustained Hits {{ sustainedHits }}
+                <DisplayRolls :rolls="sustainedHitsRolls" />
+              </template>
             </template>
           </td>
           <td class="p-1">
