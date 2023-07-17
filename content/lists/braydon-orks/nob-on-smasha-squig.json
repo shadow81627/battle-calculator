@@ -1,8 +1,9 @@
 {
   "name": "Nob On Smasha Squig",
   "factions": ["Orks"],
-  "models": 3,
-  "points": 225,
+  "quantity": 3,
+  "models": 1,
+  "points": 75,
   "offers": [
     {
       "price": 105,
