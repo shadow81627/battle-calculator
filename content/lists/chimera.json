@@ -32,7 +32,34 @@
       "accuracy": 4,
       "strength": 6,
       "piercing": 0,
-      "damage": 1
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Chimera heavy bolter",
+          "modifiers": [
+            {"name": "SUSTAINED HITS 1"}
+          ],
+          "range": 36,
+          "attack": 3,
+          "accuracy": 4,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 2
+        },
+        {
+          "name": "Chimera heavy flamer",
+          "modifiers": [
+            {"name": "IGNORES COVER"},
+            {"name": "TORRENT"}
+          ],
+          "range": 12,
+          "attack": "D6",
+          "accuracy": 0,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 1
+        }
+      ]
     },
     {
       "name": "Heavy bolter",
