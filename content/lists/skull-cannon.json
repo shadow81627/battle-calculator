@@ -1,0 +1,69 @@
+{
+  "name": "Skull Cannon",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "models": 1,
+  "points": 115,
+  "offers": [
+    {
+      "price": 59,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Daemons-Of-Khorne-Skull-Cannon"
+    }
+  ],
+  "attributes": {
+    "movement": 8,
+    "toughness": 9,
+    "save": 4,
+    "wound": 9,
+    "leadership": 7,
+    "control": 3
+  },
+  "weapons": [
+    {
+      "name": "Skull cannon",
+      "modifiers": [{"name": "BLAST"}],
+      "range": 48,
+      "attack": "D6+2",
+          "accuracy": 3,
+          "strength": 9,
+          "piercing": 1,
+          "damage": 2
+    },
+    {
+      "name": "Attendants’ hellblades",
+      "modifiers": [{"name": "EXTRA ATTACKS"}],
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Biting maw",
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}
