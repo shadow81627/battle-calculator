@@ -1,0 +1,105 @@
+{
+  "name": "Be’lakor",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "models": 1,
+  "points": 325,
+  "offers": [
+    {
+      "price": 160,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-WW/Chaos-Daemons-Belakor-The-Dark-Master-2021"
+    }
+  ],
+  "attributes": {
+    "movement": 12,
+    "toughness": 10,
+    "save": 4,
+    "wound": 18,
+    "leadership": 6,
+    "control": 5
+  },
+  "weapons": [
+    {
+      "name": "Betraying Shades",
+      "profiles": [
+        {
+          "name": "Betraying Shades – witchfire",
+          "modifiers": [
+            {"name": "DEVASTATING WOUNDS"},
+            {"name": "IGNORES COVER" },
+            {"name": "PSYCHIC"}
+          ],
+          "range": 18,
+          "attack": 9,
+          "accuracy": 2,
+          "strength": 5,
+          "piercing": 2,
+          "damage": 1
+        },
+        {
+          "name": "Betraying Shades – focused witchfire",
+          "modifiers": [
+            {"name": "DEVASTATING WOUNDS"},
+            {"name": "IGNORES COVER" },
+            {"name": "PSYCHIC"},
+            {"name": "HAZARDOUS"}
+          ],
+          "range": 18,
+          "attack": 12,
+          "accuracy": 2,
+          "strength": 6,
+          "piercing": 3,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "The Blade of Shadows",
+      "profiles": [
+        {
+          "name": "The Blade of Shadows – strike",
+          "modifiers": [{"name": "LETHAL HITS"}],
+          "range": "Melee",
+          "attack": 6,
+          "accuracy": 2,
+          "strength": 14,
+          "piercing": 4,
+          "damage": "D6+1"
+        },
+        {
+          "name": "The Blade of Shadows – sweep",
+          "range": "Melee",
+          "attack": 14,
+          "accuracy": 2,
+          "strength": 8,
+          "piercing": 3,
+          "damage": 1
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Stealth"
+    },
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}
