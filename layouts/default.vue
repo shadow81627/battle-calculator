@@ -1,8 +1,9 @@
 <template>
   <header>
     <nuxt-link to="/">
-      Home
+      Calculator
     </nuxt-link>
+    |
     <DropDown />
   </header>
   <main>
