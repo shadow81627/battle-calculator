@@ -12,7 +12,8 @@
         "type": "Organization",
         "name": "Games Workshop"
       },
-      "itemCondition": "NewCondition"
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Astra-Militarum-Hydra"
     },
     {
       "price": 70.31,
@@ -22,7 +23,8 @@
         "type": "Organization",
         "name": "Gap games"
       },
-      "itemCondition": "NewCondition"
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/products/astra-militarum-hydra"
     }
   ],
   "attributes": {
