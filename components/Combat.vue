@@ -17,6 +17,8 @@ const props = defineProps({
   abilities: { type: Array, default: () => [] },
   target: { type: Object },
   order: { type: String },
+  range: { type: Number },
+  distance: { type: Number },
 })
 
 const wound = computed(() => {
@@ -48,9 +50,15 @@ const minTurns = computed(() => Math.min(props.turns, maxTurns.value))
 const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS'))
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
 const hasBringersOfChange = computed(() => props.abilities.find(ability => ability.name === 'Bringers of Change'))
-const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && props.target.keywords?.find(item=>  ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
+const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && props.target.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
 const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
 const hasBlast = computed(() => props.modifiers?.find(modifier => modifier.name === 'BLAST'))
+const rapidFire = computed(() => {
+  const modifier = props.modifiers?.find(modifier => modifier.name.startsWith('RAPID FIRE'))
+  if (!modifier) return 0
+  const inRange = ((props.range / 2) >= props.distance)
+  return modifier && inRange ? Number(modifier.name.match(/\d+/)[0]) : 0
+})
 const sustainedHits = computed(() => {
   const modifier = props.modifiers?.find(modifier => modifier.name.startsWith('SUSTAINED HITS'))
   return modifier ? Number(modifier.name.match(/\d+/)[0]) : 0
@@ -76,10 +84,10 @@ const _attack = computed(() => {
 const randomAttackRolls = computed(() => rolls(_attack.value.rolls, _attack.value.rollType))
 const randomAttacksTotal = computed(() => {
   const randomAttacksTotal = randomAttackRolls.value.reduce((sum, roll) => sum + roll, 0)
-  const randomAttacksTotalBonuses = randomAttacksTotal + _attack.value.base + blast.value
+  const randomAttacksTotalBonuses = randomAttacksTotal + _attack.value.base + blast.value + rapidFire.value
   return randomAttacksTotalBonuses * minTurns.value * props.models
 })
-const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * 3) + _attack.value.base) + blast.value) * minTurns.value * props.models))
+const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * 3) + _attack.value.base) + blast.value + rapidFire.value) * minTurns.value * props.models))
 
 const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
 const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
@@ -125,7 +133,9 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
     <span>{{ name }}</span>
 
     <template v-if="modifiers && modifiers.length">
-      [<span v-for="(modifier, index) of modifiers" :key="modifier.name">{{ modifier.name }}<template v-if="index + 1 !== modifiers.length">, </template>
+      [<span v-for="(modifier, index) of modifiers" :key="modifier.name"><span
+          :class="{ 'text-red-500': rapidFire && modifier.name.startsWith('RAPID FIRE') }">{{ modifier.name
+          }}</span><template v-if="index + 1 !== modifiers.length">, </template>
       </span>]
     </template>
   </p>
@@ -161,7 +171,20 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             Stats
           </td>
           <td class="p-1">
-            {{ attack }} x {{ models }} models
+            {{ attack }}
+            <template v-if="rapidFire">
+              +
+            </template>
+            <template v-if="rapidFire">
+              {{ rapidFire }} Rapid Fire
+            </template>
+            <template v-if="blast">
+              +
+            </template>
+            <template v-if="blast">
+              {{ blast }} Blast
+            </template>
+            x {{ models }} models
           </td>
           <td class="p-1">
             {{ accuracy - takeAim }}+
@@ -232,13 +255,13 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           <td class="p-1 text-left">
             <DisplayRolls v-if="hasDaringRecon" :rolls="randomHitReRolls" />
             <template v-else>
-&nbsp;
+              &nbsp;
             </template>
           </td>
           <td class="p-1 text-left">
             <DisplayRolls v-if="hasWoundReRolls" :rolls="randomWoundReRolls" />
             <template v-else>
-&nbsp;
+              &nbsp;
             </template>
           </td>
         </tr>
@@ -247,13 +270,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             Totals
           </td>
           <td class="p-1">
-            {{ randomAttacksTotal - blast }}
-            <template v-if="blast">
-              +
-            </template>
-            <template v-if="blast">
-              {{ blast }} Blast
-            </template>
+            {{ randomAttacksTotal }}
           </td>
           <td class="p-1">
             {{ randomHitTotal }}

@@ -2,7 +2,7 @@
 import { groupBy, startCase } from 'lodash-es';
 const order = ref('')
 const turns = ref(1)
-const range = ref(24)
+const distance = ref(24)
 const attackerId = ref('/lists/damien-infantry-artillery/scout-sentinels')
 const defenderId = ref('/lists/braydon-thousand-sons/mutalith-vortex-beast')
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
@@ -47,7 +47,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                 <label class="font-bold">Turns</label>
               </th>
               <th class="p-1">
-                <label class="font-bold">Range</label>
+                <label class="font-bold">Distance</label>
               </th>
             </thead>
             <tbody>
@@ -56,7 +56,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                   <input v-model="turns" name="turns" class="max-w-250px input" type="number" max="5" min="1">
                 </td>
                 <td class="p-1">
-                  <input v-model="range" name="range" class="max-w-250px input" type="number" min="1">
+                  <input v-model="distance" name="distance" class="max-w-250px input" type="number" min="1">
                 </td>
               </tr>
             </tbody>
@@ -107,6 +107,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
               <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" :key="profile.name"
                 v-bind="{ ...profile }"
+                :distance="distance"
                 :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, profile) }].filter(item => item?.name)"
                 :abilities="attacker.abilities" :models="profile.models ?? attacker.models"
                 :toughness="defender.attributes.toughness" :save="defender.attributes.save"
@@ -116,6 +117,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             </template>
             <Combat v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
               v-bind="{ ...weapon }"
+              :distance="distance"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, weapon) }].filter(item => item?.name)"
               :abilities="attacker.abilities" :models="weapon.models ?? attacker.models"
               :toughness="defender.attributes.toughness" :save="defender.attributes.save"
@@ -148,6 +150,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
               <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" v-bind="{ ...profile }"
                 :key="profile.name"
+                :distance="distance"
                 :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, profile) }].filter(item => item?.name)"
                 :abilities="defender.abilities" :models="weapon.models ?? defender.models" :target="attacker"
                 :toughness="attacker.attributes.toughness" :save="attacker.attributes.save"
@@ -156,6 +159,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             </template>
             <Combat v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
               v-bind="{ ...weapon }"
+              :distance="distance"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, weapon) }].filter(item => item?.name)"
               :abilities="defender.abilities" :models="weapon.models ?? defender.models" :target="attacker"
               :toughness="attacker.attributes.toughness" :save="attacker.attributes.save"
