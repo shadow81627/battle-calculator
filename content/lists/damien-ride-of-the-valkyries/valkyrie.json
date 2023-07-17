@@ -14,6 +14,17 @@
       },
       "itemCondition": "NewCondition",
       "url": "https://www.games-workshop.com/en-WW/Imperial-Guard-Valkyrie"
+    },
+    {
+      "price": 101.12,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap Games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/products/imperial-guard-valkyrie"
     }
   ],
   "attributes": {
