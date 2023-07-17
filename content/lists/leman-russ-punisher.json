@@ -1,0 +1,55 @@
+{
+  "name": "Leman Russ Punisher",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "models": 1,
+  "points": 220,
+  "attributes": {
+    "movement": 10,
+    "toughness": 11,
+    "save": 2,
+    "wound": 13,
+    "leadership": 7,
+    "control": 3
+  },
+  "weapons": [
+    {
+      "name": "Punisher gatling cannon",
+      "range": 24,
+      "attack": 20,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Lascannon",
+      "range": 48,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 12,
+      "piercing": 3,
+      "damage": "D6+1"
+    },
+    {
+      "name": "Armoured tracks",
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": 1
+    },
+    {
+      "name": "Sentry Programming",
+      "description": "You can target this unit with the Fire Overwatch Stratagem for 0CP, and can do so even if you have already used that Stratagem on a different unit this phase."
+    }
+  ]
+}
