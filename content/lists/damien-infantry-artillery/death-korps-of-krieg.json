@@ -80,13 +80,38 @@
       "damage": 2
     },
     {
-      "name": "Grenade launcher - krak",
+      "name": "Grenade launcher",
       "models": 2,
-      "range": 24,
+      "profiles": [
+        {
+          "name": "Grenade launcher - frag",
+          "modifiers": [{"name": "BLAST"}],
+          "range": 24,
+          "attack": "D3",
+          "accuracy": 4,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Grenade launcher - krak",
+          "range": 24,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 9,
+          "piercing": 2,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Close combat weapon",
+      "models": 20,
+      "range": "Melee",
       "attack": 1,
       "accuracy": 4,
-      "strength": 9,
-      "piercing": 2,
+      "strength": 3,
+      "piercing": 0,
       "damage": 1
     }
   ],
