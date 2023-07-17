@@ -20,20 +20,11 @@ const props = defineProps({
 })
 
 const wound = computed(() => {
-  if (props.strength === props.toughness)
-    return 4
-  if (props.strength > props.toughness) {
-    if (props.strength > props.toughness * 2)
-      return 2
-
-    return 3
-  }
-  if (props.strength < props.toughness) {
-    if (props.strength < props.toughness / 2)
-      return 6
-
-    return 5
-  }
+  if (props.strength === props.toughness) return 4
+  if (props.strength >= (props.toughness * 2)) return 2
+  if (props.strength > props.toughness) return 3
+  if (props.strength <= (props.toughness / 2)) return 6
+  if (props.strength < props.toughness) return 5
 })
 
 const dice = {
