@@ -5,6 +5,19 @@
   ],
   "models": 1,
   "points": 180,
+  "offers": [
+    {
+      "price": 105,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/astra-militarum-leman-russ-battle-tank-2023"
+    }
+  ],
   "attributes": {
     "movement": 10,
     "toughness": 11,
