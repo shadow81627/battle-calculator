@@ -1,7 +1,7 @@
 {
   "name": "Kill Rig",
   "factions": ["Orks"],
-  "models": 6,
+  "models": 1,
   "points": 220,
   "offers": [
     {

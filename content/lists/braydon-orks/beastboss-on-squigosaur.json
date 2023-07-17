@@ -1,0 +1,70 @@
+{
+  "name": "Beastboss On Squigosaur",
+  "factions": ["Orks"],
+  "models": 1,
+  "points": 165,
+  "offers": [
+    {
+      "price": 91,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/beastboss-on-squigosaur-2021"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 10,
+    "save": 3,
+    "wound": 9,
+    "leadership": 7,
+    "control": 3
+  },
+  "weapons": [
+    {
+      "name": "Slugga",
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Beastchoppa",
+      "modifiers":[{"name": "ANTI-MONSTER 4+"}, {"name": "ANTI-VEHICLE 4+"}],
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Squigosaur’s jaws",
+      "modifiers":[{"name": "DEVASTATING WOUNDS"}, {"name": "EXTRA ATTACKS"}],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 3
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": 1
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    },
+    {
+      "name": "Feel No Pain 4+"
+    }
+  ]
+}
