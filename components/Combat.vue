@@ -54,6 +54,14 @@ const hasBringersOfChange = computed(() => props.abilities.find(ability => abili
 const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && props.target.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
 const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
 const hasBlast = computed(() => props.modifiers?.find(modifier => modifier.name === 'BLAST'))
+const anti = computed(() => {
+  const modifiers = props.modifiers?.find(modifier => {
+    const isAnti = modifier.name.startsWith('ANTI')
+    const hasKeyword = props.target?.keywords?.some((keyword) => modifier.name.includes(keyword.toUpperCase()))
+    return isAnti && hasKeyword
+  })
+  if (modifiers?.name) return Number(modifiers?.name.match(/\d+/)[0])
+})
 const rapidFire = computed(() => {
   const modifier = props.modifiers?.find(modifier => modifier.name.startsWith('RAPID FIRE'))
   if (!modifier) return 0
@@ -99,14 +107,33 @@ const averageHitTotal = computed(() => hasTorrent.value ? attacksTotal.value : M
 
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
-const failedWoundRolls = computed(() => randomWoundRolls.value.reduce((sum, roll) => sum + (roll < wound.value), 0))
+const criticalWoundRolls = computed(() => {
+  if (!anti.value) return 0
+  const criticalWoundRollsEntries = Object.entries(occurrences(randomWoundRolls.value))
+  return criticalWoundRollsEntries.reduce((sum, [key, value]) => (key >= anti.value ? sum + value : sum), 0)
+})
+const failedWoundRolls = computed(() => {
+  const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
+  return randomWoundRolls.value.reduce((sum, roll) => sum + (roll < pass), 0)
+})
 const hasWoundReRolls = computed(() => hasTwinLinked.value || hasBringersOfChange.value || hasTankKiller.value)
 const randomWoundReRolls = computed(() => hasWoundReRolls.value ? rolls(failedWoundRolls.value) : [])
-const randomWoundTotal = computed(() => [...randomWoundRolls.value, ...randomWoundReRolls.value].reduce((sum, roll) => sum + (roll >= wound.value), 0) + lethalHits.value)
+const randomWoundTotal = computed(() => {
+  const rolled = [...randomWoundReRolls.value];
+  const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
+  if (!anti.value || anti.value > wound.value) {
+    rolled.push(...randomWoundRolls.value)
+  }
+  return rolled.reduce((sum, roll) => sum + (roll >= pass), 0) + lethalHits.value + criticalWoundRolls.value
+})
 
 const hasDevastatingWounds = computed(() => props.modifiers?.find(modifier => modifier.name === 'DEVASTATING WOUNDS'))
 const randomDevastatingWounds = computed(() => hasDevastatingWounds.value ? occurrences([...randomWoundRolls.value, ...randomWoundReRolls.value])[6] : 0)
-const randomSaveRolls = computed(() => rolls(randomWoundTotal.value - randomDevastatingWounds.value))
+const randomSaveRolls = computed(() => {
+  const count = randomWoundTotal.value - randomDevastatingWounds.value;
+  if (count < 1) return []
+  return rolls(count)
+})
 const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < _save.value), 0) + randomDevastatingWounds.value)
 
 const _damage = computed(() => paseRolls(props.damage))
@@ -123,7 +150,10 @@ const randomDamageTotal = computed(() => {
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
 const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
 
-const woundTotal = computed(() => Math.floor(averageHitTotal.value * dice.attack(wound.value)))
+const woundTotal = computed(() => {
+  const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
+  return Math.floor(averageHitTotal.value * dice.attack(pass))
+})
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(_save.value)))
 const damageTotal = computed(() => Math.floor(saveTotal.value * (Math.floor(_damage.value.rolls * 3) + _damage.value.base)))
 const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(props.pain)))
@@ -135,7 +165,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
 
     <template v-if="modifiers && modifiers.length">
       [<span v-for="(modifier, index) of modifiers" :key="modifier.name"><span :class="{
-        'text-red-500': rapidFire && modifier.name.startsWith('RAPID FIRE'),
+        'text-red-500': (rapidFire && modifier.name.startsWith('RAPID FIRE')) || (anti && modifier.name.startsWith('ANTI')),
         'text-gray-500': !hasLethalHits && modifier.name.startsWith('LETHAL HITS')
       }">{{
   modifier.name
@@ -195,10 +225,13 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <template v-else>{{ accuracy - takeAim }}+</template>
           </td>
           <td class="p-1">
-            S{{ strength }}
-            T{{ toughness }}
-            =
-            {{ wound }}+
+            <template v-if="anti && anti <= wound">{{ anti }}+ Critical</template>
+            <template v-else>
+              S{{ strength }}
+              T{{ toughness }}
+              =
+              {{ wound }}+
+          </template>
           </td>
           <td class="p-1">
             <template v-if="(save + piercing) > invulnerable && invulnerable < 7">
