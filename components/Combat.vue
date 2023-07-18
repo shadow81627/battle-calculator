@@ -90,13 +90,13 @@ const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.
 const _attack = computed(() => {
   return paseRolls(props.attack)
 })
-const randomAttackRolls = computed(() => rolls(_attack.value.rolls, _attack.value.rollType))
+const randomAttackRolls = computed(() => rolls(_attack.value.rolls * minTurns.value * props.models, _attack.value.rollType))
 const randomAttacksTotal = computed(() => {
   const randomAttacksTotal = randomAttackRolls.value.reduce((sum, roll) => sum + roll, 0)
-  const randomAttacksTotalBonuses = randomAttacksTotal + _attack.value.base + blast.value + rapidFire.value
-  return randomAttacksTotalBonuses * minTurns.value * props.models
+  const randomAttacksTotalBonuses = (_attack.value.base + blast.value + rapidFire.value) * minTurns.value * props.models
+  return randomAttacksTotal + randomAttacksTotalBonuses
 })
-const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * 3) + _attack.value.base) + blast.value + rapidFire.value) * minTurns.value * props.models))
+const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * (_attack.value.rollType / 2)) + _attack.value.base) + blast.value + rapidFire.value) * minTurns.value * props.models))
 
 const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
 const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
