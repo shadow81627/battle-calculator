@@ -86,6 +86,7 @@
         {
           "name": "Grenade launcher - frag",
           "modifiers": [{"name": "BLAST"}],
+          "models": 2,
           "range": 24,
           "attack": "D3",
           "accuracy": 4,
@@ -95,6 +96,7 @@
         },
         {
           "name": "Grenade launcher - krak",
+          "models": 2,
           "range": 24,
           "attack": 1,
           "accuracy": 4,
