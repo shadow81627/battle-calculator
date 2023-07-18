@@ -1,6 +1,17 @@
 {
   "name": "Scout Sentinels",
-  "factions": ["Astra Militarum"],
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Vehicle",
+    "Walker",
+    "Imperium",
+    "Regiment",
+    "Squadron",
+    "Smoke",
+    "Scout Sentinels"
+  ],
   "models": 3,
   "points": 150,
   "offers": [
@@ -97,10 +108,13 @@
         "quantity": 1
       },
       "effects": [
-        {"name": "Re-roll Hit roll of 1"},
-        {"name": "Remove [INDIRECT FIRE] penalty"}
+        {
+          "name": "Re-roll Hit roll of 1"
+        },
+        {
+          "name": "Remove [INDIRECT FIRE] penalty"
+        }
       ]
-
     }
   ]
 }

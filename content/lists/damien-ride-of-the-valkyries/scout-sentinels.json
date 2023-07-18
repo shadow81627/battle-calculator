@@ -1,6 +1,15 @@
 {
   "name": "Scout Sentinels",
   "factions": ["Astra Militarum"],
+  "keywords": [
+    "Vehicle",
+    "Walker",
+    "Imperium",
+    "Regiment",
+    "Squadron",
+    "Smoke",
+    "Scout Sentinels"
+  ],
   "quantity": 1.665,
   "models": 3,
   "maxModels": 3,
