@@ -15,42 +15,26 @@
   },
   "weapons": [
     {
-      "name": "Twin lascannon",
+      "name": "Laser destroyer",
       "modifiers": [
+        {
+          "name": "HEAVY"
+        },
         {
           "name": "TWIN-LINKED"
         }
       ],
-      "range": 48,
-      "attack": 1,
-      "accuracy": 4,
+      "range": 36,
+      "attack": 2,
+      "accuracy": 5,
       "strength": 12,
-      "piercing": 3,
-      "damage": "D6+1",
-      "alternatives": [
-        {
-          "name": "Twin heavy bolter",
-          "modifiers": [
-            {
-              "name": "TWIN-LINKED"
-            },
-            {
-              "name": "SUSTAINED HITS 1"
-            }
-          ],
-          "range": 36,
-          "attack": 3,
-          "accuracy": 4,
-          "strength": 5,
-          "piercing": 1,
-          "damage": 2
-        }
-      ]
+      "piercing": 2,
+      "damage": "D6+1"
     },
     {
       "name": "Close combat weapon",
       "range": "Melee",
-      "attack": 1,
+      "attack": 2,
       "accuracy": 4,
       "strength": 4,
       "piercing": 0,
