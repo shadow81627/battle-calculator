@@ -50,6 +50,7 @@ const minTurns = computed(() => Math.min(props.turns, maxTurns.value))
 const hasTorrent = computed(() => props.modifiers?.find(modifier => modifier.name === 'TORRENT'))
 const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS') && !hasTorrent.value)
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
+const hasTankHunter = computed(() => props.abilities?.find(ability => ability.name === 'Tank Hunter'))
 const hasBringersOfChange = computed(() => props.abilities.find(ability => ability.name === 'Bringers of Change'))
 const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && props.target.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
 const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
@@ -102,11 +103,26 @@ const attacksTotal = computed(() => {
 })
 
 const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
+const _accuracy = computed(()=> (props.accuracy - heavy.value) - takeAim.value)
 const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
-const randomHitReRolls = computed(() => hasDaringRecon.value ? rolls(occurrences(randomHitRolls.value)[1]) : [])
+const failedHitRolls = computed(() => {
+  return randomHitRolls.value.reduce((sum, roll) => sum + (roll < _accuracy.value), 0)
+})
+const randomHitReRolls = computed(() => {
+  if (hasDaringRecon.value) { return rolls(occurrences(randomHitRolls.value)[1]) }
+  if (hasTankHunter.value && failedHitRolls.value) { return rolls(failedHitRolls.value) }
+  return []
+})
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
-const randomHitTotal = computed(() => hasTorrent.value ? randomAttacksTotal.value : [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value].reduce((sum, roll) => sum + (roll >= ((props.accuracy - heavy.value) - takeAim.value)), 0))
-const averageHitTotal = computed(() => hasTorrent.value ? attacksTotal.value : Math.floor(attacksTotal.value * dice.attack((props.accuracy - heavy.value) - takeAim.value)))
+const randomHitTotal = computed(() => {
+  if (hasTorrent.value) return randomAttacksTotal.value
+  const rolled = [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value]
+  return rolled.reduce((sum, roll) => sum + (roll >= _accuracy.value), 0)
+})
+const averageHitTotal = computed(() => {
+  if (hasTorrent.value) return attacksTotal.value
+  return Math.floor(attacksTotal.value * dice.attack(_accuracy.value))
+})
 
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
@@ -297,7 +313,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <!-- Attacks Re-rolls -->
           </td>
           <td class="p-1 text-left">
-            <DisplayRolls v-if="hasDaringRecon" :rolls="randomHitReRolls" />
+            <DisplayRolls v-if="randomHitReRolls?.length" :rolls="randomHitReRolls" />
             <template v-else>
               &nbsp;
             </template>
