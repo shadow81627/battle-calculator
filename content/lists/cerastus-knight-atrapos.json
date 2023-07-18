@@ -1,0 +1,109 @@
+{
+  "name": "Cerastus Knight Atrapos",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/YeS47MWmFkWqKoLP.pdf#page=11",
+  "factions": [
+    "Imperial Knights"
+  ],
+  "models": 1,
+  "points": 440,
+  "attributes": {
+    "movement": 12,
+    "toughness": 12,
+    "save": 3,
+    "wound": 25,
+    "leadership": 6,
+    "control": 10
+  },
+  "weapons": [
+    {
+      "name": "Atrapos lascutter",
+      "profiles": [
+        {
+          "name": "Atrapos lascutter  – low intensity",
+          "modifiers": [
+            {"name": "SUSTAINED HITS 1"}
+          ],
+          "range": 36,
+          "attack": "2D6",
+          "accuracy": 3,
+          "strength": 7,
+          "piercing": 1,
+          "damage": 2
+        },
+        {
+          "name": "Atrapos lascutter  – low intensity",
+          "modifiers": [
+            {"name": "SUSTAINED HITS 1"}
+          ],
+          "range": "Melee",
+          "attack": 12,
+          "accuracy": 3,
+          "strength": 7,
+          "piercing": 1,
+          "damage": 2
+        },
+        {
+          "name": "Atrapos lascutter  – high intensity",
+          "modifiers": [
+            {"name": "SUSTAINED HITS 1"}
+          ],
+          "range": 24,
+          "attack": "D6",
+          "accuracy": 3,
+          "strength": 14,
+          "piercing": 3,
+          "damage": 4
+        },
+        {
+          "name": "Atrapos lascutter  – high intensity",
+          "modifiers": [
+            {"name": "SUSTAINED HITS 1"}
+          ],
+          "range": "Melee",
+          "attack": 12,
+          "accuracy": 3,
+          "strength": 14,
+          "piercing": 3,
+          "damage": 4
+        }
+      ]
+    },
+    {
+      "name": "Graviton singularity cannon",
+      "profiles": [
+        {
+          "name": "Graviton singularity cannon – contained",
+          "modifiers": [
+            {"name": "BLAST"}
+          ],
+          "range": 24,
+          "attack": "D3",
+          "accuracy": 3,
+          "strength": 16,
+          "piercing": 4,
+          "damage": "D6+1"
+        },
+        {
+          "name": "Graviton singularity cannon – singularity",
+          "modifiers": [
+            {"name": "BLAST"},
+            {"name": "DEVASTATING WOUNDS"},
+            {"name": "HAZARDOUS"}
+          ],
+          "range": 24,
+          "attack": "D3",
+          "accuracy": 3,
+          "strength": 16,
+          "piercing": 4,
+          "damage": "D6+1"
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6+2"
+    }
+  ]
+}
