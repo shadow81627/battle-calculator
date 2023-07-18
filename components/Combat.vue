@@ -146,7 +146,16 @@ const randomWoundTotal = computed(() => {
   return rolled.reduce((sum, roll) => sum + (roll >= pass), 0) + lethalHits.value + criticalWoundRolls.value
 })
 
-const hasDevastatingWounds = computed(() => props.modifiers?.find(modifier => modifier.name === 'DEVASTATING WOUNDS'))
+const hasDevastatingWounds = computed(() => {
+  const modifier = props.modifiers?.find(modifier => modifier.name === 'DEVASTATING WOUNDS')
+  const ability = props.abilities?.find(
+    ability => ability.name === 'Mow Down the Enemy' &&
+      !props.target?.keywords?.some(
+        (keyword) => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())
+      )
+  )
+  return modifier || ability
+})
 const randomDevastatingWounds = computed(() => hasDevastatingWounds.value ? occurrences([...randomWoundRolls.value, ...randomWoundReRolls.value])[6] : 0)
 const randomSaveRolls = computed(() => {
   const count = randomWoundTotal.value - randomDevastatingWounds.value;

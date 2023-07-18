@@ -73,6 +73,10 @@
     {
       "name": "Deadly Demise",
       "damage": "D3"
+    },
+    {
+      "name": "Mow Down the Enemy",
+      "description": "Each time this model makes an attack with its punisher gatling cannon that targets an enemy unit (excluding Monsters and Vehicles), that attack has the [DEVASTATING WOUNDS] ability."
     }
   ]
 }
