@@ -48,7 +48,24 @@
       "accuracy": 4,
       "strength": 5,
       "piercing": 0,
-      "damage": 1
+      "damage": 1,
+      "alternatives": [
+        {
+          "models": 2,
+          "name": "Multiple rocket pod",
+          "modifiers": [
+            {
+              "name": "BLAST"
+            }
+          ],
+          "range": 36,
+          "attack": "D6",
+          "accuracy": 4,
+          "strength": 6,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
     },
     {
       "name": "Heavy bolter",
