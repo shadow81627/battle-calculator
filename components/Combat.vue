@@ -83,7 +83,7 @@ function paseRolls(roll) {
   const base = Number(String(roll).match(/\+(\d+)/)?.[1] ?? (typeof roll === 'number' ? roll : 0))
   const rollType = Number(String(roll).match(/D(\d+)/)?.[1])
   const rolls = Number(String(roll).match(/(\d+)D/)?.[1] ?? (rollType ? 1 : 0))
-  return { rolls, base, rollType: rollType ?? 6 }
+  return { rolls, base, rollType: rollType || 6 }
 }
 
 const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.value))
@@ -96,7 +96,10 @@ const randomAttacksTotal = computed(() => {
   const randomAttacksTotalBonuses = (_attack.value.base + blast.value + rapidFire.value) * minTurns.value * props.models
   return randomAttacksTotal + randomAttacksTotalBonuses
 })
-const attacksTotal = computed(() => (((Math.floor(_attack.value.rolls * (_attack.value.rollType / 2)) + _attack.value.base) + blast.value + rapidFire.value) * minTurns.value * props.models))
+const attacksTotal = computed(() => {
+  const diceRollAverage = Math.floor(_attack.value.rolls * (_attack.value.rollType / 2));
+  return (diceRollAverage + _attack.value.base + blast.value + rapidFire.value) * minTurns.value * props.models
+})
 
 const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
 const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
