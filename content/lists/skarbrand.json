@@ -3,6 +3,15 @@
   "faction": [
     "Legiones Daemonica"
   ],
+  "keywords": [
+    "Monster",
+    "Character",
+    "Epic Hero",
+    "Chaos",
+    "Daemon",
+    "Khorne",
+    "Skarbrand"
+  ],
   "models": 1,
   "points": 365,
   "offers": [
