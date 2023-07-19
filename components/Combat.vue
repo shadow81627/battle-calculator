@@ -51,8 +51,18 @@ const hasTorrent = computed(() => props.modifiers?.find(modifier => modifier.nam
 const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS') && !hasTorrent.value)
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
 const hasTankHunter = computed(() => props.abilities?.find(ability => ability.name === 'Tank Hunter') && props.target?.keywords?.some((keyword) => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())))
+const hasAtraposDuty = computed(() => {
+  const ability = props.abilities?.find(ability => ability.name === 'Atrapos’ Duty (Bondsman)')
+  const keyword = props.target?.keywords?.find(item => ['TITANIC', 'TOWERING'].includes(item.toUpperCase()));
+  return ability && keyword
+})
+const hasMacroExtinctionProtocols = computed(() => {
+  const ability = props.abilities?.find(ability => ability.name === 'Macro-extinction Protocols')
+  const keyword = props.target?.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase()))
+  return ability && keyword
+})
 const hasBringersOfChange = computed(() => props.abilities.find(ability => ability.name === 'Bringers of Change'))
-const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && props.target.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
+const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && props.target?.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
 const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
 const hasBlast = computed(() => props.modifiers?.find(modifier => modifier.name === 'BLAST'))
 const anti = computed(() => {
@@ -91,7 +101,7 @@ const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.
 const _attack = computed(() => {
   return paseRolls(props.attack)
 })
-const randomAttackRolls = computed(() => rolls(_attack.value.rolls * minTurns.value * props.models, _attack.value.rollType))
+const randomAttackRolls = computed(() => rolls(_attack.value.rolls * minTurns.value * props.models, _attack.value.rollType || 6))
 const randomAttacksTotal = computed(() => {
   const randomAttacksTotal = randomAttackRolls.value.reduce((sum, roll) => sum + roll, 0)
   const randomAttacksTotalBonuses = (_attack.value.base + blast.value + rapidFire.value) * minTurns.value * props.models
@@ -103,14 +113,26 @@ const attacksTotal = computed(() => {
 })
 
 const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
-const _accuracy = computed(()=> (props.accuracy - heavy.value) - takeAim.value)
+const _accuracy = computed(() => {
+  const buffs = [heavy.value, takeAim.value]
+  if (hasMacroExtinctionProtocols.value) {
+    buffs.push(1)
+  }
+  const buffTotal = buffs.reduce((sum, value) => sum + value, 0)
+  return props.accuracy - buffTotal
+})
 const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
 const failedHitRolls = computed(() => {
   return randomHitRolls.value.reduce((sum, roll) => sum + (roll < _accuracy.value), 0)
 })
+const hasHitReRolls = computed(()=> hasDaringRecon.value || hasTankHunter.value || hasAtraposDuty.value)
 const randomHitReRolls = computed(() => {
-  if (hasDaringRecon.value) { return rolls(occurrences(randomHitRolls.value)[1]) }
-  if (hasTankHunter.value && failedHitRolls.value) { return rolls(failedHitRolls.value) }
+  if (hasDaringRecon.value) {
+    return rolls(occurrences(randomHitRolls.value)[1])
+  }
+  if ((hasTankHunter.value || hasAtraposDuty.value) && failedHitRolls.value > 0) {
+    return rolls(failedHitRolls.value)
+  }
   return []
 })
 const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
@@ -250,7 +272,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           </td>
           <td class="p-1">
             <template v-if="hasTorrent">N/A</template>
-            <template v-else>{{ accuracy - takeAim }}+</template>
+            <template v-else>{{ _accuracy }}+</template>
           </td>
           <td class="p-1">
             <template v-if="anti && anti <= wound">{{ anti }}+ Critical</template>
@@ -314,7 +336,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <DisplayRolls :rolls="randomPainRolls" />
           </td>
         </tr>
-        <tr v-show="hasDaringRecon || hasWoundReRolls">
+        <tr v-show="hasHitReRolls || hasWoundReRolls">
           <td class="p-1 text-left">
             Re-rolls
           </td>
@@ -322,7 +344,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <!-- Attacks Re-rolls -->
           </td>
           <td class="p-1 text-left">
-            <DisplayRolls v-if="randomHitReRolls?.length" :rolls="randomHitReRolls" />
+            <DisplayRolls v-if="hasHitReRolls" :rolls="randomHitReRolls" />
             <template v-else>
               &nbsp;
             </template>
