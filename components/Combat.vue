@@ -21,12 +21,14 @@ const props = defineProps({
   distance: { type: Number },
 })
 
+const _strength = computed(()=> props.order === 'WAAAGH!' && props.range === "Melee" ? props.strength + 1 : props.strength)
+
 const wound = computed(() => {
-  if (props.strength === props.toughness) return 4
-  if (props.strength >= (props.toughness * 2)) return 2
-  if (props.strength > props.toughness) return 3
-  if (props.strength <= (props.toughness / 2)) return 6
-  if (props.strength < props.toughness) return 5
+  if (_strength.value === props.toughness) return 4
+  if (_strength.value >= (props.toughness * 2)) return 2
+  if (_strength.value > props.toughness) return 3
+  if (_strength.value <= (props.toughness / 2)) return 6
+  if (_strength.value < props.toughness) return 5
 })
 
 const dice = {
@@ -99,7 +101,11 @@ function paseRolls(roll) {
 
 const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.value))
 const _attack = computed(() => {
-  return paseRolls(props.attack)
+  const parsed = paseRolls(props.attack)
+  if (props.order === 'WAAGH!' && props.range === "Melee") {
+    parsed.base = parsed.base + 1
+  }
+  return parsed
 })
 const randomAttackRolls = computed(() => rolls(_attack.value.rolls * minTurns.value * props.models, _attack.value.rollType || 6))
 const randomAttacksTotal = computed(() => {
@@ -277,7 +283,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           <td class="p-1">
             <template v-if="anti && anti <= wound">{{ anti }}+ Critical</template>
             <template v-else>
-              S{{ strength }}
+              S{{ _strength }}
               T{{ toughness }}
               =
               {{ wound }}+
