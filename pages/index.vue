@@ -1,10 +1,24 @@
 <script setup>
 import { groupBy, startCase } from 'lodash-es';
+const route = useRoute()
+const router = useRouter()
 const order = ref('')
 const turns = ref(1)
 const distance = ref(24)
-const attackerId = ref('/lists/damien-infantry-artillery/scout-sentinels')
-const defenderId = ref('/lists/braydon-thousand-sons/mutalith-vortex-beast')
+const attackerId = computed({
+  get() {
+    return decodeURIComponent(route.query.attackerId ?? '/lists/damien-infantry-artillery/scout-sentinels')
+  }, set(value) {
+    router.replace({ query: { ...route.query, attackerId: encodeURIComponent(value) } })
+  }
+})
+const defenderId = computed({
+  get() {
+    return decodeURIComponent(route.query.defenderId ?? '/lists/braydon-thousand-sons/mutalith-vortex-beast')
+  }, set(value) {
+    router.replace({ query: { ...route.query, defenderId: encodeURIComponent(value) } })
+  }
+})
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
 const { data: defender, refresh: refreshDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
 
@@ -106,8 +120,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
           <div v-for="weapon of attacker.weapons" :key="weapon.name" class="border-y border-solid py-5">
             <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
               <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" :key="profile.name"
-                v-bind="{ ...profile }"
-                :distance="distance"
+                v-bind="{ ...profile }" :distance="distance"
                 :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, profile) }].filter(item => item?.name)"
                 :abilities="attacker.abilities ?? []" :models="profile.models ?? attacker.models"
                 :toughness="defender.attributes.toughness" :save="defender.attributes.save"
@@ -116,8 +129,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                 :order="hasFaction(attacker, 'ASTRA MILITARUM') ? order : undefined" />
             </template>
             <Combat v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
-              v-bind="{ ...weapon }"
-              :distance="distance"
+              v-bind="{ ...weapon }" :distance="distance"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, weapon) }].filter(item => item?.name)"
               :abilities="attacker.abilities ?? []" :models="weapon.models ?? attacker.models"
               :toughness="defender.attributes.toughness" :save="defender.attributes.save"
@@ -149,8 +161,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
           <div v-for="weapon of defender.weapons" :key="weapon.name" class="border-y border-solid py-5">
             <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
               <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" v-bind="{ ...profile }"
-                :key="profile.name"
-                :distance="distance"
+                :key="profile.name" :distance="distance"
                 :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, profile) }].filter(item => item?.name)"
                 :abilities="defender.abilities ?? []" :models="weapon.models ?? defender.models" :target="attacker"
                 :toughness="attacker.attributes.toughness" :save="attacker.attributes.save"
@@ -158,8 +169,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                 :pain="getAbilityValue(attacker, 'Feel No Pain')" :turns="turns" />
             </template>
             <Combat v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
-              v-bind="{ ...weapon }"
-              :distance="distance"
+              v-bind="{ ...weapon }" :distance="distance"
               :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, weapon) }].filter(item => item?.name)"
               :abilities="defender.abilities ?? []" :models="weapon.models ?? defender.models" :target="attacker"
               :toughness="attacker.attributes.toughness" :save="attacker.attributes.save"
