@@ -104,6 +104,17 @@
     {
       "name": "Deadly Demise",
       "damage": "D6+2"
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    },
+    {
+      "name": "Atrapos’ Duty (Bondsman)",
+      "description": "While a model is affected by this ability, each time that model makes an attack that targets a Titanic or Towering model, you can re-roll the Hit roll and you can re-roll the Wound roll."
+    },
+    {
+      "name": "Macro-extinction Protocols",
+      "description": "Each time this model makes an attack that targets a Monster or Vehicle unit, add 1 to the Hit roll. If that target is Titanic or Towering, add 1 to the Wound roll as well."
     }
   ]
 }
