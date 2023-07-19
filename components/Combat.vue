@@ -342,12 +342,13 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <DisplayRolls :rolls="randomPainRolls" />
           </td>
         </tr>
-        <tr v-show="hasHitReRolls || hasWoundReRolls">
+        <tr>
           <td class="p-1 text-left">
             Re-rolls
           </td>
           <td class="p-1">
             <!-- Attacks Re-rolls -->
+            <DisplayRolls :rolls="[]" class="invisible" />
           </td>
           <td class="p-1 text-left">
             <DisplayRolls v-if="hasHitReRolls" :rolls="randomHitReRolls" />
@@ -360,6 +361,14 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <template v-else>
               &nbsp;
             </template>
+          </td>
+          <td>
+            <!-- Save -->
+            &nbsp;
+          </td>
+          <td>
+            <!-- Damage -->
+            <DisplayRolls :rolls="[]" class="invisible" />
           </td>
         </tr>
         <tr>
