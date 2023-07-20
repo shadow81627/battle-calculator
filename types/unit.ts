@@ -7,7 +7,7 @@ export interface WeaponModifier {
 }
 export interface Weapon {
   name: string
-  modifiers: WeaponModifier
+  modifiers: WeaponModifier[]
   models: number
   range: number | "Melee"
   attack: number | string
@@ -16,6 +16,7 @@ export interface Weapon {
   piercing: number
   damage: number | string,
   profiles?: Weapon[]
+  alternatives?: Weapon[]
 }
 export default interface Unit {
   _path: string
@@ -23,7 +24,17 @@ export default interface Unit {
   models: number
   points: number
   quantity?: number
-  offers: [
+  factions?: string[],
+  keywords?: string[],
+  attributes: {
+    movement: number,
+    toughness: number,
+    save: number,
+    wound: number,
+    leadership: number,
+    control: number,
+  },
+  offers?: [
     {
       price: number
       priceCurrency: 'AUD' | 'USD'
@@ -36,7 +47,7 @@ export default interface Unit {
       url?: string
     },
   ],
-  abilities: Array<{name: string}>
+  abilities?: Array<{name: string}>
   weapons?: Weapon[],
   enhancements?: Enhancement[]
   members?: Unit[]

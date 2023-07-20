@@ -12,13 +12,13 @@ const props = defineProps({
   pain: { type: Number },
   models: { type: Number, default: 1 },
   name: { type: String },
-  turns: { type: Number },
+  turns: { type: Number, default: 1 },
   modifiers: { type: Array, default: () => [] },
   abilities: { type: Array, default: () => [] },
   target: { type: Object },
   order: { type: String },
   range: { type: Number },
-  distance: { type: Number },
+  distance: { type: Number, default: 24 },
 })
 
 const _strength = computed(()=> props.order === 'WAAAGH!' && props.range === "Melee" ? props.strength + 1 : props.strength)

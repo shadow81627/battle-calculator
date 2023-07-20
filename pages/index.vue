@@ -101,42 +101,17 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                   Take Aim
                 </option>
               </select>
+              <!-- <select v-if="hasFaction(attacker, 'ORK')" v-model="order" class="inline w-250px select">
+                <option value="">
+                  None
+                </option>
+                <option value="WAAAGH!">
+                  WAAAGH!
+                </option>
+              </select> -->
             </h2>
-            <p>{{ attacker.models }} {{ attacker.name }} {{ attacker.points }}pts</p>
           </div>
-          <!-- <div class="container">
-            <div class="row">
-              <div class="col-3">
-                <label>Move ({{ attacker.moved }})</label>
-                <input name="movement" type="number" class="input" :max="attacker.movement" v-model="attacker.moved" />
-              </div>
-            </div>
-          </div> -->
-          <Attributes class="mb-5" :attributes="attacker.attributes" :additions="{
-            invulnerable: getAbilityValue(attacker, 'INVULNERABLE SAVE'),
-            pain: getAbilityValue(attacker, 'Feel No Pain'),
-            points: attacker.points,
-          }" />
-          <div v-for="weapon of attacker.weapons" :key="weapon.name" class="border-y border-solid py-5">
-            <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
-              <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" :key="profile.name"
-                v-bind="{ ...profile }" :distance="distance"
-                :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, profile) }].filter(item => item?.name)"
-                :abilities="attacker.abilities ?? []" :models="profile.models ?? attacker.models"
-                :toughness="defender.attributes.toughness" :save="defender.attributes.save"
-                :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
-                :pain="getAbilityValue(defender, 'Feel No Pain')" :turns="turns" :target="defender"
-                :order="hasFaction(attacker, 'ASTRA MILITARUM') ? order : undefined" />
-            </template>
-            <Combat v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
-              v-bind="{ ...weapon }" :distance="distance"
-              :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(attacker, weapon) }].filter(item => item?.name)"
-              :abilities="attacker.abilities ?? []" :models="weapon.models ?? attacker.models"
-              :toughness="defender.attributes.toughness" :save="defender.attributes.save"
-              :invulnerable="getAbilityValue(defender, 'INVULNERABLE SAVE')"
-              :pain="getAbilityValue(defender, 'Feel No Pain')" :turns="turns" :target="defender"
-              :order="hasFaction(attacker, 'ASTRA MILITARUM') ? order : undefined" />
-          </div>
+          <UnitCombat :unit="attacker" :target="defender" v-bind="{ turns, distance }"></UnitCombat>
         </div>
         <div class="col md:col-6">
           <div class="text-left">
@@ -150,32 +125,25 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                   </option>
                 </optgroup>
               </select>
+              <select v-if="hasFaction(defender, 'ASTRA MILITARUM')" v-model="order" class="inline w-250px select">
+                <option value="" selected>
+                  None
+                </option>
+                <option value="take-aim">
+                  Take Aim
+                </option>
+              </select>
+              <!-- <select v-if="hasFaction(defender, 'ORKS')" v-model="order" class="inline w-250px select">
+                <option value="">
+                  None
+                </option>
+                <option value="WAAAGH!">
+                  WAAAGH!
+                </option>
+              </select> -->
             </h2>
-            <p>{{ defender.models }} {{ defender.name }} {{ defender.points }}pts</p>
           </div>
-          <Attributes class="mb-5" :attributes="defender.attributes" :additions="{
-            invulnerable: getAbilityValue(defender, 'INVULNERABLE SAVE'),
-            pain: getAbilityValue(defender, 'Feel No Pain'),
-            points: defender.points,
-          }" />
-          <div v-for="weapon of defender.weapons" :key="weapon.name" class="border-y border-solid py-5">
-            <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
-              <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" v-bind="{ ...profile }"
-                :key="profile.name" :distance="distance"
-                :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, profile) }].filter(item => item?.name)"
-                :abilities="defender.abilities ?? []" :models="weapon.models ?? defender.models" :target="attacker"
-                :toughness="attacker.attributes.toughness" :save="attacker.attributes.save"
-                :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
-                :pain="getAbilityValue(attacker, 'Feel No Pain')" :turns="turns" />
-            </template>
-            <Combat v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
-              v-bind="{ ...weapon }" :distance="distance"
-              :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(defender, weapon) }].filter(item => item?.name)"
-              :abilities="defender.abilities ?? []" :models="weapon.models ?? defender.models" :target="attacker"
-              :toughness="attacker.attributes.toughness" :save="attacker.attributes.save"
-              :invulnerable="getAbilityValue(attacker, 'INVULNERABLE SAVE')"
-              :pain="getAbilityValue(attacker, 'Feel No Pain')" :turns="turns" />
-          </div>
+          <UnitCombat :unit="defender" :target="attacker" v-bind="{ turns, distance }"></UnitCombat>
         </div>
       </div>
     </section>
