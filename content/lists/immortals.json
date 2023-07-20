@@ -1,0 +1,67 @@
+{
+  "name": "Immortals",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#page=43",
+  "factions": [
+    "Necrons"
+  ],
+  "models": 5,
+  "points": 70,
+  "attributes": {
+    "movement": 5,
+    "toughness": 5,
+    "save": 3,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Gauss blaster",
+      "modifiers": [
+        {
+          "name": "LETHAL HITS"
+        }
+      ],
+      "range": 24,
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Tesla carbine",
+          "modifiers": [
+            {
+              "name": "ASSAULT"
+            },
+            {
+              "name": "SUSTAINED HITS 2"
+            }
+          ],
+          "range": 18,
+          "attack": 2,
+          "accuracy": 3,
+          "strength": 5,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Close combat weapon",
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Implacable Eradication",
+      "description": ": Each time a model in this unit makes an attack, re-roll a Wound roll of 1. If the target of that attack is an enemy unit within range of an objective marker, you can re-roll the Wound roll instead."
+    }
+  ]
+}
