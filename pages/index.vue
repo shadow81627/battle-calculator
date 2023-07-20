@@ -26,15 +26,6 @@ function hasFaction(unit, key) {
   return unit?.factions?.find(faction => faction.toUpperCase() === key)
 }
 
-function getDetachmentRuleAttackModifier(unit, weapon) {
-  if (
-    hasFaction(unit, 'ASTRA MILITARUM') &&
-    weapon.range !== "Melee" &&
-    !unit.keywords?.find((item) => item.toUpperCase() === 'AIRCRAFT')
-  )
-    return 'LETHAL HITS'
-}
-
 const { data: unitOptions } = await useAsyncData('lists', () => queryContent('lists').find(), {
   transform(data) {
     const options = data.map(item => ({ value: item._path, label: item.name }))
