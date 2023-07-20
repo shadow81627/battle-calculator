@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Unit, { Weapon } from '~/types/unit'
-const props = defineProps<{
+defineProps<{
   unit: Unit,
   target: Unit,
   distance?: number,
@@ -52,7 +52,37 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
       </div>
       <br>
     </section>
-    <div v-for="weapon of unit.weapons" :key="weapon.name" class="border-y border-solid py-5">
+    <section class="my-5">
+      <div>
+        <table>
+          <thead>
+            <th class="text-left"><label>Orders</label></th>
+          </thead>
+          <tbody>
+            <select v-if="hasFaction(unit, 'ASTRA MILITARUM')" v-model="order" class="inline w-250px select">
+              <option value="" selected>
+                None
+              </option>
+              <option value="take-aim">
+                Take Aim
+              </option>
+            </select>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <!-- <select v-if="hasFaction(defender, 'ORKS')" v-model="order" class="inline w-250px select">
+                <option value="">
+                  None
+                </option>
+                <option value="WAAAGH!">
+                  WAAAGH!
+                </option>
+              </select> -->
+      </div>
+    </section>
+
+    <section v-for="weapon of unit.weapons" :key="weapon.name" class="border-y border-solid py-5">
       <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
         <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" :key="profile.name" v-bind="{ ...profile }"
           :distance="distance"
@@ -70,6 +100,6 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
         :save="target.attributes.save" :invulnerable="getAbilityValue(target, 'INVULNERABLE SAVE')"
         :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
         :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined" />
-    </div>
+    </section>
   </div>
 </template>

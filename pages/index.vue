@@ -93,22 +93,6 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                   </option>
                 </optgroup>
               </select>
-              <select v-if="hasFaction(attacker, 'ASTRA MILITARUM')" v-model="order" class="inline w-250px select">
-                <option value="">
-                  None
-                </option>
-                <option value="take-aim">
-                  Take Aim
-                </option>
-              </select>
-              <!-- <select v-if="hasFaction(attacker, 'ORK')" v-model="order" class="inline w-250px select">
-                <option value="">
-                  None
-                </option>
-                <option value="WAAAGH!">
-                  WAAAGH!
-                </option>
-              </select> -->
             </h2>
           </div>
           <UnitCombat :unit="attacker" :target="defender" v-bind="{ turns, distance }"></UnitCombat>
@@ -125,22 +109,6 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
                   </option>
                 </optgroup>
               </select>
-              <select v-if="hasFaction(defender, 'ASTRA MILITARUM')" v-model="order" class="inline w-250px select">
-                <option value="" selected>
-                  None
-                </option>
-                <option value="take-aim">
-                  Take Aim
-                </option>
-              </select>
-              <!-- <select v-if="hasFaction(defender, 'ORKS')" v-model="order" class="inline w-250px select">
-                <option value="">
-                  None
-                </option>
-                <option value="WAAAGH!">
-                  WAAAGH!
-                </option>
-              </select> -->
             </h2>
           </div>
           <UnitCombat :unit="defender" :target="attacker" v-bind="{ turns, distance }"></UnitCombat>
