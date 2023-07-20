@@ -5,32 +5,38 @@ const router = useRouter()
 const order = ref('')
 const turns = ref(1)
 const distance = ref(24)
+const { data: unitOptions } = await useAsyncData('lists', () => queryContent('lists').find(), {
+  transform(data) {
+    const options = data.map(item => ({ value: item._path, label: item.name }))
+    return options
+  },
+})
+const groupedUnitOptions = computed(() => {
+  const grouped = groupBy(unitOptions.value, function (option) {
+    return startCase(option.value.split('/').slice(-2, -1))
+  })
+  return Object.entries(grouped)
+})
 const attackerId = computed({
   get() {
-    return decodeURIComponent(route.query.attackerId ?? '/lists/damien-infantry-artillery/scout-sentinels')
+    const id = decodeURIComponent(route.query.attackerId)
+    if (unitOptions.value.find(option => option.value === id)) return id
+    return '/lists/damien-infantry-artillery/scout-sentinels'
   }, set(value) {
     router.replace({ query: { ...route.query, attackerId: encodeURIComponent(value) } })
   }
 })
 const defenderId = computed({
   get() {
-    return decodeURIComponent(route.query.defenderId ?? '/lists/braydon-thousand-sons/mutalith-vortex-beast')
+    const id = decodeURIComponent(route.query.defenderId)
+    if (unitOptions.value.find(option => option.value === id)) return id
+    return '/lists/braydon-thousand-sons/mutalith-vortex-beast'
   }, set(value) {
     router.replace({ query: { ...route.query, defenderId: encodeURIComponent(value) } })
   }
 })
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
 const { data: defender, refresh: refreshDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
-
-const { data: unitOptions } = await useAsyncData('lists', () => queryContent('lists').find(), {
-  transform(data) {
-    const options = data.map(item => ({ value: item._path, label: item.name }))
-    const grouped = groupBy(options, function (option) {
-      return startCase(option.value.split('/').slice(-2, -1))
-    })
-    return Object.entries(grouped)
-  },
-})
 </script>
 
 <template>
@@ -73,7 +79,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             <h2 class="h2">
               Attacker
               <select v-model="attackerId" class="inline w-250px select" name="attacker" @change="refreshAttacker">
-                <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of unitOptions" :key="key">
+                <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of groupedUnitOptions" :key="key">
                   <option v-for="option of group" :key="option.value" :value="option.value"
                     :selected="attackerId === option.value ? option.value : undefined">
                     {{ option.label }}
@@ -89,7 +95,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
             <h2 class="h2">
               Defender
               <select v-model="defenderId" class="inline w-250px select" name="defender" @change="refreshDefender">
-                <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of unitOptions" :key="key">
+                <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of groupedUnitOptions" :key="key">
                   <option v-for="option of group" :key="option.value" :value="option.value"
                     :selected="defenderId === option.value ? option.value : undefined">
                     {{ option.label }}
