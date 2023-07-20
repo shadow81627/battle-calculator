@@ -22,10 +22,6 @@ const defenderId = computed({
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
 const { data: defender, refresh: refreshDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
 
-function hasFaction(unit, key) {
-  return unit?.factions?.find(faction => faction.toUpperCase() === key)
-}
-
 const { data: unitOptions } = await useAsyncData('lists', () => queryContent('lists').find(), {
   transform(data) {
     const options = data.map(item => ({ value: item._path, label: item.name }))
