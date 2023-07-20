@@ -21,7 +21,7 @@ const props = defineProps({
   distance: { type: Number, default: 24 },
 })
 
-const _strength = computed(()=> props.order === 'WAAAGH!' && props.range === "Melee" ? props.strength + 1 : props.strength)
+const _strength = computed(() => props.order === 'WAAAGH!' && props.range === "Melee" ? props.strength + 1 : props.strength)
 
 const wound = computed(() => {
   if (_strength.value === props.toughness) return 4
@@ -65,6 +65,7 @@ const hasMacroExtinctionProtocols = computed(() => {
 })
 const hasBringersOfChange = computed(() => props.abilities.find(ability => ability.name === 'Bringers of Change'))
 const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && props.target?.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
+const hasMobileHunterKillers = computed(() => props.abilities.find(ability => ability.name === 'Mobile Hunter-killers') && props.target?.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
 const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
 const hasBlast = computed(() => props.modifiers?.find(modifier => modifier.name === 'BLAST'))
 const anti = computed(() => {
@@ -131,7 +132,7 @@ const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
 const failedHitRolls = computed(() => {
   return randomHitRolls.value.reduce((sum, roll) => sum + (roll < _accuracy.value), 0)
 })
-const hasHitReRolls = computed(()=> hasDaringRecon.value || hasTankHunter.value || hasAtraposDuty.value)
+const hasHitReRolls = computed(() => hasDaringRecon.value || hasTankHunter.value || hasAtraposDuty.value)
 const randomHitReRolls = computed(() => {
   if (hasDaringRecon.value) {
     return rolls(occurrences(randomHitRolls.value)[1])
@@ -163,7 +164,7 @@ const failedWoundRolls = computed(() => {
   const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
   return randomWoundRolls.value.reduce((sum, roll) => sum + (roll < pass), 0)
 })
-const hasWoundReRolls = computed(() => hasTwinLinked.value || hasBringersOfChange.value || hasTankKiller.value)
+const hasWoundReRolls = computed(() => hasTwinLinked.value || hasBringersOfChange.value || hasTankKiller.value || hasMobileHunterKillers.value)
 const randomWoundReRolls = computed(() => hasWoundReRolls.value ? rolls(failedWoundRolls.value) : [])
 const randomWoundTotal = computed(() => {
   const rolled = [...randomWoundReRolls.value];
@@ -287,7 +288,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
               T{{ toughness }}
               =
               {{ wound }}+
-          </template>
+            </template>
           </td>
           <td class="p-1">
             <template v-if="(save + piercing) > invulnerable && invulnerable < 7">
