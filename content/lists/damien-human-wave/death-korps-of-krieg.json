@@ -1,0 +1,132 @@
+{
+  "name": "Death Korps of Krieg",
+  "factions": ["Astra Militarum"],
+  "quantity": 1,
+  "models": 20,
+  "points": 130,
+  "offers": [
+    {
+      "price": 118,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    },
+    {
+      "price": 76.63,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/astra-militarum/products/kill-team-veteran-guardsmen-pre-order"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 5,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Lasgun",
+      "modifiers": [{"name": "RAPID FIRE 1"}],
+      "models": 12,
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Plasma gun",
+      "modifiers": [{"name": "RAPID FIRE 1"}],
+      "models": 2,
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Plasma pistol",
+      "modifiers": [{"name": "PISTOL"}],
+      "models": 2,
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Sniper rifle",
+      "modifiers": [{"name": "HEAVY"}, {"name": "PRECISION"}],
+      "models": 2,
+      "range": 36,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Grenade launcher",
+      "models": 2,
+      "profiles": [
+        {
+          "name": "Grenade launcher - frag",
+          "modifiers": [{"name": "BLAST"}],
+          "models": 2,
+          "range": 24,
+          "attack": "D3",
+          "accuracy": 4,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Grenade launcher - krak",
+          "models": 2,
+          "range": 24,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 9,
+          "piercing": 2,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Close combat weapon",
+      "models": 20,
+      "range": "Melee",
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Grim Demeanour",
+      "description": "Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength.",
+      "effects": [
+        {"name": "Add 1 to the Hit roll", "trigger": "unit is Below Starting Strength"},
+        {"name": "Add 1 to the Wound roll", "trigger": "unit is Below Half-strength"}
+      ]
+
+    }
+  ]
+}

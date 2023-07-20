@@ -1,0 +1,59 @@
+{
+  "name": "Ursula Creed",
+  "factions": ["Astra Militarum"],
+  "quantity": 1,
+  "models": 1,
+  "points": 55,
+  "offers": [
+    {
+      "price": 77,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/astra-militarum-lord-castellan-ursula-creed-2023"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 4,
+    "wound": 4,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Duty and Vengeance",
+      "modifiers": [{"name": "PISTOL"}],
+      "range": 12,
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Power weapon",
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 2,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Invulnerable Save 5+"
+    },
+    {
+      "name": "Lord Castellan",
+      "description": "While this model is leading a unit, that unit can be affected by up to two different Orders at the same time.",
+      "target": "bodyguard"
+    }
+  ]
+}

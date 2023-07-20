@@ -1,0 +1,94 @@
+{
+  "name": "Infantry Squad",
+  "factions": ["Astra Militarum"],
+  "quantity": 3,
+  "models": 10,
+  "points": 65,
+  "offers": [
+    {
+      "price": 84,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    },
+    {
+      "$comment": "Cadian",
+      "price": 66.36,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/astra-militarum/products/astra-militarum-cadian-shock-troops-pre-order-1"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 5,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Lasgun",
+      "modifiers": [{"name": "RAPID FIRE 1"}],
+      "models": 6,
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Plasma gun",
+      "modifiers": [{"name": "RAPID FIRE 1"}],
+      "models": 1,
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Plasma pistol",
+      "modifiers": [{"name": "PISTOL"}],
+      "models": 1,
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Close combat weapon",
+      "models": 10,
+      "range": "Melee",
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Autocannon",
+      "models": 1,
+      "range": 48,
+      "attack": 2,
+      "accuracy": 5,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 3
+    }
+  ]
+}
