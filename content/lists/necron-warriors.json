@@ -1,0 +1,67 @@
+{
+  "name": "Necron Warriors",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#page=41",
+  "factions": [
+    "Necrons"
+  ],
+  "models": 10,
+  "points": 120,
+  "attributes": {
+    "movement": 5,
+    "toughness": 4,
+    "save": 4,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Gauss flayer",
+      "modifiers": [
+        {
+          "name": "LETHAL HITS"
+        },
+        {
+          "name": "RAPID FIRE 1"
+        }
+      ],
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Gauss reaper",
+          "modifiers": [
+            {
+              "name": "LETHAL HITS"
+            }
+          ],
+          "range": 12,
+          "attack": 2,
+          "accuracy": 4,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Close combat weapon",
+      "range": "Melee",
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Their Number is Legion",
+      "description": "Each time this unit’s Reanimation Protocols activate, it reanimates D6 wounds instead of D3 wounds, unless it is within range of an objective marker you control, in which case it reanimates D3+3 wounds instead."
+    }
+  ]
+}
