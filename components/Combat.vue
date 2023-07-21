@@ -33,7 +33,7 @@ const wound = computed(() => {
 
 const dice = {
   roll(sides = 6) {
-    return Math.floor(Math.random() * sides) + 1
+    return Math.round(Math.random() * sides) + 1
   },
   attack(x) {
     return ((6 - x) + 1) / 6
@@ -91,7 +91,7 @@ const invulnerable = computed(() => {
   return ability ? Number(ability.name.match(/\d+/)[0]) : 7
 })
 const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
-const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
+const blast = computed(() => hasBlast.value ? Math.round(props.target.models / 5) : 0)
 
 function paseRolls(roll) {
   const base = Number(String(roll).match(/\+(\d+)/)?.[1] ?? (typeof roll === 'number' ? roll : 0))
@@ -115,7 +115,7 @@ const randomAttacksTotal = computed(() => {
   return randomAttacksTotal + randomAttacksTotalBonuses
 })
 const attacksTotal = computed(() => {
-  const diceRollAverage = Math.floor(_attack.value.rolls * (_attack.value.rollType / 2));
+  const diceRollAverage = Math.round(_attack.value.rolls * (_attack.value.rollType / 2));
   return (diceRollAverage + _attack.value.base + blast.value + rapidFire.value) * minTurns.value * props.models
 })
 
@@ -157,7 +157,7 @@ const averageSustainedHits = computed(() => {
 })
 const averageHitTotal = computed(() => {
   if (hasTorrent.value) return attacksTotal.value
-  return Math.floor((attacksTotal.value + averageSustainedHits.value) * dice.attack(_accuracy.value))
+  return Math.round((attacksTotal.value + averageSustainedHits.value) * dice.attack(_accuracy.value))
 })
 
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
@@ -217,11 +217,11 @@ const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls
 const woundTotal = computed(() => {
   const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
   const lethalHits = hasLethalHits.value ? 7 / 6 : 1
-  return Math.floor((averageHitTotal.value * dice.attack(pass)) + lethalHits)
+  return Math.round((averageHitTotal.value * dice.attack(pass)) + lethalHits)
 })
-const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(_save.value)))
-const damageTotal = computed(() => Math.floor(saveTotal.value * (Math.floor(_damage.value.rolls * 3) + _damage.value.base)))
-const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(props.pain)))
+const saveTotal = computed(() => Math.round(woundTotal.value * dice.defend(_save.value)))
+const damageTotal = computed(() => Math.round(saveTotal.value * (Math.round(_damage.value.rolls * 3) + _damage.value.base)))
+const painTotal = computed(() => Math.round(damageTotal.value * dice.defend(props.pain)))
 </script>
 
 <template>
@@ -386,7 +386,7 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
           <td class="p-1">
             <template v-if="sustainedHitsTotal">
               {{ randomHitTotal - sustainedHitsTotal }}
-              + {{ sustainedHitsTotal }} Sustained Hits
+              + {{ sustainedHitsTotal }} Sustained Hit(s)
             </template>
             <template v-else>
               {{ randomHitTotal }}
@@ -433,8 +433,8 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
               {{ averageHitTotal }}
             </template>
             <template v-if="sustainedHitsTotal">
-              {{ averageHitTotal - Math.floor(averageSustainedHits) }}
-              + {{ Math.floor(averageSustainedHits) }} Sustained Hits
+              {{ averageHitTotal - Math.round(averageSustainedHits) }}
+              + {{ Math.round(averageSustainedHits) }} Sustained Hit(s)
             </template>
             <template v-else>
               {{ averageHitTotal }}
