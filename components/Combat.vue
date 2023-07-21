@@ -48,12 +48,18 @@ function rolls(x = 1, sides = 6) {
   return [...Array(x)].map(() => dice.roll(sides))
 }
 
-const maxTurns = computed(() => props.modifiers.find(modifier => modifier.name === 'ONE SHOT') ? 1 : 5)
+function getModifier(name, modifiers) {
+  return modifiers?.find(modifier => modifier.name.toUpperCase() === name.toUpperCase())
+}
+
+const targetIsVehicleOrMonster  = computed(()=> props.target?.keywords?.some((keyword) => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())))
+
+const maxTurns = computed(() => getModifier('ONE SHOT', props.modifiers) ? 1 : 5)
 const minTurns = computed(() => Math.min(props.turns, maxTurns.value))
-const hasTorrent = computed(() => props.modifiers?.find(modifier => modifier.name === 'TORRENT'))
-const hasLethalHits = computed(() => props.modifiers?.find(modifier => modifier.name === 'LETHAL HITS') && !hasTorrent.value)
+const hasTorrent = computed(() => getModifier('TORRENT', props.modifiers))
+const hasLethalHits = computed(() => getModifier('LETHAL HITS', props.modifiers) && !hasTorrent.value)
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
-const hasTankHunter = computed(() => props.abilities?.find(ability => ability.name === 'Tank Hunter') && props.target?.keywords?.some((keyword) => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())))
+const hasTankHunter = computed(() => props.abilities?.find(ability => ability.name === 'Tank Hunter') && targetIsVehicleOrMonster.value)
 const hasAtraposDuty = computed(() => {
   const ability = props.abilities?.find(ability => ability.name === 'Atrapos’ Duty (Bondsman)')
   const keyword = props.target?.keywords?.find(item => ['TITANIC', 'TOWERING'].includes(item.toUpperCase()));
@@ -61,14 +67,14 @@ const hasAtraposDuty = computed(() => {
 })
 const hasMacroExtinctionProtocols = computed(() => {
   const ability = props.abilities?.find(ability => ability.name === 'Macro-extinction Protocols')
-  const keyword = props.target?.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase()))
+  const keyword = targetIsVehicleOrMonster.value
   return ability && keyword
 })
 const hasBringersOfChange = computed(() => props.abilities.find(ability => ability.name === 'Bringers of Change'))
-const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && props.target?.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
-const hasMobileHunterKillers = computed(() => props.abilities.find(ability => ability.name === 'Mobile Hunter-killers') && props.target?.keywords?.find(item => ['VEHICLE', 'MONSTER'].includes(item.toUpperCase())))
-const hasTwinLinked = computed(() => props.modifiers?.find(modifier => modifier.name === 'TWIN-LINKED'))
-const hasBlast = computed(() => props.modifiers?.find(modifier => modifier.name === 'BLAST'))
+const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && targetIsVehicleOrMonster.value)
+const hasMobileHunterKillers = computed(() => props.abilities.find(ability => ability.name === 'Mobile Hunter-killers') && targetIsVehicleOrMonster.value)
+const hasTwinLinked = computed(() => getModifier('TWIN-LINKED', props.modifiers))
+const hasBlast = computed(() => getModifier('BLAST', props.modifiers))
 const anti = computed(() => {
   const modifiers = props.modifiers?.find(modifier => {
     const isAnti = modifier.name.startsWith('ANTI')
