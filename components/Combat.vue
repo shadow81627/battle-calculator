@@ -219,7 +219,7 @@ const woundTotal = computed(() => {
   const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
   return (averageHitTotal.value * dice.attack(pass)) + averageLethalHits.value
 })
-const saveTotal = computed(() => woundTotal.value * dice.defend(_save.value))
+const saveTotal = computed(() => Math.round(woundTotal.value * dice.defend(_save.value)))
 const damageTotal = computed(() => {
   const averageRollType = (_damage.value.rollType / 2)
   const averageRolls = saveTotal.value * ((_damage.value.rolls * averageRollType) + _damage.value.base)
