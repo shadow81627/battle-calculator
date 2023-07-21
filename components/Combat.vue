@@ -155,9 +155,10 @@ const averageSustainedHits = computed(() => {
   }
   return 0
 })
+const averageLethalHits = computed(()=> hasLethalHits.value ? attacksTotal.value * (1 / 6) : 0)
 const averageHitTotal = computed(() => {
   if (hasTorrent.value) return attacksTotal.value
-  return (attacksTotal.value + averageSustainedHits.value) * dice.attack(_accuracy.value)
+  return ((attacksTotal.value - averageLethalHits.value) + averageSustainedHits.value) * dice.attack(_accuracy.value)
 })
 
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
@@ -216,8 +217,7 @@ const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls
 
 const woundTotal = computed(() => {
   const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
-  const lethalHits = hasLethalHits.value ? 7 / 6 : 1
-  return (averageHitTotal.value * dice.attack(pass)) + lethalHits
+  return (averageHitTotal.value * dice.attack(pass)) + averageLethalHits.value
 })
 const saveTotal = computed(() => woundTotal.value * dice.defend(_save.value))
 const damageTotal = computed(() => {
@@ -449,7 +449,13 @@ function formatAverage(number) {
             </template>
           </td>
           <td class="p-1">
-            {{ formatAverage(woundTotal) }}
+            <template v-if="averageLethalHits">
+              {{ formatAverage(woundTotal) }}
+              + {{ formatAverage(averageLethalHits) }} Lethal Hit(s)
+            </template>
+            <template v-else>
+              {{ formatAverage(woundTotal) }}
+            </template>
           </td>
           <td v-if="save" class="p-1">
             {{ formatAverage(saveTotal) }}
