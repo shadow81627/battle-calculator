@@ -148,9 +148,16 @@ const randomHitTotal = computed(() => {
   const rolled = [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value]
   return rolled.reduce((sum, roll) => sum + (roll >= _accuracy.value), 0)
 })
+const averageSustainedHits = computed(() => {
+  const criticalValue = 6
+  if (sustainedHits.value) {
+    return (((((6 + (7 - criticalValue)) / 6) * attacksTotal.value) - attacksTotal.value) * sustainedHits.value)
+  }
+  return 0
+})
 const averageHitTotal = computed(() => {
   if (hasTorrent.value) return attacksTotal.value
-  return Math.floor(attacksTotal.value * dice.attack(_accuracy.value))
+  return Math.floor((attacksTotal.value + averageSustainedHits.value) * dice.attack(_accuracy.value))
 })
 
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
