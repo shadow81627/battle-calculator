@@ -39,11 +39,7 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
               </div>
             </div>
           </div> -->
-    <Attributes class="mb-5" :attributes="unit.attributes" :additions="{
-      invulnerable: getAbilityValue(unit, 'INVULNERABLE SAVE') ?? (order === 'WAAAGH!' ? 5 : undefined),
-      pain: getAbilityValue(unit, 'Feel No Pain'),
-      points: unit.points,
-    }" />
+    <Attributes class="mb-5" :unit="unit" />
     <section class="my-5" style="overflow-x:auto;">
       <WeaponAttributes v-if="unit.weapons?.length" :unit="unit" class="w-full"></WeaponAttributes>
       <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
@@ -57,13 +53,13 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
       <br>
     </section>
     <section class="my-5">
-      <div>
+      <div v-if="hasFaction(unit, 'ASTRA MILITARUM')">
         <table>
           <thead>
             <th class="text-left"><label>Orders</label></th>
           </thead>
           <tbody>
-            <select v-if="hasFaction(unit, 'ASTRA MILITARUM')" v-model="order" class="inline w-250px select">
+            <select v-model="order" class="inline w-250px select">
               <option value="" selected>
                 None
               </option>

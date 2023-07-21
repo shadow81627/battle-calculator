@@ -13,10 +13,11 @@ if (!unit.value)
     <div class="container">
       <div class="row">
         <section class="md:col-6 col">
-          <Attributes :attributes="unit.attributes" :additions="{
+          <Attributes :unit="unit" :additions="{
             invulnerable: getAbilityValue(unit, 'INVULNERABLE SAVE'),
             pain: getAbilityValue(unit, 'Feel No Pain'),
-            points: unit.points
+            points: unit.points,
+            models: unit.models,
           }" />
         </section>
       </div>
