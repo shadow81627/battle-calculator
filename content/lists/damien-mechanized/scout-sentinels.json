@@ -64,6 +64,19 @@
           "strength": 12,
           "piercing": 3,
           "damage": "D6+1"
+        },
+        {
+          "name": "Heavy flamer",
+          "modifiers": [
+            {"name": "IGNORES COVER"},
+            {"name": "TORRENT"}
+          ],
+          "range": 12,
+          "attack": "D6",
+          "accuracy": 0,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 1
         }
       ]
     },

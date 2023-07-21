@@ -45,6 +45,38 @@
     "leadership": 7,
     "control": 2
   },
+  "$weapons": [
+    {
+      "name": "Missile launcher",
+      "$profiles": [
+        {
+          "name": "Missile launcher – frag",
+          "modifiers": [
+            {"name": "BLAST"},
+            {"name": "HEAVY"}
+          ],
+          "range": 48,
+          "attack": "D6",
+          "accuracy": 4,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Missile launcher – krak",
+          "modifiers": [
+            {"name": "HEAVY"}
+          ],
+          "range": 48,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 9,
+          "piercing": 2,
+          "damage": "D6"
+        }
+      ]
+    }
+  ],
   "weapons": [
     {
       "name": "Autocannon",
@@ -63,6 +95,19 @@
           "strength": 12,
           "piercing": 3,
           "damage": "D6+1"
+        },
+        {
+          "name": "Heavy flamer",
+          "modifiers": [
+            {"name": "IGNORES COVER"},
+            {"name": "TORRENT"}
+          ],
+          "range": 12,
+          "attack": "D6",
+          "accuracy": 0,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 1
         }
       ]
     },
