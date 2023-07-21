@@ -9,7 +9,7 @@ defineProps<{
 const order = ref('')
 
 function hasFaction(unit: Unit, key: string) {
-  return unit?.factions?.find(faction => faction.toUpperCase() === key)
+  return unit?.factions?.find(faction => faction.toUpperCase() === key.toUpperCase() )
 }
 
 function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
@@ -17,8 +17,12 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
     hasFaction(unit, 'ASTRA MILITARUM') &&
     weapon.range !== "Melee" &&
     !unit.keywords?.find((item) => item.toUpperCase() === 'AIRCRAFT')
-  )
+  ) {
     return 'LETHAL HITS'
+  }
+  if (hasFaction(unit, 'Orks') && weapon.range === "Melee") {
+    return 'SUSTAINED HITS 1'
+  }
 }
 </script>
 
