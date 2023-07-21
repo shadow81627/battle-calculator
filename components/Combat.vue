@@ -1,6 +1,7 @@
 <script setup>
 import occurrences from '~/utils/occurrences'
 import parseRolls from '~/utils/parseRolls'
+import getModifier from '~/utils/getModifier'
 
 const props = defineProps({
   strength: { type: Number },
@@ -48,11 +49,7 @@ function rolls(x = 1, sides = 6) {
   return [...Array(x)].map(() => dice.roll(sides))
 }
 
-function getModifier(name, modifiers) {
-  return modifiers?.find(modifier => modifier.name.toUpperCase() === name.toUpperCase())
-}
-
-const targetIsVehicleOrMonster  = computed(()=> props.target?.keywords?.some((keyword) => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())))
+const targetIsVehicleOrMonster = computed(() => props.target?.keywords?.some((keyword) => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())))
 
 const maxTurns = computed(() => getModifier('ONE SHOT', props.modifiers) ? 1 : 5)
 const minTurns = computed(() => Math.min(props.turns, maxTurns.value))
@@ -84,20 +81,20 @@ const anti = computed(() => {
   if (modifiers?.name) return Number(modifiers?.name.match(/\d+/)[0])
 })
 const rapidFire = computed(() => {
-  const modifier = props.modifiers?.find(modifier => modifier.name.startsWith('RAPID FIRE'))
+  const modifier = getModifier('RAPID FIRE', props.modifiers)
   if (!modifier) return 0
   const inRange = ((props.range / 2) >= props.distance)
   return modifier && inRange ? Number(modifier.name.match(/\d+/)[0]) : 0
 })
 const sustainedHits = computed(() => {
-  const modifier = props.modifiers?.find(modifier => modifier.name.startsWith('SUSTAINED HITS'))
+  const modifier = getModifier('SUSTAINED HITS', props.modifiers)
   return modifier ? Number(modifier.name.match(/\d+/)[0]) : 0
 })
 const invulnerable = computed(() => {
   const ability = props.target.abilities?.find(ability => ability.name.startsWith('Invulnerable Save'))
   return ability ? Number(ability.name.match(/\d+/)[0]) : 7
 })
-const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
+const heavy = computed(() => getModifier('HEAVY', props.modifiers) ? 1 : 0)
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
 
 const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.value))
@@ -155,7 +152,7 @@ const averageSustainedHits = computed(() => {
   }
   return 0
 })
-const averageLethalHits = computed(()=> hasLethalHits.value ? attacksTotal.value * (1 / 6) : 0)
+const averageLethalHits = computed(() => hasLethalHits.value ? attacksTotal.value * (1 / 6) : 0)
 const averageHitTotal = computed(() => {
   if (hasTorrent.value) return attacksTotal.value
   return ((attacksTotal.value - averageLethalHits.value) + averageSustainedHits.value) * dice.attack(_accuracy.value)
@@ -184,12 +181,9 @@ const randomWoundTotal = computed(() => {
 })
 
 const hasDevastatingWounds = computed(() => {
-  const modifier = props.modifiers?.find(modifier => modifier.name === 'DEVASTATING WOUNDS')
+  const modifier = getModifier('DEVASTATING WOUNDS', props.modifiers)
   const ability = props.abilities?.find(
-    ability => ability.name === 'Mow Down the Enemy' &&
-      !props.target?.keywords?.some(
-        (keyword) => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())
-      )
+    ability => ability.name === 'Mow Down the Enemy' && !targetIsVehicleOrMonster.value
   )
   return modifier || ability
 })
@@ -442,7 +436,7 @@ function formatAverage(number) {
           <td class="p-1">
             <template v-if="sustainedHitsTotal">
               {{ formatAverage(averageHitTotal - averageSustainedHits) }}
-              + {{ formatAverage(averageSustainedHits)  }} Sustained Hit(s)
+              + {{ formatAverage(averageSustainedHits) }} Sustained Hit(s)
             </template>
             <template v-else>
               {{ formatAverage(averageHitTotal) }}
