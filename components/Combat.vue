@@ -1,5 +1,6 @@
 <script setup>
 import occurrences from '~/utils/occurrences'
+import parseRolls from '~/utils/parseRolls'
 
 const props = defineProps({
   strength: { type: Number },
@@ -93,16 +94,9 @@ const invulnerable = computed(() => {
 const heavy = computed(() => props.modifiers?.find(modifier => modifier.name === 'HEAVY') ? 1 : 0)
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
 
-function paseRolls(roll) {
-  const base = Number(String(roll).match(/\+(\d+)/)?.[1] ?? (typeof roll === 'number' ? roll : 0))
-  const rollType = Number(String(roll).match(/D(\d+)/)?.[1])
-  const rolls = Number(String(roll).match(/(\d+)D/)?.[1] ?? (rollType ? 1 : 0))
-  return { rolls, base, rollType: rollType || 6 }
-}
-
 const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.value))
 const _attack = computed(() => {
-  const parsed = paseRolls(props.attack)
+  const parsed = parseRolls(props.attack)
   if (props.order === 'WAAGH!' && props.range === "Melee") {
     parsed.base = parsed.base + 1
   }
@@ -201,7 +195,7 @@ const randomSaveRolls = computed(() => {
 })
 const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < _save.value), 0) + randomDevastatingWounds.value)
 
-const _damage = computed(() => paseRolls(props.damage))
+const _damage = computed(() => parseRolls(props.damage))
 const randomDamageRolls = computed(() => rolls(randomSaveTotal.value * _damage.value.rolls, _damage.value.rollType))
 const randomDamageTotal = computed(() => {
   const total = randomDamageRolls.value.reduce((sum, roll) => sum + roll, 0)
