@@ -1,7 +1,17 @@
 {
   "name": "Taurox",
   "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/xOjVS3Asx2QJ13lk.pdf#page=99&zoom=175",
-  "factions": ["Astra Militarum"],
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Vehicle",
+    "Imperium",
+    "Squadron",
+    "Transport",
+    "Dedicated Transport",
+    "Taurox"
+  ],
   "models": 1,
   "points": 65,
   "offers": [
