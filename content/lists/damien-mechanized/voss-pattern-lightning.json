@@ -1,0 +1,59 @@
+{
+  "name": "Voss-Pattern Lightning",
+  "factions": ["Astra Militarum"],
+  "models": 1,
+  "points": 130,
+  "attributes": {
+    "movement": 20,
+    "toughness": 9,
+    "save": 3,
+    "wound": 14,
+    "leadership": 7,
+    "control": 0
+  },
+  "weapons": [
+    {
+      "name": "Lascannon",
+      "models": 2,
+      "range": 48,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 12,
+      "piercing": 3,
+      "damage": "D6+1"
+    },
+    {
+      "name": "Hellstrike missiles",
+      "modifiers": [
+        {
+          "name": "ANIT-FLY 2+"
+        }
+      ],
+      "range": 48,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 10,
+      "piercing": 3,
+      "damage": "D6"
+    },
+    {
+      "name": "Armoured hull",
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 4,
+      "strength": 8,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Agile Dogfighter",
+      "description": "At the end of your opponent’s Movement phase, one or more units embarked within this Transport can disembark from it, provided every model in each of those disembarking units has the Deep Strike ability."
+    }
+  ]
+}
