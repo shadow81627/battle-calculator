@@ -444,7 +444,7 @@ function formatAverage(number) {
             <DisplayRolls :rolls="randomPainRolls" class="mx-auto" />
           </td>
         </tr>
-        <tr v-show="!showRolls && (hasHitReRolls || hasWoundReRolls)">
+        <tr v-show="showRolls && (hasHitReRolls || hasWoundReRolls)">
           <td class="p-1 text-left">
             Re-rolls
           </td>
