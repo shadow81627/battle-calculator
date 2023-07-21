@@ -226,6 +226,13 @@ const damageTotal = computed(() => {
   return averageRolls
 })
 const painTotal = computed(() => damageTotal.value * dice.defend(props.pain))
+
+function formatAverage(number) {
+  if (number % 1 == 0) {
+    return number
+  }
+  return Number(number).toFixed(2)
+}
 </script>
 
 <template>
@@ -430,28 +437,28 @@ const painTotal = computed(() => damageTotal.value * dice.defend(props.pain))
             Average
           </td>
           <td class="p-1">
-            {{ Math.round(attacksTotal) }}
+            {{ formatAverage(attacksTotal) }}
           </td>
           <td class="p-1">
             <template v-if="sustainedHitsTotal">
-              {{ Math.round(averageHitTotal) - Math.round(averageSustainedHits) }}
-              + {{ Math.round(averageSustainedHits) }} Sustained Hit(s)
+              {{ formatAverage(averageHitTotal - averageSustainedHits) }}
+              + {{ formatAverage(averageSustainedHits)  }} Sustained Hit(s)
             </template>
             <template v-else>
-              {{ Math.round(averageHitTotal) }}
+              {{ formatAverage(averageHitTotal) }}
             </template>
           </td>
           <td class="p-1">
-            {{ Math.round(woundTotal) }}
+            {{ formatAverage(woundTotal) }}
           </td>
           <td v-if="save" class="p-1">
-            {{ Math.round(saveTotal) }}
+            {{ formatAverage(saveTotal) }}
           </td>
           <td v-if="damage" class="p-1">
-            {{ Math.round(damageTotal) }}
+            {{ formatAverage(damageTotal) }}
           </td>
           <td v-if="pain" class="p-1">
-            {{ Math.round(painTotal) }}
+            {{ formatAverage(painTotal) }}
           </td>
         </tr>
       </tbody>
