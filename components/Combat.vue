@@ -338,7 +338,7 @@ function formatAverage(number) {
             <DisplayRolls :rolls="randomWoundRolls" />
           </td>
           <td class="p-1">
-            <DisplayRolls :rolls="randomSaveRolls" />
+            <DisplayRolls :rolls="randomSaveRolls" :reverse="true" />
           </td>
           <td class="p-1">
             <template v-if="randomDamageRolls && randomDamageRolls.length">
