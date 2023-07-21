@@ -142,11 +142,11 @@ const randomHitReRolls = computed(() => {
   }
   return []
 })
-const sustainedHitsRolls = computed(() => sustainedHits.value ? rolls(sustainedHits.value * occurrences(randomHitRolls.value)[6]) : [])
+const sustainedHitsTotal = computed(() => sustainedHits.value ? sustainedHits.value * occurrences(randomHitRolls.value)[6] : 0)
 const randomHitTotal = computed(() => {
   if (hasTorrent.value) return randomAttacksTotal.value
-  const rolled = [...randomHitRolls.value, ...randomHitReRolls.value, ...sustainedHitsRolls.value]
-  return rolled.reduce((sum, roll) => sum + (roll >= _accuracy.value), 0)
+  const rolled = [...randomHitRolls.value, ...randomHitReRolls.value]
+  return rolled.reduce((sum, roll) => sum + (roll >= _accuracy.value), 0) + sustainedHitsTotal.value
 })
 const averageSustainedHits = computed(() => {
   const criticalValue = 6
@@ -327,10 +327,6 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             <template v-if="hasTorrent">N/A</template>
             <template v-else>
               <DisplayRolls :rolls="randomHitRolls" />
-              <template v-if="sustainedHitsRolls && sustainedHitsRolls.length">
-                Sustained Hits {{ sustainedHits }}
-                <DisplayRolls :rolls="sustainedHitsRolls" />
-              </template>
             </template>
           </td>
           <td class="p-1">
@@ -388,7 +384,13 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ randomAttacksTotal }}
           </td>
           <td class="p-1">
-            {{ randomHitTotal }}
+            <template v-if="sustainedHitsTotal">
+              {{ randomHitTotal - sustainedHitsTotal }}
+              + {{ sustainedHitsTotal }} Sustained Hits
+            </template>
+            <template v-else>
+              {{ randomHitTotal }}
+            </template>
           </td>
           <td class="p-1">
             <template v-if="randomWoundTotal - lethalHits || !lethalHits">
@@ -427,7 +429,16 @@ const painTotal = computed(() => Math.floor(damageTotal.value * dice.defend(prop
             {{ attacksTotal }}
           </td>
           <td class="p-1">
-            {{ averageHitTotal }}
+            <template>
+              {{ averageHitTotal }}
+            </template>
+            <template v-if="sustainedHitsTotal">
+              {{ averageHitTotal - Math.floor(averageSustainedHits) }}
+              + {{ Math.floor(averageSustainedHits) }} Sustained Hits
+            </template>
+            <template v-else>
+              {{ averageHitTotal }}
+            </template>
           </td>
           <td class="p-1">
             {{ woundTotal }}
