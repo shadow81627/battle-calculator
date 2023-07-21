@@ -1,5 +1,6 @@
 {
   "name": "Leman Russ Demolisher",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/xOjVS3Asx2QJ13lk.pdf#page=75&zoom=175",
   "factions": [
     "Astra Militarum"
   ],
@@ -46,6 +47,27 @@
       "strength": 12,
       "piercing": 3,
       "damage": "D6+1"
+    },
+    {
+      "name": "Multi-melta",
+      "range": 18,
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 9,
+      "piercing": 4,
+      "damage": "D6+1"
+    },
+    {
+      "name": "Heavy stubber",
+      "modifier": [
+        {"name": "RAPID FIRE 3"}
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
     },
     {
       "name": "Hunter-killer missile",
