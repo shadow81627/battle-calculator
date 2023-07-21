@@ -9,7 +9,7 @@ defineProps<{
 const order = ref('')
 
 function hasFaction(unit: Unit, key: string) {
-  return unit?.factions?.find(faction => faction.toUpperCase() === key.toUpperCase() )
+  return unit?.factions?.find(faction => faction.toUpperCase() === key.toUpperCase())
 }
 
 function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
@@ -83,16 +83,6 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
     </section>
 
     <section v-for="weapon of unit.weapons" :key="weapon.name" class="border-y border-solid py-5">
-      <template v-if="weapon.profiles?.length || weapon.alternatives?.length">
-        <Combat v-for="profile of (weapon.profiles ?? weapon.alternatives)" :key="profile.name" v-bind="{ ...profile }"
-          :distance="distance"
-          :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
-          :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
-          :toughness="target.attributes.toughness" :save="target.attributes.save"
-          :invulnerable="getAbilityValue(target, 'INVULNERABLE SAVE') ?? (order === 'WAAAGH!' ? 5 : undefined)"
-          :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
-          :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined" />
-      </template>
       <Combat v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
         v-bind="{ ...weapon }" :distance="distance"
         :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, weapon) }].filter(item => item?.name)"
@@ -100,6 +90,27 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
         :save="target.attributes.save" :invulnerable="getAbilityValue(target, 'INVULNERABLE SAVE')"
         :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
         :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined" />
+      <template v-if="weapon.alternatives?.length">
+        <Accordion v-for="profile of weapon.alternatives" :key="profile.name">
+          <template #header>{{ profile.name }}</template>
+          <Combat v-bind="{ ...profile }" :distance="distance"
+            :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
+            :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
+            :toughness="target.attributes.toughness" :save="target.attributes.save"
+            :invulnerable="getAbilityValue(target, 'INVULNERABLE SAVE') ?? (order === 'WAAAGH!' ? 5 : undefined)"
+            :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
+            :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined" />
+        </Accordion>
+      </template>
+      <template v-if="weapon.profiles?.length">
+        <Combat v-for="profile of weapon.profiles" :key="profile.name" v-bind="{ ...profile }" :distance="distance"
+          :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
+          :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
+          :toughness="target.attributes.toughness" :save="target.attributes.save"
+          :invulnerable="getAbilityValue(target, 'INVULNERABLE SAVE') ?? (order === 'WAAAGH!' ? 5 : undefined)"
+          :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
+          :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined" />
+      </template>
     </section>
   </div>
 </template>
