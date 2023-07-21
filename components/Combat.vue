@@ -23,6 +23,11 @@ const props = defineProps({
   distance: { type: Number, default: 24 },
 })
 
+const showRolls = ref(false)
+function toggleShowRolls() {
+  showRolls.value = !showRolls.value
+}
+
 const _strength = computed(() => props.order === 'WAAAGH!' && props.range === "Melee" ? props.strength + 1 : props.strength)
 
 const wound = computed(() => {
@@ -245,10 +250,10 @@ function formatAverage(number) {
   </p>
 
   <div style="overflow-x:auto;" class="text-center">
-    <table>
+    <table class="w-full">
       <thead>
         <th class="p-1 text-left">
-          Row type
+          Name
         </th>
         <th class="p-1">
           Attacks
@@ -320,70 +325,49 @@ function formatAverage(number) {
         </tr>
         <tr>
           <td class="p-1 text-left">
-            Random
+            Average
           </td>
           <td class="p-1">
-            <DisplayRolls v-if="randomAttackRolls && randomAttackRolls.length" :rolls="randomAttackRolls" />
-            <template v-else>
-              {{ randomAttacksTotal }}
-            </template>
+            {{ formatAverage(attacksTotal) }}
           </td>
           <td class="p-1">
-            <template v-if="hasTorrent">N/A</template>
-            <template v-else>
-              <DisplayRolls :rolls="randomHitRolls" />
-            </template>
-          </td>
-          <td class="p-1">
-            <DisplayRolls :rolls="randomWoundRolls" />
-          </td>
-          <td class="p-1">
-            <DisplayRolls :rolls="randomSaveRolls" :reverse="true" />
-          </td>
-          <td class="p-1">
-            <template v-if="randomDamageRolls && randomDamageRolls.length">
-              <DisplayRolls :rolls="randomDamageRolls" />
+            <template v-if="sustainedHitsTotal">
+              {{ formatAverage(averageHitTotal - averageSustainedHits) }}
+              + {{ formatAverage(averageSustainedHits) }} Sustained Hit(s)
             </template>
             <template v-else>
-              {{ randomSaveTotal }} x {{ damage }}
+              {{ formatAverage(averageHitTotal) }}
             </template>
+          </td>
+          <td class="p-1">
+            <template v-if="averageLethalHits">
+              {{ formatAverage(woundTotal) }}
+              + {{ formatAverage(averageLethalHits) }} Lethal Hit(s)
+            </template>
+            <template v-else>
+              {{ formatAverage(woundTotal) }}
+            </template>
+          </td>
+          <td v-if="save" class="p-1">
+            {{ formatAverage(saveTotal) }}
+          </td>
+          <td v-if="damage" class="p-1">
+            {{ formatAverage(damageTotal) }}
           </td>
           <td v-if="pain" class="p-1">
-            <DisplayRolls :rolls="randomPainRolls" />
+            {{ formatAverage(painTotal) }}
           </td>
         </tr>
         <tr>
-          <td class="p-1 text-left">
-            Re-rolls
-          </td>
-          <td class="p-1">
-            <!-- Attacks Re-rolls -->
-            <DisplayRolls :rolls="[]" class="invisible" />
-          </td>
-          <td class="p-1 text-left">
-            <DisplayRolls v-if="hasHitReRolls" :rolls="randomHitReRolls" />
-            <template v-else>
-              &nbsp;
-            </template>
-          </td>
-          <td class="p-1 text-left">
-            <DisplayRolls v-if="hasWoundReRolls" :rolls="randomWoundReRolls" />
-            <template v-else>
-              &nbsp;
-            </template>
-          </td>
-          <td>
-            <!-- Save -->
-            &nbsp;
-          </td>
-          <td>
-            <!-- Damage -->
-            <DisplayRolls :rolls="[]" class="invisible" />
-          </td>
-        </tr>
-        <tr>
-          <td class="p-1 text-left">
-            Totals
+          <td class="p-1 text-left" @click="toggleShowRolls">
+            <span>Rolls</span>
+            <span class="ml-2">
+              <svg data-accordion-icon :class="{ 'rotate-180': !showRolls }" class="inline w-3 h-3 shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5 5 1 1 5" />
+              </svg>
+            </span>
           </td>
           <td class="p-1">
             {{ randomAttacksTotal }}
@@ -426,39 +410,67 @@ function formatAverage(number) {
             {{ randomPainTotal }}
           </td>
         </tr>
-        <tr>
+        <tr :class="{ 'hidden': !showRolls }">
           <td class="p-1 text-left">
-            Average
+            Random
           </td>
           <td class="p-1">
-            {{ formatAverage(attacksTotal) }}
+            <DisplayRolls v-if="randomAttackRolls && randomAttackRolls.length" :rolls="randomAttackRolls" class="mx-auto" />
+            <template v-else>
+              {{ randomAttacksTotal }}
+            </template>
           </td>
           <td class="p-1">
-            <template v-if="sustainedHitsTotal">
-              {{ formatAverage(averageHitTotal - averageSustainedHits) }}
-              + {{ formatAverage(averageSustainedHits) }} Sustained Hit(s)
+            <template v-if="hasTorrent">N/A</template>
+            <template v-else>
+              <DisplayRolls :rolls="randomHitRolls" class="mx-auto" />
+            </template>
+          </td>
+          <td class="p-1">
+            <DisplayRolls :rolls="randomWoundRolls" class="mx-auto" />
+          </td>
+          <td class="p-1">
+            <DisplayRolls :rolls="randomSaveRolls" :reverse="true" class="mx-auto" />
+          </td>
+          <td class="p-1">
+            <template v-if="randomDamageRolls && randomDamageRolls.length">
+              <DisplayRolls :rolls="randomDamageRolls" class="mx-auto" />
             </template>
             <template v-else>
-              {{ formatAverage(averageHitTotal) }}
+              {{ randomSaveTotal }} x {{ damage }}
             </template>
-          </td>
-          <td class="p-1">
-            <template v-if="averageLethalHits">
-              {{ formatAverage(woundTotal) }}
-              + {{ formatAverage(averageLethalHits) }} Lethal Hit(s)
-            </template>
-            <template v-else>
-              {{ formatAverage(woundTotal) }}
-            </template>
-          </td>
-          <td v-if="save" class="p-1">
-            {{ formatAverage(saveTotal) }}
-          </td>
-          <td v-if="damage" class="p-1">
-            {{ formatAverage(damageTotal) }}
           </td>
           <td v-if="pain" class="p-1">
-            {{ formatAverage(painTotal) }}
+            <DisplayRolls :rolls="randomPainRolls" class="mx-auto" />
+          </td>
+        </tr>
+        <tr v-show="!showRolls && (hasHitReRolls || hasWoundReRolls)">
+          <td class="p-1 text-left">
+            Re-rolls
+          </td>
+          <td class="p-1">
+            <!-- Attacks Re-rolls -->
+            &nbsp;
+          </td>
+          <td class="p-1 text-left">
+            <DisplayRolls v-if="hasHitReRolls" :rolls="randomHitReRolls" class="mx-auto" />
+            <template v-else>
+              &nbsp;
+            </template>
+          </td>
+          <td class="p-1 text-left">
+            <DisplayRolls v-if="hasWoundReRolls" :rolls="randomWoundReRolls" class="mx-auto" />
+            <template v-else>
+              &nbsp;
+            </template>
+          </td>
+          <td>
+            <!-- Save -->
+            &nbsp;
+          </td>
+          <td>
+            <!-- Damage -->
+            &nbsp;
           </td>
         </tr>
       </tbody>

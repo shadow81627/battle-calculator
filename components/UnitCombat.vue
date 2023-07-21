@@ -103,13 +103,16 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
         </Accordion>
       </template>
       <template v-if="weapon.profiles?.length">
-        <Combat v-for="profile of weapon.profiles" :key="profile.name" v-bind="{ ...profile }" :distance="distance"
+        <template v-for="(profile, index) of weapon.profiles" :key="profile.name">
+          <Combat v-bind="{ ...profile }" :distance="distance"
           :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
           :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
           :toughness="target.attributes.toughness" :save="target.attributes.save"
           :invulnerable="getAbilityValue(target, 'INVULNERABLE SAVE') ?? (order === 'WAAAGH!' ? 5 : undefined)"
           :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
           :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined" />
+          <br v-if="index + 1 !== weapon.profiles.length">
+        </template>
       </template>
     </section>
   </div>
