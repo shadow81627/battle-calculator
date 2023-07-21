@@ -216,7 +216,8 @@ const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls
 
 const woundTotal = computed(() => {
   const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
-  return Math.floor(averageHitTotal.value * dice.attack(pass))
+  const lethalHits = hasLethalHits.value ? 7 / 6 : 1
+  return Math.floor((averageHitTotal.value * dice.attack(pass)) + lethalHits)
 })
 const saveTotal = computed(() => Math.floor(woundTotal.value * dice.defend(_save.value)))
 const damageTotal = computed(() => Math.floor(saveTotal.value * (Math.floor(_damage.value.rolls * 3) + _damage.value.base)))
