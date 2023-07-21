@@ -91,6 +91,7 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
         :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
         :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined" />
       <template v-if="weapon.alternatives?.length">
+        <p class="pt-5">This model’s {{ weapon.name }} can be replaced with one of the following:</p>
         <Accordion v-for="profile of weapon.alternatives" :key="profile.name">
           <template #header>{{ profile.name }}</template>
           <Combat v-bind="{ ...profile }" :distance="distance"
