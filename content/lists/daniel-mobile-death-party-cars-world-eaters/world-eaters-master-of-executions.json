@@ -1,0 +1,56 @@
+{
+  "name": "World Eaters Master of Executions",
+  "faction": [
+    "World Eaters",
+    "Blessings of Khorne"
+  ],
+  "models": 1,
+  "points": 80,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 4,
+    "leadership": 6,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Bolt pistol",
+      "range": 12,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Axe of dismemberment",
+      "modifiers": [
+        {
+          "name": "DEVASTATING WOUNDS"
+        },
+        {
+          "name": "PRECISION"
+        }
+      ],
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 2,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Leader"
+    },
+    {
+      "name": "Trophy Taker"
+    },
+    {
+      "name": "Murderous Swing"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "name": "World Eaters Land Raider",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/iiq5IN0DVsqWxFxh.pdf#zoom=175&page=31",
+  "faction": [
+    "World Eaters",
+    "Blessings of Khorne"
+  ],
+  "models": 1,
+  "points": 225,
+  "attributes": {
+    "movement": 10,
+    "toughness": 12,
+    "save": 2,
+    "wound": 16,
+    "leadership": 6,
+    "control": 5
+  },
+  "weapons": [
+    {
+      "name": "Soulshatter lascannon",
+      "models": 2,
+      "range": 48,
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 12,
+      "piercing": 3,
+      "damage": "D6+1"
+    },
+    {
+      "name": "Twin heavy bolter",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        },
+        {
+          "name": "TWIN-LINKED"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Combi-bolter",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 2"
+        }
+      ],
+      "range": 24,
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Havoc launcher",
+      "modifiers": [
+        {
+          "name": "BLAST"
+        }
+      ],
+      "range": 48,
+      "attack": "D6",
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Armoured tracks",
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 4,
+      "strength": 8,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Assault Ramp"
+    }
+  ]
+}
