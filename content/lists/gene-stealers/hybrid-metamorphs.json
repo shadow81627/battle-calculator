@@ -1,0 +1,99 @@
+{
+  "name": "Hybrid Metamorphs",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/BrBEfwS94zTuHrZq.pdf#zoom=175&page=27",
+  "factions": [
+    "Genestealer Cults",
+    "Cult Ambush"
+  ],
+  "keywords": [
+    "Infantry",
+    "Grenades",
+    "Great Devourer",
+    "Hybrid Metamorphs"
+  ],
+  "models": 10,
+  "points": 160,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 5,
+    "wound": 1,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Hand flamer",
+      "models": 9,
+      "modifiers": [
+        {
+          "name": "IGNORES COVER"
+        },
+        {
+          "name": "PISTOL"
+        },
+        {
+          "name": "TORRENT"
+        }
+      ],
+      "range": 12,
+      "attack": "D6",
+      "accuracy": 0,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Autopistol",
+          "models": 9,
+          "modifiers": [
+            {
+              "name": "PISTOL"
+            }
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Metamorph mutations",
+      "profiles": [
+        {
+          "name": "Metamorph mutations – strike",
+          "models": 8,
+          "range": "Melee",
+          "attack": 3,
+          "accuracy": 3,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 2
+        },
+        {
+          "name": "Metamorph mutations – sweep",
+          "models": 8,
+          "range": "Melee",
+          "attack": 5,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Leader’s cult weapons",
+      "models": 1,
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 2,
+      "damage": 1
+    }
+  ]
+}
