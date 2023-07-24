@@ -1,64 +1,51 @@
 {
-  "name": "Kairos Fateweaver",
-  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/JhAjl9vv4BcigNO9.pdf#zoom=175&page=31",
+  "name": "Lord of Change",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/JhAjl9vv4BcigNO9.pdf#zoom=175&page=33",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
   "keywords": [
     "Monster",
     "Character",
-    "Epic Hero",
     "Fly",
     "Psyker",
     "Chaos",
     "Daemon",
     "Tzeentch",
-    "Kairos Fateweaver"
-  ],
-  "faction": [
-    "Legiones Daemonica",
-    "The Shadow of Chaos"
+    "Lord of Change"
   ],
   "models": 1,
-  "points": 285,
+  "points": 230,
   "attributes": {
     "movement": 12,
     "toughness": 10,
     "save": 6,
-    "wound": 20,
+    "wound": 18,
     "leadership": 6,
     "control": 5
   },
   "weapons": [
     {
-      "name": "Infernal Gateway",
+      "name": "Bolt of Change",
       "profiles": [
         {
-          "name": "Infernal Gateway – witchfire",
+          "name": "Bolt of Change – witchfire",
           "modifiers": [
-            {
-              "name": "BLAST"
-            },
-            {
-              "name": "INDIRECT FIRE"
-            },
             {
               "name": "PSYCHIC"
             }
           ],
-          "range": 24,
-          "attack": "D6+3",
+          "range": 18,
+          "attack": 9,
           "accuracy": 2,
           "strength": 9,
-          "piercing": 2,
-          "damage": "D3"
+          "piercing": 1,
+          "damage": 1
         },
         {
-          "name": "Infernal Gateway – focused witchfire",
+          "name": "Bolt of Change – focused witchfire",
           "modifiers": [
-            {
-              "name": "BLAST"
-            },
-            {
-              "name": "INDIRECT FIRE"
-            },
             {
               "name": "HAZARDOUS"
             },
@@ -66,8 +53,8 @@
               "name": "PSYCHIC"
             }
           ],
-          "range": 24,
-          "attack": "D6+6",
+          "range": 18,
+          "attack": 9,
           "accuracy": 2,
           "strength": 9,
           "piercing": 2,
@@ -76,7 +63,7 @@
       ]
     },
     {
-      "name": "Staff of Tomorrow",
+      "name": "Staff of Tzeentch",
       "modifiers": [
         {
           "name": "PSYCHIC"
@@ -85,9 +72,9 @@
       "range": "Melee",
       "attack": 5,
       "accuracy": 3,
-      "strength": 8,
-      "piercing": 2,
-      "damage": "2D3"
+      "strength": 6,
+      "piercing": 1,
+      "damage": 3
     }
   ],
   "abilities": [
@@ -99,10 +86,10 @@
       "name": "Deep Strike"
     },
     {
-      "name": "One Head Looks Forward (Aura)"
+      "name": "Daemon Lord of Tzeentch (Aura)"
     },
     {
-      "name": "One Head Looks Back"
+      "name": "Master of Magicks (Psychic)"
     },
     {
       "name": "Invulnerable Save 4+"
