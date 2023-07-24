@@ -1,10 +1,10 @@
 <template>
   <header>
-    <nuxt-link to="/">
+    <nuxt-link to="/" class="btn bg-transparent hover:bg-transparent">
       Calculator
     </nuxt-link>
     |
-    <DropDown />
+    <nuxt-link to="/lists" class="btn bg-transparent hover:bg-transparent">Lists</nuxt-link>
   </header>
   <main>
     <slot />
