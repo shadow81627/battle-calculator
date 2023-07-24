@@ -1,0 +1,121 @@
+{
+  "name": "Acolyte Hybrids",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/BrBEfwS94zTuHrZq.pdf#zoom=175&page=13",
+  "factions": [
+    "Genestealer Cults",
+    "Cult Ambush"
+  ],
+  "keywords": [
+    "Infantry",
+    "Battleline",
+    "Grenades",
+    "Great Devourer",
+    "Acolyte Hybrids"
+  ],
+  "models": 10,
+  "points": 150,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 5,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Hand flamer",
+      "models": 9,
+      "modifiers": [
+        {
+          "name": "IGNORES COVER"
+        },
+        {
+          "name": "PISTOL"
+        },
+        {
+          "name": "TORRENT"
+        }
+      ],
+      "range": 12,
+      "attack": "D6",
+      "accuracy": 0,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Autopistol",
+          "models": 9,
+          "modifiers": [
+            {
+              "name": "PISTOL"
+            }
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Heavy mining tool",
+      "models": 2,
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 10,
+      "piercing": 2,
+      "damage": 3,
+      "alternatives": [
+        {
+          "name": "Demolition charges",
+          "modifiers": [
+            {
+              "name": "ASSAULT"
+            },
+            {
+              "name": "BLAST"
+            },
+            {
+              "name": "HAZARDOUS"
+            },
+            {
+              "name": "ONE SHOT"
+            }
+          ],
+          "models": 2,
+          "range": 6,
+          "attack": "D6+3",
+          "accuracy": 5,
+          "strength": 12,
+          "piercing": 2,
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "name": "Cult claws and knife",
+      "models": 7,
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Leader’s cult weapons",
+      "models": 1,
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 2,
+      "damage": 1
+    }
+  ]
+}
