@@ -2,7 +2,6 @@
 import { groupBy, startCase } from 'lodash-es';
 const route = useRoute()
 const router = useRouter()
-const order = ref('')
 const turns = ref(1)
 const distance = ref(24)
 const { data: unitOptions } = await useAsyncData('lists', () => queryContent('lists').find(), {
