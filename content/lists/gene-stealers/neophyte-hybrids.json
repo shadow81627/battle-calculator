@@ -1,0 +1,201 @@
+{
+  "name": "Neophyte Hybrids",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/BrBEfwS94zTuHrZq.pdf#zoom=175&page=13",
+  "factions": [
+    "Genestealer Cults",
+    "Cult Ambush"
+  ],
+  "keywords": [
+    "Infantry",
+    "Battleline",
+    "Grenades",
+    "Great Devourer",
+    "Neophyte Hybrids"
+  ],
+  "models": 20,
+  "points": 160,
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 5,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Autopistol",
+      "models": 20,
+      "modifiers": [
+        {
+          "name": "PISTOL"
+        }
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Hybrid firearm",
+      "models": 20,
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 1"
+        }
+      ],
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1,
+      "warGearOptions": [
+        {
+          "models": 10,
+          "max": 2
+        }
+      ],
+      "alternatives": [
+        {
+          "name": "Heavy stubber",
+          "models": 4,
+          "modifiers": [
+            {
+              "name": "RAPID FIRE 3"
+            }
+          ],
+          "range": 36,
+          "attack": 3,
+          "accuracy": 4,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Mining laser",
+          "models": 4,
+          "modifiers": [
+            {
+              "name": "HEAVY"
+            }
+          ],
+          "range": 24,
+          "attack": 1,
+          "accuracy": 5,
+          "strength": 12,
+          "piercing": 3,
+          "damage": "D6+1"
+        },
+        {
+          "name": "Seismic cannon",
+          "models": 4,
+          "modifiers": [
+            {
+              "name": "HEAVY"
+            },
+            {
+              "name": "RAPID FIRE 2"
+            }
+          ],
+          "range": 24,
+          "attack": 4,
+          "accuracy": 5,
+          "strength": 6,
+          "piercing": 1,
+          "damage": "D3"
+        },
+        {
+          "name": "Flamer",
+          "models": 4,
+          "modifiers": [
+            {
+              "name": "IGNORES COVER"
+            },
+            {
+              "name": "TORRENT"
+            }
+          ],
+          "range": 12,
+          "attack": "D6",
+          "accuracy": 0,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Grenade launcher",
+          "models": 4,
+          "profiles": [
+            {
+              "name": "Grenade launcher – frag",
+              "models": 4,
+              "modifiers": [
+                {
+                  "name": "BLAST"
+                }
+              ],
+              "range": 24,
+              "attack": "D3",
+              "accuracy": 4,
+              "strength": 4,
+              "piercing": 0,
+              "damage": 1
+            },
+            {
+              "name": "Grenade launcher – krak",
+              "models": 4,
+              "range": 24,
+              "attack": 1,
+              "accuracy": 4,
+              "strength": 9,
+              "piercing": 2,
+              "damage": "D3"
+            }
+          ]
+        },
+        {
+          "name": "Webber",
+          "models": 4,
+          "modifiers": [
+            {
+              "name": "DEVASTATING WOUNDS"
+            },
+            {
+              "name": "TORRENT"
+            }
+          ],
+          "range": 12,
+          "attack": "D6",
+          "accuracy": 0,
+          "strength": 2,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Close combat weapon",
+      "models": 20,
+      "range": "Melee",
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "A Plan Generations in the Making"
+    },
+    {
+      "name": "Cult Icon"
+    }
+  ]
+}
