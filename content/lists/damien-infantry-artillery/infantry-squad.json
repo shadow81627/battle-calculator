@@ -56,7 +56,42 @@
       "accuracy": 4,
       "strength": 7,
       "piercing": 2,
-      "damage": 1
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Sniper rifle",
+          "modifiers": [{"name": "HEAVY"}, {"name": "PRECISION"}],
+          "models": 2,
+          "range": 36,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 4,
+          "piercing": 2,
+          "damage": 2
+        },
+        {
+          "name": "Flamer",
+          "modifiers": [{"name": "TORRENT"}, {"name": "IGNORE COVER"}],
+          "models": 2,
+          "range": 12,
+          "attack": "D6",
+          "accuracy": 0,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Meltagun",
+          "modifiers": [{"name": "MELTA 2"}],
+          "models": 2,
+          "range": 12,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 9,
+          "piercing": 4,
+          "damage": "D6"
+        }
+      ]
     },
     {
       "name": "Plasma pistol",
@@ -78,6 +113,16 @@
       "strength": 3,
       "piercing": 0,
       "damage": 1
+    },
+    {
+      "name": "Autocannon",
+      "models": 2,
+      "range": 48,
+      "attack": 2,
+      "accuracy": 5,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 3
     }
   ]
 }
