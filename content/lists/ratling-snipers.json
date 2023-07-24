@@ -1,0 +1,61 @@
+{
+  "name": "Ratling Snipers",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/xOjVS3Asx2QJ13lk.pdf#zoom=175&page=57",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Infantry",
+    "Imperium",
+    "Ratling Snipers"
+  ],
+  "models": 5,
+  "points": 70,
+  "attributes": {
+    "movement": 6,
+    "toughness": 2,
+    "save": 6,
+    "wound": 1,
+    "leadership": 8,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Sniper rifle",
+      "modifiers": [
+        {
+          "name": "HEAVY"
+        },
+        {
+          "name": "PRECISION"
+        }
+      ],
+      "range": 36,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Close combat weapon",
+      "range": "Melee",
+      "attack": 1,
+      "accuracy": 5,
+      "strength": 2,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Infiltrators"
+    },
+    {
+      "name": "Stealth"
+    },
+    {
+      "name": "Shoot Sharp and Scarper"
+    }
+  ]
+}
