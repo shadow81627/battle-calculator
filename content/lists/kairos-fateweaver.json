@@ -1,0 +1,99 @@
+{
+  "name": "Kairos Fateweaver",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "models": 1,
+  "points": 285,
+  "attributes": {
+    "movement": 12,
+    "toughness": 10,
+    "save": 6,
+    "wound": 20,
+    "leadership": 6,
+    "control": 5
+  },
+  "weapons": [
+    {
+      "name": "Infernal Gateway",
+      "profiles": [
+        {
+          "name": "Infernal Gateway – witchfire",
+          "modifiers": [
+            {
+              "name": "BLAST"
+            },
+            {
+              "name": "INDIRECT FIRE"
+            },
+            {
+              "name": "PSYCHIC"
+            }
+          ],
+          "range": 24,
+          "attack": "D6+3",
+          "accuracy": 2,
+          "strength": 9,
+          "piercing": 2,
+          "damage": "D3"
+        },
+        {
+          "name": "Infernal Gateway – focused witchfire",
+          "modifiers": [
+            {
+              "name": "BLAST"
+            },
+            {
+              "name": "INDIRECT FIRE"
+            },
+            {
+              "name": "HAZARDOUS"
+            },
+            {
+              "name": "PSYCHIC"
+            }
+          ],
+          "range": 24,
+          "attack": "D6+6",
+          "accuracy": 2,
+          "strength": 9,
+          "piercing": 2,
+          "damage": "D3"
+        }
+      ]
+    },
+    {
+      "name": "Staff of Tomorrow",
+      "modifiers": [
+        {
+          "name": "PSYCHIC"
+        }
+      ],
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 3,
+      "strength": 8,
+      "piercing": 2,
+      "damage": "2D3"
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "One Head Looks Forward (Aura)"
+    },
+    {
+      "name": "One Head Looks Back"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}
