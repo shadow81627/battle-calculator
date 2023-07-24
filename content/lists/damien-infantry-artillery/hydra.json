@@ -1,6 +1,8 @@
 {
   "name": "Hydra",
-  "factions": ["Astra Militarum"],
+  "factions": [
+    "Astra Militarum"
+  ],
   "models": 1,
   "points": 95,
   "offers": [
@@ -89,6 +91,16 @@
       "strength": 14,
       "piercing": 3,
       "damage": 3
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D3"
+    },
+    {
+      "name": "Flak Battery",
+      "description": "Each time this model makes an attack that targets a unit that can Fly, you can re-roll the Hit roll."
     }
   ]
 }

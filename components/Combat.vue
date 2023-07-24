@@ -61,6 +61,7 @@ const minTurns = computed(() => Math.min(props.turns, maxTurns.value))
 const hasTorrent = computed(() => getModifier('TORRENT', props.modifiers))
 const hasLethalHits = computed(() => getModifier('LETHAL HITS', props.modifiers) && !hasTorrent.value)
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
+const hasFlakBattery = computed(()=> props.abilities?.find(ability=> ability.name === 'Flak Battery') && props.target?.keywords?.some((keyword) => keyword.toUpperCase() === 'FLY'))
 const hasTankHunter = computed(() => props.abilities?.find(ability => ability.name === 'Tank Hunter') && targetIsVehicleOrMonster.value)
 const hasAtraposDuty = computed(() => {
   const ability = props.abilities?.find(ability => ability.name === 'Atrapos’ Duty (Bondsman)')
@@ -134,12 +135,12 @@ const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
 const failedHitRolls = computed(() => {
   return randomHitRolls.value.reduce((sum, roll) => sum + (roll < _accuracy.value), 0)
 })
-const hasHitReRolls = computed(() => hasDaringRecon.value || hasTankHunter.value || hasAtraposDuty.value)
+const hasHitReRolls = computed(() => hasDaringRecon.value || hasTankHunter.value || hasAtraposDuty.value || hasFlakBattery.value)
 const randomHitReRolls = computed(() => {
   if (hasDaringRecon.value) {
     return rolls(occurrences(randomHitRolls.value)[1])
   }
-  if ((hasTankHunter.value || hasAtraposDuty.value) && failedHitRolls.value > 0) {
+  if ((hasTankHunter.value || hasAtraposDuty.value || hasFlakBattery.value) && failedHitRolls.value > 0) {
     return rolls(failedHitRolls.value)
   }
   return []
