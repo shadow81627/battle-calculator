@@ -35,6 +35,15 @@ if (!unit.value)
           <br>
         </section>
       </div>
+      <div class="row" v-if="unit.keywords">
+        <section class="md:col-6 col">
+          <div class="text-xl">
+            <span v-for="(keyword, index) of unit.keywords" :key="keyword">
+              {{ keyword }}<span v-if="index + 1 !== unit.keywords.length">, </span>
+            </span>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 </template>
