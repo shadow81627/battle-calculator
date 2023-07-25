@@ -1,0 +1,116 @@
+{
+  "name": "Taurox Prime",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/xOjVS3Asx2QJ13lk.pdf#page=125&zoom=175",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Vehicle",
+    "Imperium",
+    "Squadron",
+    "Transport",
+    "Dedicated Transport",
+    "Taurox Prime"
+  ],
+  "quantity": 3,
+  "models": 1,
+  "points": 90,
+  "attributes": {
+    "movement": 12,
+    "toughness": 8,
+    "save": 3,
+    "wound": 10,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Taurox missile launcher",
+      "profiles": [
+        {
+          "name": "Taurox missile launcher – frag",
+          "modifiers": [
+            {
+              "name": "BLAST"
+            }
+          ],
+          "range": 48,
+          "attack": "2D6",
+          "accuracy": 3,
+          "strength": 8,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Taurox missile launcher – krak ",
+          "range": 48,
+          "attack": 2,
+          "accuracy": 3,
+          "strength": 9,
+          "piercing": 2,
+          "damage": "D6"
+        }
+      ]
+    },
+    {
+      "name": "Twin autocannon",
+      "modifiers": [
+        {
+          "name": "TWIN-LINKED"
+        }
+      ],
+      "range": 48,
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 3
+    },
+    {
+      "name": "Storm bolter",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 2"
+        }
+      ],
+      "range": 24,
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Armoured tracks",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Heavy stubber",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 3"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D3"
+    },
+    {
+      "name": "Rapid Deployment"
+    }
+  ]
+}
