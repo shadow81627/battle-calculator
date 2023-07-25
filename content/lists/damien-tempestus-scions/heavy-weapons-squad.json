@@ -23,6 +23,73 @@
   },
   "weapons": [
     {
+      "name": "Autocannon",
+      "modifiers": [
+        {
+          "name": "HEAVY"
+        }
+      ],
+      "range": 48,
+      "attack": 2,
+      "accuracy": 5,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 3,
+      "alternatives": [
+        {
+          "name": "Heavy bolter",
+          "modifiers": [
+            {
+              "name": "HEAVY"
+            },
+            {
+              "name": "SUSTAINED HITS 1"
+            }
+          ],
+          "range": 48,
+          "attack": 3,
+          "accuracy": 5,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 2
+        },
+        {
+          "name": "Lascannon",
+          "modifiers": [
+            {
+              "name": "HEAVY"
+            }
+          ],
+          "range": 48,
+          "attack": 1,
+          "accuracy": 5,
+          "strength": 12,
+          "piercing": 3,
+          "damage": "D6+1"
+        },
+        {
+          "name": "Mortar",
+          "modifiers": [
+            {
+              "name": "BLAST"
+            },
+            {
+              "name": "HEAVY"
+            },
+            {
+              "name": "INDIRECT FIRE"
+            }
+          ],
+          "range": 48,
+          "attack": "D6",
+          "accuracy": 5,
+          "strength": 5,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
       "name": "Las small arms",
       "models": 1,
       "modifiers": [{"name": "PISTOL"}],
@@ -41,15 +108,11 @@
       "strength": 3,
       "piercing": 0,
       "damage": 1
-    },
+    }
+  ],
+  "abilities": [
     {
-      "name": "Autocannon",
-      "range": 48,
-      "attack": 2,
-      "accuracy": 5,
-      "strength": 9,
-      "piercing": 1,
-      "damage": 3
+      "name": "Covering Fire"
     }
   ]
 }
