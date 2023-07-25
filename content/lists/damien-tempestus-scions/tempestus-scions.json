@@ -1,0 +1,151 @@
+{
+  "name": "Tempestus Scions",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/xOjVS3Asx2QJ13lk.pdf#page=123&zoom=175",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Infantry",
+    "Imperium",
+    "Grenades",
+    "Regiment",
+    "Militarum Tempestus",
+    "Tempestus Scions"
+  ],
+  "quantity": 3,
+  "models": 10,
+  "points": 120,
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 4,
+    "wound": 1,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Hot-shot Lasgun",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 1"
+        }
+      ],
+      "models": 7,
+      "range": 24,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 3,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Hot-shot volley gun",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 2"
+        }
+      ],
+      "models": 2,
+      "range": 30,
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Plasma gun",
+          "modifiers": [
+            {
+              "name": "RAPID FIRE 1"
+            }
+          ],
+          "models": 2,
+          "range": 24,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 7,
+          "piercing": 2,
+          "damage": 1
+        },
+        {
+          "name": "Flamer",
+          "modifiers": [
+            {
+              "name": "TORRENT"
+            },
+            {
+              "name": "IGNORE COVER"
+            }
+          ],
+          "models": 2,
+          "range": 12,
+          "attack": "D6",
+          "accuracy": 0,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Meltagun",
+          "modifiers": [
+            {
+              "name": "MELTA 2"
+            }
+          ],
+          "models": 2,
+          "range": 12,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 9,
+          "piercing": 4,
+          "damage": "D6"
+        }
+      ]
+    },
+    {
+      "name": "Close combat weapon",
+      "models": 9,
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Plasma pistol",
+      "modifiers": [
+        {
+          "name": "PISTOL"
+        }
+      ],
+      "models": 1,
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Power fist",
+      "models": 1,
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Storm Troopers"
+    }
+  ]
+}

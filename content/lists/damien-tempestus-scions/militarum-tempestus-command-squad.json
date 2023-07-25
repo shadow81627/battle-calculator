@@ -1,0 +1,97 @@
+{
+  "name": "Militarum Tempestus Command Squad",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/xOjVS3Asx2QJ13lk.pdf#page=121&zoom=175",
+  "factions": ["Astra Militarum"],
+  "quantity": 3,
+  "models": 5,
+  "points": 80,
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 4,
+    "wound": 1,
+    "leadership": 7,
+    "control": 1
+  },
+  "members": [
+    {
+      "name": "Tempestor Prime",
+      "models": 1,
+      "attributes": {
+        "movement": 6,
+        "toughness": 3,
+        "save": 4,
+        "wound": 4,
+        "leadership": 7,
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Plasma pistol",
+          "modifiers": [{"name": "PISTOL"}],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 7,
+          "piercing": 2,
+          "damage": 1
+        },
+        {
+          "name": "Power fist",
+          "range": "Melee",
+          "attack": 3,
+          "accuracy": 4,
+          "strength": 4,
+          "piercing": 2,
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "name": "Tempestus Scion",
+      "models": 4,
+      "attributes": {
+        "movement": 6,
+        "toughness": 3,
+        "save": 4,
+        "wound": 1,
+        "leadership": 7,
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Laspistol",
+          "models": 2,
+          "modifiers": [{"name": "PISTOL"}],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Close combat weapon",
+          "models": 2,
+          "range": "Melee",
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Lasgun",
+          "models": 2,
+          "modifiers": [{"name": "RAPID FIRE 1"}],
+          "range": 24,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    }
+  ]
+}

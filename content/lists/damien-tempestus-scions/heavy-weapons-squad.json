@@ -1,0 +1,55 @@
+{
+  "name": "Heavy Weapons Squad",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Infantry",
+    "Imperium",
+    "Grenades",
+    "Regiment",
+    "Heavy Weapons Squad"
+  ],
+  "quantity": 1,
+  "models": 3,
+  "points": 60,
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 5,
+    "wound": 2,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Las small arms",
+      "models": 1,
+      "modifiers": [{"name": "PISTOL"}],
+      "range": 18,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Weapons team close combat weapons",
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Autocannon",
+      "range": 48,
+      "attack": 2,
+      "accuracy": 5,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 3
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "name": "Chimera",
+  "factions": ["Astra Militarum"],
+  "models": 1,
+  "points": 85,
+  "offers": [
+    {
+      "price": 72,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Imperial-Guard-Chimera"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 9,
+    "save": 3,
+    "wound": 11,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Chimera multi-laser",
+      "range": 36,
+      "attack": 4,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Chimera heavy bolter",
+          "modifiers": [
+            {"name": "SUSTAINED HITS 1"}
+          ],
+          "range": 36,
+          "attack": 3,
+          "accuracy": 4,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 2
+        },
+        {
+          "name": "Chimera heavy flamer",
+          "modifiers": [
+            {"name": "IGNORES COVER"},
+            {"name": "TORRENT"}
+          ],
+          "range": 12,
+          "attack": "D6",
+          "accuracy": 0,
+          "strength": 5,
+          "piercing": 1,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Heavy bolter",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Lasgun array",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 6"
+        }
+      ],
+      "range": 24,
+      "attack": 6,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Armoured tracks",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Heavy stubber",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 3"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Hunter-killer missile",
+      "modifiers": [
+        {
+          "name": "ONE SHOT"
+        }
+      ],
+      "range": 48,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 14,
+      "piercing": 3,
+      "damage": 3
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D3"
+    },
+    {
+      "name": "Firing Deck 2"
+    },
+    {
+      "name": "Mobile Command Vehicle"
+    }
+  ]
+}
