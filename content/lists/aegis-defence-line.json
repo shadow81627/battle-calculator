@@ -1,0 +1,49 @@
+{
+  "name": "Aegis Defence Line",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/xOjVS3Asx2QJ13lk.pdf#zoom=175&page=103",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Fortification",
+    "Imperium",
+    "Aegis Defence Line"
+  ],
+  "models": 1,
+  "points": 145,
+  "offers": [
+    {
+      "price": 132,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/astra-militarum-aegis-defence-line-2023"
+    }
+  ],
+  "attributes": {
+    "movement": 0,
+    "toughness": 12,
+    "save": 2,
+    "wound": 10,
+    "leadership": 7,
+    "control": 0
+  },
+  "abilities": [
+    {
+      "name": "Aegis Defence Line"
+    },
+    {
+      "name": "Reinforced Cover"
+    },
+    {
+      "name": "Defence Line"
+    },
+    {
+      "name": "Fortification"
+    }
+  ]
+}
