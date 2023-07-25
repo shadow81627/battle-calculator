@@ -44,6 +44,13 @@ if (!unit.value)
           </div>
         </section>
       </div>
+      <div class="row" v-if="unit.dataSheetUrl">
+        <section class="md:col-6 col">
+          <a :href="unit.dataSheetUrl" target="_blank">
+            Data sheet page {{ unit.dataSheetUrl.match(/page=(\d*)/)[1] }}
+          </a>
+        </section>
+      </div>
     </div>
   </div>
 </template>
