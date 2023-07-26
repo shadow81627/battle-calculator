@@ -1,0 +1,100 @@
+{
+  "name": "Basilisk",
+  "factions": ["Astra Militarum"],
+  "keywords": [
+    "Vehicle", "Artillery", "Imperium", "Squadron", "Smoke", "Basilisk"
+  ],
+  "quantity": 3,
+  "models": 1,
+  "points": 135,
+  "offers": [
+    {
+      "$comment": "Basilisk",
+      "price": 78.85,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/astra-militarum/products/astra-militarum-basilisk"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 9,
+    "save": 3,
+    "wound": 11,
+    "leadership": 7,
+    "control": 3
+  },
+  "weapons": [
+    {
+      "name": "Earthshaker cannon",
+      "modifiers": [
+        {"name": "BLAST"},
+        {"name": "HEAVY"},
+        {"name": "INDIRECT FIRE"}
+      ],
+      "range": 240,
+      "attack": "D6+3",
+      "accuracy": 4,
+      "strength": 8,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Heavy bolter",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Armoured tracks",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Hunter-killer missile",
+      "modifiers": [
+        {
+          "name": "ONE SHOT"
+        }
+      ],
+      "range": 48,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 14,
+      "piercing": 3,
+      "damage": "D6"
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Earthshaker Rounds",
+      "description": "In your Shooting phase, after this model has shot, if one or more of those attacks made with its earthshaker cannon scored a hit against an Infantry unit, until the end of your opponent’s next turn, that Infantry unit is shaken. While a unit is shaken, subtract 2\" from its Move characteristic and subtract 2 from Advance and Charge rolls made for it.",
+      "trigger": "Shooting phase",
+      "target": {
+        "quantity": 1,
+        "keyword": "INFANTRY"
+      },
+      "effects": [
+        {"name": "subtract 2\" from move"}
+      ]
+
+    }
+  ]
+}
