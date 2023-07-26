@@ -28,14 +28,19 @@ function toggleShowRolls() {
   showRolls.value = !showRolls.value
 }
 
-const _strength = computed(() => props.order === 'WAAAGH!' && props.range === "Melee" ? props.strength + 1 : props.strength)
+const _strength = computed(() => props.order === 'WAAAGH!' && props.range === 'Melee' ? props.strength + 1 : props.strength)
 
 const wound = computed(() => {
-  if (_strength.value === props.toughness) return 4
-  if (_strength.value >= (props.toughness * 2)) return 2
-  if (_strength.value > props.toughness) return 3
-  if (_strength.value <= (props.toughness / 2)) return 6
-  if (_strength.value < props.toughness) return 5
+  if (_strength.value === props.toughness)
+    return 4
+  if (_strength.value >= (props.toughness * 2))
+    return 2
+  if (_strength.value > props.toughness)
+    return 3
+  if (_strength.value <= (props.toughness / 2))
+    return 6
+  if (_strength.value < props.toughness)
+    return 5
 })
 
 const dice = {
@@ -54,18 +59,18 @@ function rolls(x = 1, sides = 6) {
   return [...Array(x)].map(() => dice.roll(sides))
 }
 
-const targetIsVehicleOrMonster = computed(() => props.target?.keywords?.some((keyword) => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())))
+const targetIsVehicleOrMonster = computed(() => props.target?.keywords?.some(keyword => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())))
 
 const maxTurns = computed(() => getModifier('ONE SHOT', props.modifiers) ? 1 : 5)
 const minTurns = computed(() => Math.min(props.turns, maxTurns.value))
 const hasTorrent = computed(() => getModifier('TORRENT', props.modifiers))
 const hasLethalHits = computed(() => getModifier('LETHAL HITS', props.modifiers) && !hasTorrent.value)
 const hasDaringRecon = computed(() => props.abilities.find(ability => ability.name === 'Daring Recon'))
-const hasFlakBattery = computed(()=> props.abilities?.find(ability=> ability.name === 'Flak Battery') && props.target?.keywords?.some((keyword) => keyword.toUpperCase() === 'FLY'))
+const hasFlakBattery = computed(() => props.abilities?.find(ability => ability.name === 'Flak Battery') && props.target?.keywords?.some(keyword => keyword.toUpperCase() === 'FLY'))
 const hasTankHunter = computed(() => props.abilities?.find(ability => ability.name === 'Tank Hunter') && targetIsVehicleOrMonster.value)
 const hasAtraposDuty = computed(() => {
   const ability = props.abilities?.find(ability => ability.name === 'Atrapos’ Duty (Bondsman)')
-  const keyword = props.target?.keywords?.find(item => ['TITANIC', 'TOWERING'].includes(item.toUpperCase()));
+  const keyword = props.target?.keywords?.find(item => ['TITANIC', 'TOWERING'].includes(item.toUpperCase()))
   return ability && keyword
 })
 const hasMacroExtinctionProtocols = computed(() => {
@@ -79,16 +84,18 @@ const hasMobileHunterKillers = computed(() => props.abilities.find(ability => ab
 const hasTwinLinked = computed(() => getModifier('TWIN-LINKED', props.modifiers))
 const hasBlast = computed(() => getModifier('BLAST', props.modifiers))
 const anti = computed(() => {
-  const modifiers = props.modifiers?.find(modifier => {
+  const modifiers = props.modifiers?.find((modifier) => {
     const isAnti = modifier.name.startsWith('ANTI')
-    const hasKeyword = props.target?.keywords?.some((keyword) => modifier.name.includes(keyword.toUpperCase()))
+    const hasKeyword = props.target?.keywords?.some(keyword => modifier.name.includes(keyword.toUpperCase()))
     return isAnti && hasKeyword
   })
-  if (modifiers?.name) return Number(modifiers?.name.match(/\d+/)[0])
+  if (modifiers?.name)
+    return Number(modifiers?.name.match(/\d+/)[0])
 })
 const rapidFire = computed(() => {
   const modifier = getModifier('RAPID FIRE', props.modifiers)
-  if (!modifier) return 0
+  if (!modifier)
+    return 0
   const inRange = ((props.range / 2) >= props.distance)
   return modifier && inRange ? Number(modifier.name.match(/\d+/)[0]) : 0
 })
@@ -106,9 +113,9 @@ const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5
 const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.value))
 const _attack = computed(() => {
   const parsed = parseRolls(props.attack)
-  if (props.order === 'WAAGH!' && props.range === "Melee") {
+  if (props.order === 'WAAGH!' && props.range === 'Melee')
     parsed.base = parsed.base + 1
-  }
+
   return parsed
 })
 const randomAttackRolls = computed(() => rolls(_attack.value.rolls * minTurns.value * props.models, _attack.value.rollType || 6))
@@ -118,16 +125,16 @@ const randomAttacksTotal = computed(() => {
   return randomAttacksTotal + randomAttacksTotalBonuses
 })
 const attacksTotal = computed(() => {
-  const diceRollAverage = _attack.value.rolls * (_attack.value.rollType / 2);
+  const diceRollAverage = _attack.value.rolls * (_attack.value.rollType / 2)
   return (diceRollAverage + _attack.value.base + blast.value + rapidFire.value) * minTurns.value * props.models
 })
 
 const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
 const _accuracy = computed(() => {
   const buffs = [heavy.value, takeAim.value]
-  if (hasMacroExtinctionProtocols.value) {
+  if (hasMacroExtinctionProtocols.value)
     buffs.push(1)
-  }
+
   const buffTotal = buffs.reduce((sum, value) => sum + value, 0)
   return props.accuracy - buffTotal
 })
@@ -137,37 +144,40 @@ const failedHitRolls = computed(() => {
 })
 const hasHitReRolls = computed(() => hasDaringRecon.value || hasTankHunter.value || hasAtraposDuty.value || hasFlakBattery.value)
 const randomHitReRolls = computed(() => {
-  if (hasDaringRecon.value) {
+  if (hasDaringRecon.value)
     return rolls(occurrences(randomHitRolls.value)[1])
-  }
-  if ((hasTankHunter.value || hasAtraposDuty.value || hasFlakBattery.value) && failedHitRolls.value > 0) {
+
+  if ((hasTankHunter.value || hasAtraposDuty.value || hasFlakBattery.value) && failedHitRolls.value > 0)
     return rolls(failedHitRolls.value)
-  }
+
   return []
 })
 const sustainedHitsTotal = computed(() => sustainedHits.value ? sustainedHits.value * occurrences(randomHitRolls.value)[6] : 0)
 const randomHitTotal = computed(() => {
-  if (hasTorrent.value) return randomAttacksTotal.value
+  if (hasTorrent.value)
+    return randomAttacksTotal.value
   const rolled = [...randomHitRolls.value, ...randomHitReRolls.value]
   return rolled.reduce((sum, roll) => sum + (roll >= _accuracy.value), 0) + sustainedHitsTotal.value
 })
 const averageSustainedHits = computed(() => {
   const criticalValue = 6
-  if (sustainedHits.value) {
+  if (sustainedHits.value)
     return (((((6 + (7 - criticalValue)) / 6) * attacksTotal.value) - attacksTotal.value) * sustainedHits.value)
-  }
+
   return 0
 })
 const averageLethalHits = computed(() => hasLethalHits.value ? attacksTotal.value * (1 / 6) : 0)
 const averageHitTotal = computed(() => {
-  if (hasTorrent.value) return attacksTotal.value
+  if (hasTorrent.value)
+    return attacksTotal.value
   return ((attacksTotal.value - averageLethalHits.value) + averageSustainedHits.value) * dice.attack(_accuracy.value)
 })
 
 const lethalHits = computed(() => hasLethalHits.value ? occurrences(randomHitRolls.value)[6] : 0)
 const randomWoundRolls = computed(() => rolls(randomHitTotal.value - lethalHits.value))
 const criticalWoundRolls = computed(() => {
-  if (!anti.value) return 0
+  if (!anti.value)
+    return 0
   const criticalWoundRollsEntries = Object.entries(occurrences(randomWoundRolls.value))
   return criticalWoundRollsEntries.reduce((sum, [key, value]) => (key >= anti.value ? sum + value : sum), 0)
 })
@@ -178,25 +188,26 @@ const failedWoundRolls = computed(() => {
 const hasWoundReRolls = computed(() => hasTwinLinked.value || hasBringersOfChange.value || hasTankKiller.value || hasMobileHunterKillers.value)
 const randomWoundReRolls = computed(() => hasWoundReRolls.value ? rolls(failedWoundRolls.value) : [])
 const randomWoundTotal = computed(() => {
-  const rolled = [...randomWoundReRolls.value];
+  const rolled = [...randomWoundReRolls.value]
   const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
-  if (!anti.value || anti.value > wound.value) {
+  if (!anti.value || anti.value > wound.value)
     rolled.push(...randomWoundRolls.value)
-  }
+
   return rolled.reduce((sum, roll) => sum + (roll >= pass), 0) + lethalHits.value + criticalWoundRolls.value
 })
 
 const hasDevastatingWounds = computed(() => {
   const modifier = getModifier('DEVASTATING WOUNDS', props.modifiers)
   const ability = props.abilities?.find(
-    ability => ability.name === 'Mow Down the Enemy' && !targetIsVehicleOrMonster.value
+    ability => ability.name === 'Mow Down the Enemy' && !targetIsVehicleOrMonster.value,
   )
   return modifier || ability
 })
 const randomDevastatingWounds = computed(() => hasDevastatingWounds.value ? occurrences([...randomWoundRolls.value, ...randomWoundReRolls.value])[6] : 0)
 const randomSaveRolls = computed(() => {
-  const count = randomWoundTotal.value - randomDevastatingWounds.value;
-  if (count < 1) return []
+  const count = randomWoundTotal.value - randomDevastatingWounds.value
+  if (count < 1)
+    return []
   return rolls(count)
 })
 const randomSaveTotal = computed(() => randomSaveRolls.value.reduce((sum, roll) => sum + (roll < _save.value), 0) + randomDevastatingWounds.value)
@@ -228,9 +239,9 @@ const damageTotal = computed(() => {
 const painTotal = computed(() => damageTotal.value * dice.defend(props.pain))
 
 function formatAverage(number) {
-  if (number % 1 == 0) {
+  if (number % 1 == 0)
     return number
-  }
+
   return Number(number).toFixed(2)
 }
 </script>
@@ -240,12 +251,14 @@ function formatAverage(number) {
     <span>{{ name }}</span>
 
     <template v-if="modifiers && modifiers.length">
-      [<span v-for="(modifier, index) of modifiers" :key="modifier.name"><span :class="{
-        'text-red-500': (rapidFire && modifier.name.startsWith('RAPID FIRE')) || (anti && modifier.name.startsWith('ANTI')),
-        'text-gray-500': !hasLethalHits && modifier.name.startsWith('LETHAL HITS')
-      }">{{
-  modifier.name
-}}</span><template v-if="index + 1 !== modifiers.length">, </template>
+      [<span v-for="(modifier, index) of modifiers" :key="modifier.name"><span
+        :class="{
+          'text-red-500': (rapidFire && modifier.name.startsWith('RAPID FIRE')) || (anti && modifier.name.startsWith('ANTI')),
+          'text-gray-500': !hasLethalHits && modifier.name.startsWith('LETHAL HITS'),
+        }"
+      >{{
+        modifier.name
+      }}</span><template v-if="index + 1 !== modifiers.length">, </template>
       </span>]
     </template>
   </p>
@@ -297,11 +310,17 @@ function formatAverage(number) {
             x {{ models }} models
           </td>
           <td class="p-1">
-            <template v-if="hasTorrent">N/A</template>
-            <template v-else>{{ _accuracy }}+</template>
+            <template v-if="hasTorrent">
+              N/A
+            </template>
+            <template v-else>
+              {{ _accuracy }}+
+            </template>
           </td>
           <td class="p-1">
-            <template v-if="anti && anti <= wound">{{ anti }}+ Critical</template>
+            <template v-if="anti && anti <= wound">
+              {{ anti }}+ Critical
+            </template>
             <template v-else>
               S{{ _strength }}
               T{{ toughness }}
@@ -363,10 +382,14 @@ function formatAverage(number) {
           <td class="p-1 text-left" @click="toggleShowRolls">
             <span>Rolls</span>
             <span class="ml-2">
-              <svg data-accordion-icon :class="{ 'rotate-180': !showRolls }" class="inline w-3 h-3 shrink-0" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 5 5 1 1 5" />
+              <svg
+                data-accordion-icon :class="{ 'rotate-180': !showRolls }" class="inline h-3 w-3 shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
               </svg>
             </span>
           </td>
@@ -411,7 +434,7 @@ function formatAverage(number) {
             {{ randomPainTotal }}
           </td>
         </tr>
-        <tr :class="{ 'hidden': !showRolls }">
+        <tr :class="{ hidden: !showRolls }">
           <td class="p-1 text-left">
             Random
           </td>
@@ -422,7 +445,9 @@ function formatAverage(number) {
             </template>
           </td>
           <td class="p-1">
-            <template v-if="hasTorrent">N/A</template>
+            <template v-if="hasTorrent">
+              N/A
+            </template>
             <template v-else>
               <DisplayRolls :rolls="randomHitRolls" class="mx-auto" />
             </template>
