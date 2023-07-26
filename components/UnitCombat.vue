@@ -2,7 +2,7 @@
 import type { Weapon } from '~/types/unit'
 import type Unit from '~/types/unit'
 
-defineProps<{
+const props = defineProps<{
   unit: Unit
   target: Unit
   distance?: number
@@ -25,6 +25,19 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
   if (hasFaction(unit, 'Orks') && weapon.range === 'Melee')
     return 'SUSTAINED HITS 1'
 }
+
+const weapons = computed(() => {
+  const memberWeapons = props.unit.members?.map((member) => {
+    return member.weapons?.map((weapon) => {
+      if (!weapon.models)
+        weapon.models = member.models ?? props.unit.models
+      return weapon
+    })
+  }).flat()
+  return (memberWeapons ?? props.unit.weapons)?.filter((weapon): weapon is Weapon => {
+    return weapon !== undefined
+  })
+})
 </script>
 
 <template>
@@ -87,7 +100,7 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
       </div>
     </section>
 
-    <section v-for="weapon of unit.weapons" :key="weapon.name" class="border-y border-solid py-5">
+    <section v-for="weapon of weapons" :key="weapon.name" class="border-y border-solid py-5">
       <Combat
         v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
         v-bind="{ ...weapon }" :distance="distance"
