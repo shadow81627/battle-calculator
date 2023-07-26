@@ -1,0 +1,119 @@
+{
+  "name": "Kill Rig",
+  "factions": ["Orks"],
+  "quantity": 2,
+  "models": 1,
+  "points": 220,
+  "offers": [
+    {
+      "price": 224,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/orks-kill-rig-2021"
+    }
+  ],
+  "attributes": {
+    "movement": 10,
+    "toughness": 10,
+    "save": 3,
+    "wound": 16,
+    "leadership": 7,
+    "control": 5
+  },
+  "weapons": [
+    {
+      "name": "Eavy lobba",
+      "modifiers": [
+        {"name": "BLAST"},
+        {"name": "INDIRECT FIRE"}
+      ],
+      "range": 48,
+      "attack": "D6",
+      "accuracy": 5,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 2
+    },
+    {
+      "name": "Stikka kannon",
+      "modifiers": [
+        {"name": "ANTI-MONSTER 2+"},
+        {"name": "ANTI-VEHICLE 2+"},
+        {"name": "SNAGGED"}
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 5,
+      "strength": 12,
+      "piercing": 2,
+      "damage": 3
+    },
+    {
+      "name": "Wurrtower",
+      "modifiers": [
+        {"name": "HAZARDOUS"},
+        {"name": "PSYCHIC"},
+        {"name": "TORRENT"}
+      ],
+      "range": 24,
+      "attack": "D3",
+      "accuracy": 0,
+      "strength": 12,
+      "piercing": 3,
+      "damage": "D6"
+    },
+    {
+      "name": "Butcha boyz",
+      "modifiers":[
+        {"name": "ANTI-MONSTER 4+"},
+        {"name": "ANTI-VEHICLE 4+"},
+        {"name": "EXTRA ATTACKS"}
+      ],
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Savage horns and hooves",
+      "modifiers":[
+        {"name": "LANCE"},
+        {"name": "EXTRA ATTACKS"}
+      ],
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 4,
+      "strength": 8,
+      "piercing": 1,
+      "damage": 3
+    },
+    {
+      "name": "Saw blades",
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 3,
+      "strength": 10,
+      "piercing": 1,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Feel No Pain 6+"
+    },
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Firing Deck 11"
+    }
+  ]
+}
