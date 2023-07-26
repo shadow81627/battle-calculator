@@ -44,6 +44,16 @@
       "strength": 7,
       "piercing": 1,
       "damage": 2
+    },
+    {
+      "name": "Smasha squig jaws",
+      "modifiers":[{"name": "EXTRA ATTACKS"}],
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 2
     }
   ],
   "abilities": [
