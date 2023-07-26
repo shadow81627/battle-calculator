@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { minBy, sumBy } from 'lodash-es'
-import Unit from '~/types/unit'
+import type Unit from '~/types/unit'
+
 const props = defineProps<{ data: Unit[] }>()
 function unitBestOffer(unit: Unit) {
   const offers = unit.offers?.filter(offer => offer.price)
@@ -20,19 +21,20 @@ const totals = computed(() => {
   return {
     quantity,
     models,
-    points
+    points,
   }
 })
 
 const _data = computed(() => {
-  return props.data.map(item => {
-    if (!item.quantity) return [item]
+  return props.data.map((item) => {
+    if (!item.quantity)
+      return [item]
     const items = [...Array(Math.ceil(item.quantity))].map(() => JSON.parse(JSON.stringify(item)))
     const decimal = item.quantity % 1
     if (decimal) {
       const last = items.slice(-1)[0]
       last.models = Math.ceil((last.models ?? 1) * decimal)
-      last.points = Math.ceil(last.points  * decimal)
+      last.points = Math.ceil(last.points * decimal)
     }
     return items
   }).flat()
@@ -79,7 +81,7 @@ const route = useRoute()
             {{ unit.points }}
           </td>
           <td v-if="unit.offers" class="p-1 text-right">
-            <a v-if="unitBestOffer(unit)?.url" :href="unitBestOffer(unit)?.url" class="dark:text-blue-300 text-blue-600">
+            <a v-if="unitBestOffer(unit)?.url" :href="unitBestOffer(unit)?.url" class="text-blue-600 dark:text-blue-300">
               ${{ unitPrice(unit) }}
             </a>
             <template v-else>
@@ -130,7 +132,7 @@ const route = useRoute()
     <div v-for="unit of _data" :key="unit.name">
       <div>
         <NuxtLink :to="`${route.path}/units/${unit._path.split('/').slice(-1)}`">
-              {{ unit.name }}
+          {{ unit.name }}
         </NuxtLink>
         ({{ unit.points }})
       </div>
