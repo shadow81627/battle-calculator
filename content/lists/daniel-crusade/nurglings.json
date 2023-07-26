@@ -1,0 +1,49 @@
+{
+  "name": "Nurglings",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "quantity": 2,
+  "models": 3,
+  "points": 40,
+  "attributes": {
+    "movement": 5,
+    "toughness": 3,
+    "save": 7,
+    "wound": 4,
+    "leadership": 8,
+    "control": 0
+  },
+  "weapons": [
+    {
+      "name": "Diseased claws and teeth",
+      "modifiers": [
+        {
+          "name": "LETHAL HITS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 5,
+      "strength": 2,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Infiltrators"
+    },
+    {
+      "name": "Invulnerable Save 6+"
+    },
+    {
+      "name": "Mischief Makers (Aura)",
+      "description": "While an enemy unit (excluding Monsters and Vehicles) is within 6\" of this unit, each time a model in that unit makes a melee attack, subtract 1 from the Hit roll."
+    }
+  ]
+}

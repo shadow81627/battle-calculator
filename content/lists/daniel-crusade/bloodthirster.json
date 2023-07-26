@@ -1,0 +1,96 @@
+{
+  "name": "Bloodthirster",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/JhAjl9vv4BcigNO9.pdf#view=fit&page=9",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "keywords": [
+    "Monster",
+    "Character",
+    "Chaos",
+    "Fly",
+    "Daemon",
+    "Khorne",
+    "Bloodthirster"
+  ],
+  "models": 1,
+  "points": 300,
+  "attributes": {
+    "movement": 12,
+    "toughness": 11,
+    "save": 4,
+    "wound": 18,
+    "leadership": 6,
+    "control": 5
+  },
+  "weapons": [
+    {
+      "name": "Hellfire breath",
+      "modifiers": [
+        {
+          "name": "IGNORES COVER"
+        },
+        {
+          "name": "TORRENT"
+        }
+      ],
+      "range": 12,
+      "attack": "D6",
+      "accuracy": 0,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Lash of Khorne",
+      "range": 12,
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 8,
+      "piercing": 0,
+      "damage": 2
+    },
+    {
+      "name": "Axe of Khorne",
+      "profiles": [
+        {
+          "name": "Axe of Khorne – strike",
+          "range": "Melee",
+          "attack": 8,
+          "accuracy": 2,
+          "strength": 14,
+          "piercing": 4,
+          "damage": "D6"
+        },
+        {
+          "name": "Axe of Khorne – sweep",
+          "range": "Melee",
+          "attack": 16,
+          "accuracy": 2,
+          "strength": 8,
+          "piercing": 2,
+          "damage": 1
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Daemon Lord of Khorne (Aura)"
+    },
+    {
+      "name": "Relentless Carnage"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}

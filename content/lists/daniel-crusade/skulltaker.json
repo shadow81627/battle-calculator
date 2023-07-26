@@ -1,0 +1,60 @@
+{
+  "name": "Skulltaker",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "models": 1,
+  "points": 95,
+  "offers": [
+    {
+      "price": 63,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Skulltaker-2019"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 4,
+    "wound": 5,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "The Slayer Sword",
+      "range": "Melee",
+      "modifiers": [
+        {
+          "name": "DEVASTATING WOUNDS"
+        },
+        {
+          "name": "PRECISION"
+        }
+      ],
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 3
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Leader"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}

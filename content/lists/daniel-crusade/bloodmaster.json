@@ -1,0 +1,55 @@
+{
+  "name": "Bloodmaster",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "keywords": [
+    "Infantry",
+    "Character",
+    "Chaos",
+    "Daemon",
+    "Khorne",
+    "Bloodmaster"
+  ],
+  "models": 1,
+  "points": 85,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 5,
+    "wound": 4,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Blade of blood",
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 3
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Leader"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    },
+    {
+      "name": "Bloodmaster",
+      "description": "While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Wound roll"
+    },
+    {
+      "name": "A Gory Path",
+      "description": "Each time this model’s unit Consolidates, it can move up to 6\" instead of up to 3\"."
+    }
+  ]
+}
