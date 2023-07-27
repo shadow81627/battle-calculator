@@ -9,12 +9,12 @@ export interface Weapon {
   name: string
   modifiers: WeaponModifier[]
   models: number
-  range: number | "Melee"
+  range: number | 'Melee'
   attack: number | string
   accuracy: number
   strength: number
   piercing: number
-  damage: number | string,
+  damage: number | string
   profiles?: Weapon[]
   alternatives?: Weapon[]
 }
@@ -24,16 +24,16 @@ export default interface Unit {
   models: number
   points: number
   quantity?: number
-  factions?: string[],
-  keywords?: string[],
+  factions?: string[]
+  keywords?: string[]
   attributes: {
-    movement: number,
-    toughness: number,
-    save: number,
-    wound: number,
-    leadership: number,
-    control: number,
-  },
+    movement: number
+    toughness: number
+    save: number
+    wound: number
+    leadership: number
+    control: number
+  }
   offers?: [
     {
       price: number
@@ -43,12 +43,12 @@ export default interface Unit {
         type: 'Organization' | 'Person'
         name: string
       }
-      itemCondition: 'NewCondition',
+      itemCondition: 'NewCondition'
       url?: string
     },
-  ],
-  abilities?: Array<{name: string}>
-  weapons?: Weapon[],
+  ]
+  abilities?: Array<{ name: string }>
+  weapons?: Weapon[]
   enhancements?: Enhancement[]
   members?: Unit[]
 }
