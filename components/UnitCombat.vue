@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { groupBy } from 'lodash-es'
 import type { Weapon } from '~/types/unit'
 import type Unit from '~/types/unit'
 
@@ -27,14 +28,19 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
 }
 
 const weapons = computed(() => {
-  const memberWeapons = props.unit.members?.map((member) => {
+  function addMemberWeaponModels(member: Unit) {
     return member.weapons?.map((weapon) => {
       if (!weapon.models)
         weapon.models = member.models ?? props.unit.models
       return weapon
     })
-  }).flat()
-  return (memberWeapons ?? props.unit.weapons)?.filter((weapon): weapon is Weapon => {
+  }
+  const memberWeapons = props.unit.members?.map(addMemberWeaponModels).flat()
+  const deduplicatedMemberWeapons = Object.entries(groupBy(memberWeapons, 'name')).map(([key, weapons]) => {
+    const models = weapons.reduce((sum, weapon) => sum + (weapon?.models ?? 0), 0)
+    return { ...weapons[0], models }
+  }) ?? []
+  return [...deduplicatedMemberWeapons, ...props.unit.weapons ?? []]?.filter((weapon): weapon is Weapon => {
     return weapon !== undefined
   })
 })
