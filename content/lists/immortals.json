@@ -1,11 +1,16 @@
 {
   "name": "Immortals",
-  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#page=43",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#view=fit&page=43",
   "factions": [
     "Necrons"
   ],
-  "models": 5,
-  "points": 70,
+  "keywords": [
+    "Infantry",
+    "Battleline",
+    "Immortals"
+  ],
+  "models": 10,
+  "points": 140,
   "attributes": {
     "movement": 5,
     "toughness": 5,

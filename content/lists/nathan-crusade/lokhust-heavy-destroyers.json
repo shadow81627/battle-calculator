@@ -4,6 +4,11 @@
   "factions": [
     "Necrons"
   ],
+  "keywords": [
+    "Mounted",
+    "Fly",
+    "Lokhust Heavy Destroyers"
+  ],
   "models": 3,
   "points": 135,
   "attributes": {
