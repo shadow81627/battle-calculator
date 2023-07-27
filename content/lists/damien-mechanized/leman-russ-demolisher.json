@@ -4,6 +4,13 @@
   "factions": [
     "Astra Militarum"
   ],
+  "keywords": [
+    "Vehicle",
+    "Imperium",
+    "Squadron",
+    "Smoke",
+    "Leman Russ Demolisher"
+  ],
   "quantity": 3,
   "models": 1,
   "points": 220,

@@ -1,5 +1,12 @@
 {
   "name": "Leman Russ Demolisher",
+  "keywords": [
+    "Vehicle",
+    "Imperium",
+    "Squadron",
+    "Smoke",
+    "Leman Russ Demolisher"
+  ],
   "factions": [
     "Astra Militarum"
   ],
@@ -29,7 +36,11 @@
   "weapons": [
     {
       "name": "Demolisher battle cannon",
-      "modifiers": [{"name": "BLAST"}],
+      "modifiers": [
+        {
+          "name": "BLAST"
+        }
+      ],
       "range": 24,
       "attack": "D6+3",
       "accuracy": 4,
