@@ -239,7 +239,7 @@ const damageTotal = computed(() => {
 const painTotal = computed(() => damageTotal.value * dice.defend(props.pain))
 
 function formatAverage(number) {
-  if (number % 1 == 0)
+  if (number % 1 === 0)
     return number
 
   return Number(number).toFixed(2)
@@ -361,7 +361,7 @@ function formatAverage(number) {
           </td>
           <td class="p-1">
             <template v-if="averageLethalHits">
-              {{ formatAverage(woundTotal) }}
+              {{ formatAverage(woundTotal - averageLethalHits) }}
               + {{ formatAverage(averageLethalHits) }} Lethal Hit(s)
             </template>
             <template v-else>
