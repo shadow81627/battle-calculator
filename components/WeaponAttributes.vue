@@ -8,7 +8,7 @@ defineProps<{ unit: Unit }>()
   <table>
     <thead>
       <th class="p-2">
-        #
+        &nbsp;#&nbsp;
       </th>
       <th class="p-2 text-left">
         Weapon
@@ -38,7 +38,7 @@ defineProps<{ unit: Unit }>()
           <td class="p-2 text-center">
             {{ weapon.models ?? unit.models }}
           </td>
-          <td class="p-2">
+          <td class="p-2" width="50%">
             {{ weapon.name }}
           </td>
           <td class="p-2 text-center">
@@ -65,7 +65,7 @@ defineProps<{ unit: Unit }>()
             <td class="p-2 text-center">
               {{ profile.models ?? weapon.models ?? unit.models }}
             </td>
-            <td class="p-2">
+            <td class="p-2" width="50%">
               {{ profile.name }}
             </td>
             <td class="p-2 text-center">
