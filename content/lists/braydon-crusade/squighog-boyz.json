@@ -2,9 +2,9 @@
   "name": "Squighog Boyz",
   "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/EE2Pdickp8sNe1NX.pdf#view=fit&page=95",
   "factions": ["Orks"],
-  "quantity": 2,
-  "models": 3,
-  "points": 110,
+  "quantity": 1,
+  "models": 6,
+  "points": 220,
   "offers": [
     {
       "price": 105,
