@@ -7,36 +7,40 @@ if (!unit.value)
 
 <template>
   <div class="m-10">
-    <h1 class="text-left uppercase font-barlow text-4xl font-700">
+    <h1 class="text-left font-barlow text-4xl font-700 uppercase">
       {{ unit.name }}
     </h1>
     <div class="container">
       <div class="row">
-        <section class="md:col-6 col">
-          <Attributes :unit="unit" :additions="{
-            invulnerable: getAbilityValue(unit, 'INVULNERABLE SAVE'),
-            pain: getAbilityValue(unit, 'Feel No Pain'),
-            points: unit.points,
-            models: unit.models,
-          }" />
+        <section class="col md:col-6">
+          <Attributes
+            :unit="unit" :additions="{
+              invulnerable: getAbilityValue(unit, 'INVULNERABLE SAVE'),
+              pain: getAbilityValue(unit, 'Feel No Pain'),
+              points: unit.points,
+              models: unit.models,
+            }"
+          />
         </section>
       </div>
       <div class="row">
-        <section class="my-5 md:col-6 col" style="overflow-x:auto;">
-          <WeaponAttributes v-if="unit.weapons?.length" :unit="unit" class="w-full"></WeaponAttributes>
+        <section class="my-5 col md:col-6" style="overflow-x:auto;">
+          <WeaponAttributes v-if="unit.weapons?.length" :unit="unit" class="w-full" />
           <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
             Enhancement:
             {{ enhancement.name }} ({{ enhancement.points }})
           </div>
           <div v-for="member of unit.members" :key="member.name">
-            <div class="text-left uppercase font-barlow font-700">{{ member.name }}</div>
-            <WeaponAttributes :unit="member" class="w-full"></WeaponAttributes>
+            <div class="text-left font-barlow font-700 uppercase">
+              {{ member.name }}
+            </div>
+            <WeaponAttributes :unit="member" class="w-full" />
           </div>
           <br>
         </section>
       </div>
-      <div class="row" v-if="unit.keywords">
-        <section class="md:col-6 col">
+      <div v-if="unit.keywords" class="row">
+        <section class="col md:col-6">
           <div class="text-xl">
             <span v-for="(keyword, index) of unit.keywords" :key="keyword">
               {{ keyword }}<span v-if="index + 1 !== unit.keywords.length">, </span>
@@ -44,8 +48,8 @@ if (!unit.value)
           </div>
         </section>
       </div>
-      <div class="row" v-if="unit.dataSheetUrl">
-        <section class="md:col-6 col">
+      <div v-if="unit.dataSheetUrl" class="row">
+        <section class="col md:col-6">
           <a :href="unit.dataSheetUrl" target="_blank">
             Data sheet page {{ unit.dataSheetUrl.match(/page=(\d*)/)[1] }}
           </a>
