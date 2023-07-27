@@ -1,0 +1,61 @@
+{
+  "nickname": "Ni-cola the TeslaMancer 1",
+  "name": "Lokhust Lord",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#view=fit&page=25",
+  "factions": [
+    "Necrons"
+  ],
+  "quantity": 2,
+  "models": 1,
+  "points": 85,
+  "attributes": {
+    "movement": 7,
+    "toughness": 6,
+    "save": 3,
+    "wound": 6,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Staff of light",
+      "range": 18,
+      "attack": 3,
+      "accuracy": 2,
+      "strength": 5,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Staff of light",
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 2,
+      "strength": 5,
+      "piercing": 2,
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Lord’s blade",
+          "range": "Melee",
+          "attack": 4,
+          "accuracy": 2,
+          "strength": 8,
+          "piercing": 3,
+          "damage": 2
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Destroyer Cult"
+    },
+    {
+      "name": "Driven by Hatred"
+    },
+    {
+      "name": "INVULNERABLE SAVE 4+"
+    }
+  ]
+}

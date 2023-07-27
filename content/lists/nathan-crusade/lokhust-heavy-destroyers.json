@@ -1,0 +1,72 @@
+{
+  "name": "Lokhust Heavy Destroyers",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#view=fit&page=87",
+  "factions": [
+    "Necrons"
+  ],
+  "models": 3,
+  "points": 135,
+  "attributes": {
+    "movement": 7,
+    "toughness": 6,
+    "save": 3,
+    "wound": 4,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Gauss destructor",
+      "modifiers": [
+        {
+          "name": "HEAVY"
+        },
+        {
+          "name": "LETHAL HITS"
+        }
+      ],
+      "range": 48,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 14,
+      "piercing": 4,
+      "damage": 6,
+      "alternatives": [
+        {
+          "name": "Enmitic exterminator",
+          "modifiers": [
+            {
+              "name": "HEAVY"
+            },
+            {
+              "name": "RAPID FIRE 6"
+            },
+            {
+              "name": "SUSTAINED HITS 1"
+            }
+          ],
+          "range": 36,
+          "attack": 6,
+          "accuracy": 3,
+          "strength": 6,
+          "piercing": 1,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Close combat weapon",
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Optimised for Slaughter"
+    }
+  ]
+}

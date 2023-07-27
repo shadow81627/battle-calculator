@@ -1,0 +1,72 @@
+{
+  "name": "C’tan Shard of the Nightbringer ",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#view=fit&page=63",
+  "factions": [
+    "Necrons"
+  ],
+  "models": 1,
+  "points": 225,
+  "attributes": {
+    "movement": 7,
+    "toughness": 11,
+    "save": 4,
+    "wound": 12,
+    "leadership": 6,
+    "control": 4
+  },
+  "weapons": [
+    {
+      "name": "Gaze of death",
+      "modifiers": [
+        {
+          "name": "BLAST"
+        }
+      ],
+      "range": 18,
+      "attack": "D3",
+      "accuracy": 2,
+      "strength": 12,
+      "piercing": 2,
+      "damage": "D6+3"
+    },
+    {
+      "name": "Scythe of the Nightbringer",
+      "profiles": [
+        {
+          "name": "Scythe of the Nightbringer – strike",
+          "modifiers": [
+            {
+              "name": "DEVASTATING WOUNDS"
+            }
+          ],
+          "range": "Melee",
+          "attack": 6,
+          "accuracy": 2,
+          "strength": 14,
+          "piercing": 4,
+          "damage": "D6"
+        },
+        {
+          "name": "Scythe of the Nightbringer – sweep",
+          "range": "Melee",
+          "attack": 14,
+          "accuracy": 2,
+          "strength": 8,
+          "piercing": 2,
+          "damage": 2
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Drain Life"
+    },
+    {
+      "name": "Necrodermis"
+    },
+    {
+      "name": "INVULNERABLE SAVE 4+"
+    }
+  ]
+}

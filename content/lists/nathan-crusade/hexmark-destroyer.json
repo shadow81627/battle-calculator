@@ -1,0 +1,53 @@
+{
+  "name": "Hexmark Destroyers",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#view=fit&page=87",
+  "factions": [
+    "Necrons"
+  ],
+  "models": 1,
+  "points": 70,
+  "attributes": {
+    "movement": 7,
+    "toughness": 5,
+    "save": 3,
+    "wound": 5,
+    "leadership": 6,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Enmitic disintegrator pistols",
+      "modifiers": [
+        {
+          "name": "PISTOL"
+        },
+        {
+          "name": "PRECISION"
+        }
+      ],
+      "range": 18,
+      "attack": 1,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Close combat weapon",
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Inescapable Death"
+    },
+    {
+      "name": "Multi-threat Eliminator"
+    }
+  ]
+}

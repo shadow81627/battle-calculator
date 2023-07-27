@@ -1,0 +1,64 @@
+{
+  "name": "Canoptek Wraiths",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#view=fit&page=79",
+  "factions": [
+    "Necrons"
+  ],
+  "models": 6,
+  "points": 220,
+  "attributes": {
+    "movement": 9,
+    "toughness": 6,
+    "save": 3,
+    "wound": 3,
+    "leadership": 8,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Particle caster",
+      "modifiers": [
+        {
+          "name": "DEVASTATING WOUNDS"
+        },
+        {
+          "name": "PISTOL"
+        }
+      ],
+      "range": 12,
+      "attack": 3,
+      "accuracy": 2,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1,
+      "alternatives": [
+        {
+          "name": "Transdimensional beamer",
+          "range": 12,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 4,
+          "piercing": 2,
+          "damage": 3
+        }
+      ]
+    },
+    {
+      "name": "Vicious claws",
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Wraith Form"
+    },
+    {
+      "name": "INVULNERABLE SAVE 4"
+    }
+  ]
+}
