@@ -46,6 +46,8 @@ const weapons = computed(() => {
 })
 
 const url = computed(() => {
+  if (props.unit.dataSheetUrl)
+    return props.unit.dataSheetUrl
   const segments = props.unit._path.split('/')
   const unitSlug = segments.slice(-1)
   const listSlug = segments.slice(-2).reverse().pop()
@@ -57,7 +59,7 @@ const url = computed(() => {
 <template>
   <div>
     <div class="text-left">
-      <NuxtLink v-if="url" :to="url">
+      <NuxtLink v-if="url" :to="url" target="_blank">
         <p>{{ unit.models }} {{ unit.name }} {{ unit.points }}pts</p>
       </NuxtLink>
       <p v-else>

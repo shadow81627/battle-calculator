@@ -21,6 +21,7 @@ export interface Weapon {
 export default interface Unit {
   _path: string
   name: string
+  dataSheetUrl?: string
   models: number
   points: number
   quantity?: number
