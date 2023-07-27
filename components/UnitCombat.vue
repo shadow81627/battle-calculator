@@ -127,7 +127,7 @@ const url = computed(() => {
         v-bind="{ ...weapon }" :distance="distance"
         :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, weapon) }].filter(item => item?.name)"
         :abilities="unit.abilities ?? []" :models="weapon.models ?? unit.models" :toughness="target.attributes.toughness"
-        :save="target.attributes.save" :invulnerable="getAbilityValue(target, 'INVULNERABLE SAVE')"
+        :save="target.attributes.save"
         :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
         :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined"
       />
@@ -144,8 +144,7 @@ const url = computed(() => {
             :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
             :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
             :toughness="target.attributes.toughness" :save="target.attributes.save"
-            :invulnerable="getAbilityValue(target, 'INVULNERABLE SAVE') ?? (order === 'WAAAGH!' ? 5 : undefined)"
-            :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
+            :turns="turns" :target="target"
             :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined"
           />
         </Accordion>
@@ -157,8 +156,7 @@ const url = computed(() => {
             :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
             :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
             :toughness="target.attributes.toughness" :save="target.attributes.save"
-            :invulnerable="getAbilityValue(target, 'INVULNERABLE SAVE') ?? (order === 'WAAAGH!' ? 5 : undefined)"
-            :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
+            :turns="turns" :target="target"
             :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined"
           />
           <br v-if="index + 1 !== weapon.profiles.length">

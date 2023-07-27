@@ -11,7 +11,6 @@ const props = defineProps({
   accuracy: { type: Number },
   piercing: { type: Number },
   damage: { type: [String, Number] },
-  pain: { type: Number },
   models: { type: Number, default: 1 },
   name: { type: String },
   turns: { type: Number, default: 1 },
@@ -103,9 +102,10 @@ const sustainedHits = computed(() => {
   const modifier = getModifier('SUSTAINED HITS', props.modifiers)
   return modifier ? Number(modifier.name.match(/\d+/)[0]) : 0
 })
-const invulnerable = computed(() => {
-  const ability = props.target.abilities?.find(ability => ability.name.startsWith('Invulnerable Save'))
-  return ability ? Number(ability.name.match(/\d+/)[0]) : 7
+const invulnerable = computed(() => getAbilityValue(props.target, 'INVULNERABLE SAVE') ?? 7)
+const pain = computed(() => {
+  const shiningAegis = Number(props.target?.abilities?.find(ability => ability.name === 'Shining Aegis')?.effect.match(/\d+/)?.[0])
+  return shiningAegis ?? getAbilityValue(props.target, 'FEEL NO PAIN')
 })
 const heavy = computed(() => getModifier('HEAVY', props.modifiers) ? 1 : 0)
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
@@ -130,13 +130,16 @@ const attacksTotal = computed(() => {
 })
 
 const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
+const mesmerisingForm = computed(() => props.target?.abilities?.find(ability => ability.name === 'Mesmerising Form') ? 1 : 0)
 const _accuracy = computed(() => {
   const buffs = [heavy.value, takeAim.value]
+  const negatives = [mesmerisingForm.value]
   if (hasMacroExtinctionProtocols.value)
     buffs.push(1)
 
   const buffTotal = buffs.reduce((sum, value) => sum + value, 0)
-  return props.accuracy - buffTotal
+  const negativesTotal = negatives.reduce((sum, value) => sum + value, 0)
+  return (props.accuracy - buffTotal) + negativesTotal
 })
 const randomHitRolls = computed(() => rolls(randomAttacksTotal.value))
 const failedHitRolls = computed(() => {
@@ -224,7 +227,7 @@ const randomDamageTotal = computed(() => {
 })
 
 const randomPainRolls = computed(() => rolls(randomDamageTotal.value))
-const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= props.pain), 0))
+const randomPainTotal = computed(() => randomDamageTotal.value - randomPainRolls.value.reduce((sum, roll) => sum + (roll >= pain.value), 0))
 
 const woundTotal = computed(() => {
   const pass = anti.value && (anti.value < wound.value) ? anti.value : wound.value
@@ -236,7 +239,7 @@ const damageTotal = computed(() => {
   const averageRolls = saveTotal.value * ((_damage.value.rolls * averageRollType) + _damage.value.base)
   return averageRolls
 })
-const painTotal = computed(() => damageTotal.value * dice.defend(props.pain))
+const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
 
 function formatAverage(number) {
   if (number % 1 === 0)
