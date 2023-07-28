@@ -1,0 +1,83 @@
+{
+  "name": "Bladeguard Veteran Squad",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/dflD0FuH0G975Ap3.pdf#view=fit&page=87",
+  "faction": [
+    "Adeptus Astartes",
+    "Oath of Moment"
+  ],
+  "models": 6,
+  "points": 200,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 3,
+    "leadership": 6,
+    "control": 1
+  },
+  "weapons": [],
+  "members": [
+    {
+      "name": "Bladeguard Veteran Sergeant",
+      "models": 1,
+      "weapons": [
+        {
+          "name": "Heavy Bolt pistol",
+          "modifiers": [
+            {"name": "PISTOL"}
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Master-crafted power weapon",
+          "range": "Melee",
+          "attack": 4,
+          "accuracy": 3,
+          "strength": 5,
+          "piercing": 2,
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "name": "Bladeguard Veterans",
+      "models": 5,
+      "weapons": [
+        {
+          "name": "Heavy Bolt pistol",
+          "modifiers": [
+            {"name": "PISTOL"}
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Master-crafted power weapon",
+          "range": "Melee",
+          "attack": 4,
+          "accuracy": 3,
+          "strength": 5,
+          "piercing": 2,
+          "damage": 2
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Bladeguard"
+    },
+    {
+      "name": "INVULNERABLE SAVE 4+"
+    }
+  ]
+}

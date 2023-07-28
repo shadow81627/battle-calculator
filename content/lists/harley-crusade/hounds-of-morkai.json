@@ -1,0 +1,133 @@
+{
+  "name": "Hounds of Morkai",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/u61I5H9K5r9oNsXZ.pdf#view=fit&page=43",
+  "faction": [
+    "Adeptus Astartes",
+    "Oath of Moment"
+  ],
+  "models": 5,
+  "points": 95,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 2,
+    "leadership": 6,
+    "control": 1
+  },
+  "weapons": [],
+  "members": [
+    {
+      "name": "Hound of Morkai Pack Leader",
+      "models": 1,
+      "weapons": [
+        {
+          "name": "Morkai bolt pistol",
+          "modifiers": [
+            {
+              "name": "ANTI-PSYKER 4+"
+            },
+            {
+              "name": "DEVASTATING WOUNDS"
+            },
+            {
+              "name": "PISTOL"
+            },
+            {
+              "name": "PRECISION"
+            }
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Morkai combat knife",
+          "modifiers": [
+            {
+              "name": "ANTI-PSYKER 4+"
+            },
+            {
+              "name": "DEVASTATING WOUNDS"
+            },
+            {
+              "name": "PRECISION"
+            }
+          ],
+          "range": "Melee",
+          "attack": 4,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Hound of Morkai",
+      "models": 4,
+      "weapons": [
+        {
+          "name": "Morkai bolt pistol",
+          "modifiers": [
+            {
+              "name": "ANTI-PSYKER 4+"
+            },
+            {
+              "name": "DEVASTATING WOUNDS"
+            },
+            {
+              "name": "PISTOL"
+            },
+            {
+              "name": "PRECISION"
+            }
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Morkai combat knife",
+          "modifiers": [
+            {
+              "name": "ANTI-PSYKER 4+"
+            },
+            {
+              "name": "DEVASTATING WOUNDS"
+            },
+            {
+              "name": "PRECISION"
+            }
+          ],
+          "range": "Melee",
+          "attack": 4,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Bladeguard"
+    },
+    {
+      "name": "Scouts 6"
+    },
+    {
+      "name": "Morkai’s Howl"
+    },
+    {
+      "name": "INVULNERABLE SAVE 6+"
+    }
+  ]
+}

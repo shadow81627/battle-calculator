@@ -1,0 +1,58 @@
+{
+  "name": "Primaris Captain",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/dflD0FuH0G975Ap3.pdf#view=fit&page=7",
+  "faction": [
+    "Adeptus Astartes",
+    "Oath of Moment"
+  ],
+  "models": 1,
+  "points": 95,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 5,
+    "leadership": 6,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Heavy Bolt Pistol",
+      "modifiers": [
+        {"name": "PISTOL"}
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 2,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Master-crafted power weapon",
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 5,
+      "piercing": 2,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Leader"
+    },
+    {
+      "name": "Rites of Battle"
+    },
+    {
+      "name": "Finest Hour"
+    },
+    {
+      "name": "Relic Shield"
+    },
+    {
+      "name": "INVULNERABLE SAVE 4+"
+    }
+  ]
+}

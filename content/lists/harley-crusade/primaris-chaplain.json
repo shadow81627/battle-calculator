@@ -1,0 +1,55 @@
+{
+  "name": "Primaris Chaplain",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/dflD0FuH0G975Ap3.pdf#view=fit&page=37",
+  "faction": [
+    "Adeptus Astartes",
+    "Oath of Moment"
+  ],
+  "models": 1,
+  "points": 65,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 4,
+    "leadership": 5,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Absolvor bolt pistol",
+      "modifiers": [
+        {"name": "PISTOL"}
+      ],
+      "range": 18,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Crozius arcanum",
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Leader"
+    },
+    {
+      "name": "Litany of Hate"
+    },
+    {
+      "name": "Spiritual Leader"
+    },
+    {
+      "name": "INVULNERABLE SAVE 4+"
+    }
+  ]
+}

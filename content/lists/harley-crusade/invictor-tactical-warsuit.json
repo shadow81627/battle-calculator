@@ -1,0 +1,98 @@
+{
+  "name": "Invictor Tactical Warsuit",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/dflD0FuH0G975Ap3.pdf#view=fit&page=113",
+  "faction": [
+    "Adeptus Astartes",
+    "Oath of Moment"
+  ],
+  "models": 1,
+  "points": 160,
+  "attributes": {
+    "movement": 8,
+    "toughness": 8,
+    "save": 3,
+    "wound": 12,
+    "leadership": 6,
+    "control": 4
+  },
+  "weapons": [
+    {
+      "name": "Fragstorm grenade launcher",
+      "modifiers": [
+        {"name": "BLAST"}
+      ],
+      "range": 18,
+      "attack": "D6",
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Heavy bolter",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Invictor fist",
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 3,
+      "strength": 14,
+      "piercing": 2,
+      "damage": 3
+    },
+    {
+      "name": "Twin ironhail autocannon",
+      "modifiers": [
+        {
+          "name": "TWIN-LINKED"
+        }
+      ],
+      "range": 48,
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 3
+    },
+    {
+      "name": "Twin ironhail heavy stubber",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 3"
+        },
+        {
+          "name": "TWIN-LINKED"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D3"
+    },
+    {
+      "name": "Scouts 8"
+    },
+    {
+      "name": "Combat Support"
+    }
+  ]
+}

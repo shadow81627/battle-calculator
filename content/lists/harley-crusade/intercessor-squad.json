@@ -1,0 +1,183 @@
+{
+  "name": "Intercessor Squad",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/dflD0FuH0G975Ap3.pdf#view=fit&page=53zzs",
+  "faction": [
+    "Adeptus Astartes",
+    "Oath of Moment"
+  ],
+  "keywords": [
+    "Infantry",
+    "Battleline",
+    "Grenades",
+    "Imperium",
+    "Tacticus",
+    "Intercessor Squad"
+  ],
+  "models": 10,
+  "points": 190,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 2,
+    "leadership": 6,
+    "control": 2
+  },
+  "weapons": [],
+  "members": [
+    {
+      "name": "Intercessor Sergeant",
+      "models": 1,
+      "weapons": [
+        {
+          "name": "Bolt rifle",
+          "modifiers": [
+            {
+              "name": "ASSAULT"
+            },
+            {
+              "name": "HEAVY"
+            }
+          ],
+          "range": 24,
+          "attack": 2,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Bolt pistol",
+          "modifiers": [
+            {
+              "name": "PISTOL"
+            }
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "attack": 3,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Intercessors",
+      "models": 7,
+      "weapons": [
+        {
+          "name": "Bolt rifle",
+          "modifiers": [
+            {
+              "name": "ASSAULT"
+            },
+            {
+              "name": "HEAVY"
+            }
+          ],
+          "range": 24,
+          "attack": 2,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Bolt pistol",
+          "modifiers": [
+            {
+              "name": "PISTOL"
+            }
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "attack": 3,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Special Weapon Intercessors",
+      "models": 2,
+      "weapons": [
+        {
+          "name": "Astartes grenade launcher",
+          "profiles": [
+            {
+              "name": "Astartes grenade launcher – frag",
+              "modifiers": [
+                {
+                  "name": "BLAST"
+                }
+              ],
+              "range": 24,
+              "attack": "D3",
+              "accuracy": 3,
+              "strength": 4,
+              "piercing": 0,
+              "damage": 1
+            },
+            {
+              "name": "Astartes grenade launcher – krak",
+              "range": 24,
+              "attack": 1,
+              "accuracy": 3,
+              "strength": 9,
+              "piercing": 2,
+              "damage": "D3"
+            }
+          ]
+        },
+        {
+          "name": "Bolt pistol",
+          "modifiers": [
+            {
+              "name": "PISTOL"
+            }
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "attack": 3,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Objective Secured"
+    }
+  ]
+}

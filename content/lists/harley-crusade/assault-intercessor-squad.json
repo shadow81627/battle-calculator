@@ -1,0 +1,80 @@
+{
+  "name": "Assault Intercessor Squad",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/dflD0FuH0G975Ap3.pdf#view=fit&page=57",
+  "faction": [
+    "Adeptus Astartes",
+    "Oath of Moment"
+  ],
+  "models": 10,
+  "points": 180,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 2,
+    "leadership": 6,
+    "control": 2
+  },
+  "weapons": [],
+  "members": [
+    {
+      "name": "Assault Intercessor Sergeant",
+      "models": 1,
+      "weapons": [
+        {
+          "name": "Heavy Bolt pistol",
+          "modifiers": [
+            {"name": "PISTOL"}
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 2,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Astartes chainsword",
+          "range": "Melee",
+          "attack": 4,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Assault Intercessors",
+      "models": 9,
+      "weapons": [
+        {
+          "name": "Heavy Bolt pistol",
+          "modifiers": [
+            {"name": "PISTOL"}
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 2,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Astartes chainsword",
+          "range": "Melee",
+          "attack": 4,
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 1,
+          "damage": 1
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Shock Assault"
+    }
+  ]
+}
