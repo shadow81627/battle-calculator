@@ -1,0 +1,68 @@
+{
+  "name": "Flamers",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/JhAjl9vv4BcigNO9.pdf#view=fit&page=49",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "keywords": [
+    "Infantry",
+    "Fly",
+    "Chaos",
+    "Daemon",
+    "Tzeentch",
+    "Flamers"
+  ],
+  "models": 3,
+  "points": 65,
+  "attributes": {
+    "movement": 9,
+    "toughness": 4,
+    "save": 7,
+    "wound": 3,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Flickering Flames",
+      "modifiers": [
+        {
+          "name": "IGNORES COVER"
+        },
+        {
+          "name": "PSYCHIC"
+        },
+        {
+          "name": "TORRENT"
+        }
+      ],
+      "range": 12,
+      "attack": "D6",
+      "accuracy": 0,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Flamer mouths",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Bounding Leaps"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}

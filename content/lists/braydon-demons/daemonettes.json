@@ -1,0 +1,59 @@
+{
+  "name": "Daemonettes",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/JhAjl9vv4BcigNO9.pdf#view=fit&page=97",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "keywords": [
+    "Infantry",
+    "Battleline",
+    "Chaos",
+    "Daemon",
+    "Slaanesh",
+    "Daemonettes"
+  ],
+  "models": 10,
+  "points": 140,
+  "attributes": {
+    "movement": 9,
+    "toughness": 3,
+    "save": 7,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Snapping claws",
+      "modifiers": [
+        {
+          "name": "DEVASTATING WOUNDS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Swift-taloned Slaughter"
+    },
+    {
+      "name": "Daemonic Icon"
+    },
+    {
+      "name": "Instrument of Chaos"
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    }
+  ]
+}

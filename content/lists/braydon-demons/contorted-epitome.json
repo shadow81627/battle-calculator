@@ -1,0 +1,74 @@
+{
+  "name": "Contorted Epitome",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/JhAjl9vv4BcigNO9.pdf#view=fit&page=91",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "keywords": [
+    "Infantry",
+    "Character",
+    "Psyker",
+    "Chaos",
+    "Daemon",
+    "Slaanesh",
+    "Contorted Epitome"
+  ],
+  "models": 1,
+  "points": 85,
+  "attributes": {
+    "movement": 9,
+    "toughness": 6,
+    "save": 5,
+    "wound": 8,
+    "leadership": 5,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Coiled tentacles",
+      "modifiers": [
+        {
+          "name": "EXTRA ATTACKS"
+        }
+      ],
+      "range": "Melee",
+      "attack": "D6",
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Snapping claws",
+      "modifiers": [
+        {
+          "name": "DEVASTATING WOUNDS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 8,
+      "accuracy": 2,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Leader"
+    },
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Swallow Energy (Psychic)"
+    },
+    {
+      "name": "Horrible Fascination(Psychic)"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}

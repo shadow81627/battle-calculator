@@ -1,0 +1,98 @@
+{
+  "name": "Lord of Change",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/JhAjl9vv4BcigNO9.pdf#zoom=175&page=33",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "keywords": [
+    "Monster",
+    "Character",
+    "Fly",
+    "Psyker",
+    "Chaos",
+    "Daemon",
+    "Tzeentch",
+    "Lord of Change"
+  ],
+  "models": 1,
+  "points": 230,
+  "attributes": {
+    "movement": 12,
+    "toughness": 10,
+    "save": 6,
+    "wound": 18,
+    "leadership": 6,
+    "control": 5
+  },
+  "weapons": [
+    {
+      "name": "Bolt of Change",
+      "profiles": [
+        {
+          "name": "Bolt of Change – witchfire",
+          "modifiers": [
+            {
+              "name": "PSYCHIC"
+            }
+          ],
+          "range": 18,
+          "attack": 9,
+          "accuracy": 2,
+          "strength": 9,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Bolt of Change – focused witchfire",
+          "modifiers": [
+            {
+              "name": "HAZARDOUS"
+            },
+            {
+              "name": "PSYCHIC"
+            }
+          ],
+          "range": 18,
+          "attack": 9,
+          "accuracy": 2,
+          "strength": 9,
+          "piercing": 2,
+          "damage": "D3"
+        }
+      ]
+    },
+    {
+      "name": "Staff of Tzeentch",
+      "modifiers": [
+        {
+          "name": "PSYCHIC"
+        }
+      ],
+      "range": "Melee",
+      "attack": 5,
+      "accuracy": 3,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 3
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Daemon Lord of Tzeentch (Aura)"
+    },
+    {
+      "name": "Master of Magicks (Psychic)"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}

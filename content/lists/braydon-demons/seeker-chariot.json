@@ -1,0 +1,90 @@
+{
+  "name": "Seeker Chariot",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/JhAjl9vv4BcigNO9.pdf#view=fit&page=105",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "keywords": [
+    "Mounted",
+    "Chaos",
+    "Daemon",
+    "Slaanesh",
+    "Seeker Chariot"
+  ],
+  "quantity": 2,
+  "models": 3,
+  "points": 75,
+  "attributes": {
+    "movement": 14,
+    "toughness": 6,
+    "save": 5,
+    "wound": 7,
+    "leadership": 7,
+    "control": 3
+  },
+  "weapons": [
+    {
+      "name": "Lashes of torment",
+      "modifiers": [
+        {
+          "name": "ANTI-INFANTRY 3+"
+        },
+        {
+          "name": "ASSAULT"
+        },
+        {
+          "name": "PISTOL"
+        }
+      ],
+      "range": 6,
+      "attack": 6,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Slashing claws",
+      "modifiers": [
+        {
+          "name": "DEVASTATING WOUNDS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 9,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Seeker tongues",
+      "modifiers": [
+        {
+          "name": "EXTRA ATTACKS"
+        },
+        {
+          "name": "LETHAL HITS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Scythed Impact"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}
