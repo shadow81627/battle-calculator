@@ -81,7 +81,7 @@ const route = useRoute()
             {{ unit.points }}
           </td>
           <td v-if="unit.offers" class="p-1 text-right">
-            <a v-if="unitBestOffer(unit)?.url" :href="unitBestOffer(unit)?.url" class="text-blue-600 dark:text-blue-300">
+            <a v-if="unitBestOffer(unit)?.url" :href="unitBestOffer(unit)?.url" class="text-blue-600 dark:text-blue-300" target="_blank">
               ${{ unitPrice(unit) }}
             </a>
             <template v-else>
