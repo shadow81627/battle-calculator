@@ -1,5 +1,6 @@
 <script setup>
-import { groupBy, startCase } from 'lodash-es';
+import { groupBy, startCase } from 'lodash-es'
+
 const route = useRoute()
 const router = useRouter()
 const turns = ref(1)
@@ -11,7 +12,7 @@ const { data: unitOptions } = await useAsyncData('lists', () => queryContent('li
   },
 })
 const groupedUnitOptions = computed(() => {
-  const grouped = groupBy(unitOptions.value, function (option) {
+  const grouped = groupBy(unitOptions.value, (option) => {
     return startCase(option.value.split('/').slice(-2, -1))
   })
   return Object.entries(grouped)
@@ -19,20 +20,24 @@ const groupedUnitOptions = computed(() => {
 const attackerId = computed({
   get() {
     const id = decodeURIComponent(route.query.attackerId)
-    if (unitOptions.value.find(option => option.value === id)) return id
+    if (unitOptions.value.find(option => option.value === id))
+      return id
     return '/lists/damien-infantry-artillery/scout-sentinels'
-  }, set(value) {
+  },
+  set(value) {
     router.replace({ query: { ...route.query, attackerId: encodeURIComponent(value) } })
-  }
+  },
 })
 const defenderId = computed({
   get() {
     const id = decodeURIComponent(route.query.defenderId)
-    if (unitOptions.value.find(option => option.value === id)) return id
+    if (unitOptions.value.find(option => option.value === id))
+      return id
     return '/lists/braydon-thousand-sons/mutalith-vortex-beast'
-  }, set(value) {
+  },
+  set(value) {
     router.replace({ query: { ...route.query, defenderId: encodeURIComponent(value) } })
-  }
+  },
 })
 const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
 const { data: defender, refresh: refreshDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
@@ -78,32 +83,36 @@ const { data: defender, refresh: refreshDefender } = await useAsyncData(defender
             <h2 class="h2">
               Attacker
               <select v-model="attackerId" class="inline w-250px select" name="attacker" @change="refreshAttacker">
-                <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of groupedUnitOptions" :key="key">
-                  <option v-for="option of group" :key="option.value" :value="option.value"
-                    :selected="attackerId === option.value ? option.value : undefined">
+                <optgroup v-for="[key, group] of groupedUnitOptions" :key="key" :label="key === 'Lists' ? 'Unassigned' : key">
+                  <option
+                    v-for="option of group" :key="option.value" :value="option.value"
+                    :selected="attackerId === option.value ? option.value : undefined"
+                  >
                     {{ option.label }}
                   </option>
                 </optgroup>
               </select>
             </h2>
           </div>
-          <UnitCombat :unit="attacker" :target="defender" v-bind="{ turns, distance }"></UnitCombat>
+          <UnitCombat :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
         </div>
         <div class="col md:col-6">
           <div class="text-left">
             <h2 class="h2">
               Defender
               <select v-model="defenderId" class="inline w-250px select" name="defender" @change="refreshDefender">
-                <optgroup :label="key === 'Lists' ? 'Unassigned' : key" v-for="[key, group] of groupedUnitOptions" :key="key">
-                  <option v-for="option of group" :key="option.value" :value="option.value"
-                    :selected="defenderId === option.value ? option.value : undefined">
+                <optgroup v-for="[key, group] of groupedUnitOptions" :key="key" :label="key === 'Lists' ? 'Unassigned' : key">
+                  <option
+                    v-for="option of group" :key="option.value" :value="option.value"
+                    :selected="defenderId === option.value ? option.value : undefined"
+                  >
                     {{ option.label }}
                   </option>
                 </optgroup>
               </select>
             </h2>
           </div>
-          <UnitCombat :unit="defender" :target="attacker" v-bind="{ turns, distance }"></UnitCombat>
+          <UnitCombat :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
         </div>
       </div>
     </section>
