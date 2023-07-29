@@ -105,7 +105,7 @@ const sustainedHits = computed(() => {
 const invulnerable = computed(() => getAbilityValue(props.target, 'INVULNERABLE SAVE') ?? 7)
 const pain = computed(() => {
   const shiningAegis = Number(props.target?.abilities?.find(ability => ability.name === 'Shining Aegis')?.effect.match(/\d+/)?.[0])
-  return shiningAegis ?? getAbilityValue(props.target, 'FEEL NO PAIN')
+  return shiningAegis || getAbilityValue(props.target, 'FEEL NO PAIN')
 })
 const heavy = computed(() => getModifier('HEAVY', props.modifiers) ? 1 : 0)
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
