@@ -1,0 +1,63 @@
+{
+  "name": "Raider",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/AH2iau4PitsBVrEp.pdf#view=fit&page=31",
+  "factions": [
+    "Drukhari",
+    "Power from Pain"
+  ],
+  "keywords": [
+    "Vehicle",
+    "Transport",
+    "Dedicated Transport",
+    "Fly",
+    "Aeldari",
+    "Raider"
+  ],
+  "quantity": 3,
+  "models": 1,
+  "points": 70,
+  "attributes": {
+    "movement": 14,
+    "toughness": 8,
+    "save": 4,
+    "wound": 10,
+    "leadership": 6,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Dark lance",
+      "range": 36,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 12,
+      "piercing": 3,
+      "damage": "D6+2",
+      "alternatives": [
+        {
+          "name": "Disintegrator cannon",
+          "range": 36,
+          "attack": 3,
+          "accuracy": 3,
+          "strength": 5,
+          "piercing": 2,
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "name": "Bladevanes",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Aethersails"
+    }
+  ]
+}
