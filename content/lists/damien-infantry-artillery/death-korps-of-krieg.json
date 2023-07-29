@@ -1,6 +1,11 @@
 {
   "name": "Death Korps of Krieg",
   "factions": ["Astra Militarum"],
+  "keywords": [
+    "Infantry",
+    "Battleline",
+    "Death Korps of Krieg"
+  ],
   "models": 20,
   "points": 130,
   "offers": [
