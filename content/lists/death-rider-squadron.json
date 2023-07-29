@@ -1,0 +1,89 @@
+{
+  "name": "Death Rider Squadron",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/l8t0aWCwawo1ACck.pdf#view=fit&page=3",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Mounted",
+    "Imperium",
+    "Grenades",
+    "Regiment",
+    "Death Rider Squadron"
+  ],
+  "models": 10,
+  "points": 140,
+  "attributes": {
+    "movement": 12,
+    "toughness": 4,
+    "save": 4,
+    "wound": 2,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Laspistol",
+      "modifiers": [
+        {
+          "name": "PISTOL"
+        }
+      ],
+      "models": 9,
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Plasma pistol",
+      "modifiers": [
+        {
+          "name": "PISTOL"
+        }
+      ],
+      "models": 1,
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Death Rider hunting lance",
+      "modifiers": [
+        {
+          "name": "LANCE"
+        }
+      ],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Savage claws",
+      "modifiers": [
+        {
+          "name": "EXTRA ATTACKS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Screening Line"
+    }
+  ]
+}
