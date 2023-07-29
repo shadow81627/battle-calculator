@@ -1,0 +1,265 @@
+{
+  "name": "Infantry Squad",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/xOjVS3Asx2QJ13lk.pdf#view=fit&page=31",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Infantry",
+    "Battleline",
+    "Imperium",
+    "Grenades",
+    "Regiment",
+    "Platoon",
+    "Infantry Squad"
+  ],
+  "models": 20,
+  "points": 130,
+  "offers": [
+    {
+      "price": 84,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    },
+    {
+      "$comment": "Cadian",
+      "price": 66.36,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 10,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/astra-militarum/products/astra-militarum-cadian-shock-troops-pre-order-1"
+    }
+  ],
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 5,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [],
+  "members": [
+    {
+      "name": "Special Weapon Guardsman",
+      "models": 2,
+      "weapons": [
+        {
+          "name": "Plasma gun",
+          "modifiers": [
+            {
+              "name": "RAPID FIRE 1"
+            }
+          ],
+          "range": 24,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 7,
+          "piercing": 2,
+          "damage": 1,
+          "alternatives": [
+            {
+              "name": "Sniper rifle",
+              "modifiers": [
+                {
+                  "name": "HEAVY"
+                },
+                {
+                  "name": "PRECISION"
+                }
+              ],
+              "range": 36,
+              "attack": 1,
+              "accuracy": 4,
+              "strength": 4,
+              "piercing": 2,
+              "damage": 2
+            },
+            {
+              "name": "Flamer",
+              "modifiers": [
+                {
+                  "name": "TORRENT"
+                },
+                {
+                  "name": "IGNORE COVER"
+                }
+              ],
+              "range": 12,
+              "attack": "D6",
+              "accuracy": 0,
+              "strength": 4,
+              "piercing": 0,
+              "damage": 1
+            },
+            {
+              "name": "Meltagun",
+              "modifiers": [
+                {
+                  "name": "MELTA 2"
+                }
+              ],
+              "range": 12,
+              "attack": 1,
+              "accuracy": 4,
+              "strength": 9,
+              "piercing": 4,
+              "damage": "D6"
+            }
+          ]
+        },
+        {
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Vox-caster Guardsman",
+      "models": 2,
+      "weapons": [
+        {
+          "name": "Lasgun",
+          "modifiers": [
+            {
+              "name": "RAPID FIRE 1"
+            }
+          ],
+          "range": 24,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Sergeant",
+      "models": 2,
+      "weapons": [
+        {
+          "name": "Plasma pistol",
+          "modifiers": [
+            {
+              "name": "PISTOL"
+            }
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 7,
+          "piercing": 2,
+          "damage": 1
+        },
+        {
+          "name": "Chainsword",
+          "range": "Melee",
+          "attack": 3,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Heavy Weapons Team",
+      "models": 2,
+      "attributes": {
+        "movement": 6,
+        "toughness": 3,
+        "save": 5,
+        "wound": 2,
+        "leadership": 7,
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Autocannon",
+          "range": 48,
+          "attack": 2,
+          "accuracy": 5,
+          "strength": 9,
+          "piercing": 1,
+          "damage": 3
+        },
+        {
+          "name": "Laspistol",
+          "modifiers": [
+            {
+              "name": "PISTOL"
+            }
+          ],
+          "range": 12,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "attack": 2,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "name": "Guardsman",
+      "models": 10,
+      "weapons": [
+        {
+          "name": "Lasgun",
+          "modifiers": [
+            {
+              "name": "RAPID FIRE 1"
+            }
+          ],
+          "range": 24,
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "attack": 1,
+          "accuracy": 4,
+          "strength": 3,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    }
+  ]
+}

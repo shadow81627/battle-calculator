@@ -1,0 +1,76 @@
+{
+  "name": "Lord Solar Leontus",
+  "factions": ["Astra Militarum"],
+  "models": 1,
+  "points": 125,
+  "offers": [
+    {
+      "price": 105,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Games Workshop"
+      },
+      "itemCondition": "NewCondition"
+    },
+    {
+      "price": 82.95,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Gap games"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.gapgames.com.au/collections/astra-militarum/products/astra-militarum-lord-solar-leontus-pre-order"
+    }
+  ],
+  "attributes": {
+    "movement": 12,
+    "toughness": 4,
+    "save": 3,
+    "wound": 8,
+    "leadership": 6,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Sol’s Righteous Gaze",
+      "modifiers": [{"name": "PISTOL"}],
+      "models": 1,
+      "range": 12,
+      "attack": 2,
+      "accuracy": 2,
+      "strength": 8,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Conquest",
+      "range": "Melee",
+      "models": 1,
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Konstantin's hooves",
+      "modifiers": [{"name": "EXTRA ATTACKS"}],
+      "models": 1,
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}

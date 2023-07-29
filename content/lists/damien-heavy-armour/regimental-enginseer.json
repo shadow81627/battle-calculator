@@ -1,0 +1,62 @@
+{
+  "name": "Regemental Enginseer",
+  "factions": ["Astra Militarum"],
+  "models": 1,
+  "points": 45,
+  "attributes": {
+    "movement": 6,
+    "toughness": 4,
+    "save": 3,
+    "wound": 3,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Archeotech pistol",
+      "modifiers": [{"name": "DEVASTATING WOUNDS"},{"name": "PISTOL"}],
+      "models": 1,
+      "range": 12,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Enginseer axe",
+      "range": "Melee",
+      "models": 1,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Servo-arm",
+      "modifiers": [{"name": "EXTRA ATTACKS"}],
+      "models": 1,
+      "range": "Melee",
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Enginseer"
+    },
+    {
+      "name": "Omnissiah’s Blessing"
+    },
+    {
+      "name": "Vengeance for the Omnissiah"
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    }
+  ]
+}
