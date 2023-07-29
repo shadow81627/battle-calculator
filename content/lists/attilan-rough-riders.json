@@ -1,0 +1,132 @@
+{
+  "name": "Attilan Rough Riders",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/xOjVS3Asx2QJ13lk.pdf#view=fit&page=59",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Mounted",
+    "Imperium",
+    "Grenades",
+    "Regiment",
+    "Attilan Rough Riders"
+  ],
+  "models": 10,
+  "points": 180,
+  "attributes": {
+    "movement": 12,
+    "toughness": 4,
+    "save": 4,
+    "wound": 2,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Lasgun",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 1"
+        }
+      ],
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Laspistol",
+      "modifiers": [
+        {
+          "name": "PISTOL"
+        }
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Power sabre",
+      "models": 1,
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 2,
+      "damage": 1
+    },
+    {
+      "name": "Goad lance",
+      "models": 2,
+      "modifiers": [
+        {
+          "name": "LANCE"
+        }
+      ],
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Hunting lance",
+      "models": 8,
+      "profiles": [
+        {
+          "name": "Hunting lance – frag tip",
+          "modifiers": [
+            {
+              "name": "LANCE"
+            }
+          ],
+          "range": "Melee",
+          "attack": "D6",
+          "accuracy": 3,
+          "strength": 4,
+          "piercing": 0,
+          "damage": 1
+        },
+        {
+          "name": "Hunting lance – melta tip",
+          "modifiers": [
+            {
+              "name": "LANCE"
+            }
+          ],
+          "range": "Melee",
+          "attack": 1,
+          "accuracy": 3,
+          "strength": 9,
+          "piercing": 4,
+          "damage": "D6"
+        }
+      ]
+    },
+    {
+      "name": "Steed’s hooves",
+      "modifiers": [
+        {
+          "name": "EXTRA ATTACKS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Horsemasters"
+    }
+  ]
+}
