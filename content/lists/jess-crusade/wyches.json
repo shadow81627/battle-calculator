@@ -1,0 +1,62 @@
+{
+  "name": "Wyches",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/AH2iau4PitsBVrEp.pdf#view=fit&page=53",
+  "factions": [
+    "Drukhari",
+    "Power from Pain"
+  ],
+  "keywords": [
+    "Infantry",
+    "Battleline",
+    "Aeldari",
+    "Wych Cult",
+    "Wyches"
+  ],
+  "quantity": 3,
+  "models": 10,
+  "points": 110,
+  "attributes": {
+    "movement": 8,
+    "toughness": 3,
+    "save": 6,
+    "wound": 1,
+    "leadership": 6,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Splinter pistol",
+      "modifiers": [
+        {
+          "name": "ANTI-INFANTRY 3+"
+        },
+        {
+          "name": "ASSAULT"
+        },
+        {
+          "name": "PISTOL"
+        }
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 2,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Hekatarii blade",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 3,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "No Escape"
+    }
+  ]
+}
