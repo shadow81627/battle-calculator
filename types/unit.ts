@@ -48,7 +48,7 @@ export default interface Unit {
       url?: string
     },
   ]
-  abilities?: Array<{ name: string }>
+  abilities?: Array<{ name: string; effect?: string }>
   weapons?: Weapon[]
   enhancements?: Enhancement[]
   members?: Unit[]
