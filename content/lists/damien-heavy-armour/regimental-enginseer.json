@@ -3,6 +3,19 @@
   "factions": ["Astra Militarum"],
   "models": 1,
   "points": 45,
+  "offers": [
+    {
+      "price": 59,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Forge World"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.games-workshop.com/en-AU/Astra-Militarum-Tech-Priest-Enginseer"
+    }
+  ],
   "attributes": {
     "movement": 6,
     "toughness": 4,

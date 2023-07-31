@@ -104,6 +104,15 @@
       "models": 1,
       "weapons": [
         {
+          "name": "Autocannon",
+          "range": 48,
+          "attack": 2,
+          "accuracy": 5,
+          "strength": 9,
+          "piercing": 1,
+          "damage": 3
+        },
+        {
           "name": "Laspistol",
           "models": 1,
           "modifiers": [{"name": "PISTOL"}],
@@ -126,5 +135,8 @@
         }
       ]
     }
+  ],
+  "enhancements": [
+    {"name": "Drill Commander", "points": 20}
   ]
 }

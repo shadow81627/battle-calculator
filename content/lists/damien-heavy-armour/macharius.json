@@ -12,6 +12,19 @@
   ],
   "models": 1,
   "points": 310,
+  "offers": [
+    {
+      "price": 294,
+      "priceCurrency": "AUD",
+      "eligibleQuantity": 1,
+      "offeredBy": {
+        "type": "Organization",
+        "name": "Forge World"
+      },
+      "itemCondition": "NewCondition",
+      "url": "https://www.forgeworld.co.uk/en-AU/Macharius-Heavy-Tank-2018"
+    }
+  ],
   "attributes": {
     "movement": 9,
     "toughness": 13,
@@ -39,8 +52,23 @@
       "damage": 3
     },
     {
+      "name": "Heavy bolter",
+      "models": 2,
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": 48,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
       "name": "Heavy stubber",
-      "models": 3,
+      "models": 1,
       "modifiers": [
         {
           "name": "RAPID FIRE 3"
