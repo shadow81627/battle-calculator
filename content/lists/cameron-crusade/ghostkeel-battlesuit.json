@@ -1,0 +1,105 @@
+{
+  "name": "Ghostkeel Battlesuit",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/8R8TOwaAp7LFOuZQ.pdf#view=fit&page=45",
+  "keywords": [
+    "Vehicle",
+    "Walker",
+    "Fly",
+    "Smoke",
+    "Battlesuit",
+    "Ghostkeel"
+  ],
+  "factions": [
+    "T’au Empire"
+  ],
+  "models": 1,
+  "points": 170,
+  "attributes": {
+    "movement": 10,
+    "toughness": 8,
+    "save": 2,
+    "wound": 12,
+    "leadership": 7,
+    "control": 3
+  },
+  "weapons": [
+    {
+      "name": "Cyclic ion raker",
+      "profiles": [
+        {
+          "name": "Cyclic ion raker – standard",
+          "range": 36,
+          "attack": 6,
+          "accuracy": 4,
+          "strength": 7,
+          "piercing": 1,
+          "damage": 2
+        },
+        {
+          "name": "Cyclic ion raker – overcharge",
+          "modifiers": [
+            {
+              "name": "HAZARDOUS"
+            }
+          ],
+          "range": 36,
+          "attack": 6,
+          "accuracy": 4,
+          "strength": 8,
+          "piercing": 2,
+          "damage": 3
+        }
+      ]
+    },
+    {
+      "name": "Twin T’au flamer",
+      "modifiers": [
+        {
+          "name": "IGNORES COVER"
+        },
+        {
+          "name": "TORRENT"
+        },
+        {
+          "name": "TWIN-LINKED"
+        }
+      ],
+      "range": 12,
+      "attack": "D6",
+      "accuracy": 0,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Ghostkeel fists",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 5,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D3"
+    },
+    {
+      "name": "Infiltrators"
+    },
+    {
+      "name": "Lone Operative"
+    },
+    {
+      "name": "Stealth"
+    },
+    {
+      "name": "Stealth Drones"
+    },
+    {
+      "name": "Battlesuit Support System"
+    }
+  ]
+}

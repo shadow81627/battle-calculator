@@ -1,0 +1,87 @@
+{
+  "name": "Crisis Battlesuit",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/8R8TOwaAp7LFOuZQ.pdf#view=fit&page=41",
+  "keywords": [
+    "Vehicle",
+    "Walker",
+    "Fly",
+    "Battlesuit",
+    "Crisis"
+  ],
+  "factions": [
+    "T’au Empire"
+  ],
+  "models": 6,
+  "points": 390,
+  "attributes": {
+    "movement": 10,
+    "toughness": 5,
+    "save": 3,
+    "wound": 4,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Cyclic ion blaster",
+      "models": 12,
+      "profiles": [
+        {
+          "name": "Cyclic ion blaster – standard",
+          "range": 18,
+          "attack": 3,
+          "accuracy": 4,
+          "strength": 7,
+          "piercing": 1,
+          "damage": 1
+        },
+        {
+          "name": "Cyclic ion blaster – overcharge",
+          "modifiers": [
+            {
+              "name": "HAZARDOUS"
+            }
+          ],
+          "range": 18,
+          "attack": 3,
+          "accuracy": 4,
+          "strength": 8,
+          "piercing": 2,
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "name": "Plasma rifle",
+      "range": 24,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 8,
+      "piercing": 3,
+      "damage": 3
+    },
+    {
+      "name": "Battlesuit fists",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 5,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Turbo-jets"
+    },
+    {
+      "name": "Shield Generator"
+    },
+    {
+      "name": "Battlesuit Support System"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "name": "Commander Shadowsun",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/8R8TOwaAp7LFOuZQ.pdf#view=fit&page=9",
+  "keywords": [
+    "Infantry",
+    "Fly",
+    "Character",
+    "Epic Hero",
+    "Battlesuit",
+    "Commander Shadowsun"
+  ],
+  "factions": [
+    "T’au Empire"
+  ],
+  "models": 1,
+  "points": 140,
+  "attributes": {
+    "movement": 10,
+    "toughness": 4,
+    "save": 3,
+    "wound": 6,
+    "leadership": 6,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "High-energy fusion blaster",
+      "modifiers": [
+        {
+          "name": "MELTA 2"
+        }
+      ],
+      "range": 18,
+      "attack": 1,
+      "accuracy": 2,
+      "strength": 10,
+      "piercing": 4,
+      "damage": "D6"
+    },
+    {
+      "name": "Flechette launcher",
+      "range": 18,
+      "attack": 5,
+      "accuracy": 2,
+      "strength": 3,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Light missile pod",
+      "range": 24,
+      "attack": 2,
+      "accuracy": 2,
+      "strength": 7,
+      "piercing": 0,
+      "damage": 2
+    },
+    {
+      "name": "Pulse pistol",
+      "modifiers": [
+        {
+          "name": "PISTOL"
+        }
+      ],
+      "range": 12,
+      "attack": 1,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Battlesuit fists",
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 5,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Infiltrators"
+    },
+    {
+      "name": "Lone Operative"
+    },
+    {
+      "name": "Stealth"
+    },
+    {
+      "name": "Agile Combatant"
+    },
+    {
+      "name": "Hero of the Empire (Aura)"
+    },
+    {
+      "name": "Advanced Guardian Drone"
+    },
+    {
+      "name": "Command-link Drone (Aura)"
+    }
+  ]
+}
