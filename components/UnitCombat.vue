@@ -82,7 +82,7 @@ const url = computed(() => {
         {{ enhancement.name }} ({{ enhancement.points }})
       </div>
       <div v-for="member of unit.members" :key="member.name">
-        <div class="text-left font-barlow font-700 uppercase">
+        <div class="text-left font-700 font-barlow uppercase">
           {{ member.name }}
         </div>
         <WeaponAttributes :unit="member" class="w-full" />
@@ -124,7 +124,7 @@ const url = computed(() => {
     <section v-for="weapon of weapons" :key="weapon.name" class="border-y border-solid py-5">
       <Combat
         v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
-        v-bind="{ ...weapon }" :distance="distance"
+        v-bind="{ ...weapon }" :distance="distance" :weapon="weapon" :unit="unit"
         :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, weapon) }].filter(item => item?.name)"
         :abilities="unit.abilities ?? []" :models="weapon.models ?? unit.models" :toughness="target.attributes.toughness"
         :save="target.attributes.save"
@@ -140,7 +140,7 @@ const url = computed(() => {
             {{ profile.name }}
           </template>
           <Combat
-            v-bind="{ ...profile }" :distance="distance"
+            v-bind="{ ...profile }" :distance="distance" :weapon="profile" :unit="unit"
             :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
             :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
             :toughness="target.attributes.toughness" :save="target.attributes.save"
@@ -152,7 +152,7 @@ const url = computed(() => {
       <template v-if="weapon.profiles?.length">
         <template v-for="(profile, index) of weapon.profiles" :key="profile.name">
           <Combat
-            v-bind="{ ...profile }" :distance="distance"
+            v-bind="{ ...profile }" :distance="distance" :weapon="profile" :unit="unit"
             :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
             :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
             :toughness="target.attributes.toughness" :save="target.attributes.save"
