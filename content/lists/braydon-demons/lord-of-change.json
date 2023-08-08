@@ -94,5 +94,11 @@
     {
       "name": "Invulnerable Save 4+"
     }
+  ],
+  "enhancements": [
+    {
+      "name": "The Everstave",
+      "points": 25
+    }
   ]
 }
