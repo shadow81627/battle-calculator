@@ -12,7 +12,7 @@ if (!unit.value)
     </h1>
     <div class="container">
       <div class="row">
-        <section class="col md:col-6">
+        <section class="!print:col col md:col-6">
           <Attributes
             :unit="unit" :additions="{
               invulnerable: getAbilityValue(unit, 'INVULNERABLE SAVE'),
@@ -24,7 +24,7 @@ if (!unit.value)
         </section>
       </div>
       <div class="row">
-        <section class="my-5 col md:col-6" style="overflow-x:auto;">
+        <section class="my-5 !print:col col md:col-6" style="overflow-x:auto;">
           <WeaponAttributes v-if="unit.weapons?.length" :unit="unit" class="w-full" />
           <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
             Enhancement:
@@ -40,7 +40,7 @@ if (!unit.value)
         </section>
       </div>
       <div v-if="unit.keywords" class="row">
-        <section class="col md:col-6">
+        <section class="!print:col col md:col-6">
           <div class="text-xl">
             <span v-for="(keyword, index) of unit.keywords" :key="keyword">
               {{ keyword }}<span v-if="index + 1 !== unit.keywords.length">, </span>

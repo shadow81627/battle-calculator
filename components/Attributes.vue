@@ -47,7 +47,7 @@ const _additions = computed(() => {
     <div v-if="unit?.attributes" class="row">
       <div
         v-for="[key, value] of Object.entries(unit?.attributes)" :key="`${key}-${value}`"
-        class="col-6 lg:col-2 md:col-3 sm:col-4 pr-5"
+        class="col-6 lg:col-2 md:col-3 sm:col-4 pr-5 !print:w-auto"
       >
         <div class="text-center capitalize">
           {{ key }}
@@ -60,7 +60,7 @@ const _additions = computed(() => {
     <div v-if="_additions && Object.entries(pickBy(_additions, Boolean)).length" class="row">
       <div
         v-for="[key, value] of Object.entries(pickBy(_additions, Boolean)).sort(sortAdditions)"
-        :key="`${key}-${value}`" class="col-6 lg:col-2 md:col-3 sm:col-4 pr-5"
+        :key="`${key}-${value}`" class="col-6 lg:col-2 md:col-3 sm:col-4 pr-5 !print:w-auto"
       >
         <div class="text-center capitalize">
           {{ labels[key] ?? key }}

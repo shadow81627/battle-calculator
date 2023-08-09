@@ -23,6 +23,7 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
+    '~/assets/css/main.css',
   ],
 
   colorMode: {
@@ -63,6 +64,6 @@ export default defineNuxtConfig({
   pwa,
 
   devtools: {
-    enabled: true,
+    enabled: false,
   },
 })
