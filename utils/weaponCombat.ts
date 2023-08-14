@@ -111,7 +111,8 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
     if (modifiers?.name)
       return Number(modifiers?.name.match(/\d+/)?.[0])
   })()
-  const _wound = anti && (anti < wound) ? anti : wound
+  const lance = getModifier('LANCE', weapon.modifiers) ? 1 : 0
+  const _wound = anti && (anti < wound) ? anti : wound - lance
   const failedWoundRolls = randomWoundRolls.reduce((sum, roll) => sum + (roll < _wound ? 1 : 0), 0)
 
   const hasTankKiller = unit.abilities?.find(ability => ['Tank-killer', 'Mobile Hunter-killers'].includes(ability.name)) && targetIsVehicleOrMonster(target)
