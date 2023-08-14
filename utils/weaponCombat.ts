@@ -54,22 +54,22 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   const randomAttacksTotal = randomAttackRollsTotal + randomAttacksTotalBonuses
 
   // Hits
-  const heavy = getModifier('HEAVY', weapon.modifiers) ? 1 : 0
   const _accuracy = (() => {
-    const takeAim = additional?.order === 'take-aim' ? 1 : 0
+    const takeAim = (additional?.order === 'take-aim' && weapon.range !== 'Melee') || (additional?.order === 'fix-bayonets' && weapon.range === 'Melee') ? 1 : 0
     const characteristic = weapon.accuracy - takeAim
-    const buffs = [
-      heavy,
-    ]
+    const buffs = []
     const negatives: number[] = [
       // mesmerisingForm,
     ]
-    // if (hasMacroExtinctionProtocols)
-    //   buffs.push(1)
-    if (unit.abilities?.find(ability => ability.name === 'Armour Hunter'))
+    if (getModifier('HEAVY', weapon.modifiers))
       buffs.push(1)
 
-    const buffTotal = buffs[0]
+    // if (hasMacroExtinctionProtocols)
+    //   buffs.push(1)
+    if (unit.abilities?.find(ability => ability.name === 'Armour Hunter') || (unit.abilities?.find(ability => ability.name === 'Hogboss') && weapon.range === 'Melee'))
+      buffs.push(1)
+
+    const buffTotal = buffs[0] ?? 0
     const negativesTotal = negatives.reduce((sum, value) => sum + value, 0)
     return (characteristic - buffTotal) + negativesTotal
   })()
@@ -192,7 +192,6 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   const totals = {
     name: weapon.name,
     accuracy: _accuracy,
-    attack,
     attack,
     randomAttackRolls,
     randomAttacksTotal,
