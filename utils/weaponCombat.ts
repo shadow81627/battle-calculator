@@ -57,10 +57,10 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   const _accuracy = (() => {
     const takeAim = (additional?.order === 'take-aim' && weapon.range !== 'Melee') || (additional?.order === 'fix-bayonets' && weapon.range === 'Melee') ? 1 : 0
     const characteristic = weapon.accuracy - takeAim
-    const buffs = []
-    const negatives: number[] = [
-      // mesmerisingForm,
-    ]
+    const buffs: number[] = []
+    const negatives: number[] = []
+    if (target.abilities?.find(ability => ability.name === 'Mesmerising Form'))
+      negatives.push(1)
     if (getModifier('HEAVY', weapon.modifiers))
       buffs.push(1)
 
