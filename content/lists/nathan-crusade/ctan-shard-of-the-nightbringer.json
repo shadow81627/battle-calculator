@@ -4,6 +4,13 @@
   "factions": [
     "Necrons"
   ],
+  "keywords": [
+    "Monster",
+    "Character",
+    "Epic Hero",
+    "Fly",
+    "C’tan Shard of the Nightbringer"
+  ],
   "models": 1,
   "points": 225,
   "attributes": {
