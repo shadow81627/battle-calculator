@@ -190,6 +190,7 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
 
   const totals = {
     name: weapon.name,
+    accuracy: _accuracy,
     randomAttackRolls,
     randomAttacksTotal,
     randomHitRolls,

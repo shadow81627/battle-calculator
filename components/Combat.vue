@@ -148,18 +148,7 @@ const attacksTotal = computed(() => {
   return (diceRollAverage + _attack.value.base + blast.value + rapidFire.value) * minTurns.value * props.models
 })
 
-const takeAim = computed(() => props.order === 'take-aim' ? 1 : 0)
-const mesmerisingForm = computed(() => props.target?.abilities?.find(ability => ability.name === 'Mesmerising Form') ? 1 : 0)
-const _accuracy = computed(() => {
-  const buffs = [heavy.value, takeAim.value]
-  const negatives = [mesmerisingForm.value]
-  if (hasMacroExtinctionProtocols.value)
-    buffs.push(1)
-
-  const buffTotal = buffs.reduce((sum, value) => sum + value, 0)
-  const negativesTotal = negatives.reduce((sum, value) => sum + value, 0)
-  return (props.accuracy - buffTotal) + negativesTotal
-})
+const _accuracy = computed(() => randomTotals.value.accuracy)
 const randomHitRolls = computed(() => randomTotals.value.randomHitRolls)
 const hasHitReRolls = computed(() => hasDaringRecon.value || hasTankHunter.value || hasAtraposDuty.value || hasFlakBattery.value)
 const randomHitReRolls = computed(() => randomTotals.value.randomHitReRolls)
