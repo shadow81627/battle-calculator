@@ -82,7 +82,7 @@ const url = computed(() => {
         {{ enhancement.name }} ({{ enhancement.points }})
       </div>
       <div v-for="member of unit.members" :key="member.name">
-        <div class="text-left font-700 font-barlow uppercase">
+        <div class="text-left font-barlow font-700 uppercase">
           {{ member.name }}
         </div>
         <WeaponAttributes :unit="member" class="w-full" />
@@ -103,7 +103,10 @@ const url = computed(() => {
                 None
               </option>
               <option value="take-aim">
-                Take Aim
+                TAKE AIM!
+              </option>
+              <option value="fix-bayonets">
+                FIX BAYONETS!
               </option>
             </select>
           </tbody>
