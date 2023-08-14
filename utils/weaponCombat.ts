@@ -25,6 +25,10 @@ function targetIsVehicleOrMonster(target: Unit) {
   return Boolean(target?.keywords?.some(keyword => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())))
 }
 
+function hasFaction(unit: Unit, key: string) {
+  return unit?.factions?.find(faction => faction.toUpperCase() === key.toUpperCase())
+}
+
 export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, additional?: CombatModifiers) {
   const maxTurns = getModifier('ONE SHOT', weapon.modifiers) ? 1 : 5
   const minTurns = Math.min(additional?.turns ?? 1, maxTurns)
@@ -83,11 +87,18 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
       return rolls(failedHitRolls)
     return []
   })()
+  const criticalHitRollsTotal = (() => {
+    const crit = additional?.stratagem === 'UNBRIDLED CARNAGE' && weapon.range === 'Melee' ? 5 : 6
+    const criticalWoundRollsEntries = Object.entries(occurrences([...randomHitRolls, ...randomHitReRolls]))
+    return criticalWoundRollsEntries.reduce((sum, [key, value]) => (Number(key) >= crit ? sum + value : sum), 0)
+  })()
   const sustainedHits = (() => {
     const modifier = getModifier('SUSTAINED HITS', weapon.modifiers)
+    if (!modifier && (hasFaction(unit, 'Orks') && weapon.range === 'Melee'))
+      return 1
     return modifier ? Number(modifier.name.match(/\d+/)?.[0]) : 0
   })()
-  const sustainedHitsTotal = sustainedHits ? sustainedHits * occurrences(randomHitRolls)[6] : 0
+  const sustainedHitsTotal = sustainedHits ? sustainedHits * criticalHitRollsTotal : 0
   const hasTorrent = getModifier('TORRENT', weapon.modifiers)
   const randomHitTotal = (() => {
     if (getModifier('TORRENT', weapon.modifiers))
@@ -97,7 +108,10 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   })()
 
   // Wounds
-  const hasLethalHits = getModifier('LETHAL HITS', weapon.modifiers) && !hasTorrent
+  const hasLethalHits = (getModifier('LETHAL HITS', weapon.modifiers) && !hasTorrent)
+    || (hasFaction(unit, 'ASTRA MILITARUM')
+  && weapon.range !== 'Melee'
+  && !unit.keywords?.find(item => item.toUpperCase() === 'AIRCRAFT'))
   const lethalHits = hasLethalHits ? occurrences(randomHitRolls)[6] : 0
   const randomWoundRolls = rolls(randomHitTotal - lethalHits)
   const strength = additional?.order === 'WAAAGH!' && additional?.range === 1 ? weapon.strength + 1 : weapon.strength
@@ -199,6 +213,7 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
     randomHitReRolls,
     randomHitTotal,
     randomSustainedHitsTotal: sustainedHitsTotal,
+    criticalHitRollsTotal,
     randomLethalHits: lethalHits,
     randomWoundRolls,
     randomWoundReRolls,

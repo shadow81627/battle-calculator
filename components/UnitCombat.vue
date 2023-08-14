@@ -10,6 +10,7 @@ const props = defineProps<{
   turns?: number
 }>()
 const order = ref('')
+const stratagem = ref('')
 
 function hasFaction(unit: Unit, key: string) {
   return unit?.factions?.find(faction => faction.toUpperCase() === key.toUpperCase())
@@ -91,31 +92,24 @@ const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFa
       </div>
       <br>
     </section>
-    <section class="my-5">
-      <div v-if="hasFaction(unit, 'ASTRA MILITARUM')">
-        <table>
-          <thead>
-            <th class="text-left">
-              <label>Orders</label>
-            </th>
-          </thead>
-          <tbody>
-            <select v-model="order" class="inline w-250px select">
-              <option value="" selected>
-                None
-              </option>
-              <option value="take-aim">
-                TAKE AIM!
-              </option>
-              <option value="fix-bayonets">
-                FIX BAYONETS!
-              </option>
-            </select>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <select v-if="hasFaction(unit, 'ORKS')" v-model="order" class="inline w-250px select">
+    <section class="my-5 flex">
+      <span v-if="hasFaction(unit, 'ASTRA MILITARUM')" class="flex flex-col p-1">
+        <label class="block p-1">Orders</label>
+        <select v-model="order" class="inline w-250px select">
+          <option value="" selected>
+            None
+          </option>
+          <option value="take-aim">
+            TAKE AIM!
+          </option>
+          <option value="fix-bayonets">
+            FIX BAYONETS!
+          </option>
+        </select>
+      </span>
+      <span v-if="hasFaction(unit, 'ORKS')" class="flex flex-col p-1">
+        <label class="block p-1">Army Rule</label>
+        <select v-model="order" class="inline w-250px select">
           <option value="">
             None
           </option>
@@ -123,7 +117,18 @@ const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFa
             WAAAGH!
           </option>
         </select>
-      </div>
+      </span>
+      <span v-show="hasFaction(unit, 'ORKS')" class="flex flex-col p-1">
+        <label class="p-1">Stratagem</label>
+        <select v-model="stratagem" class="inline w-250px select">
+          <option value="">
+            None
+          </option>
+          <option v-if="hasFaction(unit, 'ORKS')" value="UNBRIDLED CARNAGE">
+            UNBRIDLED CARNAGE
+          </option>
+        </select>
+      </span>
     </section>
 
     <section v-for="weapon of weapons" :key="weapon.name" class="border-y border-solid py-5">
@@ -135,6 +140,7 @@ const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFa
         :save="target.attributes.save"
         :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
         :order="_order"
+        :stratagem="stratagem"
       />
       <template v-if="weapon.alternatives?.length">
         <p class="pt-5">
@@ -151,6 +157,7 @@ const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFa
             :toughness="target.attributes.toughness" :save="target.attributes.save"
             :turns="turns" :target="target"
             :order="_order"
+            :stratagem="stratagem"
           />
         </Accordion>
       </template>
@@ -163,6 +170,7 @@ const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFa
             :toughness="target.attributes.toughness" :save="target.attributes.save"
             :turns="turns" :target="target"
             :order="_order"
+            :stratagem="stratagem"
           />
           <br v-if="index + 1 !== weapon.profiles.length">
         </template>

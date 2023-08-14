@@ -1,5 +1,4 @@
 <script setup>
-import occurrences from '~/utils/occurrences'
 import parseRolls from '~/utils/parseRolls'
 import getModifier from '~/utils/getModifier'
 import AverageWeaponCombatWorker from '~/assets/workers/averageWeaponCombat?worker'
@@ -23,6 +22,7 @@ const props = defineProps({
   distance: { type: Number, default: 24 },
   weapon: { type: Object },
   unit: { type: Object },
+  stratagem: { type: String },
 })
 
 const showRolls = ref(false)
@@ -51,6 +51,7 @@ const additional = computed(() => ({
   order: props.order,
   range: props.range,
   turns: props.turns,
+  stratagem: props.stratagem,
 }))
 const randomTotals = computed(() => weaponCombat(props.weapon, props.unit, props.target, additional.value))
 
@@ -145,7 +146,7 @@ const _accuracy = computed(() => randomTotals.value.accuracy)
 const randomHitRolls = computed(() => randomTotals.value.randomHitRolls)
 const hasHitReRolls = computed(() => hasDaringRecon.value || hasTankHunter.value || hasAtraposDuty.value || hasFlakBattery.value)
 const randomHitReRolls = computed(() => randomTotals.value.randomHitReRolls)
-const sustainedHitsTotal = computed(() => sustainedHits.value ? sustainedHits.value * occurrences(randomHitRolls.value)[6] : 0)
+const sustainedHitsTotal = computed(() => randomTotals.value.randomSustainedHitsTotal)
 const randomHitTotal = computed(() => randomTotals.value.randomHitTotal)
 const averageSustainedHits = computed(() => {
   const criticalValue = 6
@@ -332,7 +333,13 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
               {{ averages.averageAttacksTotal }}
             </td>
             <td class="p-1">
-              {{ averages.averageHitTotal }}
+              <template v-if="averages.averageSustainedHitsTotal">
+                {{ formatAverage(averages.averageHitTotal - averages.averageSustainedHitsTotal) }}
+                + {{ averages.averageSustainedHitsTotal }} Sustained Hit(s)
+              </template>
+              <template v-else>
+                {{ averages.averageHitTotal }}
+              </template>
             </td>
             <td class="p-1">
               {{ averages.averageWoundTotal }}

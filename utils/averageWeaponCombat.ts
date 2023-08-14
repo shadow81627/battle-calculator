@@ -6,6 +6,7 @@ import type { Weapon } from '~/types/unit'
 const defaultResult = {
   randomAttacksTotal: 0,
   randomHitTotal: 0,
+  randomSustainedHitsTotal: 0,
   randomWoundTotal: 0,
   randomSaveTotal: 0,
   randomDamageTotal: 0,
