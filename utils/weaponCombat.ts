@@ -32,7 +32,7 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   // Attacks
   const attack = (() => {
     const parsed = parseRolls(weapon.attack)
-    if (additional?.order === 'WAAGH!' && weapon.range === 'Melee')
+    if (additional?.order === 'WAAAGH!' && weapon.range === 'Melee')
       parsed.base = parsed.base + 1
     return parsed
   })()
@@ -191,6 +191,8 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   const totals = {
     name: weapon.name,
     accuracy: _accuracy,
+    attack,
+    attack,
     randomAttackRolls,
     randomAttacksTotal,
     randomHitRolls,

@@ -54,6 +54,8 @@ const url = computed(() => {
   if (listSlug !== 'lists')
     return `lists/${listSlug}/units/${unitSlug}`
 })
+
+const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFaction(props.unit, 'ORKS') ? order.value : undefined)
 </script>
 
 <template>
@@ -113,14 +115,14 @@ const url = computed(() => {
         </table>
       </div>
       <div>
-        <!-- <select v-if="hasFaction(defender, 'ORKS')" v-model="order" class="inline w-250px select">
-                <option value="">
-                  None
-                </option>
-                <option value="WAAAGH!">
-                  WAAAGH!
-                </option>
-              </select> -->
+        <select v-if="hasFaction(unit, 'ORKS')" v-model="order" class="inline w-250px select">
+          <option value="">
+            None
+          </option>
+          <option value="WAAAGH!">
+            WAAAGH!
+          </option>
+        </select>
       </div>
     </section>
 
@@ -132,7 +134,7 @@ const url = computed(() => {
         :abilities="unit.abilities ?? []" :models="weapon.models ?? unit.models" :toughness="target.attributes.toughness"
         :save="target.attributes.save"
         :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
-        :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined"
+        :order="_order"
       />
       <template v-if="weapon.alternatives?.length">
         <p class="pt-5">
@@ -148,7 +150,7 @@ const url = computed(() => {
             :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
             :toughness="target.attributes.toughness" :save="target.attributes.save"
             :turns="turns" :target="target"
-            :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined"
+            :order="_order"
           />
         </Accordion>
       </template>
@@ -160,7 +162,7 @@ const url = computed(() => {
             :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
             :toughness="target.attributes.toughness" :save="target.attributes.save"
             :turns="turns" :target="target"
-            :order="hasFaction(unit, 'ASTRA MILITARUM') ? order : undefined"
+            :order="_order"
           />
           <br v-if="index + 1 !== weapon.profiles.length">
         </template>

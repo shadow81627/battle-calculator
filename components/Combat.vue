@@ -130,17 +130,10 @@ const pain = computed(() => {
   const shiningAegis = Number(props.target?.abilities?.find(ability => ability.name === 'Shining Aegis')?.effect.match(/\d+/)?.[0])
   return shiningAegis || getAbilityValue(props.target, 'FEEL NO PAIN')
 })
-const heavy = computed(() => getModifier('HEAVY', props.modifiers) ? 1 : 0)
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
 
 const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.value))
-const _attack = computed(() => {
-  const parsed = parseRolls(props.attack)
-  if (props.order === 'WAAGH!' && props.range === 'Melee')
-    parsed.base = parsed.base + 1
-
-  return parsed
-})
+const _attack = computed(() => randomTotals.value.attack)
 const randomAttackRolls = computed(() => randomTotals.value.randomAttacksRolls)
 const randomAttacksTotal = computed(() => randomTotals.value.randomAttacksTotal)
 const attacksTotal = computed(() => {
