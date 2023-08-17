@@ -7,10 +7,10 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-100vh print:min-h-auto dark:bg-dark dark:text-light">
+  <Body class="dark:bg-dark dark:text-light">
     <VitePwaManifest />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-  </div>
+  </Body>
 </template>
