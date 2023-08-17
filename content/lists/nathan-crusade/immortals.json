@@ -21,35 +21,36 @@
   },
   "weapons": [
     {
-      "name": "Gauss blaster",
+      "name": "Tesla carbine",
       "modifiers": [
         {
-          "name": "LETHAL HITS"
+          "name": "ASSAULT"
+        },
+        {
+          "name": "SUSTAINED HITS 2"
         }
       ],
-      "range": 24,
+      "range": 18,
       "attack": 2,
       "accuracy": 3,
       "strength": 5,
-      "piercing": 1,
+      "piercing": 0,
       "damage": 1,
       "alternatives": [
         {
-          "name": "Tesla carbine",
+          "name": "Gauss blaster",
           "modifiers": [
             {
-              "name": "ASSAULT"
-            },
-            {
-              "name": "SUSTAINED HITS 2"
+              "name": "LETHAL HITS"
             }
           ],
-          "range": 18,
+          "range": 24,
           "attack": 2,
           "accuracy": 3,
           "strength": 5,
-          "piercing": 0,
+          "piercing": 1,
           "damage": 1
+          
         }
       ]
     },
