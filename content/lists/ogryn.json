@@ -1,0 +1,47 @@
+{
+  "name": "Ogryn Squad",
+  "factions": ["Astra Militarum"],
+  "models": 3,
+  "points": 75,
+  "attributes": {
+    "movement": 6,
+    "toughness": 6,
+    "save": 5,
+    "wound": 3,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Ripper gun",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 3"
+        }
+      ],
+      "range": 18,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Ripper gun",
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Feel no pain 6+"
+    },
+    {
+      "name": "Point-blank Barrage"
+    }
+  ]
+}
