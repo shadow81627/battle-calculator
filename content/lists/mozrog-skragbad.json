@@ -1,0 +1,62 @@
+{
+  "name": "Mozrog Skragbad",
+  "factions": ["Orks"],
+  "models": 1,
+  "points": 195,
+  "attributes": {
+    "movement": 10,
+    "toughness": 10,
+    "save": 3,
+    "wound": 9,
+    "leadership": 6,
+    "control": 3
+  },
+  "weapons": [
+    {
+      "name": "Thump gun",
+      "modifiers": [
+        {
+          "name": "BLAST"
+        }
+      ],
+      "range": 18,
+      "attack": "D3",
+      "accuracy": 5,
+      "strength": 6,
+      "piercing": 0,
+      "damage": 2
+    },
+    {
+      "name": "Gutrippa",
+      "modifiers":[{"name": "ANTI-MONSTER 4+"}, {"name": "ANTI-VEHICLE 4+"}],
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 7,
+      "piercing": 1,
+      "damage": 3
+    },
+    {
+      "name": "Big Chompa’s jaws ",
+      "modifiers":[{"name": "DEVASTATING WOUNDS"}, {"name": "EXTRA ATTACKS"}],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 7,
+      "piercing": 2,
+      "damage": 4
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": 1
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    },
+    {
+      "name": "Feel No Pain 4+"
+    }
+  ]
+}
