@@ -1,0 +1,120 @@
+{
+  "name": "Stormlord",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Vehicle",
+    "Titanic",
+    "Imperium",
+    "Smoke",
+    "Stormlord"
+  ],
+  "models": 1,
+  "points": 460,
+  "attributes": {
+    "movement": 9,
+    "toughness": 13,
+    "save": 2,
+    "wound": 24,
+    "leadership": 7,
+    "control": 8
+  },
+  "weapons": [
+    {
+      "name": "Stormlord mega-bolter",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": 48,
+      "attack": 20,
+      "accuracy": 4,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Lascannons",
+      "models": 4,
+      "range": 38,
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 12,
+      "piercing": 3,
+      "damage": "D6+1"
+    },
+    {
+      "name": "Heavy stubber",
+      "models": 2,
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 3"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Twin heavy bolter",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        },
+        {
+          "name": "TWIN-LINKED"
+        }
+      ],
+      "range": 36,
+      "attack": 3,
+      "accuracy": 4,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 2
+    },
+    {
+      "name": "Twin heavy flamer",
+      "models": 4,
+      "modifiers": [
+        {
+          "name": "TORRENT"
+        },
+        {
+          "name": "IGNORES COVER"
+        },
+        {
+          "name": "TWIN-LINKED"
+        }
+      ],
+      "range": 12,
+      "attack": "D6",
+      "accuracy": 0,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Armoured tracks",
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 4,
+      "strength": 8,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6+2"
+    },
+    {
+      "name": "Mount Up!"
+    }
+  ]
+}
