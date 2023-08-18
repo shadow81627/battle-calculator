@@ -1,0 +1,82 @@
+{
+  "name": "Knight Gallant",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/YeS47MWmFkWqKoLP.pdf#page=15",
+  "factions": [
+    "Imperial Knights"
+  ],
+  "models": 1,
+  "points": 400,
+  "attributes": {
+    "movement": 12,
+    "toughness": 12,
+    "save": 3,
+    "wound": 22,
+    "leadership": 6,
+    "control": 10
+  },
+  "weapons": [
+    {
+      "name": "Reaper chainsword",
+      "profiles": [
+        {
+          "name": "Reaper chainsword  – strike",
+          "range": "Melee",
+          "attack": 6,
+          "accuracy": 2,
+          "strength": 14,
+          "piercing": 4,
+          "damage": 6
+        },
+        {
+          "name": "Reaper chainsword  – sweep",
+          "range": "Melee",
+          "attack": 18,
+          "accuracy": 2,
+          "strength": 9,
+          "piercing": 3,
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "name": "Thunderstrike gauntlet",
+      "profiles": [
+        {
+          "name": "Thunderstrike gauntlet  – strike",
+          "range": "Melee",
+          "attack": 6,
+          "accuracy": 2,
+          "strength": 20,
+          "piercing": 3,
+          "damage": 8
+        },
+        {
+          "name": "Thunderstrike gauntlet  – sweep",
+          "range": "Melee",
+          "attack": 12,
+          "accuracy": 2,
+          "strength": 10,
+          "piercing": 2,
+          "damage": 3
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6+2"
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    },
+    {
+      "name": "Gallant’s Duty (Bondsman)",
+      "description": "While a model is affected by this ability, you can re-roll Charge rolls made for that model and each time that model makes a melee attack, you can re-roll the Hit roll. "
+    },
+    {
+      "name": "Martial Pride",
+      "description": "Each time a melee attack targets this model, subtract 1 from the Hit roll."
+    }
+  ]
+}
