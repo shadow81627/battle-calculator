@@ -1,0 +1,82 @@
+{
+  "name": "Kill Tank",
+  "factions": ["Orks"],
+  "models": 1,
+  "points": 195,
+  "attributes": {
+    "movement": 12,
+    "toughness": 12,
+    "save": 3,
+    "wound": 24,
+    "leadership": 6,
+    "control": 10
+  },
+  "weapons": [
+    {
+      "name": "Giga shoota",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": 48,
+      "attack": 30,
+      "accuracy": 5,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Skorcha",
+      "modifiers": [
+        {
+          "name": "IGNORES COVER"
+        },
+        {
+          "name": "TORRENT"
+        }
+      ],
+      "range": 12,
+      "attack": "D6",
+      "accuracy": 5,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Twin big shoota",
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 2"
+        },
+        {
+          "name": "TWIN-LINKED"
+        }
+      ],
+      "range": 18,
+      "attack": 3,
+      "accuracy": 5,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Reinforced ram",
+      "range": "Melee",
+      "attack": 8,
+      "accuracy": 4,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6+2"
+    },
+    {
+      "name": "Wall of Dakka"
+    }
+  ]
+}
