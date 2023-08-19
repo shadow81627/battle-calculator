@@ -166,7 +166,11 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
     return rolls(count)
   })()
   const invulnerable = getAbilityValue(target, 'INVULNERABLE SAVE') ?? 7
-  const _save = Math.min(target.attributes.save + weapon.piercing, invulnerable)
+  const _piercing = weapon.piercing
+    + (unit.abilities?.find(ability => ability.name === 'Point-blank Barrage') ? 1 : 0)
+    - (target.abilities?.find(ability => ability.name === 'Ramshackle but Rugged') ? 1 : 0)
+
+  const _save = Math.min(target.attributes.save + _piercing, invulnerable)
   const randomSaveTotal = randomSaveRolls.reduce((sum, roll) => sum + (roll < _save ? 1 : 0), 0) + randomDevastatingWounds
 
   const _damage = parseRolls(weapon.damage)
