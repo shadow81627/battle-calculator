@@ -43,9 +43,9 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   const _range = typeof weapon.range === 'string' ? 1 : weapon.range
   const distance = (additional?.distance ?? 1)
   // const inRange = _range >= distance
+  const inRapidFireRange = ((_range / 2) >= distance)
   const rapidFire = (() => {
     const modifier = getModifier('RAPID FIRE', weapon.modifiers)
-    const inRapidFireRange = ((_range / 2) >= distance)
     if (!modifier || !inRapidFireRange)
       return 0
     return Number(modifier.name.match(/\d+/)?.[0]) ?? 0
@@ -70,7 +70,11 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
 
     // if (hasMacroExtinctionProtocols)
     //   buffs.push(1)
-    if (unit.abilities?.find(ability => ability.name === 'Armour Hunter') || (unit.abilities?.find(ability => ability.name === 'Hogboss') && weapon.range === 'Melee'))
+    if (
+      unit.abilities?.find(ability => ability.name === 'Armour Hunter')
+      || (unit.abilities?.find(ability => ability.name === 'Wall of Dakka') && inRapidFireRange)
+      || (unit.abilities?.find(ability => ability.name === 'Hogboss') && weapon.range === 'Melee')
+    )
       buffs.push(1)
 
     const buffTotal = buffs[0] ?? 0
