@@ -1,0 +1,37 @@
+{
+  "name": "Bullgryn Squad",
+  "factions": ["Astra Militarum"],
+  "models": 3,
+  "points": 90,
+  "attributes": {
+    "movement": 6,
+    "toughness": 6,
+    "save": 4,
+    "wound": 3,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Bullgryn maul",
+      "range": "Melee",
+      "attack": 4,
+      "accuracy": 3,
+      "strength": 7,
+      "piercing": 1,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Feel no pain 6+"
+    },
+    {
+      "name": "Wall of Muscle"
+    },
+    {
+      "name": "Invulnerable Save 4+",
+      "$name": "Brute Shield"
+    }
+  ]
+}
