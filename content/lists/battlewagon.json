@@ -1,0 +1,122 @@
+{
+  "name": "Battlewagon",
+  "factions": ["Orks"],
+  "models": 1,
+  "points": 195,
+  "attributes": {
+    "movement": 10,
+    "toughness": 10,
+    "save": 3,
+    "wound": 16,
+    "leadership": 7,
+    "control": 5
+  },
+  "weapons": [
+    {
+      "name": "Killkannon",
+      "modifiers": [
+        {
+          "name": "BLAST"
+        }
+      ],
+      "range": 24,
+      "attack": "D6+3",
+      "accuracy": 5,
+      "strength": 9,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Lobba",
+      "modifiers": [
+        {
+          "name": "BLAST"
+        },
+        {
+          "name": "INDIRECT FIRE"
+        }
+      ],
+      "range": 48,
+      "attack": "D6",
+      "accuracy": 5,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Big shoota",
+      "models": 4,
+      "modifiers": [
+        {
+          "name": "RAPID FIRE 2"
+        }
+      ],
+      "range": 18,
+      "attack": 3,
+      "accuracy": 5,
+      "strength": 5,
+      "piercing": 0,
+      "damage": 1
+    },
+    {
+      "name": "Grabbin’ klaw",
+      "modifiers": [
+        {
+          "name": "EXTRA ATTACKS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 8,
+      "piercing": 2,
+      "damage": 2
+    },
+    {
+      "name": "Wreckin’ ball",
+      "modifiers": [
+        {
+          "name": "EXTRA ATTACKS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 1,
+      "accuracy": 4,
+      "strength": 10,
+      "piercing": 0,
+      "damage": "D6"
+    },
+    {
+      "name": "Deff rolla",
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 3,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 2,
+      "alternatives": [
+        {
+          "name": "Tracks and wheels",
+          "range": "Melee",
+          "attack": 6,
+          "accuracy": 4,
+          "strength": 8,
+          "piercing": 0,
+          "damage": 1
+        }
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "FIRING DECK 22"
+    },
+    {
+      "name": "Ramshackle but Rugged"
+    }
+  ]
+}
