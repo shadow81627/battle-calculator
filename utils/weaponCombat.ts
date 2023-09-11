@@ -118,7 +118,16 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   && !unit.keywords?.find(item => item.toUpperCase() === 'AIRCRAFT'))
   const lethalHits = hasLethalHits ? occurrences(randomHitRolls)[6] : 0
   const randomWoundRolls = rolls(randomHitTotal - lethalHits)
-  const strength = additional?.order === 'WAAAGH!' && additional?.range === 1 ? weapon.strength + 1 : weapon.strength
+  const strength = (function () {
+    const buffs = []
+    if (additional?.order === 'WAAAGH!' && additional?.range === 1)
+      buffs.push(1)
+    if (unit.enhancements?.find(enhancement => enhancement.name === 'The Everstave') && weapon.range !== 'Melee')
+      buffs.push(2)
+    if (unit?.abilities?.find(ability => ability.name === 'Daemon Lord of Tzeentch (Aura)'))
+      buffs.push(1)
+    return buffs.reduce((sum, value) => sum + value, 0) + Number(weapon.strength)
+  }())
   const wound = getWound(strength, target.attributes.toughness)
   const anti = (() => {
     const modifiers = weapon.modifiers?.find((modifier) => {
