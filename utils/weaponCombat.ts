@@ -181,12 +181,13 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   const randomDamageRolls = rolls(randomSaveTotal * _damage.rolls, _damage.rollType)
   const randomDamageTotal = (() => {
     const hasHalfDamage = target?.abilities?.find(ability => ability.name === 'Necrodermis') ? 2 : 1
+    const reduction = target?.abilities?.find(ability => ability.name === 'Wall of Muscle') ? 1 : 0
     const total = randomDamageRolls.reduce((sum, roll) => sum + roll, 0)
     if (_damage.rolls && !total)
       return 0
     if (!_damage.rolls)
-      return Math.round((randomSaveTotal * _damage.base) / hasHalfDamage)
-    return Math.round((total + _damage.base) / hasHalfDamage)
+      return Math.max(1, Math.round((randomSaveTotal * _damage.base) / hasHalfDamage) - reduction)
+    return Math.max(1, Math.round((total + _damage.base) / hasHalfDamage) - reduction)
   })()
 
   const randomPainRolls = rolls(randomDamageTotal)
