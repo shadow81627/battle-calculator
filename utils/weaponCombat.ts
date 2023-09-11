@@ -183,8 +183,8 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
     + (unit.abilities?.find(ability => ability.name === 'Point-blank Barrage') ? 1 : 0)
     - (target.abilities?.find(ability => ability.name === 'Ramshackle but Rugged') ? 1 : 0)
 
-  const _save = Math.min(target.attributes.save + _piercing, invulnerable)
-  const randomSaveTotal = randomSaveRolls.reduce((sum, roll) => sum + (roll < _save ? 1 : 0), 0) + randomDevastatingWounds
+  const save = Math.min(target.attributes.save + _piercing, invulnerable)
+  const randomSaveTotal = randomSaveRolls.reduce((sum, roll) => sum + (roll < save ? 1 : 0), 0) + randomDevastatingWounds
 
   const _damage = parseRolls(weapon.damage)
   const randomDamageRolls = rolls(randomSaveTotal * _damage.rolls, _damage.rollType)
@@ -225,6 +225,8 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
     name: weapon.name,
     accuracy: _accuracy,
     attack,
+    strength,
+    save,
     randomAttackRolls,
     randomAttacksTotal,
     randomHitRolls,
