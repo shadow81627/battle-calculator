@@ -2,6 +2,7 @@ import type CombatModifiers from 'types/CombatModifiers'
 import formatAverage from './formatAverage'
 import type Unit from '~/types/unit'
 import type { Weapon } from '~/types/unit'
+import weaponCombat from '~/utils/weaponCombat'
 
 const defaultResult = {
   randomAttacksTotal: 0,
