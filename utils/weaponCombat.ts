@@ -1,4 +1,6 @@
 import type CombatModifiers from 'types/CombatModifiers'
+import getModifier from './getModifier'
+import parseRolls from './parseRolls'
 import type Unit from '~/types/unit'
 import type { Weapon } from '~/types/unit'
 
