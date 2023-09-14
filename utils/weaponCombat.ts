@@ -3,6 +3,7 @@ import getModifier from './getModifier'
 import parseRolls from './parseRolls'
 import occurrences from './occurrences'
 import getWound from './getWound'
+import getAbilityValue from './getAbilityValue'
 import type Unit from '~/types/unit'
 import type { Weapon } from '~/types/unit'
 
