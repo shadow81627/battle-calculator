@@ -1,6 +1,7 @@
 import type CombatModifiers from 'types/CombatModifiers'
 import getModifier from './getModifier'
 import parseRolls from './parseRolls'
+import occurrences from './occurrences'
 import type Unit from '~/types/unit'
 import type { Weapon } from '~/types/unit'
 
@@ -100,9 +101,14 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   })()
   const sustainedHits = (() => {
     const modifier = getModifier('SUSTAINED HITS', weapon.modifiers)
-    if (!modifier && (hasFaction(unit, 'Orks') && weapon.range === 'Melee'))
-      return 1
-    return modifier ? Number(modifier.name.match(/\d+/)?.[0]) : 0
+    // if (!modifier && (hasFaction(unit, 'Orks') && weapon.range === 'Melee'))
+    //   return 1
+    if (!modifier?.name)
+      return 0
+    const parsed = parseRolls(modifier.name)
+    if (parsed.rolls)
+      return rolls(parsed.rolls, parsed.rollType).reduce((sum, roll) => sum + roll, 0) + parsed.base
+    return parsed.base
   })()
   const sustainedHitsTotal = sustainedHits ? sustainedHits * criticalHitRollsTotal : 0
   const hasTorrent = getModifier('TORRENT', weapon.modifiers)
@@ -114,10 +120,10 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   })()
 
   // Wounds
-  const hasLethalHits = (getModifier('LETHAL HITS', weapon.modifiers) && !hasTorrent)
+  const hasLethalHits = ((getModifier('LETHAL HITS', weapon.modifiers))
     || (hasFaction(unit, 'ASTRA MILITARUM')
-  && weapon.range !== 'Melee'
-  && !unit.keywords?.find(item => item.toUpperCase() === 'AIRCRAFT'))
+    && weapon.range !== 'Melee'
+  && !unit.keywords?.find(item => item.toUpperCase() === 'AIRCRAFT'))) && !hasTorrent
   const lethalHits = hasLethalHits ? occurrences(randomHitRolls)[6] : 0
   const randomWoundRolls = rolls(randomHitTotal - lethalHits)
   const strength = (function () {
