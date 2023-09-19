@@ -1,0 +1,114 @@
+{
+  "name": "C’tan Shard of the Dragon",
+  "dataSheetUrl": "https://www.warhammer-community.com/wp-content/uploads/2023/06/H5pO90rzYSAY6dHG.pdf#view=fit&page=65",
+  "factions": [
+    "Necrons"
+  ],
+  "keywords": [
+    "Monster",
+    "Character",
+    "Epic Hero",
+    "Fly",
+    "C’tan Shard of the Dragon"
+  ],
+  "models": 1,
+  "points": 225,
+  "attributes": {
+    "movement": 7,
+    "toughness": 11,
+    "save": 4,
+    "wound": 12,
+    "leadership": 6,
+    "control": 4
+  },
+  "weapons": [
+    {
+      "name": "Voltaic storm",
+      "modifiers": [
+        {
+          "name": "BLAST"
+        },
+        {
+          "name": "SUSTAINED HITS 2"
+        }
+      ],
+      "range": 18,
+      "attack": "D6+3",
+      "accuracy": 2,
+      "strength": 7,
+      "piercing": 1,
+      "damage": "D6+2"
+    },
+    {
+      "name": "Spear of the Void Dragon",
+      "modifiers": [
+        {
+          "name": "ANTI-VEHICLE 2+"
+        }
+      ],
+      "range": 18,
+      "attack": 1,
+      "accuracy": 2,
+      "strength": 4,
+      "piercing": 3,
+      "damage": "D6+2"
+    },
+    {
+      "name": "Spear of the Void Dragon",
+      "profiles": [
+        {
+          "name": "Spear of the Void Dragon – strike",
+          "modifiers": [
+            {
+              "name": "ANTI-VEHICLE 2+"
+            }
+          ],
+          "range": "Melee",
+          "attack": 5,
+          "accuracy": 2,
+          "strength": 12,
+          "piercing": 3,
+          "damage": "D6+2"
+        },
+        {
+          "name": "Spear of the Void Dragon – sweep",
+          "range": "Melee",
+          "attack": 10,
+          "accuracy": 2,
+          "strength": 8,
+          "piercing": 1,
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "name": "Canoptek tail blades",
+      "modifiers": [
+        {
+          "name": "EXTRA ATTACKS"
+        }
+      ],
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deadly Demise",
+      "damage": "D6"
+    },
+    {
+      "name": "Matter Absorption"
+    },
+    {
+      "name": "Necrodermis"
+    },
+    {
+      "name": "INVULNERABLE SAVE 4+"
+    }
+  ]
+}
