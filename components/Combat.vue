@@ -30,8 +30,6 @@ function toggleShowRolls() {
   showRolls.value = !showRolls.value
 }
 
-const _strength = computed(() => props.order === 'WAAAGH!' && props.range === 'Melee' ? props.strength + 1 : props.strength)
-
 const wound = computed(() => getWound(props.strength, props.toughness))
 
 const dice = {
@@ -135,6 +133,7 @@ const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5
 
 const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.value))
 const _attack = computed(() => randomTotals.value.attack)
+const _strength = computed(() => randomTotals.value.strength)
 const randomAttackRolls = computed(() => randomTotals.value.randomAttacksRolls)
 const randomAttacksTotal = computed(() => randomTotals.value.randomAttacksTotal)
 const attacksTotal = computed(() => {
