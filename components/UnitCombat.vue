@@ -79,17 +79,22 @@ const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFa
           </div> -->
     <Attributes class="mb-5" :unit="unit" />
     <section class="my-5" style="overflow-x:auto;">
-      <WeaponAttributes v-if="unit.weapons?.length" :unit="unit" class="w-full" />
-      <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
-        Enhancement:
-        {{ enhancement.name }} ({{ enhancement.points }})
-      </div>
-      <div v-for="member of unit.members" :key="member.name">
-        <div class="text-left font-barlow font-700 uppercase">
-          {{ member.name }}
+      <Accordion>
+        <template #header>
+          Weapons
+        </template>
+        <WeaponAttributes v-if="unit.weapons?.length" :unit="unit" class="w-full" />
+        <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
+          Enhancement:
+          {{ enhancement.name }} ({{ enhancement.points }})
         </div>
-        <WeaponAttributes :unit="member" class="w-full" />
-      </div>
+        <div v-for="member of unit.members" :key="member.name">
+          <div class="text-left font-barlow font-700 uppercase">
+            {{ member.name }}
+          </div>
+          <WeaponAttributes :unit="member" class="w-full" />
+        </div>
+      </Accordion>
       <br>
     </section>
     <section class="my-5 flex">
