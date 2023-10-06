@@ -131,7 +131,8 @@ const pain = computed(() => {
 })
 const blast = computed(() => hasBlast.value ? Math.floor(props.target.models / 5) : 0)
 
-const _save = computed(() => Math.min(props.save + props.piercing, invulnerable.value))
+const save = computed(() => props.target.attributes.save)
+const _save = computed(() => randomTotals.value.save)
 const _attack = computed(() => randomTotals.value.attack)
 const _strength = computed(() => randomTotals.value.strength)
 const randomAttackRolls = computed(() => randomTotals.value.randomAttacksRolls)
