@@ -1,0 +1,64 @@
+{
+  "name": "'Iron Hand' Straken",
+  "factions": [
+    "Astra Militarum"
+  ],
+  "keywords": [
+    "Infantry",
+    "Character",
+    "Epic Hero",
+    "Imperium",
+    "Grenades",
+    "Officer",
+    "'Iron Hand' Straken"
+  ],
+  "points": 55,
+  "offers": [],
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 3,
+    "wound": 4,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Auto shotgun",
+      "modifiers": [
+        {
+          "name": "ASSAULT"
+        }
+      ],
+      "range": 12,
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 2
+    },
+    {
+      "name": "Bionic arm with devil’s claw",
+      "modifiers": [
+        {
+          "name": "ANTI-MONSTER 4+"
+        }
+      ],
+      "range": "Melee",
+      "attack": 6,
+      "accuracy": 2,
+      "strength": 6,
+      "piercing": 2,
+      "damage": 2
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Scouts 6"
+    },
+    {
+      "name": "Been There, Seen it, Killed it",
+      "description": "Each time this model makes a melee attack, if it made a Charge move this turn, you can re-roll the Hit roll and you can re-roll the Wound roll."
+    }
+  ]
+}
