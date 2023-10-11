@@ -154,9 +154,7 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
 
   const hasTankKiller = unit.abilities?.find(ability => ['Tank-killer', 'Mobile Hunter-killers'].includes(ability.name)) && targetIsVehicleOrMonster(target)
   const hasTwinLinked = getModifier('TWIN-LINKED', weapon.modifiers)
-  const hasBringersOfChange = unit.abilities?.find(ability => ability.name === 'Bringers of Change')
-  const targetingArray = unit.abilities?.find(ability => ability.name === 'Targeting Array')
-  const hasWoundReRolls = hasTwinLinked || hasBringersOfChange || hasTankKiller || targetingArray
+  const hasWoundReRolls = hasTwinLinked || hasTankKiller || unit.abilities?.find(ability => ['Targeting Array', 'Bringers of Change', 'Been There, Seen it, Killed it'].includes(ability.name))
 
   const randomWoundReRolls = hasWoundReRolls ? rolls(failedWoundRolls) : []
   const criticalWoundRolls = (() => {
