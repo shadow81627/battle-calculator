@@ -1,0 +1,2025 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<roster id="84d6-2bbe-212d-7641" name="Crusade" battleScribeVersion="2.03" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemName="Warhammer 40,000 10th Edition" gameSystemRevision="9"
+  xmlns="http://www.battlescribe.net/schema/rosterSchema">
+  <costs>
+    <cost name="pts" typeId="51b2-306e-1021-d207" value="1100.0"/>
+  </costs>
+  <costLimits>
+    <costLimit name="pts" typeId="51b2-306e-1021-d207" value="1000.0"/>
+  </costLimits>
+  <forces>
+    <force id="ad64-668e-847b-ba7a" name="Army Roster" entryId="bb9d-299a-ed60-2d8a" catalogueId="b0ae-12a5-c84-ea45" catalogueRevision="12" catalogueName="Imperium - Astra Militarum">
+      <selections>
+        <selection id="c682-15a9-27da-44fe" name="Detachment" entryId="cd5f-2fc8-7d6f-9dee::406d-8707-c597-abd6" number="1" type="upgrade">
+          <selections>
+            <selection id="bd24-1f0a-28e7-9c1e" name="Combined Regiment" entryId="cd5f-2fc8-7d6f-9dee::6e25-4306-4115-8676::67ce-ebd5-b428-e4f7" entryGroupId="cd5f-2fc8-7d6f-9dee::6e25-4306-4115-8676::bfc1-eb63-c641-3ac4" number="1" type="upgrade">
+              <rules>
+                <rule id="cd5f-2fc8-7d6f-9dee::6e25-4306-4115-8676::dac0-f686-9164-51ca::d1d1-611e-5191-1095" name="Lethal Hits" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                  <description>Weapons with [LETHAL HITS] in their profile are known as Lethal Hits weapons. Each time an attack is made with such a weapon, a Critical Hit automatically wounds the target.</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="cd5f-2fc8-7d6f-9dee::6e25-4306-4115-8676::dca5-9eb0-b65f-d1c1" name="Born Soldiers" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an Astra Militarum unit from your army Remains Stationary, until the end of the turn, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+          </costs>
+          <categories>
+            <category id="e384-6f6d-82b4-3013" name="Configuration" entryId="4ac9-fd30-1e3d-b249" primary="true"/>
+          </categories>
+        </selection>
+        <selection id="2f00-e7b1-60dd-b530" name="Battle Size" entryId="7380-3e40-6ed6-b7cc::564e-fbc6-5266-3ea4" number="1" type="upgrade">
+          <selections>
+            <selection id="ac66-11d0-58c7-d170" name="1. Incursion (1000 Point limit)" entryId="7380-3e40-6ed6-b7cc::d62d-db22-4893-4bc0" entryGroupId="7380-3e40-6ed6-b7cc::b960-4789-a3a6-59cb" number="1" type="upgrade">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+          </costs>
+          <categories>
+            <category id="5c7a-da85-49d9-e0e0" name="Configuration" entryId="4ac9-fd30-1e3d-b249" primary="true"/>
+          </categories>
+        </selection>
+        <selection id="0524-b85f-02f5-43a9" name="Lord Solar Leontus" entryId="d2de-6903-46a-f02c::a9d-55c1-3d24-fa25" number="1" type="model">
+          <rules>
+            <rule id="d2de-6903-46a-f02c::7c6f-4215-60e0-15b4::53c9-34f6-2443-a95e" name="Voice Of Command" hidden="false">
+              <description>If your Army Faction is ASTRA MILITARUM, OFFICER models from your army with this ability can issue Orders. Each OFFICER&apos;s datasheet will specify how many Orders it can issue and which units are eligible to receive those Orders. Each time an OFFICER model issues an Order, select one of the Orders below, then select one eligible friendly unit within 6&quot; of that OFFICER model to issue it to. OFFICER models can issue Orders in your Command phase and at the end of a phase in which they disembarked from a TRANSPORT or were set up on the battlefield.
+
+Until the start of your next Command phase, the unit you selected is affected by that Order. Unless otherwise stated, a unit can only be affected by one Order at a time (any Order subsequently issued to that unit replaces the current one). If a unit being affected by an Order becomes Battle-shocked, that Order ceases to affect that unit.
+
+MOVE! MOVE! MOVE!
+Add 3&quot; to the Move characteristic of models in this unit.
+
+FIX BAYONETS!
+Improve the Weapon Skill characteristic of melee weapons equipped by models in this unit by 1.
+
+TAKE AIM!
+Improve the Ballistic Skill characteristic of ranged weapons equipped by models in this unit by 1.
+
+FIRST RANK, FIRE! SECOND RANK, FIRE!
+Improve the Attacks characteristic of Rapid Fire weapons equipped by models in this unit by 1.
+
+TAKE COVER!
+Improve the Save characteristic of models in this unit by 1 (this cannot improve a model’s Save to better than 3+).
+
+DUTY AND HONOUR!
+Improve the Leadership and Objective Control characteristics of models in this unit by 1.</description>
+            </rule>
+            <rule id="d2de-6903-46a-f02c::f3c7-984-639f-4bbc::b4dd-3e1f-41cb-218f" name="Leader" publicationId="48fc-15aa-b307-9443" page="39" hidden="false">
+              <description>While a Bodyguard unit contains a Leader, it is known as an Attached unit and, with the exception of rules that are triggered when units are destroyed (pg 12), it is treated as a single unit for all rules purposes. Each time an attack targets an Attached unit, until the attacking unit has resolved all of its attacks, you must use the Toughness characteristic of the Bodyguard models in that unit, even if a Leader in that unit has a different Toughness characteristic. Each time an attack sucessfully wounds an Attached unit, that attack cannot be allocated to a Character model in that unit, even if that Character model has lost one or more wounds or has already had attacks allocated to it this phase. As soon as the last Bodyguard model in an Attached unit has been destroyed, any attacks made against that unit that have yet to be allocated can then be allocated to Character models in that unit.</description>
+            </rule>
+          </rules>
+          <profiles>
+            <profile id="d2de-6903-46a-f02c::33c-34e4-d9f5-b11d" name="Lord Solar Leontus" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">8</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="d2de-6903-46a-f02c::4768-11ce-3c8b-3ce4" name="Officer" hidden="false" typeId="3fc9-16d8-8670-c8e2" typeName="Orders">
+              <characteristics>
+                <characteristic name="Officer" typeId="36b-c3c9-245f-e97d">This Officer can issue up to 3 Orders to Astra Militarum units.</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="d2de-6903-46a-f02c::ea84-ea61-c0c8-2dd6" name="The Lord Solar" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of your Command phase, If this model is on the battlefield, you gain 1CP.</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="d2de-6903-46a-f02c::84cb-968f-e85b-ee8d" name="The Collegiate Astrolex" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">After both players have deployed their armies, select up to three Astra Militarum units from your army and redeploy them. When doing so, you can set those units up in Strategic Reserves if you wish, regardless of how many units are already in Strategic Reserves.</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="d2de-6903-46a-f02c::abff-b3f7-4914-89f9::9658-6ed-d3c0-e755" name="Invulnerable Save 4+" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This Model has a 4+ Invulnerable Save</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="d2de-6903-46a-f02c::b70c-2b-b942-ef2" name="Leader" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
+- Attilan Rough Riders
+- Cadian Shock Troops
+- Catachan Jungle Fighters
+- Death Korps of Krieg
+- Infantry Squad
+- Kasrkin</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <selections>
+            <selection id="1030-969b-6873-6da6" name="Sol&apos;s Righteous Gaze" entryId="d2de-6903-46a-f02c::3f82-134-f2ed-b02e" number="1" type="upgrade">
+              <rules>
+                <rule id="d2de-6903-46a-f02c::4bd8-16e9-f1e6-75d7::8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                  <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
+
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="d2de-6903-46a-f02c::1d18-41ab-8fa8-7bf9" name="Sol&apos;s Righteous Gaze" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="4bca-0116-459e-df45" name="Conquest" entryId="d2de-6903-46a-f02c::ac06-64ed-3481-4826" number="1" type="upgrade">
+              <profiles>
+                <profile id="d2de-6903-46a-f02c::2941-2e9a-8902-38c5" name="Conquest" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="3bce-d430-9cd2-1526" name="Konstrain&apos;s Hooves" entryId="d2de-6903-46a-f02c::7d1d-f9ce-fead-d3a" number="1" type="upgrade">
+              <rules>
+                <rule id="d2de-6903-46a-f02c::c31f-c04b-1262-af95::115b-79dc-f723-d761" name="Extra Attacks" publicationId="48fc-15aa-b307-9443" page="28" hidden="false">
+                  <description>Weapons with [EXTRA ATTACKS] in their profile are known as Extra Attacks weapons. Each time the bearer of such a weapon fights, it can make attacks with that weapon in addition to the one it chooses to fight with. The number of attacks made with an Extra Attacks weapon cannot be modified by other rules.</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="d2de-6903-46a-f02c::c435-88eb-2fb7-2009" name="Konstrain&apos;s Hooves" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Extra Attacks</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="5f19-d0c7-6cab-d5a5" name="Warlord" entryId="d2de-6903-46a-f02c::26a-1431-6f4f-f27::ea3f-b52b-8dc7-d365" number="1" type="upgrade">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+              <categories>
+                <category id="2d76-7f1b-1f3e-acbe" name="Warlord" entryId="5c0e-4c31-d51b-e470" primary="false"/>
+              </categories>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="125.0"/>
+          </costs>
+          <categories>
+            <category id="041d-433b-2ef7-c23f" name="Lord Solar Leontus" entryId="f62-183e-d4f7-4d98" primary="false"/>
+            <category id="b149-b169-d9ab-645e" name="Mounted" entryId="14a0-40c9-2748-ae6e" primary="false"/>
+            <category id="c90a-d70d-e9aa-7eab" name="Epic Hero" entryId="4f3a-f0f7-6647-348d" primary="true"/>
+            <category id="1b4b-3783-2d38-1601" name="Imperium" entryId="aff3-d6a3-2a95-9dc" primary="false"/>
+            <category id="4310-b3f6-37b1-8215" name="Faction: Astra Militarum" entryId="fa45-57e-930e-602b" primary="false"/>
+            <category id="aa10-ff97-7bcb-3ef3" name="Character" entryId="9cfd-1c32-585f-7d5c" primary="false"/>
+            <category id="b4f7-4db4-f038-c04e" name="Officer" entryId="e4d8-c6a1-7c23-ae25" primary="false"/>
+          </categories>
+        </selection>
+        <selection id="4a08-abce-4e5b-cbae" name="Platoon Command Squad" entryId="e858-d78d-2e0f-6b0d::4683-67ac-7744-d5e3" number="1" type="unit">
+          <rules>
+            <rule id="e858-d78d-2e0f-6b0d::be2f-6c03-e59-5bc9::53c9-34f6-2443-a95e" name="Voice Of Command" hidden="false">
+              <description>If your Army Faction is ASTRA MILITARUM, OFFICER models from your army with this ability can issue Orders. Each OFFICER&apos;s datasheet will specify how many Orders it can issue and which units are eligible to receive those Orders. Each time an OFFICER model issues an Order, select one of the Orders below, then select one eligible friendly unit within 6&quot; of that OFFICER model to issue it to. OFFICER models can issue Orders in your Command phase and at the end of a phase in which they disembarked from a TRANSPORT or were set up on the battlefield.
+
+Until the start of your next Command phase, the unit you selected is affected by that Order. Unless otherwise stated, a unit can only be affected by one Order at a time (any Order subsequently issued to that unit replaces the current one). If a unit being affected by an Order becomes Battle-shocked, that Order ceases to affect that unit.
+
+MOVE! MOVE! MOVE!
+Add 3&quot; to the Move characteristic of models in this unit.
+
+FIX BAYONETS!
+Improve the Weapon Skill characteristic of melee weapons equipped by models in this unit by 1.
+
+TAKE AIM!
+Improve the Ballistic Skill characteristic of ranged weapons equipped by models in this unit by 1.
+
+FIRST RANK, FIRE! SECOND RANK, FIRE!
+Improve the Attacks characteristic of Rapid Fire weapons equipped by models in this unit by 1.
+
+TAKE COVER!
+Improve the Save characteristic of models in this unit by 1 (this cannot improve a model’s Save to better than 3+).
+
+DUTY AND HONOUR!
+Improve the Leadership and Objective Control characteristics of models in this unit by 1.</description>
+            </rule>
+          </rules>
+          <profiles>
+            <profile id="e858-d78d-2e0f-6b0d::fe48-9ca2-e030-7057" name="Command Structure (Aura)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly Platoon unit is within 6&quot; of this unit’s Platoon Commander, you can target that unit with Stratagems even while it is Battle-shocked.</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="e858-d78d-2e0f-6b0d::a701-a04b-e1b3-ef1e" name="Officer" hidden="false" typeId="3fc9-16d8-8670-c8e2" typeName="Orders">
+              <characteristics>
+                <characteristic name="Officer" typeId="36b-c3c9-245f-e97d">This unit’s Officer can issue 1 Order to a Regiment unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <selections>
+            <selection id="1d90-ab39-dcb5-a2ea" name="Platoon Commander" entryId="e858-d78d-2e0f-6b0d::537-260c-243a-83ef" number="1" type="model">
+              <profiles>
+                <profile id="e858-d78d-2e0f-6b0d::67f9-f2bb-8951-56d4" name="Platoon Commander" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                  <characteristics>
+                    <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                    <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                    <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                    <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                    <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                    <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <selections>
+                <selection id="7326-70aa-25fa-4863" name="Close Combat Weapon" entryId="e858-d78d-2e0f-6b0d::8cd6-c81d-7106-f39c::b349-9d3a-1a65-3e48" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::8cd6-c81d-7106-f39c::270f-e247-55f9-c650" name="Close Combat Weapon" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="927c-07b1-d9df-d87d" name="Drill Commander" entryId="e858-d78d-2e0f-6b0d::82e1-4822-ff38-1063::272b-eecc-fd09-6723" entryGroupId="e858-d78d-2e0f-6b0d::82e1-4822-ff38-1063::d572-4471-c9b8-dea5" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::82e1-4822-ff38-1063::393e-1194-2f16-2738" name="Drill Commander" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Officer model only. While the bearer is leading a unit, each time a model in that unit makes a ranged attack, if that unit Remained Stationary this turn, a Critical Hit is scored on a successful unmodified Hit roll of 5+.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="20.0"/>
+                  </costs>
+                </selection>
+                <selection id="0edb-ab95-6819-99c3" name="Plasma Pistol" entryId="e858-d78d-2e0f-6b0d::747d-2dfb-36c2-a558::5854-65e-1ae3-52c2::abf2-656d-322e-3c7e" entryGroupId="e858-d78d-2e0f-6b0d::747d-2dfb-36c2-a558::db8e-23ae-d11a-a286" number="1" type="upgrade">
+                  <rules>
+                    <rule id="e858-d78d-2e0f-6b0d::747d-2dfb-36c2-a558::5854-65e-1ae3-52c2::32d7-381-f231-de08::8367-374c-f87-c627" name="Hazardous" publicationId="48fc-15aa-b307-9443" page="28" hidden="false">
+                      <description>Weapons with [HAZARDOUS] in their profile are known as Hazardous weapons. Each time a unit is selected to shoot or fight, if one or more models attack with Hazardous weapons, then after that unit has resolved all of its attacks, you must take one Hazardous test for each Hazardous weapon that was just used by rolling one D6. For each roll of 1, that test is failed and one model in that unit equipped with a Hazardous weapon is destroyed (selected by the controlling player), unless that model is a Character, Monster or Vehicle, in which case it suffers 3 mortal wounds instead. Note that if you selected a Character model in an Attached unit, the mortal wounds suffered must be allocated to that model first, even if there is another model in that unit that has lost one or more wounds or has had attacks allocated to it this phase.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::747d-2dfb-36c2-a558::5854-65e-1ae3-52c2::bd0f-b111-e732-a96a" name="➤ Plasma Pistol - Standard" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                      </characteristics>
+                    </profile>
+                    <profile id="e858-d78d-2e0f-6b0d::747d-2dfb-36c2-a558::5854-65e-1ae3-52c2::2cf8-3625-67ba-d5f4" name="➤ Plasma Pistol - Supercharge" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Hazardous, Pistol</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="a9de-aa2a-fd46-93ff" name="Power Fist" entryId="e858-d78d-2e0f-6b0d::2de4-6b2c-3cb8-1f37::f054-ef04-f991-1ccb" entryGroupId="e858-d78d-2e0f-6b0d::680-1ae8-fe48-5232" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::2de4-6b2c-3cb8-1f37::137a-506c-8e55-c3d0" name="Power Fist" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+              </selections>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+              <categories>
+                <category id="ee24-a4fe-299a-db0e" name="Character" entryId="9cfd-1c32-585f-7d5c" primary="false"/>
+                <category id="5270-cb28-c29d-0087" name="Officer" entryId="e4d8-c6a1-7c23-ae25" primary="false"/>
+              </categories>
+            </selection>
+            <selection id="84ff-31ed-1c3d-df0d" name="Veteran Guardsman w/ Master Vox" entryId="e858-d78d-2e0f-6b0d::c31d-a2fc-d50-652d" entryGroupId="e858-d78d-2e0f-6b0d::e7d-ccd0-acdc-3f32" number="1" type="model">
+              <profiles>
+                <profile id="e858-d78d-2e0f-6b0d::832a-e999-93e1-f9e7" name="Veteran Guardsman" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                  <characteristics>
+                    <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                    <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                    <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                    <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                    <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                    <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <selections>
+                <selection id="b3a5-fbb3-94a0-1f6b" name="Master Vox" entryId="e858-d78d-2e0f-6b0d::8552-80d0-94f0-532b::1f75-a238-cc23-a70f" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::8552-80d0-94f0-532b::2065-a298-ad3c-9479" name="Master Vox" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the Officer in the bearer’s unit issues an Order, it can issue it to an eligible unit up to 24&quot; away.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="efb9-bddb-3de3-1f87" name="Close Combat Weapon" entryId="e858-d78d-2e0f-6b0d::55a-3dee-a1f6-cfb5::b349-9d3a-1a65-3e48" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::55a-3dee-a1f6-cfb5::270f-e247-55f9-c650" name="Close Combat Weapon" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="f6d0-2080-565c-c2dc" name="Laspistol" entryId="e858-d78d-2e0f-6b0d::2515-42dc-5829-a0e4::2689-4c0e-cdfb-3e5" number="1" type="upgrade">
+                  <rules>
+                    <rule id="e858-d78d-2e0f-6b0d::2515-42dc-5829-a0e4::fb04-21c8-9987-5c51::8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                      <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
+
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::2515-42dc-5829-a0e4::9210-c504-a4cf-6fac" name="Laspistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="609c-c394-7f12-eaad" name="Lasgun" entryId="e858-d78d-2e0f-6b0d::a91d-4893-853e-fc02::a09c-6de4-e1c1-708a" number="1" type="upgrade">
+                  <rules>
+                    <rule id="e858-d78d-2e0f-6b0d::a91d-4893-853e-fc02::1787-b5ea-e822-a813::c5c8-8b58-b8b6-7786" name="Rapid Fire 1" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                      <description>Weapons with [RAPID FIRE X] in their profile are known as Rapid Fire weapons. Each time such a weapon targets a unit within half that weapon’s range, the Attacks characteristic of that weapon is increased by the amount denoted by ‘x’.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::a91d-4893-853e-fc02::bf04-28bf-1b01-a8d3" name="Lasgun" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+              </selections>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="a4ae-69f8-430e-33bc" name="Veteran Guardsman w/ Medi-pack" entryId="e858-d78d-2e0f-6b0d::50a5-546a-f6e6-5364" entryGroupId="e858-d78d-2e0f-6b0d::e7d-ccd0-acdc-3f32" number="1" type="model">
+              <profiles>
+                <profile id="e858-d78d-2e0f-6b0d::4cd0-9db-e2d3-bd9" name="Veteran Guardsman" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                  <characteristics>
+                    <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                    <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                    <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                    <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                    <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                    <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <selections>
+                <selection id="42aa-341e-a650-18b5" name="Close Combat Weapon" entryId="e858-d78d-2e0f-6b0d::27f0-9395-ed6d-4945::b349-9d3a-1a65-3e48" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::27f0-9395-ed6d-4945::270f-e247-55f9-c650" name="Close Combat Weapon" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="02c4-2ec4-9dfe-bf1f" name="Laspistol" entryId="e858-d78d-2e0f-6b0d::de27-50f5-4e10-f36d::2689-4c0e-cdfb-3e5" number="1" type="upgrade">
+                  <rules>
+                    <rule id="e858-d78d-2e0f-6b0d::de27-50f5-4e10-f36d::fb04-21c8-9987-5c51::8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                      <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
+
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::de27-50f5-4e10-f36d::9210-c504-a4cf-6fac" name="Laspistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="ab8d-6b64-f162-ead9" name="Lasgun" entryId="e858-d78d-2e0f-6b0d::4861-d866-781a-90e7::a09c-6de4-e1c1-708a" number="1" type="upgrade">
+                  <rules>
+                    <rule id="e858-d78d-2e0f-6b0d::4861-d866-781a-90e7::1787-b5ea-e822-a813::c5c8-8b58-b8b6-7786" name="Rapid Fire 1" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                      <description>Weapons with [RAPID FIRE X] in their profile are known as Rapid Fire weapons. Each time such a weapon targets a unit within half that weapon’s range, the Attacks characteristic of that weapon is increased by the amount denoted by ‘x’.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::4861-d866-781a-90e7::bf04-28bf-1b01-a8d3" name="Lasgun" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="de4d-daf0-4698-8cca" name="Medi-pack" entryId="e858-d78d-2e0f-6b0d::f566-56e5-2fe5-acbe::b9c9-d718-30ba-a99a" number="1" type="upgrade">
+                  <rules>
+                    <rule id="e858-d78d-2e0f-6b0d::f566-56e5-2fe5-acbe::9691-edbf-5543-d0e7::9bf4-280f-bbe2-6fbb" name="Feel No Pain" publicationId="48fc-15aa-b307-9443" page="23" hidden="false">
+                      <description>Some models have &apos;Feel No Pain x+&apos; listed in their abilities. Each time a model with this ability suffers damage and so would lose a wound (including wounds lost due to mortal wounds), roll one D6: if the result is greater than or equal to the number denoted by &apos;x: that wound is ignored and is not lost. If a model has more than one Feel No Pain ability, you can only use one of those abilities each time that model
+suffers damage and so would lose a wound.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::f566-56e5-2fe5-acbe::b8e3-1e1f-b58b-1ca0" name="Medi-pack" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer’s unit has the Feel No Pain 6+ ability</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+              </selections>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="4f37-b6a6-8240-bb24" name="Veteran Heavy Weapons Team" entryId="e858-d78d-2e0f-6b0d::eec4-68e3-1cda-b68f" entryGroupId="e858-d78d-2e0f-6b0d::e7d-ccd0-acdc-3f32" number="1" type="model">
+              <profiles>
+                <profile id="e858-d78d-2e0f-6b0d::cda6-54b7-3643-a7fc" name="Veteran Guardsman" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                  <characteristics>
+                    <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                    <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                    <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                    <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                    <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                    <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <selections>
+                <selection id="46f9-f45e-7b53-75e3" name="Laspistol" entryId="e858-d78d-2e0f-6b0d::40fe-695f-1856-fc6f::2689-4c0e-cdfb-3e5" number="1" type="upgrade">
+                  <rules>
+                    <rule id="e858-d78d-2e0f-6b0d::40fe-695f-1856-fc6f::fb04-21c8-9987-5c51::8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                      <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
+
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::40fe-695f-1856-fc6f::9210-c504-a4cf-6fac" name="Laspistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="bced-f064-3c51-8296" name="Close Combat Weapon" entryId="e858-d78d-2e0f-6b0d::5149-ce0-3691-c93c::b349-9d3a-1a65-3e48" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::5149-ce0-3691-c93c::270f-e247-55f9-c650" name="Close Combat Weapon" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="8394-1a53-ab98-6408" name="Autocannon" entryId="e858-d78d-2e0f-6b0d::10af-6f1d-728b-2cb0::19fa-5ec4-c3c6-f1fa" entryGroupId="e858-d78d-2e0f-6b0d::b159-3af3-cdc8-1607" number="1" type="upgrade">
+                  <rules>
+                    <rule id="e858-d78d-2e0f-6b0d::10af-6f1d-728b-2cb0::b501-b2f4-db99-c53e::1202-10a8-78e9-4c67" name="Heavy" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                      <description>Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="e858-d78d-2e0f-6b0d::10af-6f1d-728b-2cb0::4d17-d054-d36d-90b5" name="Autocannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+              </selections>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="60.0"/>
+          </costs>
+          <categories>
+            <category id="38f0-7606-bc35-d9a4" name="Command Squad" entryId="4100-95dc-a489-ffbc" primary="false"/>
+            <category id="10e2-f76c-3c7f-64e2" name="Faction: Astra Militarum" entryId="fa45-57e-930e-602b" primary="false"/>
+            <category id="d935-0fc9-f53e-4ac4" name="Imperium" entryId="aff3-d6a3-2a95-9dc" primary="false"/>
+            <category id="90ba-dcdd-32e2-c7a9" name="Infantry" entryId="cf47-a0d7-7207-29dc" primary="false"/>
+            <category id="4e46-de88-85e1-11a0" name="Grenades" entryId="5a61-81ac-eb7c-a87e" primary="false"/>
+            <category id="6a04-f731-7898-2ba9" name="Platoon" entryId="edff-c2d-8999-4f45" primary="false"/>
+            <category id="6e5c-d0c9-5ffd-6fa7" name="Character" entryId="9cfd-1c32-585f-7d5c" primary="true"/>
+          </categories>
+        </selection>
+        <selection id="797c-1360-6702-bd7e" name="Infantry Squad" entryId="9bfa-5927-3e10-893c::6c81-9fe6-c714-88e8" number="1" type="unit">
+          <profiles>
+            <profile id="9bfa-5927-3e10-893c::18fe-cdf8-5652-a014" name="Defenders of Humanity" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack targets this unit, if this unit is within range of an objective marker you control, models in this unit have the Benefit of Cover against that attack.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <selections>
+            <selection id="7672-465e-27f4-1a4b" name="2 Sergeants, 14 Guardsmen and 2 Heavy Weapons Team" entryId="9bfa-5927-3e10-893c::87c0-6e5f-1cfe-8281" entryGroupId="9bfa-5927-3e10-893c::c01-6f53-f1a5-bb60" number="1" type="upgrade">
+              <selections>
+                <selection id="3393-6f65-c214-92c7" name="Guardsman w/ Vox Caster" entryId="9bfa-5927-3e10-893c::f381-3aa3-bc15-b0dc::47cc-2173-cdbd-c86c" number="1" type="model">
+                  <profiles>
+                    <profile id="9bfa-5927-3e10-893c::f381-3aa3-bc15-b0dc::9566-1fa0-45b8-65fa::bd6a-9b65-19dc-e09a" name="Guardsman" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selections>
+                    <selection id="d001-9742-17b9-a2e6" name="Vox-caster" entryId="9bfa-5927-3e10-893c::f381-3aa3-bc15-b0dc::e68d-83dd-28de-237c::6bfd-18be-90d3-2398" number="1" type="upgrade">
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::f381-3aa3-bc15-b0dc::e68d-83dd-28de-237c::885d-bd4e-142b-a062" name="Vox-caster" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                          <characteristics>
+                            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time you target the bearer’s unit with a Stratagem, roll one D6, adding 1 to the result if there are one or more friendly Officer models within 6&quot;: on a 5+, you gain 1CP</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="8b5c-b026-d02d-66d0" name="Lasgun" entryId="9bfa-5927-3e10-893c::f381-3aa3-bc15-b0dc::7a5c-d1e7-7e6c-a3e6::26c-19b3-720-8dcf" number="1" type="upgrade">
+                      <rules>
+                        <rule id="9bfa-5927-3e10-893c::f381-3aa3-bc15-b0dc::7a5c-d1e7-7e6c-a3e6::43e6-4488-f0a6-9190::c5c8-8b58-b8b6-7786" name="Rapid Fire 1" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                          <description>Weapons with [RAPID FIRE X] in their profile are known as Rapid Fire weapons. Each time such a weapon targets a unit within half that weapon’s range, the Attacks characteristic of that weapon is increased by the amount denoted by ‘x’.</description>
+                        </rule>
+                      </rules>
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::f381-3aa3-bc15-b0dc::7a5c-d1e7-7e6c-a3e6::1310-c472-50e8-f5e6" name="Lasgun" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="0a0b-0f8b-8525-51f0" name="Close Combat Weapon" entryId="9bfa-5927-3e10-893c::f381-3aa3-bc15-b0dc::56f4-2264-83e9-4e14::f61b-a631-1446-4453" number="1" type="upgrade">
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::f381-3aa3-bc15-b0dc::56f4-2264-83e9-4e14::e903-e46d-e2ee-a244" name="Close Combat Weapon (Infantry Squad)" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                  </selections>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="6303-b10d-a71b-4292" name="Guardsman" entryId="9bfa-5927-3e10-893c::5e87-c9c0-539a-de59::6401-bf57-ca2b-995b" number="10" type="model">
+                  <profiles>
+                    <profile id="9bfa-5927-3e10-893c::5e87-c9c0-539a-de59::d25d-fbc2-6c55-b138::bd6a-9b65-19dc-e09a" name="Guardsman" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selections>
+                    <selection id="a3b0-3a2d-291c-668e" name="Lasgun" entryId="9bfa-5927-3e10-893c::5e87-c9c0-539a-de59::e82d-4e5e-47d4-d158::26c-19b3-720-8dcf" number="10" type="upgrade">
+                      <rules>
+                        <rule id="9bfa-5927-3e10-893c::5e87-c9c0-539a-de59::e82d-4e5e-47d4-d158::43e6-4488-f0a6-9190::c5c8-8b58-b8b6-7786" name="Rapid Fire 1" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                          <description>Weapons with [RAPID FIRE X] in their profile are known as Rapid Fire weapons. Each time such a weapon targets a unit within half that weapon’s range, the Attacks characteristic of that weapon is increased by the amount denoted by ‘x’.</description>
+                        </rule>
+                      </rules>
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::5e87-c9c0-539a-de59::e82d-4e5e-47d4-d158::1310-c472-50e8-f5e6" name="Lasgun" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="1fb1-08b1-995d-b00b" name="Close Combat Weapon" entryId="9bfa-5927-3e10-893c::5e87-c9c0-539a-de59::65ed-5d-242d-6bba::f61b-a631-1446-4453" number="10" type="upgrade">
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::5e87-c9c0-539a-de59::65ed-5d-242d-6bba::e903-e46d-e2ee-a244" name="Close Combat Weapon (Infantry Squad)" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                  </selections>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="7bf7-0811-a3c7-07ec" name="Heavy Weapons Team" entryId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::c4e3-2813-f26d-5991" number="1" type="model">
+                  <profiles>
+                    <profile id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::7dd8-1d18-19ef-693c" name="Heavy Weapons Team" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">2</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">4</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selections>
+                    <selection id="2974-0fa8-ab89-f9a4" name="Laspistol" entryId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::f4f5-c00d-a964-dd17::2689-4c0e-cdfb-3e5" number="1" type="upgrade">
+                      <rules>
+                        <rule id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::f4f5-c00d-a964-dd17::fb04-21c8-9987-5c51::8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                          <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
+
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+                        </rule>
+                      </rules>
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::f4f5-c00d-a964-dd17::9210-c504-a4cf-6fac" name="Laspistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="f465-4e80-06c9-6c20" name="Close Combat Weapon" entryId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::29f2-ea2c-47ee-cf48::b349-9d3a-1a65-3e48" number="1" type="upgrade">
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::29f2-ea2c-47ee-cf48::270f-e247-55f9-c650" name="Close Combat Weapon (Infantry Squad)" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="dbbb-ff1c-eabe-a612" name="Lascannon" entryId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::fd19-e709-f5b0-93f8::a2c9-3bb4-6675-5c79" entryGroupId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::d0b9-4612-8bf5-d19d" number="1" type="upgrade">
+                      <rules>
+                        <rule id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::fd19-e709-f5b0-93f8::46e4-680-834c-957a::1202-10a8-78e9-4c67" name="Heavy" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                          <description>Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</description>
+                        </rule>
+                      </rules>
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::fd19-e709-f5b0-93f8::ae67-2d7c-a272-41c7" name="Lascannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">12</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                  </selections>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="f4ff-5952-2c36-f458" name="Sergeant" entryId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::df22-5dc1-57dc-e347" number="1" type="model">
+                  <profiles>
+                    <profile id="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::7e23-35c5-c4f7-8e73::bd6a-9b65-19dc-e09a" name="Guardsman" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selections>
+                    <selection id="fe33-53f5-2527-f7a6" name="Laspistol" entryId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::c8f1-e4e-8708-d240::ee4b-392d-48c9-e5a8::1211-ef94-5ea9-6a50" entryGroupId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::c8f1-e4e-8708-d240::db8e-23ae-d11a-a286" number="1" type="upgrade">
+                      <rules>
+                        <rule id="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::c8f1-e4e-8708-d240::ee4b-392d-48c9-e5a8::917a-ce0d-eaea-475e::8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                          <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
+
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+                        </rule>
+                      </rules>
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::c8f1-e4e-8708-d240::ee4b-392d-48c9-e5a8::b249-31b-25e0-f468" name="Laspistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="d0d4-2573-5adf-a598" name="Close Combat Weapon" entryId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::2cc7-945f-b47b-a9ff::8c97-dd71-92a8-45ec::b349-9d3a-1a65-3e48" entryGroupId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::2cc7-945f-b47b-a9ff::c146-29b2-c8c0-8b8" number="1" type="upgrade">
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::2cc7-945f-b47b-a9ff::8c97-dd71-92a8-45ec::270f-e247-55f9-c650" name="Close Combat Weapon (Infantry Squad)" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                  </selections>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="58e4-5cfa-1160-c178" name="Heavy Weapons Team" entryId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::c4e3-2813-f26d-5991" number="1" type="model">
+                  <profiles>
+                    <profile id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::7dd8-1d18-19ef-693c" name="Heavy Weapons Team" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">2</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">4</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selections>
+                    <selection id="2cff-2504-0977-a409" name="Laspistol" entryId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::f4f5-c00d-a964-dd17::2689-4c0e-cdfb-3e5" number="1" type="upgrade">
+                      <rules>
+                        <rule id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::f4f5-c00d-a964-dd17::fb04-21c8-9987-5c51::8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                          <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
+
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+                        </rule>
+                      </rules>
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::f4f5-c00d-a964-dd17::9210-c504-a4cf-6fac" name="Laspistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="978d-ddf8-a261-b4e4" name="Close Combat Weapon" entryId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::29f2-ea2c-47ee-cf48::b349-9d3a-1a65-3e48" number="1" type="upgrade">
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::29f2-ea2c-47ee-cf48::270f-e247-55f9-c650" name="Close Combat Weapon (Infantry Squad)" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="a80d-5700-1d0d-d5b0" name="Heavy Bolter" entryId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::ef74-d558-de80-ac42::4493-24dd-c551-e327" entryGroupId="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::d0b9-4612-8bf5-d19d" number="1" type="upgrade">
+                      <rules>
+                        <rule id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::ef74-d558-de80-ac42::20cf-cacb-5c57-6bc::1202-10a8-78e9-4c67" name="Heavy" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                          <description>Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</description>
+                        </rule>
+                        <rule id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::ef74-d558-de80-ac42::ffeb-4253-cd0a-4668::1897-c22c-9597-12b1" name="Sustained Hits 1" publicationId="48fc-15aa-b307-9443" page="28" hidden="false">
+                          <description>Weapons with [SUSTAINED HITS X] in their profile are known as Sustained Hits weapons. Each time an attack is made with such a weapon, if a Critical Hit is rolled, that attack scores a number of additional hits on the target as denoted by ‘x’</description>
+                        </rule>
+                      </rules>
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::5efd-e6d8-44b2-60b5::ef74-d558-de80-ac42::e097-9d92-62e3-8584" name="Heavy Bolter" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Sustained Hits 1</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                  </selections>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="4688-d52d-8eec-d739" name="Sergeant" entryId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::df22-5dc1-57dc-e347" number="1" type="model">
+                  <profiles>
+                    <profile id="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::7e23-35c5-c4f7-8e73::bd6a-9b65-19dc-e09a" name="Guardsman" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selections>
+                    <selection id="7eac-2b0f-2217-a46c" name="Laspistol" entryId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::c8f1-e4e-8708-d240::ee4b-392d-48c9-e5a8::1211-ef94-5ea9-6a50" entryGroupId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::c8f1-e4e-8708-d240::db8e-23ae-d11a-a286" number="1" type="upgrade">
+                      <rules>
+                        <rule id="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::c8f1-e4e-8708-d240::ee4b-392d-48c9-e5a8::917a-ce0d-eaea-475e::8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                          <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
+
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+                        </rule>
+                      </rules>
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::c8f1-e4e-8708-d240::ee4b-392d-48c9-e5a8::b249-31b-25e0-f468" name="Laspistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="4d5e-4e72-f487-e97f" name="Close Combat Weapon" entryId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::2cc7-945f-b47b-a9ff::8c97-dd71-92a8-45ec::b349-9d3a-1a65-3e48" entryGroupId="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::2cc7-945f-b47b-a9ff::c146-29b2-c8c0-8b8" number="1" type="upgrade">
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::8558-f041-e25-e9fd::2cc7-945f-b47b-a9ff::8c97-dd71-92a8-45ec::270f-e247-55f9-c650" name="Close Combat Weapon (Infantry Squad)" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                  </selections>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="45e2-da39-6306-7da5" name="Guardsman w/ Plasma Gun" entryId="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::32da-6658-c749-7c5" entryGroupId="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::9e42-70ac-702c-819d" number="2" type="model">
+                  <profiles>
+                    <profile id="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::2d73-23bc-2ea9-9cf6::bd6a-9b65-19dc-e09a" name="Guardsman" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selections>
+                    <selection id="015e-c3f1-2c8e-f73d" name="Close Combat Weapon" entryId="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::280b-7806-2767-5771::f61b-a631-1446-4453" number="2" type="upgrade">
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::280b-7806-2767-5771::e903-e46d-e2ee-a244" name="Close Combat Weapon (Infantry Squad)" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                    <selection id="7163-60f2-d1c6-eee1" name="Plasma Gun" entryId="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::7671-1ae7-be0e-d8d::d0dc-eb53-4dc1-c69e" number="2" type="upgrade">
+                      <rules>
+                        <rule id="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::7671-1ae7-be0e-d8d::cfca-d1b5-ccff-2e31::8367-374c-f87-c627" name="Hazardous" publicationId="48fc-15aa-b307-9443" page="28" hidden="false">
+                          <description>Weapons with [HAZARDOUS] in their profile are known as Hazardous weapons. Each time a unit is selected to shoot or fight, if one or more models attack with Hazardous weapons, then after that unit has resolved all of its attacks, you must take one Hazardous test for each Hazardous weapon that was just used by rolling one D6. For each roll of 1, that test is failed and one model in that unit equipped with a Hazardous weapon is destroyed (selected by the controlling player), unless that model is a Character, Monster or Vehicle, in which case it suffers 3 mortal wounds instead. Note that if you selected a Character model in an Attached unit, the mortal wounds suffered must be allocated to that model first, even if there is another model in that unit that has lost one or more wounds or has had attacks allocated to it this phase.</description>
+                        </rule>
+                        <rule id="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::7671-1ae7-be0e-d8d::60d1-999-b164-e5ce::c5c8-8b58-b8b6-7786" name="Rapid Fire 1" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                          <description>Weapons with [RAPID FIRE X] in their profile are known as Rapid Fire weapons. Each time such a weapon targets a unit within half that weapon’s range, the Attacks characteristic of that weapon is increased by the amount denoted by ‘x’.</description>
+                        </rule>
+                      </rules>
+                      <profiles>
+                        <profile id="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::7671-1ae7-be0e-d8d::e019-8167-2b5-931e" name="➤ Plasma Gun - Standard" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1</characteristic>
+                          </characteristics>
+                        </profile>
+                        <profile id="9bfa-5927-3e10-893c::2e8f-a36b-4e4c-1778::7671-1ae7-be0e-d8d::1ee9-5cc2-1ea4-ce6" name="➤ Plasma Gun - Supercharge" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1, Hazardous</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                      </costs>
+                    </selection>
+                  </selections>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+              </selections>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="120.0"/>
+          </costs>
+          <categories>
+            <category id="043d-9e2a-0b93-eb68" name="Infantry Squad" entryId="c07a-988a-8e7e-7697" primary="false"/>
+            <category id="ed95-43df-9d29-ce43" name="Faction: Astra Militarum" entryId="fa45-57e-930e-602b" primary="false"/>
+            <category id="669c-467d-c9d9-494d" name="Imperium" entryId="aff3-d6a3-2a95-9dc" primary="false"/>
+            <category id="0c82-b098-0ef8-4755" name="Infantry" entryId="cf47-a0d7-7207-29dc" primary="false"/>
+            <category id="1b48-7af8-4e26-80ea" name="Battleline" entryId="e338-111e-d0c6-b687" primary="true"/>
+            <category id="765c-e739-cf2f-8ecf" name="Grenades" entryId="5a61-81ac-eb7c-a87e" primary="false"/>
+            <category id="5540-fbfc-cb8b-7ff2" name="Regiment" entryId="c8a1-fef-5569-61c9" primary="false"/>
+            <category id="8033-ba03-91d6-0a16" name="Platoon" entryId="edff-c2d-8999-4f45" primary="false"/>
+          </categories>
+        </selection>
+        <selection id="e7bf-319b-3c88-d5cf" name="Macharius" entryId="d15e-ed71-a47f-87c::d7a-7abb-831b-1c67" number="1" type="model">
+          <rules>
+            <rule id="d15e-ed71-a47f-87c::4ff1-beed-f775-188f::b68a-5ded-65ac-98c" name="Deadly Demise D6+2" publicationId="48fc-15aa-b307-9443" page="23" hidden="false">
+              <description>Some models have &apos;Deadly Demise x&apos; listed in their abilities. When such a model is destroyed, roll one D6 before removing it from play (if such a model is a TRANSPORT, roll before any embarked models disembark). On a 6, each unit within 6&quot; of that model suffers a number of mortal wounds denoted by &apos;x&apos; (if this is a random number, roll separately for each unit within 6&quot;).</description>
+            </rule>
+          </rules>
+          <profiles>
+            <profile id="d15e-ed71-a47f-87c::2f1b-384a-801f-d865" name="Macharius" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">9&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">13</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">20</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="d15e-ed71-a47f-87c::c14f-4e5e-3adc-9fa" name="Battlefield Control" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack, if it is within range of an objective marker you control, re-roll a Hit roll of 1.</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="d15e-ed71-a47f-87c::8ae1-5e07-c7fc-5b15::4ca9-3652-f045-85ba" name="Damaged: 1-7 Wounds Remaining" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-7 wounds remaining, subtract 4 from its Objective Control characteristic and each time this model makes an attack, subtract 1 from the Hit roll.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <selections>
+            <selection id="4726-817d-bd14-74ca" name="Macharius twin battlecannon" entryId="d15e-ed71-a47f-87c::5eb2-fc01-738-4127" number="1" type="upgrade">
+              <rules>
+                <rule id="d15e-ed71-a47f-87c::3b66-3c42-ada7-d1d4::6c1f-1cf7-ff25-c99e" name="Blast" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                  <description>Weapons with [BLAST] in their profile are known as Blast weapons, and they make a random number of attacks. Each time you determine how many attacks are made with a Blast weapon, add 1 to the result for every five models that were in the target unit when you selected it as the target (rounding down). Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</description>
+                </rule>
+                <rule id="d15e-ed71-a47f-87c::4687-9ca3-1e2d-d431::cf93-ad4d-2f08-a79d" name="Twin-linked" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                  <description>Weapons with [TWIN-LINKED] in their profile are known as Twin-linked weapons. Each time an attack is made with such a weapon, you can re-roll that attack’s Wound roll.</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="d15e-ed71-a47f-87c::325-9920-499e-fe7e" name="Macharius twin battlecannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">10</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Twin-linked</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="3f6b-3506-23b3-d903" name="Armoured Tracks" entryId="d15e-ed71-a47f-87c::bef9-5aa0-7b33-3435::6883-d690-ca12-d222" number="1" type="upgrade">
+              <profiles>
+                <profile id="d15e-ed71-a47f-87c::bef9-5aa0-7b33-3435::abba-9a6f-8506-801f" name="Armoured Tracks" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="0223-07a5-2adb-f4f9" name="Heavy Stubber" entryId="d15e-ed71-a47f-87c::99f6-1ee2-2e13-b34c::d20f-db4b-d083-7c0a" entryGroupId="d15e-ed71-a47f-87c::b00f-39e-6262-6caf" number="1" type="upgrade">
+              <rules>
+                <rule id="d15e-ed71-a47f-87c::99f6-1ee2-2e13-b34c::6921-9b9f-3254-138f::c5c8-8b58-b8b6-7786" name="Rapid Fire 3" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                  <description>Weapons with [RAPID FIRE X] in their profile are known as Rapid Fire weapons. Each time such a weapon targets a unit within half that weapon’s range, the Attacks characteristic of that weapon is increased by the amount denoted by ‘x’.</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="d15e-ed71-a47f-87c::99f6-1ee2-2e13-b34c::5cfc-cfe8-ba72-efa5" name="Heavy Stubber" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 3</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="4f3b-e0f2-06f8-176f" name="Two heavy bolters" entryId="d15e-ed71-a47f-87c::4d05-a3ec-c0ec-4075" entryGroupId="d15e-ed71-a47f-87c::efbf-9186-2014-85ce" number="1" type="upgrade">
+              <selections>
+                <selection id="7b9a-73d2-2269-7537" name="Heavy Bolter" entryId="d15e-ed71-a47f-87c::a66d-cd54-1652-18c5::51a8-ffe2-928f-3f50" number="2" type="upgrade">
+                  <rules>
+                    <rule id="d15e-ed71-a47f-87c::a66d-cd54-1652-18c5::2560-22a3-6ffd-2ae9::1897-c22c-9597-12b1" name="Sustained Hits 1" publicationId="48fc-15aa-b307-9443" page="28" hidden="false">
+                      <description>Weapons with [SUSTAINED HITS X] in their profile are known as Sustained Hits weapons. Each time an attack is made with such a weapon, if a Critical Hit is rolled, that attack scores a number of additional hits on the target as denoted by ‘x’</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="d15e-ed71-a47f-87c::a66d-cd54-1652-18c5::77ea-5ccf-fd42-15fe" name="Heavy Bolter" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Sustained Hits 1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+              </selections>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="380c-6355-ce4e-8833" name="Hunter-killer Missile" entryId="d15e-ed71-a47f-87c::fa00-f317-dbb0-4ce4::37aa-e4f5-30bd-c59c" number="1" type="upgrade">
+              <rules>
+                <rule id="d15e-ed71-a47f-87c::fa00-f317-dbb0-4ce4::3672-2532-30f3-afa6::cd26-1611-860a-91e4" name="One Shot" hidden="false">
+                  <description>The bearer can only shoot with this weapon once per battle.</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="d15e-ed71-a47f-87c::fa00-f317-dbb0-4ce4::6647-d6b0-a4c8-ee5f" name="Hunter-killer Missile" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">14</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">One Shot</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="310.0"/>
+          </costs>
+          <categories>
+            <category id="05e0-47e0-9e97-fb9d" name="Faction: Astra Militarum" entryId="fa45-57e-930e-602b" primary="false"/>
+            <category id="0bbf-cdee-0e3d-1407" name="Vehicle" entryId="dbd4-63-af05-998" primary="true"/>
+            <category id="7446-eac8-d1c6-ad77" name="Titanic" entryId="5929-ad51-d006-e008" primary="false"/>
+            <category id="4996-e94c-8f7f-a6c4" name="Imperium" entryId="aff3-d6a3-2a95-9dc" primary="false"/>
+            <category id="3614-5907-024d-20e4" name="Smoke" entryId="6df-937-16bc-8c1a" primary="false"/>
+            <category id="7802-8087-a010-e6ad" name="Macharius" entryId="412a-a6de-6536-850" primary="false"/>
+          </categories>
+        </selection>
+        <selection id="869f-797a-b8fd-b580" name="Earthshaker Carriage Battery" entryId="ce09-1a61-819d-2cf6::efc7-ac4c-1fcd-5b39" customName="Skyfall" number="1" type="model">
+          <profiles>
+            <profile id="ce09-1a61-819d-2cf6::d76c-11a7-64ec-741d" name="Earthshaker Carriage Battery" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">4&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">7</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">4+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">6</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="ce09-1a61-819d-2cf6::d54-11fb-5b7d-cbd6" name="Earthshaker Rounds" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Shooting phase, after this model has shot, if one or more of those attacks made with its earthshaker cannon scored a hit against an INFANTRY unit, until the end of your opponent’s next turn, that INFANTRY unit is shaken. While a unit is shaken, subtract 2&quot; from its Move characteristic and subtract 2 from Advance and Charge rolls made for it.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <selections>
+            <selection id="8884-04bf-c3f3-aee4" name="Earthshaker cannon" entryId="ce09-1a61-819d-2cf6::86ec-f7d4-6817-41ef" number="1" type="upgrade">
+              <rules>
+                <rule id="ce09-1a61-819d-2cf6::6cf7-b4c3-5b8c-b51a::6c1f-1cf7-ff25-c99e" name="Blast" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                  <description>Weapons with [BLAST] in their profile are known as Blast weapons, and they make a random number of attacks. Each time you determine how many attacks are made with a Blast weapon, add 1 to the result for every five models that were in the target unit when you selected it as the target (rounding down). Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</description>
+                </rule>
+                <rule id="ce09-1a61-819d-2cf6::aac4-146e-2f72-c0e9::1202-10a8-78e9-4c67" name="Heavy" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                  <description>Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</description>
+                </rule>
+                <rule id="ce09-1a61-819d-2cf6::ca4b-89eb-784d-cb88::4ddd-4e29-acdd-5e6d" name="Indirect Fire" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                  <description>Weapons with [INDIRECT FIRE] in their profile are known as Indirect Fire weapons, and attacks can be made with them even if the target is not visible to the attacking model. These attacks can destroy enemy models in a target unit even though none may have been visible to the attacking unit when you selected that target.
+
+If no models in a target unit are visible to the attacking unit when you select that target, then each time a model in the attacking unit makes an attack against that target using an Indirect Fire weapon, subtract 1 from that attack’s Hit roll and the target has the Benefit of Cover against that attack.</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="ce09-1a61-819d-2cf6::c69e-f348-d8b9-dd8a" name="Earthshaker cannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">240&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Heavy, Indirect Fire</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="c6c5-5492-2685-7c70" name="Battery close combat weapons" entryId="ce09-1a61-819d-2cf6::cb1c-c755-b33f-f83" number="1" type="upgrade">
+              <profiles>
+                <profile id="ce09-1a61-819d-2cf6::fb8a-bf3b-735f-1737" name="Battery close combat weapons" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="120.0"/>
+          </costs>
+          <categories>
+            <category id="1e3b-c323-e98a-a0d2" name="Faction: Astra Militarum" entryId="fa45-57e-930e-602b" primary="false"/>
+            <category id="84af-7130-cf48-541e" name="Vehicle" entryId="dbd4-63-af05-998" primary="false"/>
+            <category id="d3de-46fa-4ea1-8367" name="Infantry" entryId="cf47-a0d7-7207-29dc" primary="true"/>
+            <category id="28df-d405-c324-bbe6" name="Artillery" entryId="8cab-448d-37b7-32bc" primary="false"/>
+            <category id="4871-1dbb-4b0a-4799" name="Imperium" entryId="aff3-d6a3-2a95-9dc" primary="false"/>
+            <category id="b0fd-8eb3-238f-587e" name="Grenades" entryId="5a61-81ac-eb7c-a87e" primary="false"/>
+            <category id="319e-ea96-9c29-b70d" name="Regiment" entryId="c8a1-fef-5569-61c9" primary="false"/>
+            <category id="21a2-d66f-6fed-f882" name="Earthshaker Carriage Battery" entryId="791e-feed-fa6d-af79" primary="false"/>
+          </categories>
+        </selection>
+        <selection id="d7ed-4e8e-7fd6-2f43" name="Earthshaker Carriage Battery" entryId="ce09-1a61-819d-2cf6::efc7-ac4c-1fcd-5b39" customName="Starfire" number="1" type="model">
+          <profiles>
+            <profile id="ce09-1a61-819d-2cf6::d76c-11a7-64ec-741d" name="Earthshaker Carriage Battery" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">4&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">7</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">4+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">6</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="ce09-1a61-819d-2cf6::d54-11fb-5b7d-cbd6" name="Earthshaker Rounds" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Shooting phase, after this model has shot, if one or more of those attacks made with its earthshaker cannon scored a hit against an INFANTRY unit, until the end of your opponent’s next turn, that INFANTRY unit is shaken. While a unit is shaken, subtract 2&quot; from its Move characteristic and subtract 2 from Advance and Charge rolls made for it.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <selections>
+            <selection id="2a7c-6ca4-1355-3b49" name="Earthshaker cannon" entryId="ce09-1a61-819d-2cf6::86ec-f7d4-6817-41ef" number="1" type="upgrade">
+              <rules>
+                <rule id="ce09-1a61-819d-2cf6::6cf7-b4c3-5b8c-b51a::6c1f-1cf7-ff25-c99e" name="Blast" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                  <description>Weapons with [BLAST] in their profile are known as Blast weapons, and they make a random number of attacks. Each time you determine how many attacks are made with a Blast weapon, add 1 to the result for every five models that were in the target unit when you selected it as the target (rounding down). Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</description>
+                </rule>
+                <rule id="ce09-1a61-819d-2cf6::aac4-146e-2f72-c0e9::1202-10a8-78e9-4c67" name="Heavy" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                  <description>Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</description>
+                </rule>
+                <rule id="ce09-1a61-819d-2cf6::ca4b-89eb-784d-cb88::4ddd-4e29-acdd-5e6d" name="Indirect Fire" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
+                  <description>Weapons with [INDIRECT FIRE] in their profile are known as Indirect Fire weapons, and attacks can be made with them even if the target is not visible to the attacking model. These attacks can destroy enemy models in a target unit even though none may have been visible to the attacking unit when you selected that target.
+
+If no models in a target unit are visible to the attacking unit when you select that target, then each time a model in the attacking unit makes an attack against that target using an Indirect Fire weapon, subtract 1 from that attack’s Hit roll and the target has the Benefit of Cover against that attack.</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="ce09-1a61-819d-2cf6::c69e-f348-d8b9-dd8a" name="Earthshaker cannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">240&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Heavy, Indirect Fire</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="9e1c-a046-3f47-b8ea" name="Battery close combat weapons" entryId="ce09-1a61-819d-2cf6::cb1c-c755-b33f-f83" number="1" type="upgrade">
+              <profiles>
+                <profile id="ce09-1a61-819d-2cf6::fb8a-bf3b-735f-1737" name="Battery close combat weapons" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="120.0"/>
+          </costs>
+          <categories>
+            <category id="00a2-1a70-3328-84a5" name="Faction: Astra Militarum" entryId="fa45-57e-930e-602b" primary="false"/>
+            <category id="d569-24b0-7ad0-68ef" name="Vehicle" entryId="dbd4-63-af05-998" primary="false"/>
+            <category id="8e21-58ec-53ad-ae92" name="Infantry" entryId="cf47-a0d7-7207-29dc" primary="true"/>
+            <category id="002c-37a2-1afd-d424" name="Artillery" entryId="8cab-448d-37b7-32bc" primary="false"/>
+            <category id="d6a5-7b9b-5929-40e1" name="Imperium" entryId="aff3-d6a3-2a95-9dc" primary="false"/>
+            <category id="bd86-9825-9c2d-40ad" name="Grenades" entryId="5a61-81ac-eb7c-a87e" primary="false"/>
+            <category id="b147-e82d-a9d5-f3c8" name="Regiment" entryId="c8a1-fef-5569-61c9" primary="false"/>
+            <category id="71b6-c764-9d30-dd55" name="Earthshaker Carriage Battery" entryId="791e-feed-fa6d-af79" primary="false"/>
+          </categories>
+        </selection>
+        <selection id="f124-3283-a018-8cb5" name="Scout Sentinels" entryId="1ee4-62ac-f8e3-cf62::4424-a6ec-6d9e-a936" number="1" type="unit">
+          <rules>
+            <rule id="1ee4-62ac-f8e3-cf62::5ae-9be8-75b0-ab22::b68a-5ded-65ac-98c" name="Deadly Demise 1" publicationId="48fc-15aa-b307-9443" page="23" hidden="false">
+              <description>Some models have &apos;Deadly Demise x&apos; listed in their abilities. When such a model is destroyed, roll one D6 before removing it from play (if such a model is a TRANSPORT, roll before any embarked models disembark). On a 6, each unit within 6&quot; of that model suffers a number of mortal wounds denoted by &apos;x&apos; (if this is a random number, roll separately for each unit within 6&quot;).</description>
+            </rule>
+            <rule id="1ee4-62ac-f8e3-cf62::bf53-b651-f63a-64a0::ada6-bac1-ffe0-d6f7" name="Scouts 9&quot;" publicationId="48fc-15aa-b307-9443" page="39" hidden="false">
+              <description>Some units have ‘Scouts x’ listed in their abilities. If every model in a unit has this ability, then at the start of the first battle round, before the first turn begins, it can make a Normal move of up to x&quot; as if it were your Movement phase – as can any DEDICATED TRANSPORT model such a unit starts the battle embarked within (provided only models with this ability are embarked within that DEDICATED TRANSPORT model). A unit that moves using this ability must end that move more than 9\&quot; horizontally away from all enemy models. If both players have units that can do this, the player who is taking the first turn moves their units first.</description>
+            </rule>
+          </rules>
+          <profiles>
+            <profile id="1ee4-62ac-f8e3-cf62::4952-cb93-5b85-f9b6" name="Daring Recon" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of your Shooting phase, select one enemy unit within 18&quot; of and visible to this unit. Until the end of the phase, each time a friendly Astra Militarum model makes an attack that targets that unit, re-roll a Hit roll of 1 and, if that attack has the [INDIRECT FIRE] ability, it does not suffer the penalty to the Hit roll for shooting at a target that is not visible to the attacking unit</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <selections>
+            <selection id="2d20-6c6d-4db5-8968" name="Scout Sentinel" entryId="1ee4-62ac-f8e3-cf62::e7ef-c8cc-3f5f-955a" number="1" type="model">
+              <profiles>
+                <profile id="1ee4-62ac-f8e3-cf62::3e6f-95db-808d-2f24" name="Scout Sentinel" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                  <characteristics>
+                    <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+                    <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">7</characteristic>
+                    <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                    <characteristic name="W" typeId="750a-a2ec-90d3-21fe">7</characteristic>
+                    <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                    <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <selections>
+                <selection id="903e-ca9a-8745-9d1f" name="Close Combat Weapon" entryId="1ee4-62ac-f8e3-cf62::a415-4e4-5b62-dad9" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::9cee-2bc4-139c-4e8f" name="Close Combat Weapon" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="9b3c-095a-60f3-fd3e" name="Autocannon" entryId="1ee4-62ac-f8e3-cf62::6359-a056-3a2a-5a37::4a22-4d7b-aea8-75f0" entryGroupId="1ee4-62ac-f8e3-cf62::547b-3f72-fc47-eb15" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::6359-a056-3a2a-5a37::7a36-8ea0-21e0-8a47" name="Autocannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="81f3-e9a3-1de7-5800" name="Hunter-killer Missile" entryId="1ee4-62ac-f8e3-cf62::8d5b-6cf6-50fc-8a94::37aa-e4f5-30bd-c59c" number="1" type="upgrade">
+                  <rules>
+                    <rule id="1ee4-62ac-f8e3-cf62::8d5b-6cf6-50fc-8a94::3672-2532-30f3-afa6::cd26-1611-860a-91e4" name="One Shot" hidden="false">
+                      <description>The bearer can only shoot with this weapon once per battle.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::8d5b-6cf6-50fc-8a94::6647-d6b0-a4c8-ee5f" name="Hunter-killer Missile" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">14</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">One Shot</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="8a12-97d8-d0be-b1ef" name="Sentinel Chainsaw" entryId="1ee4-62ac-f8e3-cf62::c975-4797-21f5-5ca3" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::6857-9ddd-d172-2a3d" name="Sentinel Chainsaw" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+              </selections>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="60.0"/>
+              </costs>
+            </selection>
+            <selection id="0ba5-c9c3-d124-5a7b" name="Scout Sentinel" entryId="1ee4-62ac-f8e3-cf62::e7ef-c8cc-3f5f-955a" number="1" type="model">
+              <profiles>
+                <profile id="1ee4-62ac-f8e3-cf62::3e6f-95db-808d-2f24" name="Scout Sentinel" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                  <characteristics>
+                    <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+                    <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">7</characteristic>
+                    <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                    <characteristic name="W" typeId="750a-a2ec-90d3-21fe">7</characteristic>
+                    <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                    <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <selections>
+                <selection id="f1de-68d4-a004-88c6" name="Close Combat Weapon" entryId="1ee4-62ac-f8e3-cf62::a415-4e4-5b62-dad9" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::9cee-2bc4-139c-4e8f" name="Close Combat Weapon" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="8477-566e-00d3-10f5" name="Hunter-killer Missile" entryId="1ee4-62ac-f8e3-cf62::8d5b-6cf6-50fc-8a94::37aa-e4f5-30bd-c59c" number="1" type="upgrade">
+                  <rules>
+                    <rule id="1ee4-62ac-f8e3-cf62::8d5b-6cf6-50fc-8a94::3672-2532-30f3-afa6::cd26-1611-860a-91e4" name="One Shot" hidden="false">
+                      <description>The bearer can only shoot with this weapon once per battle.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::8d5b-6cf6-50fc-8a94::6647-d6b0-a4c8-ee5f" name="Hunter-killer Missile" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">14</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">One Shot</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="0a47-bc1e-7a11-127c" name="Sentinel Chainsaw" entryId="1ee4-62ac-f8e3-cf62::c975-4797-21f5-5ca3" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::6857-9ddd-d172-2a3d" name="Sentinel Chainsaw" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="afb7-edee-ac09-bea4" name="Autocannon" entryId="1ee4-62ac-f8e3-cf62::6359-a056-3a2a-5a37::4a22-4d7b-aea8-75f0" entryGroupId="1ee4-62ac-f8e3-cf62::547b-3f72-fc47-eb15" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::6359-a056-3a2a-5a37::7a36-8ea0-21e0-8a47" name="Autocannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+              </selections>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="60.0"/>
+              </costs>
+            </selection>
+            <selection id="d3d5-42e8-cbae-a1e7" name="Scout Sentinel" entryId="1ee4-62ac-f8e3-cf62::e7ef-c8cc-3f5f-955a" number="1" type="model">
+              <profiles>
+                <profile id="1ee4-62ac-f8e3-cf62::3e6f-95db-808d-2f24" name="Scout Sentinel" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+                  <characteristics>
+                    <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+                    <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">7</characteristic>
+                    <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                    <characteristic name="W" typeId="750a-a2ec-90d3-21fe">7</characteristic>
+                    <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                    <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <selections>
+                <selection id="bc7a-f44e-9e28-cd4b" name="Close Combat Weapon" entryId="1ee4-62ac-f8e3-cf62::a415-4e4-5b62-dad9" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::9cee-2bc4-139c-4e8f" name="Close Combat Weapon" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="eca3-f183-5a06-fca5" name="Hunter-killer Missile" entryId="1ee4-62ac-f8e3-cf62::8d5b-6cf6-50fc-8a94::37aa-e4f5-30bd-c59c" number="1" type="upgrade">
+                  <rules>
+                    <rule id="1ee4-62ac-f8e3-cf62::8d5b-6cf6-50fc-8a94::3672-2532-30f3-afa6::cd26-1611-860a-91e4" name="One Shot" hidden="false">
+                      <description>The bearer can only shoot with this weapon once per battle.</description>
+                    </rule>
+                  </rules>
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::8d5b-6cf6-50fc-8a94::6647-d6b0-a4c8-ee5f" name="Hunter-killer Missile" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">14</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">One Shot</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="ef53-5529-0b73-20bb" name="Sentinel Chainsaw" entryId="1ee4-62ac-f8e3-cf62::c975-4797-21f5-5ca3" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::6857-9ddd-d172-2a3d" name="Sentinel Chainsaw" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+                <selection id="62d5-35db-780b-3c49" name="Autocannon" entryId="1ee4-62ac-f8e3-cf62::6359-a056-3a2a-5a37::4a22-4d7b-aea8-75f0" entryGroupId="1ee4-62ac-f8e3-cf62::547b-3f72-fc47-eb15" number="1" type="upgrade">
+                  <profiles>
+                    <profile id="1ee4-62ac-f8e3-cf62::6359-a056-3a2a-5a37::7a36-8ea0-21e0-8a47" name="Autocannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+                  </costs>
+                </selection>
+              </selections>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="60.0"/>
+              </costs>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+          </costs>
+          <categories>
+            <category id="5f39-66df-759c-8739" name="Scout Sentinels" entryId="4045-1d5f-18fb-99bf" primary="false"/>
+            <category id="4d2d-a654-5468-5205" name="Faction: Astra Militarum" entryId="fa45-57e-930e-602b" primary="false"/>
+            <category id="302f-869c-9e89-ab76" name="Imperium" entryId="aff3-d6a3-2a95-9dc" primary="false"/>
+            <category id="b47a-e1bf-a6b7-df72" name="Vehicle" entryId="dbd4-63-af05-998" primary="true"/>
+            <category id="3cdf-3478-8f73-bcaf" name="Walker" entryId="6dda-e157-334d-e93a" primary="false"/>
+            <category id="275f-2d93-1853-b19a" name="Regiment" entryId="c8a1-fef-5569-61c9" primary="false"/>
+            <category id="6609-ec80-d503-95e3" name="Squadron" entryId="4780-be29-8c52-1d20" primary="false"/>
+            <category id="0323-e29c-6229-6b8b" name="Smoke" entryId="6df-937-16bc-8c1a" primary="false"/>
+          </categories>
+        </selection>
+        <selection id="7acf-64be-34c2-9fea" name="Regimental Enginseer" entryId="77a1-a36b-5192-b450::f556-a33d-dc90-d6fc" number="1" type="model">
+          <rules>
+            <rule id="77a1-a36b-5192-b450::8af5-5d4a-57f9-5c7b::b4dd-3e1f-41cb-218f" name="Leader" publicationId="48fc-15aa-b307-9443" page="39" hidden="false">
+              <description>While a Bodyguard unit contains a Leader, it is known as an Attached unit and, with the exception of rules that are triggered when units are destroyed (pg 12), it is treated as a single unit for all rules purposes. Each time an attack targets an Attached unit, until the attacking unit has resolved all of its attacks, you must use the Toughness characteristic of the Bodyguard models in that unit, even if a Leader in that unit has a different Toughness characteristic. Each time an attack sucessfully wounds an Attached unit, that attack cannot be allocated to a Character model in that unit, even if that Character model has lost one or more wounds or has already had attacks allocated to it this phase. As soon as the last Bodyguard model in an Attached unit has been destroyed, any attacks made against that unit that have yet to be allocated can then be allocated to Character models in that unit.</description>
+            </rule>
+          </rules>
+          <profiles>
+            <profile id="77a1-a36b-5192-b450::a8da-4dd8-adb8-64ba" name="Regimental Enginseer" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="77a1-a36b-5192-b450::af3e-f420-d463-b0a8" name="Enginseer" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is within 3&quot; of one or more friendly Astra Militarum Vehicle units, this model has the Lone Operative ability</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="77a1-a36b-5192-b450::346f-5f19-1f4-262d" name="Vengeance for the Omnissiah" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If a friendly Astra Militarum Vehicle model is destroyed within 12&quot; of this model, until the end of the battle, this model’s Enginseer axe has an Attacks characteristic of 6</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="77a1-a36b-5192-b450::e688-6f3a-136b-9d31" name="Omnissiah’s Blessing" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Command phase, select one friendly Astra Militarum Vehicle model within 3&quot; of this model. That Vehicle model regains up to D3 lost wounds and, until the start of your next Command phase, that Vehicle model has a 4+ invulnerable save. Each model can only be selected for this ability once per turn.</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="77a1-a36b-5192-b450::b610-7dd0-645d-c629::3a3d-9e14-64a6-c032" name="Invulnerable Save 5+ : Regimental Enginseer" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This Model has a 5+ Invulnerable Save</characteristic>
+              </characteristics>
+            </profile>
+            <profile id="77a1-a36b-5192-b450::9519-d3ea-5b7c-1088" name="Leader" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
+- Cadian Shock Troops
+- Catachan Jungle Fighters
+- Death Korps of Krieg
+- Infantry Squad
+- Kasrkin
+- Munitorum Servitors</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <selections>
+            <selection id="92d6-1e37-5445-7dde" name="Archeotech Pistol" entryId="77a1-a36b-5192-b450::c676-6adf-940c-3cc9" number="1" type="upgrade">
+              <rules>
+                <rule id="77a1-a36b-5192-b450::469-ff6-f8a9-46f7::8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
+                  <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
+
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+                </rule>
+                <rule id="77a1-a36b-5192-b450::2866-d8c0-4b13-843a::be1e-ac8e-1e2c-3528" name="Devastating Wounds" publicationId="48fc-15aa-b307-9443" page="28" hidden="false">
+                  <description>Weapons with [DEVASTATING WOUNDS] in their profile are known as Devastating Wounds weapons. Each time an attack is made with such a weapon, if that attack scores a Critical Wound, no saving throw of any kind can be made against that attack (including invulnerable saving throws). Such attacks are only allocated to models after all other attacks made by the attacking unit have been allocated and resolved</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="77a1-a36b-5192-b450::7248-795b-20b-a9bc" name="Archeotech Pistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Devastating Wounds, Pistol</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="1025-360a-8d7b-5ac0" name="Enginseer Axe" entryId="77a1-a36b-5192-b450::74f1-d3dd-89cd-fb48" number="1" type="upgrade">
+              <profiles>
+                <profile id="77a1-a36b-5192-b450::7cc7-17be-fe58-da96" name="Enginseer Axe" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="a3e8-053c-71ed-d5cb" name="Servo-arm" entryId="77a1-a36b-5192-b450::5511-ebdb-4801-106e" number="1" type="upgrade">
+              <rules>
+                <rule id="77a1-a36b-5192-b450::f1c8-db78-a2e9-731f::115b-79dc-f723-d761" name="Extra Attacks" publicationId="48fc-15aa-b307-9443" page="28" hidden="false">
+                  <description>Weapons with [EXTRA ATTACKS] in their profile are known as Extra Attacks weapons. Each time the bearer of such a weapon fights, it can make attacks with that weapon in addition to the one it chooses to fight with. The number of attacks made with an Extra Attacks weapon cannot be modified by other rules.</description>
+                </rule>
+              </rules>
+              <profiles>
+                <profile id="77a1-a36b-5192-b450::51b1-a7b9-b169-d803" name="Servo-arm" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Extra attacks</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="45.0"/>
+          </costs>
+          <categories>
+            <category id="5bd3-f60f-044f-4593" name="Regimental Enginseer" entryId="7f64-6aa5-febb-5504" primary="false"/>
+            <category id="258f-21f1-61b5-9d0d" name="Faction: Astra Militarum" entryId="fa45-57e-930e-602b" primary="false"/>
+            <category id="6e66-7219-d99a-7cfb" name="Imperium" entryId="aff3-d6a3-2a95-9dc" primary="false"/>
+            <category id="0718-f9a5-2c7d-8514" name="Infantry" entryId="cf47-a0d7-7207-29dc" primary="false"/>
+            <category id="4e09-9e1a-8108-28de" name="Character" entryId="9cfd-1c32-585f-7d5c" primary="true"/>
+          </categories>
+        </selection>
+        <selection id="94f5-c41b-4cfe-b746" name="Show/Hide Options" entryId="6f5b-b62-37d0-4f6c::e8ef-836a-a9d1-901d" number="1" type="upgrade">
+          <selections>
+            <selection id="2025-e332-9a53-c835" name="Unaligned Forces are visible" entryId="6f5b-b62-37d0-4f6c::985-e753-2e94-859::2973-ea51-7f8d-5403" number="1" type="upgrade">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="c95f-11c9-891c-e5ba" name="Unaligned Fortifications are visible" entryId="6f5b-b62-37d0-4f6c::4d37-22c-a45c-64f8::e916-2cf4-a49d-b8c4" number="1" type="upgrade">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+            </selection>
+            <selection id="ed37-07c3-d561-c09a" name="Agents of the Imperium are visible" entryId="7593-597b-26b7-2717::e08b-2448-5606-fefb" number="1" type="upgrade">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+              </costs>
+              <categories>
+                <category id="ffd7-018f-5008-a875" name="Configuration" entryId="4ac9-fd30-1e3d-b249" primary="true"/>
+              </categories>
+            </selection>
+          </selections>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+          </costs>
+          <categories>
+            <category id="ae33-92a3-aa40-c11f" name="Configuration" entryId="4ac9-fd30-1e3d-b249" primary="true"/>
+          </categories>
+        </selection>
+      </selections>
+      <publications>
+        <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules"/>
+        <publication id="8db3-575d-91b-47f8" name="Github"/>
+      </publications>
+      <categories>
+        <category id="1104-4a70-ec4c-1357" name="Uncategorised" entryId="(No Category)" primary="false"/>
+        <category id="b574-f2db-9309-ba58" name="Configuration" entryId="4ac9-fd30-1e3d-b249" primary="false"/>
+        <category id="8f44-730c-0e6b-bcb0" name="Epic Hero" entryId="4f3a-f0f7-6647-348d" primary="false"/>
+        <category id="254e-398e-fbec-7a1d" name="Character" entryId="9cfd-1c32-585f-7d5c" primary="false"/>
+        <category id="fd95-c671-f394-fc15" name="Battleline" entryId="e338-111e-d0c6-b687" primary="false"/>
+        <category id="3f1f-6839-b122-bb2e" name="Infantry" entryId="cf47-a0d7-7207-29dc" primary="false"/>
+        <category id="3188-3891-299b-bc27" name="Swarm" entryId="b00b-5bae-444f-964e" primary="false"/>
+        <category id="d2b5-9c08-89aa-be67" name="Mounted" entryId="14a0-40c9-2748-ae6e" primary="false"/>
+        <category id="ea75-7a49-2add-97c1" name="Beast" entryId="4c3e-9310-a516-3590" primary="false"/>
+        <category id="c3d1-dd81-b43f-c3cd" name="Monster" entryId="9693-cf84-fe69-37a9" primary="false"/>
+        <category id="f98b-941e-ed5c-06aa" name="Vehicle" entryId="dbd4-63-af05-998" primary="false"/>
+        <category id="9828-4016-941b-5598" name="Drone" entryId="2471-e2e0-3f55-d6cb" primary="false"/>
+        <category id="990f-26a6-8622-f1cc" name="Dedicated Transport" entryId="ba07-411c-2832-1f79" primary="false"/>
+        <category id="590a-4b42-3811-5587" name="Fortification" entryId="19d7-9c74-2140-5851" primary="false"/>
+        <category id="ee00-6473-2fbb-b70b" name="Unit" entryId="1160-70ae-a862-b1a8" primary="false"/>
+        <category id="fd82-0a0d-9d4e-12a0" name="Allied Units" entryId="887b-ab87-92a2-20f5" primary="false"/>
+      </categories>
+    </force>
+  </forces>
+</roster>
