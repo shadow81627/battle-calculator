@@ -59,6 +59,8 @@ const url = computed(() => {
 })
 
 const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFaction(props.unit, 'ORKS') ? order.value : undefined)
+
+const selections = ref({})
 </script>
 
 <template>
@@ -114,6 +116,31 @@ const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFa
           </option>
         </select>
       </span>
+      <!-- <span v-if="hasFaction(unit, 'Oath of Moment')" class="flex flex-col p-1">
+        <label class="block p-1">Oath of Moment</label>
+        <select v-model="order" class="inline w-250px select">
+          <option value="" selected>
+            None
+          </option>
+        </select>
+      </span> -->
+      <!-- <span v-if="unit?.abilities?.find(ability => ability.name === 'Master of Magicks (Psychic)')" class="flex flex-col p-1">
+        <label class="block p-1">Master of Magicks (Psychic)</label>
+        <select v-model="selections['Master of Magicks (Psychic)']" class="inline w-250px select">
+          <option value="" selected>
+            None
+          </option>
+          <option value="">
+            IGNORES COVER
+          </option>
+          <option value="">
+            LETHAL HITS
+          </option>
+          <option value="">
+            SUSTAINED HITS D3
+          </option>
+        </select>
+      </span> -->
       <span v-if="hasFaction(unit, 'ORKS')" class="flex flex-col p-1">
         <label class="block p-1">Army Rule</label>
         <select v-model="order" class="inline w-250px select">
@@ -148,6 +175,7 @@ const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFa
         :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
         :order="_order"
         :stratagem="stratagem"
+        :selections="selections"
       />
       <template v-if="weapon.alternatives?.length">
         <p class="pt-5">
@@ -165,6 +193,7 @@ const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFa
             :turns="turns" :target="target"
             :order="_order"
             :stratagem="stratagem"
+            :selections="selections"
           />
         </Accordion>
       </template>
