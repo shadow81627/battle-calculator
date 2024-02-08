@@ -42,6 +42,12 @@
         },
         {
           "name": "TWIN-LINKED"
+        },
+        {
+          "name": "Hierloom"
+        },
+        {
+          "name": "Master-Worked"
         }
       ],
       "range": 48,
