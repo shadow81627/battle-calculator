@@ -1,0 +1,43 @@
+{
+  "name": "Pink Horrors",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "quantity": 1,
+  "models": 10,
+  "points": 140,
+  "offers": [],
+  "attributes": {
+    "movement": 6,
+    "toughness": 3,
+    "save": 7,
+    "wound": 1,
+    "leadership": 7,
+    "control": 2
+  },
+  "weapons": [
+    {
+      "name": "Coruscating Pink Flames",
+      "modifiers": [
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": 18,
+      "attack": 2,
+      "accuracy": 3,
+      "strength": 5,
+      "piercing": 1,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Invulnerable Save 4+"
+    }
+  ]
+}

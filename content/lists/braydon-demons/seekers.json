@@ -1,0 +1,63 @@
+{
+  "name": "Seekers",
+  "faction": [
+    "Legiones Daemonica",
+    "The Shadow of Chaos"
+  ],
+  "quantity": 1,
+  "models": 10,
+  "points": 170,
+  "offers": [],
+  "attributes": {
+    "movement": 14,
+    "toughness": 4,
+    "save": 7,
+    "wound": 2,
+    "leadership": 7,
+    "control": 1
+  },
+  "weapons": [
+    {
+      "name": "Slashing claws",
+      "modifiers": [
+        {
+          "name": "DEVASTATING WOUNDS"
+        },
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": "Melee",
+      "attack": 3,
+      "accuracy": 3,
+      "strength": 4,
+      "piercing": 1,
+      "damage": 1
+    },
+    {
+      "name": "Lashing tongue",
+      "modifiers": [
+        {
+          "name": "LETHAL HITS"
+        },
+        {
+          "name": "SUSTAINED HITS 1"
+        }
+      ],
+      "range": "Melee",
+      "attack": 2,
+      "accuracy": 4,
+      "strength": 4,
+      "piercing": 0,
+      "damage": 1
+    }
+  ],
+  "abilities": [
+    {
+      "name": "Deep Strike"
+    },
+    {
+      "name": "Invulnerable Save 5+"
+    }
+  ]
+}
