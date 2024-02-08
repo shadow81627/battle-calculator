@@ -28,20 +28,22 @@ function getDetachmentRuleAttackModifier(unit: Unit, weapon: Weapon) {
     return 'SUSTAINED HITS 1'
 }
 
+const _unit = computed(() => props.unit)
+
 const weapons = computed(() => {
   function addMemberWeaponModels(member: Unit) {
     return member.weapons?.map((weapon) => {
       if (!weapon.models)
-        weapon.models = member.models ?? props.unit.models
+        weapon.models = member.models ?? _unit.value.models
       return weapon
     })
   }
-  const memberWeapons = props.unit.members?.map(addMemberWeaponModels).flat()
+  const memberWeapons = _unit.value.members?.map(addMemberWeaponModels).flat()
   const deduplicatedMemberWeapons = Object.entries(groupBy(memberWeapons, 'name')).map(([key, weapons]) => {
     const models = weapons.reduce((sum, weapon) => sum + (weapon?.models ?? 0), 0)
     return { ...weapons[0], models }
   }) ?? []
-  return [...deduplicatedMemberWeapons, ...props.unit.weapons ?? []]?.filter((weapon): weapon is Weapon => {
+  return [...deduplicatedMemberWeapons, ..._unit.value.weapons ?? []]?.filter((weapon): weapon is Weapon => {
     return weapon !== undefined
   })
 })
