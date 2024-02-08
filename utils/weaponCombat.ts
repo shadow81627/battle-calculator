@@ -41,7 +41,7 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   // Attacks
   const attack = (() => {
     const parsed = parseRolls(weapon.attack)
-    if (additional?.order === 'WAAAGH!' && weapon.range === 'Melee')
+    if ((additional?.order === 'WAAAGH!' && weapon.range === 'Melee') || getModifier('Hierloom', weapon.modifiers))
       parsed.base = parsed.base + 1
     return parsed
   })()
