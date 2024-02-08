@@ -7,7 +7,6 @@ const props = defineProps({
   strength: { type: Number },
   toughness: { type: Number },
   attack: { type: [String, Number] },
-  save: { type: Number },
   accuracy: { type: Number },
   piercing: { type: Number },
   damage: { type: [String, Number] },
@@ -23,6 +22,7 @@ const props = defineProps({
   weapon: { type: Object },
   unit: { type: Object },
   stratagem: { type: String },
+  selections: { type: Object },
 })
 
 const showRolls = ref(false)
@@ -50,6 +50,7 @@ const additional = computed(() => ({
   range: props.range,
   turns: props.turns,
   stratagem: props.stratagem,
+  selections: props.selections,
 }))
 const randomTotals = computed(() => weaponCombat(props.weapon, props.unit, props.target, additional.value))
 
@@ -94,11 +95,11 @@ const hasAtraposDuty = computed(() => {
   const keyword = props.target?.keywords?.find(item => ['TITANIC', 'TOWERING'].includes(item.toUpperCase()))
   return ability && keyword
 })
-const hasMacroExtinctionProtocols = computed(() => {
-  const ability = props.abilities?.find(ability => ability.name === 'Macro-extinction Protocols')
-  const keyword = targetIsVehicleOrMonster.value
-  return ability && keyword
-})
+// const hasMacroExtinctionProtocols = computed(() => {
+//   const ability = props.abilities?.find(ability => ability.name === 'Macro-extinction Protocols')
+//   const keyword = targetIsVehicleOrMonster.value
+//   return ability && keyword
+// })
 const hasBringersOfChange = computed(() => props.abilities.find(ability => ability.name === 'Bringers of Change'))
 const hasTankKiller = computed(() => props.abilities.find(ability => ability.name === 'Tank-killer') && targetIsVehicleOrMonster.value)
 const hasMobileHunterKillers = computed(() => props.abilities.find(ability => ability.name === 'Mobile Hunter-killers') && targetIsVehicleOrMonster.value)
@@ -122,7 +123,12 @@ const rapidFire = computed(() => {
 })
 const sustainedHits = computed(() => {
   const modifier = getModifier('SUSTAINED HITS', props.modifiers)
-  return modifier ? Number(modifier.name.match(/\d+/)[0]) : 0
+  if (!modifier?.name)
+    return 0
+  const parsed = parseRolls(modifier.name)
+  if (parsed.rolls)
+    return ((parsed.rollType + 1) / 2) + parsed.base
+  return parsed.base
 })
 const invulnerable = computed(() => getAbilityValue(props.target, 'INVULNERABLE SAVE') ?? 7)
 const pain = computed(() => {

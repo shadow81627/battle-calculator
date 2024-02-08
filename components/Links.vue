@@ -19,7 +19,8 @@ export default {
       items: [
         { title: 'Home', url: '/' },
         { title: 'Lists', url: '/lists' },
-        { title: 'Indexes', url: 'https://www.warhammer-community.com/warhammer-40000-downloads/' },
+        { title: 'Downloads', url: 'https://www.warhammer-community.com/warhammer-40000-downloads/' },
+        { title: 'Resources', url: '/resources' },
       ],
     }
   },
