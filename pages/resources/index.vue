@@ -30,7 +30,7 @@
   </section>
 </template>
 <script setup>
-const { data } = await useAsyncData('resources:index', () => queryContent('resources').find(), {
+const { data } = await useAsyncData('resources-index', () => queryContent('resources').find(), {
   transform(data) {
   return data.sort()
 } })
