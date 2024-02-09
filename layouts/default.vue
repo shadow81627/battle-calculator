@@ -1,33 +1,23 @@
 <template>
-  <Html lang="en-AU">
-    <div class="min-h-screen flex flex-col justify-start body">
-      <Navigation v-model:draw="draw" :items="items"></Navigation>
-      <div class="flex justify-start self-stretch h-full grow relative">
-        <div
-          id="sidenav"
-          class="self-stretch flex grow flex-col min-h-full absolute sm:relative z-1000"
-        >
-          <SideNav :items="items" :draw="draw"></SideNav>
-        </div>
-        <div class="w-full flex-col grow self-stretch flex-wrap">
-          <main
-            itemprop="mainContentOfPage"
-            itemtype="https://schema.org/WebPageElement"
-          >
-            <NuxtPage />
-          </main>
-          <footer class="flex print:hidden">
-            <p>
-              <span>Site by </span>
-              <a href="https://daim.dev" class="underline" target="_blank"
-                >Daim Digital</a
-              >
-            </p>
-          </footer>
-        </div>
+  <div class="min-h-screen flex flex-col justify-start body">
+    <Navigation v-model:draw="draw" :items="items"></Navigation>
+    <div class="flex justify-start self-stretch h-full grow relative">
+      <div id="sidenav" class="self-stretch flex grow flex-col min-h-full absolute sm:relative z-1000">
+        <SideNav :items="items" :draw="draw"></SideNav>
+      </div>
+      <div class="w-full flex-col grow self-stretch flex-wrap">
+        <main itemprop="mainContentOfPage" itemtype="https://schema.org/WebPageElement">
+          <NuxtPage />
+        </main>
+        <footer class="flex print:hidden">
+          <p>
+            <span>Site by </span>
+            <a href="https://daim.dev" class="underline" target="_blank">Daim Digital</a>
+          </p>
+        </footer>
       </div>
     </div>
-  </Html>
+  </div>
 </template>
 
 <script setup>
