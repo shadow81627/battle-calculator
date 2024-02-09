@@ -100,7 +100,7 @@ if (modelList.length === 1) {
   flex-direction: column; flex-grow: 1;"
   >
     <div
-      class="min-h-[15rem]"
+      class="min-h-[15rem] !print:bg-none"
       style="color: #fff; position: relative; padding: 24px 0; padding-bottom: 24px; background: linear-gradient(90deg, rgba(20,21,25,1) 0%, rgba(48,57,62,1) 45%, rgba(73,74,79,1) 100%);"
     >
       <div style="padding: 4px 16px; color: rgb(255, 255, 255); position: relative; margin-left: 1.3rem;">
@@ -185,7 +185,7 @@ if (modelList.length === 1) {
         </div>
       </div>
     </div>
-    <div class="flex-grow" style="display: flex; border: 2px solid var(--primary-color); border-top: none; background-color: #DFE0E2">
+    <div class="flex-grow !print:border-t-2" style="display: flex; border: 2px solid var(--primary-color); xborder-top: none; background-color: #DFE0E2">
       <div
         class="pt-5"
         style="flex: 1 1 0%; border-right: 2px solid var(--primary-color); position: relative; padding-bottom: 40px; display: flex; flex-direction: column;"
