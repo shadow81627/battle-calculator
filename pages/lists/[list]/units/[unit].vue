@@ -6,7 +6,7 @@ if (!unit.value)
 </script>
 
 <template>
-  <div class="m-10">
+  <div class="sm:m-10 m-5">
     <h1 class="text-left font-barlow text-4xl font-700 uppercase">
       {{ unit.name }}
     </h1>
@@ -24,15 +24,16 @@ if (!unit.value)
         </section>
       </div>
       <div class="row">
-        <section class="my-5 !print:col col md:col-6" style="overflow-x:auto;">
+        <section class="my-5 !print:col col md:w-8/12" style="overflow-x:auto;">
           <WeaponAttributes v-if="unit.weapons?.length" :unit="unit" class="w-full" />
           <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
             Enhancement:
             {{ enhancement.name }} ({{ enhancement.points }})
           </div>
           <div v-for="member of unit.members" :key="member.name">
-            <div class="text-left font-barlow font-700 uppercase">
-              {{ member.name }}
+            <div class="text-left font-barlow font-700">
+              <span v-if="member.models">{{ member.models }}x </span>
+              <span class="uppercase">{{ member.name }}</span>
             </div>
             <WeaponAttributes :unit="member" class="w-full" />
           </div>
