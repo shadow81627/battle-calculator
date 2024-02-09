@@ -55,17 +55,39 @@
       "weapons": [
         {
           "name": "Plasma gun",
-          "modifiers": [
+          "profiles": [
             {
-              "name": "RAPID FIRE 1"
+              "name": "Plasma gun - standard",
+              "modifiers": [
+                {
+                  "name": "RAPID FIRE 1"
+                }
+              ],
+              "range": 24,
+              "attack": 1,
+              "accuracy": 4,
+              "strength": 7,
+              "piercing": 2,
+              "damage": 1
+            },
+            {
+              "name": "Plasma gun - supercharge",
+              "modifiers": [
+                {
+                  "name": "RAPID FIRE 1"
+                },
+                {
+                  "name": "HAZARDOUS"
+                }
+              ],
+              "range": 24,
+              "attack": 1,
+              "accuracy": 4,
+              "strength": 8,
+              "piercing": 3,
+              "damage": 2
             }
           ],
-          "range": 24,
-          "attack": 1,
-          "accuracy": 4,
-          "strength": 7,
-          "piercing": 2,
-          "damage": 1,
           "alternatives": [
             {
               "name": "Sniper rifle",
