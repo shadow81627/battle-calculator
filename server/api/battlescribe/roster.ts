@@ -33,7 +33,10 @@ interface BSSelection {
 }
 
 export default defineEventHandler(async () => {
-  const data = await fs.readFile('assets/Crusade.ros', 'utf8')
+  const data = await useStorage('assets:server').getItem('Crusade.ros')
+  if (!data) {
+    throw createError({ message: 'Unable to get file', status: 400 })
+  }
   const $ = cheerio.load(data, {
     xmlMode: true,
     xml: {

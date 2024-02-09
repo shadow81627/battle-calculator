@@ -5,7 +5,10 @@ import slugify from 'slugify'
 import deepSort from '~/utils/deepSort'
 
 export default defineEventHandler(async () => {
-  const data = await fs.readFile('assets/Imperium - Astra Militarum - Library.xml', 'utf8')
+  const data = await useStorage('assets:server').getItem('Imperium - Astra Militarum - Library.xml')
+  if (!data) {
+    throw createError({ message: 'Unable to get file', status: 400 })
+  }
   const $ = cheerio.load(data, {
     xmlMode: true,
     xml: {
@@ -95,12 +98,12 @@ export default defineEventHandler(async () => {
       selections.push(selection)
   })
 
-  for (const entry of selections) {
-    const folder = `data/selections/${entry.type}`
-    await fs.mkdir(folder, { recursive: true })
-    const filename = `${folder}/${slugify(entry.name)}.json`
-    await fs.writeFile(filename, `${JSON.stringify(deepSort(entry), undefined, 2)}\n`, { flag: 'w' })
-  }
+  // for (const entry of selections) {
+  //   const folder = `data/selections/${entry.type}`
+  //   await fs.mkdir(folder, { recursive: true })
+  //   const filename = `${folder}/${slugify(entry.name)}.json`
+  //   await fs.writeFile(filename, `${JSON.stringify(deepSort(entry), undefined, 2)}\n`, { flag: 'w' })
+  // }
 
   return { data: selections }
 })

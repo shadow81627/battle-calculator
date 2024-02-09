@@ -3,7 +3,10 @@ import { JSDOM } from 'jsdom'
 import { Create40kRoster10th } from '~/server/fancyscribe-parse'
 
 export default defineEventHandler(async () => {
-  const file = await fs.readFile('assets/Crusade.ros', 'utf8')
+  const file = await useStorage('assets:server').getItem('Crusade.ros')
+  if (!file) {
+    throw createError({ message: 'Unable to get file', status: 400 })
+  }
   const dom = new JSDOM(file, { contentType: 'text/xml' });
   const doc = dom.window.document;
 
