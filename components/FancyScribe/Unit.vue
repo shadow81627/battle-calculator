@@ -1,4 +1,5 @@
 <script setup>
+import { useStorage } from '@vueuse/core'
 const props = defineProps(['unit', 'index', 'catalog', 'onePerPage', 'forceRules'])
 let {
   name,
@@ -12,8 +13,8 @@ let {
   modelList,
   cost,
 } = props.unit
-// const [image, setImage] = useLocalStorage("image" + name);
-// const hasImage = image && image !== "undefined";
+const image = useStorage("image" + name);
+const hasImage = computed(()=> image.value && image.value !== 'undefined')
 
 const weapons = [...meleeWeapons, ...rangedWeapons]
 
@@ -93,6 +94,16 @@ if (modelList.length === 1) {
     .replace(')', '')
 }
 const hide = false;
+
+function updateImage(e) {
+  if (e.target.files && e.target.files[0]) {
+    let reader = new FileReader();
+    reader.onload = function (ev) {
+      image.value = ev.target.result;
+    }.bind(this);
+    reader.readAsDataURL(e.target.files[0]);
+  }
+}
 </script>
 
 <template>
@@ -123,61 +134,24 @@ const hide = false;
 
         <div style="display: flex; flex-direction: column; gap: 6px; z-index: 1; position: relative;">
           <FancyScribeModelStats v-for="(  model, index  ) of   modelStats  " :key="index" :index="index"
-            :model-stats="modelStats" :model-stat="model" :model-list="modelList"
-            :show-name="modelStats.length > 1" />
+            :model-stats="modelStats" :model-stat="model" :model-list="modelList" :show-name="modelStats.length > 1" />
         </div>
       </div>
       <div style="position: absolute; right: 0px; top: 0px; height: 100%; bottom: 0px; width: 45%;">
-        <!-- <img v-if="hasImage" :src="image" alt="" style="width: 100%; height: 100%; object-fit: contain;" /> -->
-        <div class="absolute right-[1px] top-[2px] flex gap-1">
-          <!-- <label
-							class="button print-display-none"
-							style={{
-								border: "1px solid #999",
-								padding: "1px 4px",
-								fontSize: "0.8rem",
-								backgroundColor: "#f0f0f0",
-							}}
-						>
-							<input
-								ref={uploadRef}
-								type="file"
-								class="print-display-none"
-								accept=".jpg,.png,.jpeg,.gif,.bmp,.tif,.tiff,.webp,.svg,.jfif,.pjpeg,.pjp,.avif,.apng,.ico,.cur,.ani"
-								onChange={(e) => {
-									posthog?.capture?.("user_uploaded_image", {
-										unit_name: name,
-									});
-									if (e.target.files && e.target.files[0]) {
-										let reader = new FileReader();
-										reader.onload = function (ev) {
-											setImage(ev.target.result);
-										}.bind(this);
-										reader.readAsDataURL(e.target.files[0]);
-									}
-								}}
-								style={{
-									display: "none",
-								}}
-							/>
-							{hasImage ? "Change image" : "Upload image "}
-						</label>
-						{hasImage && (
-							<button
-								class="button print-display-none"
-								style={{
-									border: "1px solid #999",
-									padding: "1px 4px",
-									fontSize: "0.8rem",
-									backgroundColor: "#f0f0f0",
-								}}
-								onClick={() => {
-									setImage(undefined);
-								}}
-							>
-								Clear image
-							</button>
-						)} -->
+        <img v-if="hasImage" :src="image" alt="" style="width: 100%; height: 100%; object-fit: contain;" />
+        <div class="absolute right-[1px] top-[2px] flex gap-1 print:hidden">
+          <label class="btn text-dark print-display-none"
+            style="border: 1px solid #999; padding: 1px 4px; font-size: 0.8rem; background-color: #f0f0f0;">
+            <input type="file" class="print-display-none"
+              accept=".jpg,.png,.jpeg,.gif,.bmp,.tif,.tiff,.webp,.svg,.jfif,.pjpeg,.pjp,.avif,.apng,.ico,.cur,.ani"
+              @change="updateImage" style="display: none" />
+            {{ hasImage ? "Change image" : "Upload image " }}
+          </label>
+          <button v-if="hasImage" class="btn text-dark print-display-none"
+            style="border: 1px solid #999; padding: 1px 4px; font-size: 0.8rem; background-color: #f0f0f0;"
+            @click="() => image = undefined">
+            Clear image
+          </button>
         </div>
       </div>
     </div>
