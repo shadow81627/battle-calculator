@@ -362,25 +362,21 @@ export class Roster40k extends BaseNotes {
 }
 
 export class Costs {
-  commandPoints = 0
   points = 0
-  freeformValues: Record<string, number> = {}
+  freeformValues?: Record<string, number> = undefined
 
   hasValues() {
-    return this.commandPoints !== 0 || this.points !== 0
+    return this.points !== 0
   }
 
   toString() {
     const values = []
     if (this.points !== 0)
       values.push(`${this.points} pts`)
-    if (this.commandPoints !== 0)
-      values.push(`${this.commandPoints} CP`)
     return `[${values.join(' / ')}]`
   }
 
   add(other: Costs) {
-    this.commandPoints += other.commandPoints
     this.points += other.points
     for (const name in other.freeformValues)
       this.addFreeformValue(name, other.freeformValues[name])
@@ -662,8 +658,6 @@ function ParseCost(cost: Element) {
   if (which && value) {
     if (which === 'pts')
       costs.points += +value
-    else if (which === 'CP')
-      costs.commandPoints += +value
     else
       costs.addFreeformValue(which, +value)
   }
@@ -672,7 +666,7 @@ function ParseCost(cost: Element) {
 
 function ParseUnit(root: Element) {
   const unit = new Unit()
-  // const unitName = ExpandBaseNotes(root, unit)
+  ExpandBaseNotes(root, unit)
 
   const categories = root.querySelectorAll('categories>category')
 
