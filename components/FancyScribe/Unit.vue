@@ -185,7 +185,7 @@ if (modelList.length === 1) {
         </div>
       </div>
     </div>
-    <div class="flex-grow !print:border-t-2" style="display: flex; border: 2px solid var(--primary-color); xborder-top: none; background-color: #DFE0E2">
+    <div class="flex-grow !print:border-t-2 border-t-0 border-2 border-solid" style="display: flex; border-color: var(--primary-color); background-color: #DFE0E2">
       <div
         class="pt-5"
         style="flex: 1 1 0%; border-right: 2px solid var(--primary-color); position: relative; padding-bottom: 40px; display: flex; flex-direction: column;"
