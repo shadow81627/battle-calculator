@@ -53,8 +53,8 @@ const getWeaponClassNames = (weapons, index) => {
   </thead>
   <tbody>
     <FancyScribeWeapon v-for="(weapon, index) of  weapons " :key="weapon.name" :weapon="weapon"
-      :previousWeapon="weapons[index - 1]" :nextWeapon="weapons[index + 1]" :modelStats="modelStats" :isMelee="isMelee"
-      :classes="getWeaponClassNames(weapons, index)" :forceRules="forceRules" />
+      :previousWeapon="weapons[index - 1]" :nextWeapon="weapons[index + 1]" :isMelee="isMelee"
+      :classes="getWeaponClassNames(weapons, index)" />
     <tr v-if="weapons.length" class="h-22.5px">
       <td style=" border-top: none"></td>
       <td colspan="7"></td>
