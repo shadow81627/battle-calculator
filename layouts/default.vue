@@ -5,7 +5,7 @@
       <div class="flex justify-start self-stretch h-full grow relative">
         <div
           id="sidenav"
-          class="self-stretch flex grow flex-col min-h-full absolute sm:relative"
+          class="self-stretch flex grow flex-col min-h-full absolute sm:relative z-1000"
         >
           <SideNav :items="items" :draw="draw"></SideNav>
         </div>
