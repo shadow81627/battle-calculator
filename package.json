@@ -2,7 +2,7 @@
   "name": "battle-calculator",
   "description": "Tabletop battle simulation",
   "private": true,
-  "packageManager": "pnpm@8.6.3",
+  "packageManager": "yarn@4.1.0",
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
