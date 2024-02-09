@@ -7,7 +7,7 @@ useHead({
 </script>
 
 <template>
-  <Body class="dark:bg-dark dark:text-light">
+  <Body class="dark:bg-dark dark:text-light !print:bg-light !print:text-dark">
     <VitePwaManifest />
     <NuxtLayout>
       <NuxtPage />
