@@ -6,12 +6,13 @@ const mergedRules = { ...factionRules, ...rules };
 
 <template>
   <div style="display: contents">
-    <div style="width:297mm;
-   height:210mm; display: flex;" v-for="(unit, index) of units" class="mx-auto">
+    <div style="width:282mm; height:210mm; display: flex;" v-for="(unit, index) of units" class="mx-auto">
       <FancyScribeUnit :key="unit.name" :index="index" :unit="unit" :catalog="catalog">
       </FancyScribeUnit>
     </div>
 
-    <FancyScribeForceRules :rules="mergedRules" />
+    <div style="width:282mm;" class="flex mx-auto py-6">
+      <FancyScribeForceRules :rules="mergedRules" />
+    </div>
   </div>
 </template>
