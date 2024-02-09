@@ -3,7 +3,9 @@ const props = defineProps(['factions'])
 </script>
 
 <template>
-  <div style="
+  <div
+    class="!print:bg-[#bcbcbe]"
+    style="
     position: absolute;
     left: 0px;
     bottom: -16px;
@@ -15,7 +17,8 @@ const props = defineProps(['factions'])
     border: 2px solid var(--primary-color);
     color: rgb(255, 255, 255); border-left: none;
     width: calc(100% - 0.9rem);
-    min-height: 54px;">
+    min-height: 54px;"
+  >
     <span style="font-size: 1em; line-height: 1.5; font-weight: 400;">
       FACTION KEYWORDS:
     </span>
