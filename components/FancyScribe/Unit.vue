@@ -199,7 +199,6 @@ if (modelList.length === 1) {
             title="MELEE WEAPONS" :weapons="meleeWeapons" :model-stats="modelStats"
             :force-rules="forceRules"
           />
-          <FancyScribeOtherAbilities :abilities="abilities" />
         </table>
         <div style="flex: 1 1 0%;" />
         <table cellspacing="0" class="weapons-table" style="width: 100%">
@@ -238,6 +237,7 @@ if (modelList.length === 1) {
         </div>
         <FancyScribeRules :rules="rules" />
         <FancyScribeAbilities :abilities="abilities.Abilities" />
+        <FancyScribeOtherAbilities :abilities="abilities" />
 
         <FancyScribeFactions :factions="factions" />
         <FancyScribeFactionIcon :catalog="catalog" />
