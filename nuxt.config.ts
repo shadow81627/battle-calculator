@@ -5,19 +5,17 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
-    '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/content',
-    '@vueuse/nuxt',
   ],
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
-    payloadExtraction: false,
-    inlineSSRStyles: false,
-    renderJsonPayloads: true,
+    // payloadExtraction: false,
+    // inlineSSRStyles: false,
+    // renderJsonPayloads: true,
     typedPages: true,
   },
 
