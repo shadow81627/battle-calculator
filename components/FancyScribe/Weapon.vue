@@ -60,13 +60,7 @@ if (differentProfiles && name.includes(" - ")) {
 
         <template v-if="differentProfiles">{{ name.replaceAll(selectionName, "").replaceAll(", ", "") }}</template>
         <template v-else>{{ name }}</template>
-        <span v-if="type && type !== '-'" style="
-									font-size: 0.8em;
-									fontWeight: 700;
-									color: var(--primary-color);
-									text-transform: uppercase;
-									line-height: 1;
-								">
+        <span v-if="type && type !== '-'" style="font-size: 0.8em;font-weight: 700;color: var(--primary-color);text-transform: uppercase;line-height: 1;">
           [{{ type }}]
         </span>
       </div>
@@ -101,6 +95,7 @@ if (differentProfiles && name.includes(" - ")) {
   border-top: 1px dotted #9e9fa1;
   text-align: center;
 }
+
 .noBorderTop td {
   border-top: none;
 }
