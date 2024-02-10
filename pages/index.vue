@@ -94,7 +94,7 @@ const { data: defender, refresh: refreshDefender } = await useAsyncData(defender
               </select>
             </h2>
           </div>
-          <UnitCombat :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
+          <UnitCombat v-if="attacker" :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
         </div>
         <div class="col md:col-6">
           <div class="text-left">
@@ -112,7 +112,7 @@ const { data: defender, refresh: refreshDefender } = await useAsyncData(defender
               </select>
             </h2>
           </div>
-          <UnitCombat :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
+          <UnitCombat v-if="defender" :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
         </div>
       </div>
     </section>
