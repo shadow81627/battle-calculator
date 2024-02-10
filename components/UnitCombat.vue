@@ -67,17 +67,17 @@ const selections = ref({})
   <div>
     <div class="text-left">
       <NuxtLink v-if="url" :to="url" target="_blank">
-        <p>{{ unit.models }} {{ unit.name }} {{ unit.points }}pts</p>
+        <p>{{ _unit.models }} {{ _unit.name }} {{ _unit.points }}pts</p>
       </NuxtLink>
       <p v-else>
-        {{ unit.models }} {{ unit.name }} {{ unit.points }}pts
+        {{ _unit.models }} {{ _unit.name }} {{ _unit.points }}pts
       </p>
     </div>
     <!-- <div class="container">
             <div class="row">
               <div class="col-3">
-                <label>Move ({{ unit.moved }})</label>
-                <input name="movement" type="number" class="input" :max="unit.movement" v-model="unit.moved" />
+                <label>Move ({{ _unit.moved }})</label>
+                <input name="movement" type="number" class="input" :max="_unit.movement" v-model="_unit.moved" />
               </div>
             </div>
           </div> -->
@@ -87,12 +87,12 @@ const selections = ref({})
         <template #header>
           Weapons
         </template>
-        <WeaponAttributes v-if="unit.weapons?.length" :unit="unit" class="w-full" />
-        <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
+        <WeaponAttributes v-if="_unit.weapons?.length" :unit="unit" class="w-full" />
+        <div v-for="enhancement of (_unit.enhancements ?? [])" :key="enhancement.name">
           Enhancement:
           {{ enhancement.name }} ({{ enhancement.points }})
         </div>
-        <div v-for="member of unit.members" :key="member.name">
+        <div v-for="member of _unit.members" :key="member.name">
           <div class="text-left font-barlow font-700 uppercase">
             {{ member.name }}
           </div>
@@ -170,7 +170,7 @@ const selections = ref({})
         v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
         v-bind="{ ...weapon }" :distance="distance" :weapon="weapon" :unit="unit"
         :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, weapon) }].filter(item => item?.name)"
-        :abilities="unit.abilities ?? []" :models="weapon.models ?? unit.models" :toughness="target.attributes.toughness"
+        :abilities="_unit.abilities ?? []" :models="weapon.models ?? _unit.models" :toughness="target.attributes.toughness"
         :save="target.attributes.save"
         :pain="getAbilityValue(target, 'Feel No Pain')" :turns="turns" :target="target"
         :order="_order"
@@ -188,7 +188,7 @@ const selections = ref({})
           <Combat
             v-bind="{ ...profile }" :distance="distance" :weapon="profile" :unit="unit"
             :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
-            :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
+            :abilities="_unit.abilities ?? []" :models="profile.models ?? _unit.models"
             :toughness="target.attributes.toughness" :save="target.attributes.save"
             :turns="turns" :target="target"
             :order="_order"
@@ -202,7 +202,7 @@ const selections = ref({})
           <Combat
             v-bind="{ ...profile }" :distance="distance" :weapon="profile" :unit="unit"
             :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
-            :abilities="unit.abilities ?? []" :models="profile.models ?? unit.models"
+            :abilities="_unit.abilities ?? []" :models="profile.models ?? _unit.models"
             :toughness="target.attributes.toughness" :save="target.attributes.save"
             :turns="turns" :target="target"
             :order="_order"
