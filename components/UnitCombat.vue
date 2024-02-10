@@ -49,16 +49,16 @@ const weapons = computed(() => {
 })
 
 const url = computed(() => {
-  if (props.unit.dataSheetUrl)
-    return props.unit.dataSheetUrl
-  const segments = props.unit._path.split('/')
+  if (_unit.value.dataSheetUrl)
+    return _unit.value.dataSheetUrl
+  const segments = _unit.value._path.split('/')
   const unitSlug = segments.slice(-1)
   const listSlug = segments.slice(-2).reverse().pop()
   if (listSlug !== 'lists')
     return `lists/${listSlug}/units/${unitSlug}`
 })
 
-const _order = computed(() => hasFaction(props.unit, 'ASTRA MILITARUM') || hasFaction(props.unit, 'ORKS') ? order.value : undefined)
+const _order = computed(() => hasFaction(_unit.value, 'ASTRA MILITARUM') || hasFaction(_unit.value, 'ORKS') ? order.value : undefined)
 
 const selections = ref({})
 </script>
