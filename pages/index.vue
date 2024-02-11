@@ -39,8 +39,8 @@ const defenderId = computed({
     router.replace({ query: { ...route.query, defenderId: encodeURIComponent(value) } })
   },
 })
-const { data: attacker, refresh: refreshAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
-const { data: defender, refresh: refreshDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
+const { data: attacker, refresh: refreshAttacker, loadingAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
+const { data: defender, refresh: refreshDefender, loadingDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
 </script>
 
 <template>
@@ -54,12 +54,14 @@ const { data: defender, refresh: refreshDefender } = await useAsyncData(defender
         <div class="col">
           <table class="text-left">
             <thead>
+              <tr>
               <th class="p-1">
                 <label class="font-bold">Turns</label>
               </th>
               <th class="p-1">
                 <label class="font-bold">Distance</label>
               </th>
+            </tr>
             </thead>
             <tbody>
               <tr>
@@ -75,8 +77,9 @@ const { data: defender, refresh: refreshDefender } = await useAsyncData(defender
         </div>
       </div>
     </section>
-
-    <section class="container my-6">
+    
+    <section v-if="loadingAttacker || loadingDefender">Loading...</section>
+    <section v-else class="container my-6">
       <div class="row">
         <div class="col md:col-6">
           <div class="text-left">
@@ -94,7 +97,7 @@ const { data: defender, refresh: refreshDefender } = await useAsyncData(defender
               </select>
             </h2>
           </div>
-          <UnitCombat v-if="attacker" :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
+          <UnitCombat v-if="attacker && defender" :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
         </div>
         <div class="col md:col-6">
           <div class="text-left">
@@ -112,7 +115,7 @@ const { data: defender, refresh: refreshDefender } = await useAsyncData(defender
               </select>
             </h2>
           </div>
-          <UnitCombat v-if="defender" :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
+          <UnitCombat v-if="defender && attacker" :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
         </div>
       </div>
     </section>

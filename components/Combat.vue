@@ -17,7 +17,7 @@ const props = defineProps({
   abilities: { type: Array, default: () => [] },
   target: { type: Object },
   order: { type: String },
-  range: { type: Number },
+  range: { type: [Number, String] },
   distance: { type: Number, default: 24 },
   weapon: { type: Object },
   unit: { type: Object },
@@ -52,7 +52,8 @@ const additional = computed(() => ({
   stratagem: props.stratagem,
   selections: props.selections,
 }))
-const randomTotals = computed(() => weaponCombat(props.weapon, props.unit, props.target, additional.value))
+
+const randomTotals = useState(`randomTotals-${props.weapon.name}`, ()=> computed(()=>weaponCombat(props.weapon, props.unit, props.target, additional.value)))
 
 function averageWeaponCombatWorker() {
   return new Promise((resolve, reject) => {
@@ -218,6 +219,7 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
   <div style="overflow-x:auto;" class="text-center">
     <table class="w-full">
       <thead>
+        <tr>
         <th class="p-1 text-left">
           Name
         </th>
@@ -239,6 +241,7 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
         <th v-if="pain" class="p-1">
           Feel no pain
         </th>
+      </tr>
       </thead>
       <tbody>
         <tr>

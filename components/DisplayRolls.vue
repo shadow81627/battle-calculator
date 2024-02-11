@@ -17,9 +17,11 @@ const entries = computed(() => {
 <template>
   <table>
     <thead>
+      <tr>
       <th v-for="[key] of entries" :key="key" class="px-1 text-right">
         {{ key }}
       </th>
+    </tr>
     </thead>
     <tbody>
       <tr>
