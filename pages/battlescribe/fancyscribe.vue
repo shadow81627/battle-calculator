@@ -1,5 +1,7 @@
 <template>
-  <FancyScribeRoster :roster="data" :style="{
+  <span v-if="loading">Loading...</span>
+  <span v-else-if="!data">No data found</span>
+  <FancyScribeRoster v-else :roster="data" :style="{
     '--primary-color': primaryColor,
     '--primary-color-transparent': primaryColor + '60'
   }" class="bg-light text-dark"></FancyScribeRoster>
@@ -9,7 +11,7 @@
 definePageMeta({
   layout: 'default',
 })
-const { data } = useFetch('/api/battlescribe/fancyscribe', { transform: (data) => data.data })
+const { data, loading } = useFetch('/api/battlescribe/fancyscribe', { transform: (data) => data.data })
 const primaryColor = '#536766'
 </script>
 

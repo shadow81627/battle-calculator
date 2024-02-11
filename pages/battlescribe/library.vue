@@ -1,9 +1,11 @@
 <script setup>
-const { data } = useFetch('/api/battlescribe/library')
+const { data, loading } = useFetch('/api/battlescribe/library')
 </script>
 
 <template>
-  <div class="m-10">
+  <span v-if="loading">Loading...</span>
+  <span v-else-if="!data">No data found</span>
+  <div v-else class="m-10">
     <BSAccordion :selections="data.data" />
   </div>
 </template>
