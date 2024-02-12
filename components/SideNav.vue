@@ -5,7 +5,7 @@
     :class="{ 'opacity-0': !draw, 'w-0': !draw, 'w-60': draw }">
     <div v-for="item of items" :key="item.name" class="relative flex px-4" click="$emit('update:draw', !draw)"
       :class="{ 'bg-gray-200': $route.path === item.url, 'dark:bg-gray-600': $route.path === item.url, 'hover:bg-gray-500/10': $route.path !== item.url }">
-      <span :class="item.icon" class="text-gray w-32px h-32px my-auto"></span>
+      <Icon :name="item.icon" class="text-gray my-auto" style="width: 32px; height: 32px" />
       <NuxtLink :to="item.url" itemscope itemtype="https://schema.org/SiteNavigationElement"
         class="relative hover:text-grey-500 btn text-black-500">
         <slot>{{ item.name }}</slot>

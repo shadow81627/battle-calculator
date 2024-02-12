@@ -5,16 +5,19 @@
       <div id="sidenav" class="self-stretch flex grow flex-col min-h-full absolute sm:relative z-1000">
         <SideNav :items="items" v-model:draw="draw"></SideNav>
       </div>
-      <div class="w-full flex-col grow self-stretch flex-wrap" style="max-width: 100%; padding-top: 64px; transition: .2s cubic-bezier(.4,0,.2,1);"
-          :class="{ 'pl-[256px]': draw }">
-        <main>
+      <div class="w-full flex-col grow self-stretch flex-wrap"
+        style="max-width: 100%; padding-top: 64px; transition: .2s cubic-bezier(.4,0,.2,1);"
+        :class="{ 'pl-[256px]': draw }">
+        <main style="min-height: 100vh">
           <NuxtPage />
         </main>
         <footer class="flex print:hidden">
-          <p>
-            <span>Site by </span>
-            <a href="https://daim.dev" class="underline" target="_blank">Daim Digital</a>
-          </p>
+          <div class="container">
+            <p>
+              <span>Site by </span>
+              <a href="https://daim.dev" class="underline" target="_blank">Daim Digital</a>
+            </p>
+          </div>
         </footer>
       </div>
     </div>
@@ -22,52 +25,8 @@
 </template>
 
 <script setup>
-const { data: items } = await useAsyncData(`content-navigation`, () => {
-  // return queryContent("/navigation").sort({ pos: 1 }).find();
-  const items = [
-    {
-      icon: "i-carbon-home",
-      name: "Home",
-      url: "/",
-      pos: "1/1",
-    },
-    {
-      icon: "i-carbon-list",
-      name: "Lists",
-      url: "/lists",
-      pos: "2/1",
-    },
-    {
-      icon: "i-carbon-document",
-      name: 'Resources',
-      url: '/resources',
-    },
-    {
-      name: 'FancyScribe',
-      url: '/battlescribe/fancyscribe',
-    },
-    {
-      name: 'BattleScribe Library',
-      url: '/battlescribe/library',
-    },
-  ];
-  // if (user.value) {
-  //   items.push(
-  //     {
-  //       icon: "i-carbon-user",
-  //       name: "Profile",
-  //       url: "/profile",
-  //       pos: "3/1",
-  //     },
-  //     {
-  //       icon: "i-carbon-logout",
-  //       name: "Logout",
-  //       url: "/logout",
-  //       pos: "3/1",
-  //     },
-  //   );
-  // }
-  return items;
+const { data: items } = await useAsyncData(`content-pages`, () => {
+  return queryContent("/pages").sort({ position: 1 }).find();
 });
 const draw = ref(false);
 </script>
