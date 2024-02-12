@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "postinstall": "nuxi prepare",
     "generate": "nuxi generate",
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg",
     "start:generate": "npx serve .output/public"
   },
   "devDependencies": {
@@ -24,6 +25,7 @@
     "@types/lodash-es": "4.17.7",
     "@unocss/eslint-config": "0.53.1",
     "@unocss/nuxt": "0.58.4",
+    "@vite-pwa/assets-generator": "0.2.4",
     "@vite-pwa/nuxt": "0.1.0",
     "@vueuse/nuxt": "10.2.0",
     "consola": "3.1.0",
