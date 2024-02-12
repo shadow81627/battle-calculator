@@ -119,15 +119,15 @@ function updateImage(e) {
       <div class="min-h-[15rem] !print:bg-none"
         style="color: #fff; position: relative; padding: 24px 0; padding-bottom: 24px; background: linear-gradient(90deg, rgba(20,21,25,1) 0%, rgba(48,57,62,1) 45%, rgba(73,74,79,1) 100%);">
         <div style="padding: 4px 16px; color: rgb(255, 255, 255); position: relative; margin-left: 1.3rem;">
-          <div style="position: absolute; left: 0px; top: 0px; width: 100%; display: flex;">
-            <div style="background-color: var(--primary-color-transparent); height: 80px; min-width: 33%;" />
-            <div style="height: 80px; display: flex; flex-direction: column;">
-              <div style="background-color: var(--primary-color-transparent); height: 40px;" />
-              <svg height="40" width="100" viewBox="0 0 100 40" style="fill: var(--primary-color-transparent);">
+          <div style="position: absolute; left: 0px; top: 0px; width: 100%; display: flex; height: 80px;">
+            <div style="background-color: var(--primary-color-transparent); height: 80px; min-width: 35%;"></div>
+            <div style="height: 80px; width: 100%;">
+              <div style="background-color: var(--primary-color-transparent); height: 40px;"></div>
+              <svg height="400px" width="1000px" viewBox="0 0 100 40" style="fill: var(--primary-color-transparent); width: 100px; height: 40px;" class="mr-auto">
                 <path d="m0 0h100c-32 0-68 40-100 40z" />
               </svg>
             </div>
-            <div style="flex: 10 1 0%; background-color: var(--primary-color-transparent); height: 40px;" />
+            <div style="flex: 10 1 0%; background-color: var(--primary-color-transparent); height: 50%;"></div>
           </div>
           <div class="text-4xl font-barlow"
             style="letter-spacing: 0.1px; line-height: 1; text-transform: uppercase; z-index: 1; position: relative; display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
@@ -143,17 +143,17 @@ function updateImage(e) {
           </div>
         </div>
         <ClientOnly>
-          <div style="position: absolute; right: 0px; top: 0px; height: 100%; bottom: 0px; width: 45%;">
+          <div style="position: absolute; right: 0px; top: 0px; height: 240px; bottom: 0px; width: 500px;">
             <img v-if="hasImage" :src="image" alt="" style="width: 100%; height: 100%; object-fit: contain;" />
             <div class="absolute right-[1px] top-[2px] flex gap-1 print:hidden">
-              <label class="btn text-dark print-display-none"
+              <label class="btn text-dark print:hidden"
                 style="border: 1px solid #999; padding: 1px 4px; font-size: 0.8rem; background-color: #f0f0f0;">
-                <input type="file" class="print-display-none"
+                <input type="file" class="print:hidden"
                   accept=".jpg,.png,.jpeg,.gif,.bmp,.tif,.tiff,.webp,.svg,.jfif,.pjpeg,.pjp,.avif,.apng,.ico,.cur,.ani"
                   @change="updateImage" style="display: none" />
                 {{ hasImage ? "Change image" : "Upload image " }}
               </label>
-              <button v-if="hasImage" class="btn text-dark print-display-none"
+              <button v-if="hasImage" class="btn text-dark print:hidden"
                 style="border: 1px solid #999; padding: 1px 4px; font-size: 0.8rem; background-color: #f0f0f0;"
                 @click="() => image = undefined">
                 Clear image
@@ -173,7 +173,7 @@ function updateImage(e) {
               :force-rules="forceRules" />
           </table>
           <div style="flex: 1 1 0%;" />
-          <table cellspacing="0" class="weapons-table" style="width: 100%">
+          <table cellspacing="0" class="weapons-table" style="width: 100%; border-collapse: collapse;">
             <tbody>
               <tr v-if="modelsWithDifferentProfiles.length > 0
                 && !weaponDescriptions.length
