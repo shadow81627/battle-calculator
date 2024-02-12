@@ -44,10 +44,12 @@ const { data: defender, refresh: refreshDefender, loadingDefender } = await useA
 </script>
 
 <template>
-  <div>
-    <h1 class="text-left h1">
-      Battle Calculator
-    </h1>
+  <div class="container">
+    <section>
+      <h1 class="text-left h1">
+        Battle Calculator
+      </h1>
+    </section>
 
     <section class="container my-9">
       <div class="row">
@@ -55,13 +57,13 @@ const { data: defender, refresh: refreshDefender, loadingDefender } = await useA
           <table class="text-left">
             <thead>
               <tr>
-              <th class="p-1">
-                <label class="font-bold">Turns</label>
-              </th>
-              <th class="p-1">
-                <label class="font-bold">Distance</label>
-              </th>
-            </tr>
+                <th class="p-1">
+                  <label class="font-bold">Turns</label>
+                </th>
+                <th class="p-1">
+                  <label class="font-bold">Distance</label>
+                </th>
+              </tr>
             </thead>
             <tbody>
               <tr>
@@ -77,7 +79,7 @@ const { data: defender, refresh: refreshDefender, loadingDefender } = await useA
         </div>
       </div>
     </section>
-    
+
     <section v-if="loadingAttacker || loadingDefender">Loading...</section>
     <section v-else class="container my-6">
       <div class="row">
@@ -86,11 +88,10 @@ const { data: defender, refresh: refreshDefender, loadingDefender } = await useA
             <h2 class="h2">
               Attacker
               <select v-model="attackerId" class="inline w-250px select" name="attacker" @change="refreshAttacker">
-                <optgroup v-for="[key, group] of groupedUnitOptions" :key="key" :label="key === 'Lists' ? 'Unassigned' : key">
-                  <option
-                    v-for="option of group" :key="option.value" :value="option.value"
-                    :selected="attackerId === option.value ? option.value : undefined"
-                  >
+                <optgroup v-for="[key, group] of groupedUnitOptions" :key="key"
+                  :label="key === 'Lists' ? 'Unassigned' : key">
+                  <option v-for="option of group" :key="option.value" :value="option.value"
+                    :selected="attackerId === option.value ? option.value : undefined">
                     {{ option.label }}
                   </option>
                 </optgroup>
@@ -104,11 +105,10 @@ const { data: defender, refresh: refreshDefender, loadingDefender } = await useA
             <h2 class="h2">
               Defender
               <select v-model="defenderId" class="inline w-250px select" name="defender" @change="refreshDefender">
-                <optgroup v-for="[key, group] of groupedUnitOptions" :key="key" :label="key === 'Lists' ? 'Unassigned' : key">
-                  <option
-                    v-for="option of group" :key="option.value" :value="option.value"
-                    :selected="defenderId === option.value ? option.value : undefined"
-                  >
+                <optgroup v-for="[key, group] of groupedUnitOptions" :key="key"
+                  :label="key === 'Lists' ? 'Unassigned' : key">
+                  <option v-for="option of group" :key="option.value" :value="option.value"
+                    :selected="defenderId === option.value ? option.value : undefined">
                     {{ option.label }}
                   </option>
                 </optgroup>

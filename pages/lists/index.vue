@@ -28,7 +28,7 @@ const { data: lists } = await useAsyncData('lists-index', () => queryContent('li
 </script>
 
 <template>
-  <div class="m-10">
+  <div class="container">
     <h1 class="h2">Lists</h1>
     <table>
       <thead>
