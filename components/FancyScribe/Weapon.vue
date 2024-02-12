@@ -48,13 +48,13 @@ if (differentProfiles && name.includes(" - ")) {
 
 <template>
   <tr :class="classes">
-    <td style="border-top: none; background-color: rgb(223, 224, 226);">
+    <td style="border-top: none;">
       <div v-if="differentProfiles" class="flex justify-center"><svg viewBox="0 0 16 8" width="1.2rem" height="8"
           fill="var(--primary-color)">
           <path d="m0 0h10l6 4-6 4h-10z"></path>
         </svg></div>
     </td>
-    <td style="text-align: left;">
+    <td style="text-align: left;" :class="{'bg-[#d0d1d3]': classes.includes('rowOtherColor')}">
       <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0px 4px;">
         <template v-if="differentProfiles && selectionName">{{ selectionName }} - </template>
 
@@ -65,9 +65,9 @@ if (differentProfiles && name.includes(" - ")) {
         </span>
       </div>
     </td>
-    <td class="align-middle">{{ range }}</td>
-    <td class="align-middle">{{ attacks }}</td>
-    <td class="align-middle">
+    <td class="align-middle" :class="{'bg-[#d0d1d3]': classes.includes('rowOtherColor')}">{{ range }}</td>
+    <td class="align-middle" :class="{'bg-[#d0d1d3]': classes.includes('rowOtherColor')}">{{ attacks }}</td>
+    <td class="align-middle" :class="{'bg-[#d0d1d3]': classes.includes('rowOtherColor')}">
       {{ isMelee
         ? ws.join
           ? ws.join("|")
@@ -76,9 +76,9 @@ if (differentProfiles && name.includes(" - ")) {
           ? bs.join("|")
           : bs }}
     </td>
-    <td class="align-middle">{{ str }}</td>
-    <td class="align-middle">{{ ap }}</td>
-    <td class="align-middle">{{ damage }}</td>
+    <td class="align-middle" :class="{'bg-[#d0d1d3]': classes.includes('rowOtherColor')}">{{ str }}</td>
+    <td class="align-middle" :class="{'bg-[#d0d1d3]': classes.includes('rowOtherColor')}">{{ ap }}</td>
+    <td class="align-middle" :class="{'bg-[#d0d1d3]': classes.includes('rowOtherColor')}">{{ damage }}</td>
   </tr>
 
   <tr v-if="abilities && abilities !== '-'" :class="`${classes} noBorderTop`">
