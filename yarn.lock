@@ -4392,16 +4392,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vite-pwa/nuxt@npm:0.1.0":
-  version: 0.1.0
-  resolution: "@vite-pwa/nuxt@npm:0.1.0"
+"@vite-pwa/nuxt@npm:0.5.0":
+  version: 0.5.0
+  resolution: "@vite-pwa/nuxt@npm:0.5.0"
   dependencies:
-    "@nuxt/kit": "npm:^3.5.3"
-    vite-plugin-pwa: "npm:>=0.16.3 <1"
-  peerDependencies:
-    "@nuxt/kit": ^3.5.3
-    vite-plugin-pwa: ">=0.16.3 <1"
-  checksum: 10c0/7d6ed81d065c86988ee56a6dd9413475eba2b08503d09678d463d60b65d4ab3f47197dd2a2c04e6203d2c3b98f475162890a995df41b82d4cf9e8e166d993602
+    "@nuxt/kit": "npm:^3.9.0"
+    pathe: "npm:^1.1.1"
+    ufo: "npm:^1.3.2"
+    vite-plugin-pwa: "npm:>=0.18.1 <1"
+  checksum: 10c0/7e07937470b48ed3d0c76885b85d2ad83fd395b1aa1b6fa8143f037a504e4e90c6dece4a9fe05dceccadcb334342ebb137092908f908941d7e39e03864d09480
   languageName: node
   linkType: hard
 
@@ -5297,7 +5296,7 @@ __metadata:
     "@unocss/eslint-config": "npm:0.53.1"
     "@unocss/nuxt": "npm:0.58.4"
     "@vite-pwa/assets-generator": "npm:0.2.4"
-    "@vite-pwa/nuxt": "npm:0.1.0"
+    "@vite-pwa/nuxt": "npm:0.5.0"
     "@vueuse/components": "npm:10.2.1"
     "@vueuse/core": "npm:10.2.1"
     "@vueuse/nuxt": "npm:10.2.0"
@@ -15961,9 +15960,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-pwa@npm:>=0.16.3 <1":
-  version: 0.17.5
-  resolution: "vite-plugin-pwa@npm:0.17.5"
+"vite-plugin-pwa@npm:>=0.18.1 <1":
+  version: 0.18.1
+  resolution: "vite-plugin-pwa@npm:0.18.1"
   dependencies:
     debug: "npm:^4.3.4"
     fast-glob: "npm:^3.3.2"
@@ -15974,7 +15973,7 @@ __metadata:
     vite: ^3.1.0 || ^4.0.0 || ^5.0.0
     workbox-build: ^7.0.0
     workbox-window: ^7.0.0
-  checksum: 10c0/08c1916066a6493010c180af3c563da257ab63bbd7bfe96d6a95e837360815269aad74bf437a668488d4c7c207ba6a559c1decc75d85b961214323fb8ba92226
+  checksum: 10c0/17d510b7f7b18b82cecde67bb70d3a78a6855473b578bcafb60a5df777a2f8f683fa269e5815c8789012e14a22a9f29dfa0063489e387cfe025bfd7b5680a55c
   languageName: node
   linkType: hard
 
