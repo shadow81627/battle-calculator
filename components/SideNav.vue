@@ -1,9 +1,9 @@
 <template>
   <div
-    style="left: 0px; bottom: 0px; top: 64px; width: 256px; height: calc(100% - 64px); position: fixed; z-index: 1006; transform: translateX(0%);"
-    class="fixed flex grow min-h-full shadow-md bg-white dark:bg-dark flex-col duration-500 !print:hidden"
-    :class="{ 'opacity-0': !draw, 'w-0': !draw, 'w-60': draw }">
-    <div v-for="item of items" :key="item.name" class="relative flex px-4" click="$emit('update:draw', !draw)"
+    style="left: 0px; bottom: 0px; top: 64px; width: 256px; height: calc(100% - 64px); position: fixed; z-index: 1006; transition-timing-function: cubic-bezier(.4,0,.2,1);"
+    class="fixed flex grow min-h-full shadow-md bg-white dark:bg-dark flex-col transition-transform duration-200 !print:hidden overflow-hidden"
+    :class="{ 'translate-x-0': draw, 'translate-x-[-110%]': !draw }">
+    <div v-for="item of items" :key="item.name" class="flex px-4" @click="() => $emit('update:draw', !draw)"
       :class="{ 'bg-gray-200': $route.path === item.url, 'dark:bg-gray-600': $route.path === item.url, 'hover:bg-gray-500/10': $route.path !== item.url }">
       <Icon :name="item.icon" class="text-gray my-auto" style="width: 32px; height: 32px" />
       <NuxtLink :to="item.url" itemscope itemtype="https://schema.org/SiteNavigationElement"
@@ -14,10 +14,22 @@
   </div>
 </template>
 <script>
+import { useMediaQuery } from '@vueuse/core'
 export default {
+  setup() {
+    const isSmallScreen = useMediaQuery('(max-width: 767px)');
+    return { isSmallScreen }
+  },
   props: {
     draw: { type: Boolean, default: false },
     items: { type: Array, default: () => [] },
   },
+  methods: {
+    itemClick() {
+      if (this.isSmallScreen.value) {
+        this.$emit('update:draw', false)
+      }
+    }
+  }
 };
 </script>
