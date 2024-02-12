@@ -1,15 +1,16 @@
 <template>
   <nav
-    class="relative w-full flex flex-wrap items-center justify-between text-lg shadow-md print:hidden"
+  style="left: 0px; top: 0px; width: 256px; height: 64px; width: calc(100% + 0px); position: fixed; z-index: 1006; transform: translateY(0%);"
+    class="dark:bg-dark dark:text-light bg-light text-dark relative w-full flex flex-wrap items-center justify-between text-lg shadow-md print:hidden"
     section-bg
     rounded-none
   >
     <div
       class="container-fluid w-full flex flex-wrap items-center justify-between px-2 h-64px"
     >
-      <div class="container-fluid flex">
+      <div class="container-fluid flex items-center">
         <button
-          class="navbar-toggler flex text-white border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+          class="navbar-toggler flex border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
           type="button"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"

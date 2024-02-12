@@ -3,10 +3,11 @@
     <Navigation v-model:draw="draw" :items="items"></Navigation>
     <div class="flex justify-start self-stretch h-full grow relative">
       <div id="sidenav" class="self-stretch flex grow flex-col min-h-full absolute sm:relative z-1000">
-        <SideNav :items="items" :draw="draw"></SideNav>
+        <SideNav :items="items" v-model:draw="draw"></SideNav>
       </div>
-      <div class="w-full flex-col grow self-stretch flex-wrap">
-        <main itemprop="mainContentOfPage" itemtype="https://schema.org/WebPageElement">
+      <div class="w-full flex-col grow self-stretch flex-wrap" style="max-width: 100%; padding-top: 64px; transition: .2s cubic-bezier(.4,0,.2,1);"
+          :class="{ 'pl-[256px]': draw }">
+        <main>
           <NuxtPage />
         </main>
         <footer class="flex print:hidden">
