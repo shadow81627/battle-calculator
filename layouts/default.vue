@@ -10,10 +10,17 @@
       </main>
       <footer class="flex print:hidden">
         <div class="container">
-          <p>
-            <span>Site by </span>
-            <a href="https://daim.dev" class="underline" target="_blank">Daim Digital</a>
-          </p>
+          <div class="row">
+            <div class="col">
+              <p>
+                <span>Site by </span>
+                <a href="https://daim.dev" class="underline" target="_blank">Daim Digital</a>
+              </p>
+            </div>
+            <div class="col">
+              <Refresh></Refresh>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
