@@ -1,10 +1,10 @@
 <template>
   <section class="container">
-    <h1 class="h1">BattleScrub</h1>
+    <h1 class="h2">BattleScrub</h1>
     <div></div>
   </section>
   <section class="container">
-    <h2 class="h2">Features</h2>
+    <h2 class="h3">Features</h2>
 
     <div class="row">
 

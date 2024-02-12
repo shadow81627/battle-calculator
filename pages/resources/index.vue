@@ -1,8 +1,8 @@
 <template>
-  <section class="container my-9">
+  <section class="container">
     <div class="row">
       <div class="col">
-        <h1 class="h1">Resources</h1>
+        <h1 class="h2">Resources</h1>
         <div>A collection of 40k related apps that helped inspired this project</div>
       </div>
     </div>

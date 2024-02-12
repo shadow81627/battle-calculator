@@ -39,13 +39,13 @@ const defenderId = computed({
     router.replace({ query: { ...route.query, defenderId: encodeURIComponent(value) } })
   },
 })
-const { data: attacker, refresh: refreshAttacker, loadingAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
-const { data: defender, refresh: refreshDefender, loadingDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
+const { data: attacker, refresh: refreshAttacker, pending: loadingAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
+const { data: defender, refresh: refreshDefender, pending: loadingDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
 </script>
 
 <template>
   <section class="container">
-    <h1 class="text-left h1">
+    <h1 class="text-left h2">
       MathHammer
     </h1>
     <div>
@@ -85,8 +85,7 @@ const { data: defender, refresh: refreshDefender, loadingDefender } = await useA
     </div>
   </section>
 
-  <section v-if="loadingAttacker || loadingDefender" class="container my-6">Loading...</section>
-  <section v-else class="container my-6">
+  <section class="container my-6">
     <div class="row">
       <div class="col md:col-6">
         <div class="text-left">
@@ -103,7 +102,8 @@ const { data: defender, refresh: refreshDefender, loadingDefender } = await useA
             </select>
           </h2>
         </div>
-        <UnitCombat v-if="attacker && defender" :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
+        <div v-if="loadingAttacker">Loading...</div>
+        <UnitCombat v-else-if="attacker && defender" :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
       </div>
       <div class="col md:col-6">
         <div class="text-left">
@@ -120,7 +120,8 @@ const { data: defender, refresh: refreshDefender, loadingDefender } = await useA
             </select>
           </h2>
         </div>
-        <UnitCombat v-if="defender && attacker" :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
+        <div v-if="loadingDefender">Loading...</div>
+        <UnitCombat v-else-if="defender && attacker" :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
       </div>
     </div>
   </section>
