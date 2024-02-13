@@ -1,5 +1,7 @@
 <template>
-  <span v-if="pending">Loading...</span>
+  <div v-if="pending || true" class="container">
+    <Spinner class="mx-auto h-64px w-64px"></Spinner>
+  </div>
   <span v-else-if="!data">No data found</span>
   <FancyScribeRoster v-else :roster="data" :style="{
     '--primary-color': primaryColor,

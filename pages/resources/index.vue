@@ -9,6 +9,9 @@
   </section>
   <section class="container my-9">
     <div class="row">
+      <div v-if="pending" class="col">
+        <Spinner class="mx-auto h-64px w-64px"></Spinner>
+      </div>
       <div v-for="resource of data" class="flex col sm:col-6 md:col-6 lg:col-4 xl:col-3">
         <div
           class="flex flex-col justify-between flex-grow-1 bg-white dark:bg-slate-800 rounded-lg ring-1 ring-slate-900/5 shadow-xl">
@@ -30,7 +33,7 @@
   </section>
 </template>
 <script setup>
-const { data } = await useAsyncData('resources-index', () => queryContent('resources').find(), {
+const { data, pending } = await useAsyncData('resources-index', () => queryContent('resources').find(), {
   transform(data) {
   return data.sort()
 } })

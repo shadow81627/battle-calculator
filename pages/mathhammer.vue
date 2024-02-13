@@ -102,7 +102,7 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
             </select>
           </h2>
         </div>
-        <div v-if="loadingAttacker">Loading...</div>
+        <Spinner v-if="loadingAttacker"></Spinner>
         <UnitCombat v-else-if="attacker && defender" :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
       </div>
       <div class="col md:col-6">
@@ -120,7 +120,7 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
             </select>
           </h2>
         </div>
-        <div v-if="loadingDefender">Loading...</div>
+        <Spinner v-if="loadingDefender"></Spinner>
         <UnitCombat v-else-if="defender && attacker" :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
       </div>
     </div>
