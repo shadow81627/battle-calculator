@@ -70,7 +70,7 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
     const negatives: number[] = []
     if (target.abilities?.find(ability => ability.name === 'Mesmerising Form'))
       negatives.push(1)
-    if (getModifier('HEAVY', weapon.modifiers))
+    if (getModifier('HEAVY', weapon.modifiers) || getModifier('Finely Balanced', weapon.modifiers))
       buffs.push(1)
 
     // if (hasMacroExtinctionProtocols)
