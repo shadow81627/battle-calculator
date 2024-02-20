@@ -175,7 +175,7 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   const hasDevastatingWounds = (() => {
     const modifier = getModifier('DEVASTATING WOUNDS', weapon.modifiers)
     const ability = unit.abilities?.find(
-      ability => ability.name === 'Mow Down the Enemy' && !targetIsVehicleOrMonster(target),
+      ability => ((['Mow Down the Enemy'].includes(ability.name) && !targetIsVehicleOrMonster(target)) || (['Titans\' Bane'].includes(ability.name) && targetIsVehicleOrMonster(target))),
     )
     return modifier || ability
   })()
