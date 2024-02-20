@@ -179,7 +179,7 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
     )
     return modifier || ability
   })()
-  const randomDevastatingWounds = hasDevastatingWounds ? occurrences([...randomWoundRolls, ...randomWoundReRolls])[6] : 0
+  const randomDevastatingWounds = hasDevastatingWounds ? criticalWoundRolls : 0
   const randomSaveRolls = (() => {
     const count = randomWoundTotal - randomDevastatingWounds
     if (count < 1)
