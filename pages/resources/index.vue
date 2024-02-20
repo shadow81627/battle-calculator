@@ -22,7 +22,7 @@ const { data, pending } = await useAsyncData('resources-index', () => queryConte
       <div v-if="pending" class="col">
         <Spinner class="mx-auto h-64px w-64px" />
       </div>
-      <div v-for="resource of data" class="col lg:col-4 md:col-6 sm:col-6 xl:col-3 flex">
+      <div v-for="resource of data" :key="resource.name" class="col lg:col-4 md:col-6 sm:col-6 xl:col-3 flex">
         <div
           class="flex flex-grow-1 flex-col justify-between rounded-lg bg-white shadow-xl ring-1 ring-slate-900/5 dark:bg-slate-800"
         >

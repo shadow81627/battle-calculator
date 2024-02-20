@@ -72,6 +72,7 @@ function profileClasses(index: number, total: number) {
               <template v-if="weapon.modifiers && weapon.modifiers.length">
                 [<span
                   v-for="(modifier, index) of weapon.modifiers "
+                  :key="modifier.name"
                   style="font-size: 0.8em;font-weight: 700;color: var(--primary-color);text-transform: uppercase;line-height: 1;"
                 >
                   {{ modifier.name }}<template v-if="index + 1 !== weapon.modifiers.length">,</template>
