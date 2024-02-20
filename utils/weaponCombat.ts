@@ -140,7 +140,11 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
   }())
   const wound = getWound(strength, target.attributes.toughness)
   const anti = (() => {
-    const modifiers = weapon.modifiers?.find((modifier) => {
+    const weaponModifiers = [...(weapon.modifiers ?? [])]
+    if (unit.abilities?.find(ability => ['Titans\' Bane'].includes(ability.name)))
+      weaponModifiers.push({ name: 'ANTI-MONSTER 4+' }, { name: 'ANTI-VEHICLE 4+' })
+
+    const modifiers = weaponModifiers.find((modifier) => {
       const isAnti = modifier.name.startsWith('ANTI')
       const hasKeyword = target?.keywords?.some(keyword => modifier.name.includes(keyword.toUpperCase()))
       return isAnti && hasKeyword
