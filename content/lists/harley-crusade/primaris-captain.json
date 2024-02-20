@@ -19,7 +19,7 @@
     {
       "name": "Heavy Bolt Pistol",
       "modifiers": [
-        {"name": "PISTOL"}
+        { "name": "PISTOL" }
       ],
       "range": 12,
       "attack": 1,

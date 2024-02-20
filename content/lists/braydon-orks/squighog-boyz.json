@@ -38,7 +38,7 @@
     },
     {
       "name": "Stikka",
-      "modifiers":[{"name": "ASSAULT"},{"name": "ANTI-MONSTER 4+"}, {"name": "ANTI-VEHICLE 4+"}],
+      "modifiers": [{ "name": "ASSAULT" }, { "name": "ANTI-MONSTER 4+" }, { "name": "ANTI-VEHICLE 4+" }],
       "range": 12,
       "attack": 1,
       "accuracy": 5,
@@ -48,7 +48,7 @@
     },
     {
       "name": "Stikka",
-      "modifiers":[{"name": "LANCE"},{"name": "ANTI-MONSTER 4+"}, {"name": "ANTI-VEHICLE 4+"}],
+      "modifiers": [{ "name": "LANCE" }, { "name": "ANTI-MONSTER 4+" }, { "name": "ANTI-VEHICLE 4+" }],
       "range": "Melee",
       "attack": 3,
       "accuracy": 3,
@@ -58,7 +58,7 @@
     },
     {
       "name": "Squighog jaws and saddlegits",
-      "modifiers":[{"name": "EXTRA ATTACKS"}],
+      "modifiers": [{ "name": "EXTRA ATTACKS" }],
       "range": "Melee",
       "attack": 3,
       "accuracy": 4,

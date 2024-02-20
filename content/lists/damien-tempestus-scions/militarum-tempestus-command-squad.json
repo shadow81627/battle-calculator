@@ -28,7 +28,7 @@
       "weapons": [
         {
           "name": "Plasma pistol",
-          "modifiers": [{"name": "PISTOL"}],
+          "modifiers": [{ "name": "PISTOL" }],
           "range": 12,
           "attack": 1,
           "accuracy": 4,
@@ -62,7 +62,7 @@
         {
           "name": "Laspistol",
           "models": 2,
-          "modifiers": [{"name": "PISTOL"}],
+          "modifiers": [{ "name": "PISTOL" }],
           "range": 12,
           "attack": 1,
           "accuracy": 4,
@@ -83,7 +83,7 @@
         {
           "name": "Lasgun",
           "models": 2,
-          "modifiers": [{"name": "RAPID FIRE 1"}],
+          "modifiers": [{ "name": "RAPID FIRE 1" }],
           "range": 24,
           "attack": 1,
           "accuracy": 4,

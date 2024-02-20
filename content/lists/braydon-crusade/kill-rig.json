@@ -29,8 +29,8 @@
     {
       "name": "Eavy lobba",
       "modifiers": [
-        {"name": "BLAST"},
-        {"name": "INDIRECT FIRE"}
+        { "name": "BLAST" },
+        { "name": "INDIRECT FIRE" }
       ],
       "range": 48,
       "attack": "D6",
@@ -42,9 +42,9 @@
     {
       "name": "Stikka kannon",
       "modifiers": [
-        {"name": "ANTI-MONSTER 2+"},
-        {"name": "ANTI-VEHICLE 2+"},
-        {"name": "SNAGGED"}
+        { "name": "ANTI-MONSTER 2+" },
+        { "name": "ANTI-VEHICLE 2+" },
+        { "name": "SNAGGED" }
       ],
       "range": 12,
       "attack": 1,
@@ -56,9 +56,9 @@
     {
       "name": "Wurrtower",
       "modifiers": [
-        {"name": "HAZARDOUS"},
-        {"name": "PSYCHIC"},
-        {"name": "TORRENT"}
+        { "name": "HAZARDOUS" },
+        { "name": "PSYCHIC" },
+        { "name": "TORRENT" }
       ],
       "range": 24,
       "attack": "D3",
@@ -69,10 +69,10 @@
     },
     {
       "name": "Butcha boyz",
-      "modifiers":[
-        {"name": "ANTI-MONSTER 4+"},
-        {"name": "ANTI-VEHICLE 4+"},
-        {"name": "EXTRA ATTACKS"}
+      "modifiers": [
+        { "name": "ANTI-MONSTER 4+" },
+        { "name": "ANTI-VEHICLE 4+" },
+        { "name": "EXTRA ATTACKS" }
       ],
       "range": "Melee",
       "attack": 4,
@@ -83,9 +83,9 @@
     },
     {
       "name": "Savage horns and hooves",
-      "modifiers":[
-        {"name": "LANCE"},
-        {"name": "EXTRA ATTACKS"}
+      "modifiers": [
+        { "name": "LANCE" },
+        { "name": "EXTRA ATTACKS" }
       ],
       "range": "Melee",
       "attack": 4,

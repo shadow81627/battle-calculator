@@ -41,7 +41,7 @@
     {
       "name": "Inferno bolt pistol",
       "modifiers": [
-        {"name": "PISTOL"}
+        { "name": "PISTOL" }
       ],
       "range": 12,
       "attack": 1,
@@ -53,9 +53,9 @@
     {
       "name": "Astral Blast",
       "modifiers": [
-        {"name": "BLAST"},
-        {"name": "PSYCHIC"},
-        {"name": "DEVASTATING WOUNDS"}
+        { "name": "BLAST" },
+        { "name": "PSYCHIC" },
+        { "name": "DEVASTATING WOUNDS" }
       ],
       "range": 18,
       "attack": "D6",
@@ -67,7 +67,7 @@
     {
       "name": "Force weapon",
       "modifiers": [
-        {"name": "PSYCHIC"}
+        { "name": "PSYCHIC" }
       ],
       "range": "Melee",
       "attack": 5,
@@ -83,7 +83,7 @@
       "description": "While this model is leading a unit, models in that unit have a 4+ invulnerable save.",
       "target": "bodyguard",
       "effects": [
-        {"name": "Invulnerable Save 4+"}
+        { "name": "Invulnerable Save 4+" }
       ]
 
     },

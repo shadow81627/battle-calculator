@@ -24,7 +24,7 @@
         {
           "name": "Heavy Bolt pistol",
           "modifiers": [
-            {"name": "PISTOL"}
+            { "name": "PISTOL" }
           ],
           "range": 12,
           "attack": 1,
@@ -51,7 +51,7 @@
         {
           "name": "Heavy Bolt pistol",
           "modifiers": [
-            {"name": "PISTOL"}
+            { "name": "PISTOL" }
           ],
           "range": 12,
           "attack": 1,

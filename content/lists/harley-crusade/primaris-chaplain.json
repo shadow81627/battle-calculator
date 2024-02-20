@@ -19,7 +19,7 @@
     {
       "name": "Absolvor bolt pistol",
       "modifiers": [
-        {"name": "PISTOL"}
+        { "name": "PISTOL" }
       ],
       "range": 18,
       "attack": 1,

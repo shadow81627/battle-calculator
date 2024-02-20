@@ -27,7 +27,7 @@
   "weapons": [
     {
       "name": "Snazzgun",
-      "modifiers": [{"name": "HEAVY"}, {"name": "SUSTAINED HITS 1"}],
+      "modifiers": [{ "name": "HEAVY" }, { "name": "SUSTAINED HITS 1" }],
       "range": 24,
       "attack": 3,
       "accuracy": 5,

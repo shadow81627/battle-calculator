@@ -1,6 +1,7 @@
 <script setup>
-import { uniqBy, startCase } from 'lodash-es';
+import { startCase, uniqBy } from 'lodash-es'
 import { vOnClickOutside } from '@vueuse/components'
+
 const show = ref(false)
 function toggleShow() {
   show.value = !show.value
@@ -11,7 +12,7 @@ function close() {
 
 const { data: unitOptions } = await useAsyncData('lists-dropdown', () => queryContent('lists').find(), {
   transform(data) {
-    const options = uniqBy(data.map(item => {
+    const options = uniqBy(data.map((item) => {
       const value = item._path.split('/').slice(-2, -1)
       const label = startCase(value)
       return { value, label }
@@ -22,9 +23,9 @@ const { data: unitOptions } = await useAsyncData('lists-dropdown', () => queryCo
 </script>
 
 <template>
-  <div class="relative inline-block text-left" v-on-click-outside="close">
+  <div v-on-click-outside="close" class="relative inline-block text-left">
     <div>
-      <button type="button" class="w-full inline-flex justify-center items-center gap-x-1.5 rounded-md shadow-sm" aria-expanded="true" aria-haspopup="true" @click="toggleShow">
+      <button type="button" class="w-full inline-flex items-center justify-center gap-x-1.5 rounded-md shadow-sm" aria-expanded="true" aria-haspopup="true" @click="toggleShow">
         Lists
         <svg class="h-5 w-5 text-gray-400 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />

@@ -1,38 +1,41 @@
 <script setup>
 const props = defineProps(['title', 'weapons', 'modelStats', 'forceRules'])
-const isMelee = props.title === "MELEE WEAPONS";
+const isMelee = props.title === 'MELEE WEAPONS'
 
-const getWeaponClassNames = (weapons, index) => {
-  let differentColor = false;
+function getWeaponClassNames(weapons, index) {
+  let differentColor = false
   for (let i = 1; i <= index; i++) {
-    let { selectionName } = weapons[i];
+    const { selectionName } = weapons[i]
     if (!selectionName && !weapons[i - 1].selectionName) {
-      if (weapons[i].name !== weapons[i - 1].name) {
-        differentColor = !differentColor;
-      }
+      if (weapons[i].name !== weapons[i - 1].name)
+        differentColor = !differentColor
     }
-    if (selectionName !== weapons[i - 1].selectionName) {
-      differentColor = !differentColor;
-    }
+    if (selectionName !== weapons[i - 1].selectionName)
+      differentColor = !differentColor
   }
-  const classes = [];
-  if (differentColor) classes.push("rowOtherColor");
-  if (index === 0) classes.push("noBorderTop");
+  const classes = []
+  if (differentColor)
+    classes.push('rowOtherColor')
+  if (index === 0)
+    classes.push('noBorderTop')
   if (
-    index > 0 &&
-    weapons[index].selectionName === weapons[index - 1].selectionName
+    index > 0
+    && weapons[index].selectionName === weapons[index - 1].selectionName
   )
-    classes.push("noBorderTop");
-  return classes.join(" ");
-};
+    classes.push('noBorderTop')
+  return classes.join(' ')
+}
 </script>
+
 <template>
   <thead v-if="weapons.length">
     <tr style="background-color: var(--primary-color); color: rgb(255, 255, 255);">
       <th class="w-[2.2em]">
         <div style="display: flex; min-width: 0.7em; justify-content: center;">
-          <img v-if="isMelee" width="21px" height="21px" alt=""
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAASCAYAAAC0EpUuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAH0SURBVDhPvVN/b9JQFH1o/I/MxG/A1+AzGhN/xrglE4i4odtwxmQF5hSyRQPKzDInaGxDCBmtdB2s7aNQjpdHQ1KhBf3Dk7y+9+695/S9k3fZf8Vq5jm85QwePUviycZGYH4uyrUaTAAnDXmG+DCxDt3huKK8dHi4WDixswOLim0amnkl5vLZqY+oqG30Kd4xbXCa5bYaLLxdKODSdUVhU7+YEG0Lj5MJH6lUKcOmOtNxYZgcvYGLnjuaL9zQdRLh0HomDO5AaZ/j/trq3OL9Ugl614Q1GAlxnfexncv5a8+5TT45wsfxCQc0DMsKvFahWMTQqxuPlnEprFrLZATn2uQTYRRj12ndaLZYsXTELMti5shF6uULn3j12xni8Tir/5BZ9fiEdS3Obt1cEblIJCLmKTTbFn/0tgITfzvT2Oab18LzL/XaNPZKyotTJrNZHzcQ98jTytdTdEdD7Fc+QtY1FD4cLUdehF8Djgty8d3xp6UEhaeLMPbqBjkei8W8SDhCRd9Xq5A7HRTyb1mUlKPRFTbuJC/998jkJKhOH1v5vE+k/L2O3r8Ibx0coENdk9zdnUtWDAPNkHc8gyw9bI0ENyUplPRZUdDiHHdTqXDxO9Tn6nCI9N7eUqf4SSdWqUG8bTAepNPLX4tw++n6H/WM/Qb5yZZZuC/34QAAAABJRU5ErkJggg==" />
+          <img
+            v-if="isMelee" width="21px" height="21px" alt=""
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAASCAYAAAC0EpUuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAH0SURBVDhPvVN/b9JQFH1o/I/MxG/A1+AzGhN/xrglE4i4odtwxmQF5hSyRQPKzDInaGxDCBmtdB2s7aNQjpdHQ1KhBf3Dk7y+9+695/S9k3fZf8Vq5jm85QwePUviycZGYH4uyrUaTAAnDXmG+DCxDt3huKK8dHi4WDixswOLim0amnkl5vLZqY+oqG30Kd4xbXCa5bYaLLxdKODSdUVhU7+YEG0Lj5MJH6lUKcOmOtNxYZgcvYGLnjuaL9zQdRLh0HomDO5AaZ/j/trq3OL9Ugl614Q1GAlxnfexncv5a8+5TT45wsfxCQc0DMsKvFahWMTQqxuPlnEprFrLZATn2uQTYRRj12ndaLZYsXTELMti5shF6uULn3j12xni8Tir/5BZ9fiEdS3Obt1cEblIJCLmKTTbFn/0tgITfzvT2Oab18LzL/XaNPZKyotTJrNZHzcQ98jTytdTdEdD7Fc+QtY1FD4cLUdehF8Djgty8d3xp6UEhaeLMPbqBjkei8W8SDhCRd9Xq5A7HRTyb1mUlKPRFTbuJC/998jkJKhOH1v5vE+k/L2O3r8Ibx0coENdk9zdnUtWDAPNkHc8gyw9bI0ENyUplPRZUdDiHHdTqXDxO9Tn6nCI9N7eUqf4SSdWqUG8bTAepNPLX4tw++n6H/WM/Qb5yZZZuC/34QAAAABJRU5ErkJggg=="
+          >
           <!-- <svg v-if="isMelee" xmlns="http://www.w3.org/2000/svg" width="21px" height="21px" viewBox="0 0 32 32">
             <path fill="currentColor" d="m30.2 8.3q0.1-0.2 0.2-0.5 0.1-0.2 0.1-0.5 0-0.3-0.2-0.5-0.1-0.3-0.2-0.4c-0.2-0.3-1.4-1.4-1.5-1.5q-0.2-0.2-0.4-0.3-0.2-0.1-0.4-0.1-0.3-0.1-0.5 0-0.2 0-0.4 0.1l-2.1-2.1q-0.3-0.2-0.6-0.4-0.3-0.1-0.7-0.1-0.3 0-0.7 0.1-0.3 0.2-0.5 0.4l-4 4q-0.3 0.3-0.4 0.6-0.1 0.3-0.1 0.7 0 0.3 0.1 0.6 0.1 0.4 0.4 0.6l2 2c-3.2 3.2-3.1 3.2-3.4 3.3l-2.9-2.9 2.3-2.4q0.3-0.2 0.4-0.6 0.1-0.3 0.1-0.6 0-0.4-0.1-0.7-0.1-0.3-0.4-0.6l-3.9-4q-0.3-0.2-0.6-0.4-0.3-0.1-0.7-0.1-0.3 0-0.7 0.1-0.3 0.2-0.5 0.4l-2.5 2.5q-0.2-0.1-0.4-0.2-0.3 0-0.5 0-0.2 0.1-0.4 0.2-0.2 0.1-0.4 0.2c-0.2 0.2-1 1-1.5 1.5q-0.1 0.2-0.2 0.4-0.2 0.2-0.2 0.4 0 0.2 0 0.5 0 0.2 0.2 0.4l-2.5 2.5q-0.2 0.2-0.4 0.5-0.1 0.4-0.1 0.7 0 0.4 0.1 0.7 0.2 0.3 0.4 0.6l4 3.9q0.2 0.3 0.6 0.4 0.3 0.2 0.6 0.2 0.4 0 0.7-0.2 0.3-0.1 0.6-0.4l2.4-2.3 2.2 2.2-7.9 8q-0.3 0.3-0.4 0.6-0.1 0.3-0.1 0.7 0 0.3 0.1 0.6 0.1 0.4 0.4 0.6l2.5 2.5q0.3 0.3 0.6 0.4 0.3 0.2 0.7 0.2 0.3 0 0.6-0.2 0.4-0.1 0.6-0.4l7.2-7.2 7.3 7.2q0.2 0.3 0.5 0.4 0.4 0.2 0.7 0.2 0.4 0 0.7-0.2 0.3-0.1 0.6-0.4l2.5-2.5q0.2-0.3 0.4-0.6 0.1-0.3 0.1-0.7 0-0.3-0.1-0.6-0.2-0.4-0.4-0.6l-7.9-7.9 2.6-2.7 2.2 2.2q0.1 0.2 0.3 0.3 0.2 0.2 0.5 0.2 0.2 0.1 0.5 0.2 0.2 0 0.5 0 0.2 0 0.5 0 0.2-0.1 0.4-0.2 0.3-0.1 0.5-0.2 0.2-0.1 0.4-0.3c0.3-0.4 0.6-0.9 0.7-1.4l0.5-2.8q0.1-0.6 0.1-1.1 0-0.6-0.1-1.1-0.1-0.6-0.3-1.1-0.2-0.5-0.4-1z"/>
           </svg> -->
@@ -40,27 +43,45 @@ const getWeaponClassNames = (weapons, index) => {
           <!-- <svg v-if="isMelee" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 128 128"><path fill="currentColor" d="M16.84 28.01C7.08 18.25 3.55 3.55 3.55 3.55l92.61 92.61l-5.59 5.59c0-.01-63.97-63.98-73.73-73.74"/><path fill="currentColor" d="M28.01 16.84C18.25 7.08 3.55 3.55 3.55 3.55l92.61 92.61l5.59-5.59z"/><path fill="currentColor" d="m98.09 98.08l4.38-4.38l14.93 17.18l-1.59 4.93l-4.93 1.59l-17.18-14.93z"/><path fill="currentColor" d="m98.09 98.08l4.39-4.39l14.93 17.18s1.43 1.9-1.59 4.92s-4.92 1.59-4.92 1.59l-17.2-14.91z"/><path fill="currentColor" d="M111.41 113.63c-.24.15-1.15.59-2.27-.37c-.63-.54-.7-1.14.01-1.57c1.56-.95 3.56-3.44 4.42-5.17l2.09 2.41c-1.09 1.84-2.46 3.61-4.25 4.7m-4.35-5.23c-.24.15-1.35.73-2.19.23c-1.19-.71-.98-1.61-.27-2.04c1.56-.95 3.79-3.28 4.77-4.92l2.05 2.36c-1.26 1.8-2.62 3.31-4.36 4.37m-5.4-3.81c-.24.15-1.19.4-2.15-.27c-.62-.44-.83-1.43-.12-1.86c1.79-1.08 4.41-3.83 5.62-5.78l2.04 2.35c-1.5 2.18-3.71 4.53-5.39 5.56"/><path fill="currentColor" d="m110.48 120.5l.4-3.1s1.55.01 4.04-2.48c2.49-2.49 2.48-4.04 2.48-4.04l3.1-.4c2.28-.4 4.24 1.64 3.92 3.91c-.31 2.13-1.5 4.54-3.49 6.54c-1.99 1.99-4.4 3.18-6.54 3.49c-2.26.32-4.2-1.65-3.91-3.92m-32.11-8.26l10.5-12.84l5.27-5.27l5.27-5.27l12.84-10.5c.62-.52 1.53-.48 2.11.09c.58.58.61 1.52.06 2.14c-2.78 3.1-8.38 9.59-10.89 12.26c-1.76 1.88-3.6 3.75-5.26 5.4c-1.65 1.65-3.53 3.49-5.4 5.26c-2.67 2.51-9.16 8.11-12.26 10.89c-.62.55-1.55.52-2.14-.06c-.59-.57-.62-1.48-.1-2.1"/><path fill="currentColor" d="M111.16 28.01c9.76-9.76 13.29-24.46 13.29-24.46L31.84 96.16l5.59 5.59c0-.01 63.97-63.98 73.73-73.74"/><path fill="currentColor" d="M99.99 16.84c9.76-9.76 24.46-13.29 24.46-13.29L31.84 96.16l-5.59-5.59z"/><path fill="currentColor" d="m29.91 98.08l-4.38-4.38l-14.93 17.18l1.59 4.93l4.93 1.59l17.18-14.93z"/><path fill="currentColor" d="m29.91 98.08l-4.39-4.39l-14.92 17.19s-1.54 1.79 1.59 4.92s4.92 1.59 4.92 1.59l17.18-14.93z"/><path fill="currentColor" d="m17.52 120.5l-.4-3.1s-1.55.01-4.04-2.48s-2.48-4.04-2.48-4.04l-3.1-.4c-2.27-.29-4.24 1.64-3.92 3.91c.31 2.13 1.5 4.54 3.49 6.54c1.99 1.99 4.4 3.18 6.54 3.49c2.26.32 4.2-1.65 3.91-3.92m32.11-8.26L39.13 99.4l-5.27-5.27l-5.27-5.27l-12.84-10.5c-.62-.52-1.53-.48-2.11.09c-.58.58-.61 1.52-.06 2.14c2.78 3.1 8.38 9.59 10.89 12.26c1.76 1.88 3.6 3.75 5.26 5.4c1.65 1.65 3.53 3.49 5.4 5.26c2.67 2.51 9.16 8.11 12.26 10.89c.62.55 1.55.52 2.14-.06c.59-.57.62-1.48.1-2.1"/><path fill="currentColor" d="M5.1 113.86a8.09 8.09 0 0 0 2.86 4.36c2 1.58 3.16.38 2.26-1.44c-.73-1.46-1.28-2.19-2.37-4.13c-1.03-1.83-3.24-.75-2.75 1.21m12.37-31.18c-.86-1.01.49-1.36 2.51.36C22 84.76 30.5 92.02 30.5 92.02c2.73 2.48 1.35 5.04 1.35 5.04c-2.21-1.75-13.52-13.37-14.38-14.38"/><path fill="currentColor" d="M16.55 113.63c.24.15 1.15.59 2.27-.37c.63-.54.7-1.14-.01-1.57c-1.56-.95-3.56-3.44-4.42-5.17l-2.09 2.41c1.1 1.84 2.46 3.61 4.25 4.7m4.36-5.23c.24.15 1.35.73 2.19.23c1.19-.71.98-1.61.27-2.04c-1.56-.95-3.79-3.28-4.77-4.92l-2.05 2.36c1.25 1.8 2.62 3.31 4.36 4.37m5.39-3.81c.24.15 1.19.4 2.15-.27c.62-.44.83-1.43.12-1.86c-1.79-1.08-4.41-3.83-5.62-5.78l-2.04 2.35c1.5 2.18 3.71 4.53 5.39 5.56"/><path fill="currentColor" d="m64 75.17l5.57 5.58l9.36-12.99L75.17 64z"/><path fill="currentColor" d="M102.26 87.83c-1.88 1.56 1.47 2.07 3.81-.29l4.7-4.67c1.17-1.19 1.17-3.23-1-1.53zm16.49 27.11c-.67 1.04-.38 2.07.71 2.08c.78.01 1.62-.57 2.01-.96c.57-.57.98-1.03 1.26-2.2c.37-1.57-1.33-3.15-2.33-1.64c-.89 1.34-.98 1.69-1.65 2.72"/><path fill="currentColor" d="M157.2 21.54c-9.76-9.76-13.29-24.46-13.29-24.46l92.61 92.61l-5.59 5.59c0-.01-63.97-63.98-73.73-73.74"/><path fill="currentColor" d="M168.37 10.37C158.61.61 143.9-2.92 143.9-2.92l92.61 92.61l5.59-5.59z"/><path fill="currentColor" d="m238.44 91.61l4.38-4.38l14.94 17.18l-1.6 4.92l-4.92 1.6L234.05 96z"/><path fill="currentColor" d="m238.44 91.61l4.39-4.39l14.93 17.18s1.43 1.9-1.59 4.92s-4.92 1.59-4.92 1.59L234.05 96z"/><path fill="currentColor" d="M251.76 107.16c-.24.15-1.15.59-2.27-.37c-.63-.54-.7-1.14.01-1.57c1.56-.95 3.56-3.44 4.42-5.17l2.09 2.41c-1.09 1.83-2.45 3.6-4.25 4.7m-4.35-5.23c-.24.15-1.35.73-2.19.23c-1.19-.71-.98-1.61-.27-2.04c1.56-.95 3.79-3.28 4.77-4.92l2.05 2.36c-1.26 1.8-2.62 3.31-4.36 4.37m-5.39-3.82c-.24.15-1.19.4-2.15-.27c-.62-.44-.83-1.43-.12-1.86c1.79-1.08 4.41-3.83 5.62-5.78l2.04 2.35c-1.5 2.19-3.71 4.54-5.39 5.56"/><path fill="currentColor" d="m250.84 114.03l.4-3.1s1.55.01 4.04-2.48c2.49-2.49 2.48-4.04 2.48-4.04l3.1-.4c2.27-.29 4.24 1.64 3.92 3.91c-.31 2.13-1.5 4.54-3.49 6.54c-1.99 1.99-4.4 3.18-6.54 3.49c-2.27.32-4.2-1.65-3.91-3.92m-32.12-8.26l10.5-12.84l5.27-5.27l5.27-5.27l12.84-10.5c.62-.52 1.53-.48 2.11.09c.58.58.61 1.52.06 2.14c-2.78 3.1-8.38 9.59-10.89 12.26c-1.76 1.88-3.6 3.75-5.26 5.4c-1.65 1.65-3.53 3.49-5.4 5.26c-2.67 2.51-9.16 8.11-12.26 10.89c-.62.55-1.55.52-2.14-.06c-.58-.57-.62-1.49-.1-2.1"/><path fill="currentColor" d="M251.51 21.54c9.76-9.76 13.29-24.46 13.29-24.46l-92.6 92.61l5.59 5.59c-.01-.01 63.96-63.98 73.72-73.74"/><path fill="currentColor" d="M240.34 10.37C250.1.61 264.8-2.92 264.8-2.92l-92.6 92.61l-5.59-5.59z"/><path fill="currentColor" d="m170.27 91.61l-4.39-4.38l-14.93 17.18l1.6 4.92l4.92 1.6L174.65 96z"/><path fill="currentColor" d="m170.27 91.61l-4.39-4.39l-14.93 17.18s-1.54 1.79 1.59 4.92s4.92 1.59 4.92 1.59L174.65 96z"/><path fill="currentColor" d="m157.87 114.03l-.4-3.1s-1.55.01-4.04-2.48c-2.49-2.49-2.48-4.04-2.48-4.04l-3.1-.4c-2.27-.29-4.24 1.64-3.92 3.91c.31 2.13 1.5 4.54 3.49 6.54c1.99 1.99 4.4 3.18 6.54 3.49c2.27.32 4.2-1.65 3.91-3.92m32.12-8.26l-10.5-12.84l-5.27-5.27l-5.27-5.27l-12.84-10.5c-.62-.52-1.53-.48-2.11.09c-.58.58-.61 1.52-.06 2.14c2.78 3.1 8.38 9.59 10.89 12.26c1.76 1.88 3.6 3.75 5.26 5.4c1.65 1.65 3.53 3.49 5.4 5.26c2.67 2.51 9.16 8.11 12.26 10.89c.62.55 1.55.52 2.14-.06c.58-.57.62-1.49.1-2.1"/><path fill="currentColor" d="M144.96 107.28c.05.3.15.62.33.9c.17.26.41.48.66.66c2.43 1.78 5.16-.07 3.12-2.72c-1.62-2.1-4.46-1.17-4.11 1.16m12.86-31.08c-.86-1.01.49-1.36 2.51.36c2.02 1.72 10.52 8.98 10.52 8.98c2.73 2.48 1.35 5.04 1.35 5.04c-2.21-1.75-13.51-13.37-14.38-14.38"/><path fill="currentColor" d="M156.91 107.16c.24.15 1.15.59 2.27-.37c.63-.54.7-1.14-.01-1.57c-1.56-.95-3.56-3.44-4.42-5.17l-2.09 2.41c1.09 1.83 2.45 3.6 4.25 4.7m4.35-5.23c.24.15 1.35.73 2.19.23c1.19-.71.98-1.61.27-2.04c-1.56-.95-3.79-3.28-4.77-4.92l-2.05 2.36c1.26 1.8 2.62 3.31 4.36 4.37m5.39-3.82c.24.15 1.19.4 2.15-.27c.62-.44.83-1.43.12-1.86c-1.79-1.08-4.41-3.83-5.62-5.78l-2.04 2.35c1.5 2.19 3.71 4.54 5.39 5.56"/><path fill="currentColor" d="m204.35 68.7l5.58 5.57l9.36-12.98l-3.76-3.76z"/><path fill="currentColor" d="M242.61 81.35c-1.88 1.56 1.47 2.07 3.81-.29l4.7-4.67c1.17-1.19 1.17-3.23-1-1.53z"/></svg>          -->
 
           <svg v-if="!isMelee" xmlns="http://www.w3.org/2000/svg" width="21px" height="21px" viewBox="0 0 24 24">
-            <path fill="currentColor"
-              d="M11 2v2.07A8.002 8.002 0 0 0 4.07 11H2v2h2.07A8.002 8.002 0 0 0 11 19.93V22h2v-2.07A8.002 8.002 0 0 0 19.93 13H22v-2h-2.07A8.002 8.002 0 0 0 13 4.07V2m-2 4.08V8h2V6.09c2.5.41 4.5 2.41 4.92 4.91H16v2h1.91c-.41 2.5-2.41 4.5-4.91 4.92V16h-2v1.91C8.5 17.5 6.5 15.5 6.08 13H8v-2H6.09C6.5 8.5 8.5 6.5 11 6.08M12 11a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1" />
+            <path
+              fill="currentColor"
+              d="M11 2v2.07A8.002 8.002 0 0 0 4.07 11H2v2h2.07A8.002 8.002 0 0 0 11 19.93V22h2v-2.07A8.002 8.002 0 0 0 19.93 13H22v-2h-2.07A8.002 8.002 0 0 0 13 4.07V2m-2 4.08V8h2V6.09c2.5.41 4.5 2.41 4.92 4.91H16v2h1.91c-.41 2.5-2.41 4.5-4.91 4.92V16h-2v1.91C8.5 17.5 6.5 15.5 6.08 13H8v-2H6.09C6.5 8.5 8.5 6.5 11 6.08M12 11a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1"
+            />
           </svg>
         </div>
       </th>
-      <th style="text-align: left">{{ title }}</th>
-      <th class="w-[5%]">RANGE</th>
-      <th class="w-[5%]">A</th>
-      <th class="w-[5%]">{{ isMelee ? "WS" : "BS" }}</th>
-      <th class="w-[5%]">S</th>
-      <th class="w-[5%]">AP</th>
-      <th class="w-[5%]">D</th>
+      <th style="text-align: left">
+        {{ title }}
+      </th>
+      <th class="w-[5%]">
+        RANGE
+      </th>
+      <th class="w-[5%]">
+        A
+      </th>
+      <th class="w-[5%]">
+        {{ isMelee ? "WS" : "BS" }}
+      </th>
+      <th class="w-[5%]">
+        S
+      </th>
+      <th class="w-[5%]">
+        AP
+      </th>
+      <th class="w-[5%]">
+        D
+      </th>
     </tr>
   </thead>
   <tbody>
-    <FancyScribeWeapon v-for="(weapon, index) of  weapons " :key="weapon.name" :weapon="weapon"
-      :previousWeapon="weapons[index - 1]" :nextWeapon="weapons[index + 1]" :isMelee="isMelee"
-      :classes="getWeaponClassNames(weapons, index)" />
+    <FancyScribeWeapon
+      v-for="(weapon, index) of weapons " :key="weapon.name" :weapon="weapon"
+      :previous-weapon="weapons[index - 1]" :next-weapon="weapons[index + 1]" :is-melee="isMelee"
+      :classes="getWeaponClassNames(weapons, index)"
+    />
     <tr v-if="weapons.length" class="h-22.5px">
-      <td style=" border-top: none"></td>
-      <td colspan="7"></td>
+      <td style=" border-top: none" />
+      <td colspan="7" />
     </tr>
   </tbody>
 </template>

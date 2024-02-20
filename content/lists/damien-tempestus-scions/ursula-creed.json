@@ -28,7 +28,7 @@
   "weapons": [
     {
       "name": "Duty and Vengeance",
-      "modifiers": [{"name": "PISTOL"}],
+      "modifiers": [{ "name": "PISTOL" }],
       "range": 12,
       "attack": 4,
       "accuracy": 3,

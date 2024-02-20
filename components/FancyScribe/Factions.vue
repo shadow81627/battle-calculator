@@ -4,7 +4,7 @@ const props = defineProps(['factions'])
 
 <template>
   <div
-    class="!print:bg-[#bcbcbe] !print:text-dark ml-2"
+    class="ml-2 !print:bg-[#bcbcbe] !print:text-dark"
     style="
     position: absolute;
     left: 0px;

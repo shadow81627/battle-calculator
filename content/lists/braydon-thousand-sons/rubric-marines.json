@@ -53,7 +53,7 @@
       "description": "Each time a model in this unit makes a ranged attack, re-roll a Wound roll of 1. If the target of that attack is within range of an objective marker you do not control, you can re-roll the Wound roll instead.",
       "trigger": "ranged attack",
       "effects": [
-        {"name": "Re-roll Wound roll of 1"}
+        { "name": "Re-roll Wound roll of 1" }
       ]
 
     },

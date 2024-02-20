@@ -36,7 +36,7 @@
     },
     {
       "name": "Beastchoppa",
-      "modifiers":[{"name": "ANTI-MONSTER 4+"}, {"name": "ANTI-VEHICLE 4+"}],
+      "modifiers": [{ "name": "ANTI-MONSTER 4+" }, { "name": "ANTI-VEHICLE 4+" }],
       "range": "Melee",
       "attack": 6,
       "accuracy": 2,
@@ -46,7 +46,7 @@
     },
     {
       "name": "Squigosaur’s jaws",
-      "modifiers":[{"name": "DEVASTATING WOUNDS"}, {"name": "EXTRA ATTACKS"}],
+      "modifiers": [{ "name": "DEVASTATING WOUNDS" }, { "name": "EXTRA ATTACKS" }],
       "range": "Melee",
       "attack": 3,
       "accuracy": 4,

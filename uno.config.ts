@@ -39,7 +39,7 @@ export default defineConfig({
         sans: 'DM Sans',
         serif: 'DM Serif Display',
         mono: 'DM Mono',
-        barlow: [{ name: 'Barlow', weights: [700]}],
+        barlow: [{ name: 'Barlow', weights: [700] }],
       },
     }),
   ],

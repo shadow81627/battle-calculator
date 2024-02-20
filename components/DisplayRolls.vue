@@ -2,14 +2,14 @@
 import occurrences from '~/utils/occurrences'
 
 const props = defineProps<{
-  rolls: number[],
-  reverse?: boolean,
+  rolls: number[]
+  reverse?: boolean
 }>()
 const entries = computed(() => {
   const entries = Object.entries(occurrences(props.rolls))
-  if (props.reverse) {
+  if (props.reverse)
     return entries.reverse()
-  }
+
   return entries
 })
 </script>
@@ -18,19 +18,23 @@ const entries = computed(() => {
   <table>
     <thead>
       <tr>
-      <th v-for="[key] of entries" :key="key" class="px-1 text-right">
-        {{ key }}
-      </th>
-    </tr>
+        <th v-for="[key] of entries" :key="key" class="px-1 text-right">
+          {{ key }}
+        </th>
+      </tr>
     </thead>
     <tbody>
       <tr>
         <ClientOnly>
-          <td v-for="[key, value] of entries" :key="`${key}-${value}`"
-            class="px-1 text-right font-mono" v-html="String(value).padStart(2, '&nbsp;')" />
+          <td
+            v-for="[key, value] of entries" :key="`${key}-${value}`"
+            class="px-1 text-right font-mono" v-html="String(value).padStart(2, '&nbsp;')"
+          />
           <template #fallback>
-            <td v-for="[key, value] of entries" :key="`${key}-${value}`"
-              class="px-1 text-right font-mono" v-html="String(0).padStart(2, '&nbsp;')" />
+            <td
+              v-for="[key, value] of entries" :key="`${key}-${value}`"
+              class="px-1 text-right font-mono" v-html="String(0).padStart(2, '&nbsp;')"
+            />
           </template>
         </ClientOnly>
       </tr>

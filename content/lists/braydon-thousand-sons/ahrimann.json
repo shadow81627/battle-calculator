@@ -41,7 +41,7 @@
     {
       "name": "Inferno bolt pistol",
       "modifiers": [
-        {"name": "PISTOL"}
+        { "name": "PISTOL" }
       ],
       "range": 12,
       "attack": 1,
@@ -53,8 +53,8 @@
     {
       "name": "Psychic Stalk",
       "modifiers": [
-        {"name": "PRECISION"},
-        {"name": "PSYCHIC"}
+        { "name": "PRECISION" },
+        { "name": "PSYCHIC" }
       ],
       "range": 18,
       "attack": 1,
@@ -66,7 +66,7 @@
     {
       "name": "Black Staff of Ahriman",
       "modifiers": [
-        {"name": "PSYCHIC"}
+        { "name": "PSYCHIC" }
       ],
       "range": "Melee",
       "attack": 5,
@@ -82,7 +82,7 @@
       "description": "While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Wound roll.",
       "trigger": "attack",
       "effects": [
-        {"name": "add 1 to the Wound roll"}
+        { "name": "add 1 to the Wound roll" }
       ]
     },
     {
@@ -90,6 +90,6 @@
     }
   ],
   "enhancements": [
-    {"name": "Athenaean Scrolls", "points": 20}
+    { "name": "Athenaean Scrolls", "points": 20 }
   ]
 }

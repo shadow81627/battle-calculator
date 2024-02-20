@@ -1,5 +1,5 @@
-import type CombatModifiers from 'types/CombatModifiers'
 import formatAverage from './formatAverage'
+import type CombatModifiers from '~/types/CombatModifiers'
 import type Unit from '~/types/unit'
 import type { Weapon } from '~/types/unit'
 import weaponCombat from '~/utils/weaponCombat'
@@ -33,6 +33,9 @@ export default function averageWeaponCombat(data: {
   const numberOfRolls = 10_000
   const rolls = [...Array(numberOfRolls)].map(() => weaponCombat(data.weapon, data.unit, data.target, data.additional))
   const sums = Object.entries(rolls.reduce(resultSum, { ...defaultResult }))
-  const averages = sums.map(([sumKey, sumValue]) => [sumKey.replace('random', 'average'), formatAverage(sumValue / rolls.length)])
-  return Object.fromEntries(averages)
+  const averages = Object.fromEntries(sums.map(([sumKey, sumValue]) => [sumKey.replace('random', 'average'), formatAverage(sumValue / rolls.length)]))
+  // const probabilities = Object.fromEntries(Object.entries(occurrences(rolls.reduce((acc, roll) => {
+  //   return acc.concat(roll.randomHitRolls)
+  // }, []))).map(([key, value]) => [key, formatAverage(value / rolls.length)]))
+  return averages
 }

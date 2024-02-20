@@ -28,7 +28,7 @@
   "weapons": [
     {
       "name": "Supa-kannon",
-      "modifiers": [{"name": "BLAST"}],
+      "modifiers": [{ "name": "BLAST" }],
       "range": 60,
       "attack": "2D6",
       "accuracy": 5,
@@ -42,7 +42,7 @@
       "profiles": [
         {
           "name": "Huge tusks – strike",
-          "modifiers": [{"name": "LANCE"}],
+          "modifiers": [{ "name": "LANCE" }],
           "range": "Melee",
           "attack": 6,
           "accuracy": 3,

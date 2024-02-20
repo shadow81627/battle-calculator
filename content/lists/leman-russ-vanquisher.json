@@ -29,7 +29,7 @@
   "weapons": [
     {
       "name": "Vanquisher battle cannon",
-      "modifiers": [{"name": "HEAVY"}],
+      "modifiers": [{ "name": "HEAVY" }],
       "range": 72,
       "attack": 1,
       "accuracy": 4,

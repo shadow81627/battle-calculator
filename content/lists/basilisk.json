@@ -33,9 +33,9 @@
     {
       "name": "Earthshaker cannon",
       "modifiers": [
-        {"name": "BLAST"},
-        {"name": "HEAVY"},
-        {"name": "INDIRECT FIRE"}
+        { "name": "BLAST" },
+        { "name": "HEAVY" },
+        { "name": "INDIRECT FIRE" }
       ],
       "range": 240,
       "attack": "D6+3",
@@ -92,7 +92,7 @@
         "keyword": "INFANTRY"
       },
       "effects": [
-        {"name": "subtract 2\" from move"}
+        { "name": "subtract 2\" from move" }
       ]
 
     }

@@ -34,9 +34,9 @@
         {
           "name": "Betraying Shades – witchfire",
           "modifiers": [
-            {"name": "DEVASTATING WOUNDS"},
-            {"name": "IGNORES COVER" },
-            {"name": "PSYCHIC"}
+            { "name": "DEVASTATING WOUNDS" },
+            { "name": "IGNORES COVER" },
+            { "name": "PSYCHIC" }
           ],
           "range": 18,
           "attack": 9,
@@ -48,10 +48,10 @@
         {
           "name": "Betraying Shades – focused witchfire",
           "modifiers": [
-            {"name": "DEVASTATING WOUNDS"},
-            {"name": "IGNORES COVER" },
-            {"name": "PSYCHIC"},
-            {"name": "HAZARDOUS"}
+            { "name": "DEVASTATING WOUNDS" },
+            { "name": "IGNORES COVER" },
+            { "name": "PSYCHIC" },
+            { "name": "HAZARDOUS" }
           ],
           "range": 18,
           "attack": 12,
@@ -67,7 +67,7 @@
       "profiles": [
         {
           "name": "The Blade of Shadows – strike",
-          "modifiers": [{"name": "LETHAL HITS"}],
+          "modifiers": [{ "name": "LETHAL HITS" }],
           "range": "Melee",
           "attack": 6,
           "accuracy": 2,

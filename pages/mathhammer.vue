@@ -51,8 +51,10 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
     <div>
       <p>Determine the expected outcome of dice when units attack in games like Warhammer 40,000 (10th Edition).</p>
 
-      <p>This practice is often referred to as "MathHammer" and is commonly used to help make optimum unit selections as
-        well as improve overall strategic decisions.</p>
+      <p>
+        This practice is often referred to as "MathHammer" and is commonly used to help make optimum unit selections as
+        well as improve overall strategic decisions.
+      </p>
     </div>
   </section>
 
@@ -92,17 +94,21 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
           <h2 class="h2">
             Attacker
             <select v-model="attackerId" class="inline w-250px select" name="attacker" @change="refreshAttacker">
-              <optgroup v-for="[key, group] of groupedUnitOptions" :key="key"
-                :label="key === 'Lists' ? 'Unassigned' : key">
-                <option v-for="option of group" :key="option.value" :value="option.value"
-                  :selected="attackerId === option.value ? option.value : undefined">
+              <optgroup
+                v-for="[key, group] of groupedUnitOptions" :key="key"
+                :label="key === 'Lists' ? 'Unassigned' : key"
+              >
+                <option
+                  v-for="option of group" :key="option.value" :value="option.value"
+                  :selected="attackerId === option.value ? option.value : undefined"
+                >
                   {{ option.label }}
                 </option>
               </optgroup>
             </select>
           </h2>
         </div>
-        <Spinner v-if="loadingAttacker"></Spinner>
+        <Spinner v-if="loadingAttacker" />
         <UnitCombat v-else-if="attacker && defender" :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
       </div>
       <div class="col md:col-6">
@@ -110,17 +116,21 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
           <h2 class="h2">
             Defender
             <select v-model="defenderId" class="inline w-250px select" name="defender" @change="refreshDefender">
-              <optgroup v-for="[key, group] of groupedUnitOptions" :key="key"
-                :label="key === 'Lists' ? 'Unassigned' : key">
-                <option v-for="option of group" :key="option.value" :value="option.value"
-                  :selected="defenderId === option.value ? option.value : undefined">
+              <optgroup
+                v-for="[key, group] of groupedUnitOptions" :key="key"
+                :label="key === 'Lists' ? 'Unassigned' : key"
+              >
+                <option
+                  v-for="option of group" :key="option.value" :value="option.value"
+                  :selected="defenderId === option.value ? option.value : undefined"
+                >
                   {{ option.label }}
                 </option>
               </optgroup>
             </select>
           </h2>
         </div>
-        <Spinner v-if="loadingDefender"></Spinner>
+        <Spinner v-if="loadingDefender" />
         <UnitCombat v-else-if="defender && attacker" :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
       </div>
     </div>

@@ -37,7 +37,7 @@
         {
           "name": "Chimera heavy bolter",
           "modifiers": [
-            {"name": "SUSTAINED HITS 1"}
+            { "name": "SUSTAINED HITS 1" }
           ],
           "range": 36,
           "attack": 3,
@@ -49,8 +49,8 @@
         {
           "name": "Chimera heavy flamer",
           "modifiers": [
-            {"name": "IGNORES COVER"},
-            {"name": "TORRENT"}
+            { "name": "IGNORES COVER" },
+            { "name": "TORRENT" }
           ],
           "range": 12,
           "attack": "D6",

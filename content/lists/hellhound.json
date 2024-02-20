@@ -28,8 +28,8 @@
     {
       "name": "Inferno cannon",
       "modifiers": [
-        {"name": "IGNORES COVER"},
-        {"name": "TORRENT"}
+        { "name": "IGNORES COVER" },
+        { "name": "TORRENT" }
       ],
       "range": 18,
       "attack": "2D6",
@@ -41,8 +41,8 @@
     {
       "name": "Heavy flamer",
       "modifiers": [
-        {"name": "IGNORES COVER"},
-        {"name": "TORRENT"}
+        { "name": "IGNORES COVER" },
+        { "name": "TORRENT" }
       ],
       "range": 12,
       "attack": "D6",

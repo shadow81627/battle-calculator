@@ -38,7 +38,7 @@
     },
     {
       "name": "Big Choppa",
-      "modifiers":[{"name": "ANTI-MONSTER 4+"}, {"name": "ANTI-VEHICLE 4+"}],
+      "modifiers": [{ "name": "ANTI-MONSTER 4+" }, { "name": "ANTI-VEHICLE 4+" }],
       "range": "Melee",
       "attack": 5,
       "accuracy": 3,
@@ -48,7 +48,7 @@
     },
     {
       "name": "Smasha squig jaws",
-      "modifiers":[{"name": "EXTRA ATTACKS"}],
+      "modifiers": [{ "name": "EXTRA ATTACKS" }],
       "range": "Melee",
       "attack": 2,
       "accuracy": 4,

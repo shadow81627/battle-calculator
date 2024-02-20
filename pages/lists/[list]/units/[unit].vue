@@ -6,8 +6,8 @@ if (!unit.value)
 </script>
 
 <template>
-  <div class="sm:m-10 m-5">
-    <h1 class="text-left font-barlow text-4xl font-700 uppercase">
+  <div class="m-5 sm:m-10">
+    <h1 class="text-left text-4xl font-700 font-barlow uppercase">
       {{ unit.name }}
     </h1>
     <div class="container">
@@ -31,7 +31,7 @@ if (!unit.value)
             {{ enhancement.name }} ({{ enhancement.points }})
           </div>
           <div v-for="member of unit.members" :key="member.name">
-            <div class="text-left font-barlow font-700">
+            <div class="text-left font-700 font-barlow">
               <span v-if="member.models">{{ member.models }}x </span>
               <span class="uppercase">{{ member.name }}</span>
             </div>

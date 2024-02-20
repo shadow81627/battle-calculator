@@ -1,10 +1,19 @@
+<script setup>
+const { data: items } = await useAsyncData('content-pages', () => {
+  return queryContent('/pages').sort({ position: 1 }).find()
+})
+const draw = ref(false)
+</script>
+
 <template>
-  <div class="min-h-screen flex flex-col justify-start body">
-    <Navigation v-model:draw="draw" :items="items"></Navigation>
-    <SideNav :items="items" v-model:draw="draw"></SideNav>
-    <div class="w-full flex-col grow self-stretch flex-wrap"
+  <div class="body min-h-screen flex flex-col justify-start">
+    <Navigation v-model:draw="draw" :items="items" />
+    <SideNav v-model:draw="draw" :items="items" />
+    <div
+      class="w-full grow flex-col flex-wrap self-stretch"
       style="max-width: 100%; padding-top: 64px; transition: .2s cubic-bezier(.4,0,.2,1);"
-      :class="{ 'md:pl-[256px]': draw }">
+      :class="{ 'md:pl-[256px]': draw }"
+    >
       <main style="min-height: 100vh">
         <NuxtPage />
       </main>
@@ -18,7 +27,7 @@
               </p>
             </div>
             <div class="col">
-              <Refresh></Refresh>
+              <Refresh />
             </div>
           </div>
         </div>
@@ -26,10 +35,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const { data: items } = await useAsyncData(`content-pages`, () => {
-  return queryContent("/pages").sort({ position: 1 }).find();
-});
-const draw = ref(false);
-</script>

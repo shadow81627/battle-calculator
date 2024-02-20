@@ -23,6 +23,6 @@ export default {
     :title="`Toggle ${toggle} mode`"
     @click="toggleDark()"
   >
-    <div class="dark:i-carbon-moon i-carbon-sun" />
+    <div class="i-carbon-sun dark:i-carbon-moon" />
   </button>
 </template>

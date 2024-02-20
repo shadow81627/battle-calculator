@@ -30,17 +30,17 @@
   "weapons": [
     {
       "name": "Skull cannon",
-      "modifiers": [{"name": "BLAST"}],
+      "modifiers": [{ "name": "BLAST" }],
       "range": 48,
       "attack": "D6+2",
-          "accuracy": 3,
-          "strength": 9,
-          "piercing": 1,
-          "damage": 2
+      "accuracy": 3,
+      "strength": 9,
+      "piercing": 1,
+      "damage": 2
     },
     {
       "name": "Attendants’ hellblades",
-      "modifiers": [{"name": "EXTRA ATTACKS"}],
+      "modifiers": [{ "name": "EXTRA ATTACKS" }],
       "range": "Melee",
       "attack": 4,
       "accuracy": 3,

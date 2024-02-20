@@ -1,5 +1,3 @@
-import { promises as fs } from 'node:fs'
-
 import * as cheerio from 'cheerio'
 
 interface BSCost {
@@ -34,9 +32,9 @@ interface BSSelection {
 
 export default defineEventHandler(async () => {
   const data = await useStorage('assets:server').getItem('Crusade.ros')
-  if (!data) {
+  if (!data)
     throw createError({ message: 'Unable to get file', status: 400 })
-  }
+
   const $ = cheerio.load(data, {
     xmlMode: true,
     xml: {

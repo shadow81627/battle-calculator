@@ -1,17 +1,3 @@
-<template>
-  <NuxtLink
-    v-for="{ title, url } of items"
-    :key="url"
-    class="nav-link px-1 pt-1 border-b-2 inline-flex items-center font-medium font-medium"
-    :class="classes(url)"
-    :to="url"
-    itemscope
-    itemtype="https://schema.org/SiteNavigationElement"
-  >
-    {{ title }}
-  </NuxtLink>
-</template>
-
 <script>
 export default {
   setup() {
@@ -45,3 +31,17 @@ export default {
   },
 }
 </script>
+
+<template>
+  <NuxtLink
+    v-for="{ title, url } of items"
+    :key="url"
+    class="nav-link inline-flex items-center border-b-2 px-1 pt-1 font-medium font-medium"
+    :class="classes(url)"
+    :to="url"
+    itemscope
+    itemtype="https://schema.org/SiteNavigationElement"
+  >
+    {{ title }}
+  </NuxtLink>
+</template>

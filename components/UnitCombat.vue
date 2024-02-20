@@ -93,7 +93,7 @@ const selections = ref({})
           {{ enhancement.name }} ({{ enhancement.points }})
         </div>
         <div v-for="member of _unit.members" :key="member.name">
-          <div class="text-left font-barlow font-700 uppercase">
+          <div class="text-left font-700 font-barlow uppercase">
             {{ member.name }}
           </div>
           <WeaponAttributes :unit="member" class="w-full" />

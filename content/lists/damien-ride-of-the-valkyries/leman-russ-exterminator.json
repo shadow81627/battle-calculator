@@ -29,7 +29,7 @@
   "weapons": [
     {
       "name": "Exterminator autocannon",
-      "modifiers": [{"name": "RAPID FIRE 4"}, {"name": "TWIN-LINKED"}],
+      "modifiers": [{ "name": "RAPID FIRE 4" }, { "name": "TWIN-LINKED" }],
       "range": 48,
       "attack": 4,
       "accuracy": 4,

@@ -38,7 +38,7 @@
   "weapons": [
     {
       "name": "Demolisher battle cannon",
-      "modifiers": [{"name": "BLAST"}],
+      "modifiers": [{ "name": "BLAST" }],
       "range": 24,
       "attack": "D6+3",
       "accuracy": 4,
@@ -67,7 +67,7 @@
     {
       "name": "Heavy stubber",
       "modifier": [
-        {"name": "RAPID FIRE 3"}
+        { "name": "RAPID FIRE 3" }
       ],
       "range": 36,
       "attack": 3,

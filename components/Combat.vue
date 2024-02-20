@@ -53,7 +53,7 @@ const additional = computed(() => ({
   selections: props.selections,
 }))
 
-const randomTotals = useState(`randomTotals-${props.weapon.name}`, ()=> computed(()=>weaponCombat(props.weapon, props.unit, props.target, additional.value)))
+const randomTotals = useState(`randomTotals-${props.weapon.name}`, () => computed(() => weaponCombat(props.weapon, props.unit, props.target, additional.value)))
 
 function averageWeaponCombatWorker() {
   return new Promise((resolve, reject) => {
@@ -220,28 +220,28 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
     <table class="w-full">
       <thead>
         <tr>
-        <th class="p-1 text-left">
-          Name
-        </th>
-        <th class="p-1">
-          Attacks
-        </th>
-        <th class="p-1">
-          Hits
-        </th>
-        <th class="p-1">
-          Wounds
-        </th>
-        <th class="p-1">
-          Save
-        </th>
-        <th class="p-1">
-          Damage
-        </th>
-        <th v-if="pain" class="p-1">
-          Feel no pain
-        </th>
-      </tr>
+          <th class="p-1 text-left">
+            Name
+          </th>
+          <th class="p-1">
+            Attacks
+          </th>
+          <th class="p-1">
+            Hits
+          </th>
+          <th class="p-1">
+            Wounds
+          </th>
+          <th class="p-1">
+            Save
+          </th>
+          <th class="p-1">
+            Damage
+          </th>
+          <th v-if="pain" class="p-1">
+            Feel no pain
+          </th>
+        </tr>
       </thead>
       <tbody>
         <tr>

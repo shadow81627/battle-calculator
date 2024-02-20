@@ -32,7 +32,7 @@
     {
       "name": "Storm bolter",
       "modifiers": [
-        {"name": "RAPID FIRE 2"}
+        { "name": "RAPID FIRE 2" }
       ],
       "range": 24,
       "attack": 2,

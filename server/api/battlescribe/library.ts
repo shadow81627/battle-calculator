@@ -1,14 +1,10 @@
-import { promises as fs } from 'node:fs'
-
 import cheerio from 'cheerio'
-import slugify from 'slugify'
-import deepSort from '~/utils/deepSort'
 
 export default defineEventHandler(async () => {
   const data = await useStorage('assets:server').getItem('Imperium - Astra Militarum - Library.xml')
-  if (!data) {
+  if (!data)
     throw createError({ message: 'Unable to get file', status: 400 })
-  }
+
   const $ = cheerio.load(data, {
     xmlMode: true,
     xml: {

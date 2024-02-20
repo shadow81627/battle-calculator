@@ -1,41 +1,53 @@
 <template>
   <section class="container">
-    <h1 class="h2">BattleScrub</h1>
-    <div></div>
+    <h1 class="h2">
+      BattleScrub
+    </h1>
+    <div />
   </section>
   <section class="container">
-    <h2 class="h3">Features</h2>
+    <h2 class="h3">
+      Features
+    </h2>
 
     <div class="row">
-
-      <div class="flex col sm:col-6 md:col-6">
+      <div class="col md:col-6 sm:col-6 flex">
         <div
-          class="flex flex-col justify-between flex-grow-1 bg-white dark:bg-slate-800 rounded-lg ring-1 ring-slate-900/5 shadow-xl">
-          <div class="d-block font-500 flex-none text-[1.25rem] px-4 p-y[0.5rem] leading-8">MathHammer</div>
-          <div class="prose flex-1 flex-grow-1 p-4">
+          class="flex flex-grow-1 flex-col justify-between rounded-lg bg-white shadow-xl ring-1 ring-slate-900/5 dark:bg-slate-800"
+        >
+          <div class="d-block flex-none p-y[0.5rem] px-4 text-[1.25rem] font-500 leading-8">
+            MathHammer
+          </div>
+          <div class="flex-1 flex-grow-1 p-4 prose">
             <p>Determine the expected outcome of dice when units attack in games like Warhammer 40,000 (10th Edition).</p>
 
-            <p>This practice is often referred to as "MathHammer" and is commonly used to help make optimum unit
+            <p>
+              This practice is often referred to as "MathHammer" and is commonly used to help make optimum unit
               selections as
-              well as improve overall strategic decisions.</p>
+              well as improve overall strategic decisions.
+            </p>
           </div>
         </div>
       </div>
 
-      <div class="flex col sm:col-6 md:col-6">
+      <div class="col md:col-6 sm:col-6 flex">
         <div
-          class="flex flex-col justify-between flex-grow-1 bg-white dark:bg-slate-800 rounded-lg ring-1 ring-slate-900/5 shadow-xl">
-          <div class="d-block font-500 flex-none text-[1.25rem] px-4 p-y[0.5rem] leading-8">BattleScribe</div>
-          <div class="prose flex-1 flex-grow-1 p-4">
+          class="flex flex-grow-1 flex-col justify-between rounded-lg bg-white shadow-xl ring-1 ring-slate-900/5 dark:bg-slate-800"
+        >
+          <div class="d-block flex-none p-y[0.5rem] px-4 text-[1.25rem] font-500 leading-8">
+            BattleScribe
+          </div>
+          <div class="flex-1 flex-grow-1 p-4 prose">
             <p>A fast and powerful Army List Creator for tabletop wargamers.</p>
 
-            <p>It allows you to quickly and easily create army lists for a large range of game systems and armies. Your
+            <p>
+              It allows you to quickly and easily create army lists for a large range of game systems and armies. Your
               points limit and army selections are validated so you can see if you've made any mistakes, and the easy to
-              read output will summarise your units' profiles and special rules for quick reference.</p>
+              read output will summarise your units' profiles and special rules for quick reference.
+            </p>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </template>

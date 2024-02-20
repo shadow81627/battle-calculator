@@ -32,7 +32,7 @@
     {
       "name": "Bolt pistol",
       "modifiers": [
-        {"name": "PISTOL"}
+        { "name": "PISTOL" }
       ],
       "range": 12,
       "attack": 1,
@@ -52,7 +52,7 @@
     },
     {
       "name": "Crushing teeth and claws",
-      "modifiers":[{"name": "EXTRA ATTACKS"}],
+      "modifiers": [{ "name": "EXTRA ATTACKS" }],
       "range": "Melee",
       "attack": 3,
       "accuracy": 4,
@@ -71,7 +71,7 @@
     },
     {
       "name": "Thunder hammer",
-      "modifiers":[{"name": "DEVASTATING WOUNDS"}],
+      "modifiers": [{ "name": "DEVASTATING WOUNDS" }],
       "range": "Melee",
       "attack": 5,
       "accuracy": 3,
@@ -97,6 +97,6 @@
     }
   ],
   "enhancements": [
-    {"name": "Frost Weapon", "points": 15}
+    { "name": "Frost Weapon", "points": 15 }
   ]
 }

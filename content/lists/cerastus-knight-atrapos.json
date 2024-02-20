@@ -21,7 +21,7 @@
         {
           "name": "Atrapos lascutter  – low intensity",
           "modifiers": [
-            {"name": "SUSTAINED HITS 1"}
+            { "name": "SUSTAINED HITS 1" }
           ],
           "range": 36,
           "attack": "2D6",
@@ -33,7 +33,7 @@
         {
           "name": "Atrapos lascutter  – low intensity",
           "modifiers": [
-            {"name": "SUSTAINED HITS 1"}
+            { "name": "SUSTAINED HITS 1" }
           ],
           "range": "Melee",
           "attack": 12,
@@ -45,7 +45,7 @@
         {
           "name": "Atrapos lascutter  – high intensity",
           "modifiers": [
-            {"name": "SUSTAINED HITS 1"}
+            { "name": "SUSTAINED HITS 1" }
           ],
           "range": 24,
           "attack": "D6",
@@ -57,7 +57,7 @@
         {
           "name": "Atrapos lascutter  – high intensity",
           "modifiers": [
-            {"name": "SUSTAINED HITS 1"}
+            { "name": "SUSTAINED HITS 1" }
           ],
           "range": "Melee",
           "attack": 12,
@@ -74,7 +74,7 @@
         {
           "name": "Graviton singularity cannon – contained",
           "modifiers": [
-            {"name": "BLAST"}
+            { "name": "BLAST" }
           ],
           "range": 24,
           "attack": "D3",
@@ -86,9 +86,9 @@
         {
           "name": "Graviton singularity cannon – singularity",
           "modifiers": [
-            {"name": "BLAST"},
-            {"name": "DEVASTATING WOUNDS"},
-            {"name": "HAZARDOUS"}
+            { "name": "BLAST" },
+            { "name": "DEVASTATING WOUNDS" },
+            { "name": "HAZARDOUS" }
           ],
           "range": 24,
           "attack": "D3",

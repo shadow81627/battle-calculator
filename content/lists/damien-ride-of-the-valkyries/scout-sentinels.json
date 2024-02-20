@@ -68,8 +68,8 @@
         {
           "name": "Heavy flamer",
           "modifiers": [
-            {"name": "IGNORES COVER"},
-            {"name": "TORRENT"}
+            { "name": "IGNORES COVER" },
+            { "name": "TORRENT" }
           ],
           "range": 12,
           "attack": "D6",
@@ -122,8 +122,8 @@
         "quantity": 1
       },
       "effects": [
-        {"name": "Re-roll Hit roll of 1"},
-        {"name": "Remove [INDIRECT FIRE] penalty"}
+        { "name": "Re-roll Hit roll of 1" },
+        { "name": "Remove [INDIRECT FIRE] penalty" }
       ]
 
     }

@@ -30,7 +30,7 @@
       "profiles": [
         {
           "name": "Snazzgun – standard",
-          "modifiers": [{"name": "HEAVY"}, {"name": "SUSTAINED HITS 1"}],
+          "modifiers": [{ "name": "HEAVY" }, { "name": "SUSTAINED HITS 1" }],
           "range": 24,
           "attack": 3,
           "accuracy": 5,
@@ -40,7 +40,7 @@
         },
         {
           "name": "Snazzgun – supercharge",
-          "modifiers": [{"name": "HAZARDOUS"}, {"name": "HEAVY"}, {"name": "SUSTAINED HITS 1"}],
+          "modifiers": [{ "name": "HAZARDOUS" }, { "name": "HEAVY" }, { "name": "SUSTAINED HITS 1" }],
           "range": 24,
           "attack": 3,
           "accuracy": 5,

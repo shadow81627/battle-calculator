@@ -19,7 +19,7 @@
   "weapons": [
     {
       "name": "Bolt pistol",
-      "modifiers": [{"name": "PISTOL"}],
+      "modifiers": [{ "name": "PISTOL" }],
       "range": 12,
       "attack": 1,
       "accuracy": 3,
@@ -29,7 +29,7 @@
     },
     {
       "name": "Plasma pistol",
-      "modifiers": [{"name": "PISTOL"}],
+      "modifiers": [{ "name": "PISTOL" }],
       "models": 2,
       "range": 12,
       "attack": 1,

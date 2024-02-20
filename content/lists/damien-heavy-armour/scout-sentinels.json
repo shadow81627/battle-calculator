@@ -52,8 +52,8 @@
         {
           "name": "Missile launcher – frag",
           "modifiers": [
-            {"name": "BLAST"},
-            {"name": "HEAVY"}
+            { "name": "BLAST" },
+            { "name": "HEAVY" }
           ],
           "range": 48,
           "attack": "D6",
@@ -65,7 +65,7 @@
         {
           "name": "Missile launcher – krak",
           "modifiers": [
-            {"name": "HEAVY"}
+            { "name": "HEAVY" }
           ],
           "range": 48,
           "attack": 1,
@@ -99,8 +99,8 @@
         {
           "name": "Heavy flamer",
           "modifiers": [
-            {"name": "IGNORES COVER"},
-            {"name": "TORRENT"}
+            { "name": "IGNORES COVER" },
+            { "name": "TORRENT" }
           ],
           "range": 12,
           "attack": "D6",

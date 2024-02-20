@@ -27,7 +27,7 @@
   "weapons": [
     {
       "name": "Archeotech pistol",
-      "modifiers": [{"name": "DEVASTATING WOUNDS"},{"name": "PISTOL"}],
+      "modifiers": [{ "name": "DEVASTATING WOUNDS" }, { "name": "PISTOL" }],
       "models": 1,
       "range": 12,
       "attack": 1,
@@ -48,7 +48,7 @@
     },
     {
       "name": "Servo-arm",
-      "modifiers": [{"name": "EXTRA ATTACKS"}],
+      "modifiers": [{ "name": "EXTRA ATTACKS" }],
       "models": 1,
       "range": "Melee",
       "attack": 1,

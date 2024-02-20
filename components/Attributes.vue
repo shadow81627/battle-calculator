@@ -49,17 +49,21 @@ const _additions = computed(() => {
 <template>
   <div class="container">
     <div v-if="unit?.attributes" class="row">
-      <div v-for="[key, value] of Object.entries(unit?.attributes)" :key="`${key}-${value}`"
-        class="col-6 lg:col-2 md:col-2 sm:col-4 pr-5 !print:w-auto">
+      <div
+        v-for="[key, value] of Object.entries(unit?.attributes)" :key="`${key}-${value}`"
+        class="col-6 lg:col-2 md:col-2 sm:col-4 pr-5 !print:w-auto"
+      >
         <div class="text-center capitalize">
           {{ labels[key] ?? key }}
         </div>
-        <div class="text-center font-barlow flex justify-center text-dark">
+        <div class="flex justify-center text-center text-dark font-barlow">
           <div
-          class="bg-slate-600"
-            style="padding: 2px; clip-path: polygon(12% 0px, 100% 0px, 100% 20%, 100% 88%, 88% 100%, 20% 100%, 0px 100%, 0px 12%);">
+            class="bg-slate-600"
+            style="padding: 2px; clip-path: polygon(12% 0px, 100% 0px, 100% 20%, 100% 88%, 88% 100%, 20% 100%, 0px 100%, 0px 12%);"
+          >
             <div
-              style="min-width: 3rem; min-height: 3rem; display: flex; align-items: center; justify-content: center; background: rgb(232, 237, 231); clip-path: polygon(10% 0px, 100% 0px, 100% 20%, 100% 90%, 90% 100%, 20% 100%, 0px 100%, 0px 10%); padding: 3px; font-size: 1.6em; font-weight: 800;">
+              style="min-width: 3rem; min-height: 3rem; display: flex; align-items: center; justify-content: center; background: rgb(232, 237, 231); clip-path: polygon(10% 0px, 100% 0px, 100% 20%, 100% 90%, 90% 100%, 20% 100%, 0px 100%, 0px 10%); padding: 3px; font-size: 1.6em; font-weight: 800;"
+            >
               {{ value }}
             </div>
           </div>
@@ -67,12 +71,14 @@ const _additions = computed(() => {
       </div>
     </div>
     <div v-if="_additions && Object.entries(pickBy(_additions, Boolean)).length" class="row">
-      <div v-for="[key, value] of Object.entries(pickBy(_additions, Boolean)).sort(sortAdditions)"
-        :key="`${key}-${value}`" class="col-6 lg:col-2 md:col-3 sm:col-4 pr-5 !print:w-auto flex flex-col">
-        <div class="text-center capitalize flex flex-grow-1 justify-center items-center">
+      <div
+        v-for="[key, value] of Object.entries(pickBy(_additions, Boolean)).sort(sortAdditions)"
+        :key="`${key}-${value}`" class="col-6 lg:col-2 md:col-3 sm:col-4 flex flex-col pr-5 !print:w-auto"
+      >
+        <div class="flex flex-grow-1 items-center justify-center text-center capitalize">
           {{ labels[key] ?? key }}
         </div>
-        <div class="text-center font-barlow text-4xl font-700">
+        <div class="text-center text-4xl font-700 font-barlow">
           {{ value }}
         </div>
       </div>
@@ -82,7 +88,7 @@ const _additions = computed(() => {
         <div class="text-center capitalize">
           &nbsp;
         </div>
-        <div class="text-center font-barlow text-4xl font-700">
+        <div class="text-center text-4xl font-700 font-barlow">
           &nbsp;
         </div>
       </div>

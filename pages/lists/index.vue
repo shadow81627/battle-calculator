@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { groupBy, startCase } from 'lodash-es';
+import { groupBy, startCase } from 'lodash-es'
+
 const route = useRoute()
 const { data: lists } = await useAsyncData('lists-index', () => queryContent('lists').find(), {
   transform(data) {
-    const items = data.map(item => {
+    const items = data.map((item) => {
       const slug = item._path.split('/').slice(-2, -1)
       return { ...item, slug }
     })
@@ -19,7 +20,7 @@ const { data: lists } = await useAsyncData('lists-index', () => queryContent('li
         slug,
         models,
         points,
-        units
+        units,
       }
     })
     return rows
@@ -29,13 +30,23 @@ const { data: lists } = await useAsyncData('lists-index', () => queryContent('li
 
 <template>
   <div class="container">
-    <h1 class="h2">Lists</h1>
+    <h1 class="h2">
+      Lists
+    </h1>
     <table>
       <thead>
-        <th class="p-1 text-left">Name</th>
-        <th class="p-1 text-center">Models</th>
-        <th class="p-1 text-center">Units</th>
-        <th class="p-1 text-center">Points</th>
+        <th class="p-1 text-left">
+          Name
+        </th>
+        <th class="p-1 text-center">
+          Models
+        </th>
+        <th class="p-1 text-center">
+          Units
+        </th>
+        <th class="p-1 text-center">
+          Points
+        </th>
       </thead>
       <tbody>
         <tr v-for="list of lists" :key="list.slug">

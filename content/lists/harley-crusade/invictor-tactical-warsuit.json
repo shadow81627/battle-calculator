@@ -19,7 +19,7 @@
     {
       "name": "Fragstorm grenade launcher",
       "modifiers": [
-        {"name": "BLAST"}
+        { "name": "BLAST" }
       ],
       "range": 18,
       "attack": "D6",

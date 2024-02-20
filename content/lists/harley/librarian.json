@@ -31,7 +31,7 @@
     {
       "name": "Bolt pistol",
       "modifiers": [
-        {"name": "PISTOL"}
+        { "name": "PISTOL" }
       ],
       "range": 12,
       "attack": 1,
@@ -46,7 +46,7 @@
         {
           "name": "Smite – witchfire",
           "modifiers": [
-            {"name": "PSYCHIC"}
+            { "name": "PSYCHIC" }
           ],
           "range": 24,
           "attack": "D6",
@@ -58,7 +58,7 @@
         {
           "name": "Smite – focused witchfire",
           "modifiers": [
-            {"name": "PSYCHIC"}
+            { "name": "PSYCHIC" }
           ],
           "range": 24,
           "attack": "D6",
@@ -72,7 +72,7 @@
     {
       "name": "Force weapon",
       "modifiers": [
-        {"name": "PSYCHIC"}
+        { "name": "PSYCHIC" }
       ],
       "range": "Melee",
       "attack": 4,

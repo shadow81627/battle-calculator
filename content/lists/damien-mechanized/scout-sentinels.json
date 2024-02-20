@@ -68,8 +68,8 @@
         {
           "name": "Heavy flamer",
           "modifiers": [
-            {"name": "IGNORES COVER"},
-            {"name": "TORRENT"}
+            { "name": "IGNORES COVER" },
+            { "name": "TORRENT" }
           ],
           "range": 12,
           "attack": "D6",
