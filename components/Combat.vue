@@ -60,7 +60,7 @@ function averageWeaponCombatWorker() {
     if (globalThis.Worker) {
       const worker = new AverageWeaponCombatWorker()
       const data = JSON.parse(JSON.stringify({
-        weapon: props.weapon,
+        weapon: { ...props.weapon, modifiers: props.modifiers },
         unit: props.unit,
         target: props.target,
         additional: additional.value,
