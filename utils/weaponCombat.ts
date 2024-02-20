@@ -202,9 +202,10 @@ export default function weaponCombat(weapon: Weapon, unit: Unit, target: Unit, a
     const total = randomDamageRolls.reduce((sum, roll) => sum + roll, 0)
     if (_damage.rolls && !total)
       return 0
+    const flatDamage = _damage.base + (getModifier('Master-Worked', weapon.modifiers) ? 1 : 0)
     if (!_damage.rolls)
-      return Math.max(1, Math.round((randomSaveTotal * _damage.base) / hasHalfDamage) - reduction)
-    return Math.max(1, Math.round((total + _damage.base) / hasHalfDamage) - reduction)
+      return Math.max(1, Math.round((randomSaveTotal * flatDamage) / hasHalfDamage) - reduction)
+    return Math.max(1, Math.round((total + flatDamage) / hasHalfDamage) - reduction)
   })()
 
   const randomPainRolls = rolls(randomDamageTotal)
