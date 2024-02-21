@@ -32,7 +32,7 @@ export default {
       <Icon :name="item.icon" class="my-auto text-gray" style="width: 32px; height: 32px" />
       <NuxtLink
         :to="item.url" itemscope itemtype="https://schema.org/SiteNavigationElement"
-        class="hover:text-grey-500 text-black-500 relative btn"
+        class="text-black-500 hover:text-grey-500 relative btn"
       >
         <slot>{{ item.name }}</slot>
       </NuxtLink>
