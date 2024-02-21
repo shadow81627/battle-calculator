@@ -1,8 +1,13 @@
 <script setup>
 import { useStorage } from '@vueuse/core'
 
-const props = defineProps(['unit', 'index', 'catalog', 'onePerPage', 'forceRules'])
-let {
+const props = defineProps({
+  unit: { type: Object, required: true },
+  index: { type: Number, required: true },
+  catalog: { type: String, required: true },
+  onePerPage: { type: Boolean, default: false },
+  forceRules: {type: Object, required: true}})
+const {
   name,
   meleeWeapons,
   rangedWeapons,
@@ -10,10 +15,11 @@ let {
   keywords,
   factions,
   rules,
-  modelStats,
   modelList,
   cost,
 } = props.unit
+
+let { modelStats } = props.unit
 const image = useStorage(`image${name}`)
 const hasImage = computed(() => image.value && image.value !== 'undefined')
 
@@ -46,27 +52,27 @@ const modelsWithDifferentProfiles = weapons.filter((weapon, index) => {
   )
 })
 
-function getOverridePrimary(factions, keywords) {
-  if (!factions.has)
-    return
-  if (
-    factions.has('Khorne')
-    && factions.has('Tzeentch')
-    && factions.has('Nurgle')
-    && factions.has('Slaanesh')
-  )
-    return
-  if (factions.has('Khorne') || keywords.has('Khorne'))
-    return '#883531'
-  if (factions.has('Tzeentch') || keywords.has('Tzeentch'))
-    return '#015d68'
-  if (factions.has('Nurgle') || keywords.has('Nurgle'))
-    return '#5c672b'
-  if (factions.has('Slaanesh') || keywords.has('Slaanesh'))
-    return '#634c74'
-}
+// function getOverridePrimary(factions, keywords) {
+//   if (!factions.has)
+//     return
+//   if (
+//     factions.has('Khorne')
+//     && factions.has('Tzeentch')
+//     && factions.has('Nurgle')
+//     && factions.has('Slaanesh')
+//   )
+//     return
+//   if (factions.has('Khorne') || keywords.has('Khorne'))
+//     return '#883531'
+//   if (factions.has('Tzeentch') || keywords.has('Tzeentch'))
+//     return '#015d68'
+//   if (factions.has('Nurgle') || keywords.has('Nurgle'))
+//     return '#5c672b'
+//   if (factions.has('Slaanesh') || keywords.has('Slaanesh'))
+//     return '#634c74'
+// }
 
-const overridePrimary = getOverridePrimary(factions, keywords)
+// const overridePrimary = getOverridePrimary(factions, keywords)
 
 function areAllModelsTheSame(modelStats) {
   if (modelStats.length === 1)
@@ -160,9 +166,9 @@ function updateImage(e) {
 
           <div style="display: flex; flex-direction: column; gap: 6px; z-index: 1; position: relative;">
             <FancyScribeModelStats
-              v-for="(model, index) of modelStats "
-              :key="index"
-              :index="index"
+              v-for="(model, modelIndex) of modelStats "
+              :key="modelIndex"
+              :index="modelIndex"
               :model-stats="modelStats"
               :model-stat="model"
               :model-list="modelList"

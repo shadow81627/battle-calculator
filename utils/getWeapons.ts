@@ -11,6 +11,7 @@ export default function getWeapons(unit: Unit) {
     })
   }
   const memberWeapons = unit.members?.map(addMemberWeaponModels).flat()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const deduplicatedMemberWeapons = Object.entries(groupBy(memberWeapons, 'name')).map(([_, weapons]) => {
     const models = weapons.reduce((sum, weapon) => sum + (weapon?.models ?? 0), 0)
     return { ...weapons[0], models }

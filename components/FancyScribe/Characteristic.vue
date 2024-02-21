@@ -1,5 +1,5 @@
 <script setup>
-defineProps(['title', 'characteristic', 'index'])
+defineProps({ 'title': {type: String, required: true}, 'characteristic': {type: String, required: true}, 'index': {type: Number, required: true}})
 </script>
 
 <template>

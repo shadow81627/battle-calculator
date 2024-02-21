@@ -12,14 +12,14 @@ export default defineEventHandler(async () => {
     },
   })
 
-  const attributeNames = {
-    M: 'movement',
-    T: 'toughness',
-    SV: 'save',
-    W: 'wound',
-    LD: 'leadership',
-    OC: 'control',
-  }
+  // const attributeNames = {
+  //   M: 'movement',
+  //   T: 'toughness',
+  //   SV: 'save',
+  //   W: 'wound',
+  //   LD: 'leadership',
+  //   OC: 'control',
+  // }
 
   function parseSelection(selectionEntry) {
     // const entry = {}

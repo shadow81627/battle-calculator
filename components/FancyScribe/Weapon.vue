@@ -1,7 +1,12 @@
 <script setup>
-const props = defineProps(['weapon', 'previousWeapon', 'nextWeapon', 'isMelee', 'classes'])
-let {
-  name,
+const props = defineProps({
+  weapon: { type: Object, required: true },
+  previousWeapon: { type: Object, default: ()=> null},
+  nextWeapon: { type: Object, default: ()=> null },
+  isMelee: { type: Boolean, required: true },
+  classes: { type: String, required: true }
+})
+const {
   selectionName,
   range,
   type,
@@ -13,6 +18,8 @@ let {
   ws,
   attacks,
 } = props.weapon
+
+let { name } = props.weapon
 
 if (name === 'Krak grenades')
   name = 'Krak grenade'

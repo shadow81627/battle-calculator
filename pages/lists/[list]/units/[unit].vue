@@ -1,6 +1,6 @@
 <script setup>
 const { params } = useRoute()
-const { data: unit, pending } = await useAsyncData(`lists:${params.list}:${params.unit}`, () => queryContent('lists', params.list, params.unit).findOne())
+const { data: unit } = await useAsyncData(`lists:${params.list}:${params.unit}`, () => queryContent('lists', params.list, params.unit).findOne())
 if (!unit.value)
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 </script>

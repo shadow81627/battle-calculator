@@ -1,5 +1,10 @@
 <script setup>
-const props = defineProps(['title', 'weapons', 'modelStats', 'forceRules'])
+const props = defineProps({
+  title: { type: String, required: true },
+  weapons: { type: Array, required: true },
+  // modelStats: { type: Object, required: true },
+  // forceRules: { type: Object, required: true },
+})
 const isMelee = props.title === 'MELEE WEAPONS'
 
 function getWeaponClassNames(weapons, index) {

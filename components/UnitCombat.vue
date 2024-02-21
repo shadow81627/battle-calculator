@@ -39,7 +39,7 @@ const weapons = computed(() => {
     })
   }
   const memberWeapons = _unit.value.members?.map(addMemberWeaponModels).flat()
-  const deduplicatedMemberWeapons = Object.entries(groupBy(memberWeapons, 'name')).map(([key, weapons]) => {
+  const deduplicatedMemberWeapons = Object.entries(groupBy(memberWeapons, 'name')).map(([, weapons]) => {
     const models = weapons.reduce((sum, weapon) => sum + (weapon?.models ?? 0), 0)
     return { ...weapons[0], models }
   }) ?? []

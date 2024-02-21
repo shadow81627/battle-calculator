@@ -1,5 +1,8 @@
 <script setup>
-const props = defineProps(['roster', 'onePerPage'])
+const props = defineProps({
+  'roster': { type: Object, required: true },
+  onePerPage: { type: Boolean, default: false },
+})
 const { name, cost, forces } = props.roster
 </script>
 

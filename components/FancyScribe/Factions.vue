@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['factions'])
+defineProps({ factions: {type: Array, required: true} })
 </script>
 
 <template>

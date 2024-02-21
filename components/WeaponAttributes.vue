@@ -92,11 +92,11 @@ function profileClasses(index: number, total: number) {
               {{ weapon.name }}
               <template v-if="weapon.modifiers && weapon.modifiers.length">
                 [<span
-                  v-for="(modifier, index) of weapon.modifiers "
+                  v-for="(modifier, modifierIndex) of weapon.modifiers "
                   :key="modifier.name"
                   style="font-size: 0.8em;font-weight: 700;color: var(--primary-color);text-transform: uppercase;line-height: 1;"
                 >
-                  {{ modifier.name }}<template v-if="index + 1 !== weapon.modifiers.length">,</template>
+                  {{ modifier.name }}<template v-if="modifierIndex + 1 !== weapon.modifiers.length">,</template>
                 </span>]
               </template>
             </td>
@@ -140,12 +140,12 @@ function profileClasses(index: number, total: number) {
         </template>
         <template v-else>
           <template
-            v-for="(profile, index) of weapon.profiles "
+            v-for="(profile, profileIndex) of weapon.profiles "
             :key="profile.name"
           >
             <tr>
               <td
-                :class="profileClasses(index, weapon.profiles.length)"
+                :class="profileClasses(profileIndex, weapon.profiles.length)"
                 width="100%"
                 class="table-cell border-none text-center sm:hidden"
                 colspan="8"
@@ -169,43 +169,43 @@ function profileClasses(index: number, total: number) {
               <td
                 class="hidden px-2 sm:table-cell"
                 width="50%"
-                :class="profileClasses(index, weapon.profiles.length)"
+                :class="profileClasses(profileIndex, weapon.profiles.length)"
               >
                 {{ profile.name }}
               </td>
               <td
                 class="px-2 text-center"
-                :class="profileClasses(index, weapon.profiles.length)"
+                :class="profileClasses(profileIndex, weapon.profiles.length)"
               >
                 {{ profile.range }}
               </td>
               <td
                 class="px-2 text-center"
-                :class="profileClasses(index, weapon.profiles.length)"
+                :class="profileClasses(profileIndex, weapon.profiles.length)"
               >
                 {{ profile.attack }}
               </td>
               <td
                 class="px-2 text-center"
-                :class="profileClasses(index, weapon.profiles.length)"
+                :class="profileClasses(profileIndex, weapon.profiles.length)"
               >
                 {{ profile.accuracy }}
               </td>
               <td
                 class="px-2 text-center"
-                :class="profileClasses(index, weapon.profiles.length)"
+                :class="profileClasses(profileIndex, weapon.profiles.length)"
               >
                 {{ profile.strength }}
               </td>
               <td
                 class="px-2 text-center"
-                :class="profileClasses(index, weapon.profiles.length)"
+                :class="profileClasses(profileIndex, weapon.profiles.length)"
               >
                 {{ profile.piercing }}
               </td>
               <td
                 class="px-2 text-center"
-                :class="profileClasses(index, weapon.profiles.length)"
+                :class="profileClasses(profileIndex, weapon.profiles.length)"
               >
                 {{ profile.damage }}
               </td>

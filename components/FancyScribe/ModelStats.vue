@@ -1,6 +1,12 @@
 <script setup>
-const props = defineProps(['modelStat', 'index', 'showName', 'modelList'])
-let { move, toughness, save, wounds, leadership, name, oc, bs, ws, attacks }
+const props = defineProps({
+  modelStat: { type: Object, required: true },
+  'index': { type: Number, required: true },
+  'showName': { type: Boolean, required: true },
+  'modelList': { type: Array, required: true }
+})
+let {wounds} = props.modelStat
+const { move, toughness, save, leadership, name, oc, }
   = props.modelStat
 if (!wounds)
   wounds = '/'

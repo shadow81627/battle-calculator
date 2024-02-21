@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['keywords'])
+const props = defineProps({ keywords: {type: Array, required: true} })
 const joinedKeywords = [...props.keywords].join(', ')
 </script>
 
