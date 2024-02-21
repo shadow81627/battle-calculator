@@ -6,6 +6,7 @@ export default {
     draw: { type: Boolean, default: false },
     items: { type: Array, default: () => [] },
   },
+  emits: ['update:draw'],
   setup() {
     const isSmallScreen = useMediaQuery('(max-width: 767px)')
     return { isSmallScreen }
