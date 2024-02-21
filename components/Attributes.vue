@@ -12,7 +12,7 @@ const labels: { [key: string]: string } = {
   wound: "W",
   leadership: "LD",
   control: "OC",
-  pain: "Feel no pain",
+  pain: "FNP",
   modelPoints: "Model Points",
   totalWounds: "Total Wounds",
 };
