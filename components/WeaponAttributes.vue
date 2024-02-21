@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import type Unit from '~/types/unit'
+import type Unit from "~/types/unit";
 
-defineProps<{ unit: Unit }>()
+defineProps<{ unit: Unit }>();
 
 function cellClasses(index: number) {
-  let base = 'px-2 border-b-1 border-dotted border-color-[#9e9fa1]'
+  let base = "px-2 border-b-1 border-dotted border-color-[#9e9fa1]";
   if (index % 2 !== 0)
-    base = `${base} dark:bg-slate-800 bg-[#d0d1d3] !print:bg-[#d0d1d3]`
+    base = `${base} dark:bg-slate-800 bg-[#d0d1d3] !print:bg-[#d0d1d3]`;
 
-  return base
+  return base;
 }
 function profileClasses(index: number, total: number) {
-  const last = index + 1 === total
+  const last = index + 1 === total;
   return {
-    'px-2': true,
-    'border-b-1': last,
-    'border-dotted': last,
-  }
+    "px-2": true,
+    "border-b-1": last,
+    "border-dotted": last,
+  };
 }
 </script>
 
@@ -29,7 +29,7 @@ function profileClasses(index: number, total: number) {
     <thead>
       <tr class="bg-[#d0d1d3] dark:bg-slate-800 !print:bg-[#d0d1d3]">
         <th class="hidden w-[2.2em] sm:table-cell">
-          <div style="display: flex; min-width: 0.7em; justify-content: center;">
+          <div style="display: flex; min-width: 0.7em; justify-content: center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="21px"
@@ -43,34 +43,17 @@ function profileClasses(index: number, total: number) {
             </svg>
           </div>
         </th>
-        <th class="hidden px-2 text-left sm:table-cell">
-          Weapon
-        </th>
-        <th class="px-2">
-          Range
-        </th>
-        <th class="px-2">
-          A
-        </th>
-        <th class="px-2">
-          WS
-        </th>
-        <th class="px-2">
-          S
-        </th>
-        <th class="px-2">
-          AP
-        </th>
-        <th class="px-2">
-          D
-        </th>
+        <th class="hidden px-2 text-left sm:table-cell">Weapon</th>
+        <th class="px-2">Range</th>
+        <th class="px-2">A</th>
+        <th class="px-2">WS</th>
+        <th class="px-2">S</th>
+        <th class="px-2">AP</th>
+        <th class="px-2">D</th>
       </tr>
     </thead>
     <tbody>
-      <template
-        v-for="(weapon, index) of unit.weapons "
-        :key="weapon.name"
-      >
+      <template v-for="(weapon, index) of unit.weapons" :key="weapon.name">
         <template v-if="!weapon.profiles">
           <tr>
             <td
@@ -92,55 +75,47 @@ function profileClasses(index: number, total: number) {
               {{ weapon.name }}
               <template v-if="weapon.modifiers && weapon.modifiers.length">
                 [<span
-                  v-for="(modifier, modifierIndex) of weapon.modifiers "
+                  v-for="(modifier, modifierIndex) of weapon.modifiers"
                   :key="modifier.name"
-                  style="font-size: 0.8em;font-weight: 700;color: var(--primary-color);text-transform: uppercase;line-height: 1;"
+                  style="
+                    font-size: 0.8em;
+                    font-weight: 700;
+                    color: var(--primary-color);
+                    text-transform: uppercase;
+                    line-height: 1;
+                  "
                 >
-                  {{ modifier.name }}<template v-if="modifierIndex + 1 !== weapon.modifiers.length">,</template>
-                </span>]
+                  {{ modifier.name
+                  }}<template
+                    v-if="modifierIndex + 1 !== weapon.modifiers.length"
+                    >,</template
+                  > </span
+                >]
               </template>
             </td>
-            <td
-              :class="cellClasses(index)"
-              class="text-center"
-            >
+            <td :class="cellClasses(index)" class="text-center">
               {{ weapon.range }}
             </td>
-            <td
-              :class="cellClasses(index)"
-              class="text-center"
-            >
+            <td :class="cellClasses(index)" class="text-center">
               {{ weapon.attack }}
             </td>
-            <td
-              :class="cellClasses(index)"
-              class="text-center"
-            >
+            <td :class="cellClasses(index)" class="text-center">
               {{ weapon.accuracy }}
             </td>
-            <td
-              :class="cellClasses(index)"
-              class="text-center"
-            >
+            <td :class="cellClasses(index)" class="text-center">
               {{ weapon.strength }}
             </td>
-            <td
-              :class="cellClasses(index)"
-              class="text-center"
-            >
+            <td :class="cellClasses(index)" class="text-center">
               {{ weapon.piercing }}
             </td>
-            <td
-              :class="cellClasses(index)"
-              class="text-center"
-            >
+            <td :class="cellClasses(index)" class="text-center">
               {{ weapon.damage }}
             </td>
           </tr>
         </template>
         <template v-else>
           <template
-            v-for="(profile, profileIndex) of weapon.profiles "
+            v-for="(profile, profileIndex) of weapon.profiles"
             :key="profile.name"
           >
             <tr>

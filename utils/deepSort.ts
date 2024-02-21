@@ -1,19 +1,18 @@
 function defaultSortFn(a: string, b: string) {
-  return a.localeCompare(b)
+  return a.localeCompare(b);
 }
 
 function deepSort(src: object | [], comparator = defaultSortFn): object | [] {
-  const data = JSON.parse(JSON.stringify(src))
+  const data = JSON.parse(JSON.stringify(src));
 
-  if (typeof data !== 'object' || !data)
-    return data
+  if (typeof data !== "object" || !data) return data;
 
   if (Array.isArray(data))
-    return data.map(value => deepSort(value, comparator))
+    return data.map((value) => deepSort(value, comparator));
 
   return Object.keys(data)
     .sort(comparator)
-    .reduce((o, k) => ({ ...o, [k]: deepSort(data[k], comparator) }), {})
+    .reduce((o, k) => ({ ...o, [k]: deepSort(data[k], comparator) }), {});
 }
 
 /**
@@ -22,4 +21,4 @@ function deepSort(src: object | [], comparator = defaultSortFn): object | [] {
  * https://github.com/IndigoUnited/js-deep-sort-object/blob/master/index.js
  */
 
-export default deepSort
+export default deepSort;

@@ -1,16 +1,13 @@
 <script setup lang="ts">
 // defineProps<{}>()
-const show = ref(false)
+const show = ref(false);
 function toggleShow() {
-  show.value = !show.value
+  show.value = !show.value;
 }
 </script>
 
 <template>
-  <div
-    id="accordion-flush-heading-1"
-    @click="toggleShow"
-  >
+  <div id="accordion-flush-heading-1" @click="toggleShow">
     <button
       type="button"
       class="xjustify-between w-full flex items-center border-b border-gray-200 py-5 text-left text-gray-500 font-medium dark:border-gray-700 dark:text-gray-400"

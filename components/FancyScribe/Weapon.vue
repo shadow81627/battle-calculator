@@ -1,11 +1,11 @@
 <script setup>
 const props = defineProps({
   weapon: { type: Object, required: true },
-  previousWeapon: { type: Object, default: ()=> null},
-  nextWeapon: { type: Object, default: ()=> null },
+  previousWeapon: { type: Object, default: () => null },
+  nextWeapon: { type: Object, default: () => null },
   isMelee: { type: Boolean, required: true },
-  classes: { type: String, required: true }
-})
+  classes: { type: String, required: true },
+});
 const {
   selectionName,
   range,
@@ -17,46 +17,47 @@ const {
   bs,
   ws,
   attacks,
-} = props.weapon
+} = props.weapon;
 
-let { name } = props.weapon
+let { name } = props.weapon;
 
-if (name === 'Krak grenades')
-  name = 'Krak grenade'
+if (name === "Krak grenades") name = "Krak grenade";
 
 function hasDifferentProfiles(selectionName, name) {
-  return selectionName && selectionName.toLowerCase() !== name.toLowerCase()
+  return selectionName && selectionName.toLowerCase() !== name.toLowerCase();
 }
 
-const differentProfiles
-  = hasDifferentProfiles(selectionName, name)
-  && ((props.previousWeapon
-    && hasDifferentProfiles(props.previousWeapon.selectionName, props.previousWeapon.name)
-    && selectionName === props.previousWeapon.selectionName)
-    || (props.nextWeapon
-      && hasDifferentProfiles(props.nextWeapon.selectionName, props.nextWeapon.name)
-      && selectionName === props.nextWeapon.selectionName))
+const differentProfiles =
+  hasDifferentProfiles(selectionName, name) &&
+  ((props.previousWeapon &&
+    hasDifferentProfiles(
+      props.previousWeapon.selectionName,
+      props.previousWeapon.name,
+    ) &&
+    selectionName === props.previousWeapon.selectionName) ||
+    (props.nextWeapon &&
+      hasDifferentProfiles(
+        props.nextWeapon.selectionName,
+        props.nextWeapon.name,
+      ) &&
+      selectionName === props.nextWeapon.selectionName));
 
-if (differentProfiles && name.endsWith(' grenades'))
-  name = name.replace(' grenades', '')
+if (differentProfiles && name.endsWith(" grenades"))
+  name = name.replace(" grenades", "");
 
-if (differentProfiles && name.endsWith(' grenade'))
-  name = name.replace(' grenade', '')
+if (differentProfiles && name.endsWith(" grenade"))
+  name = name.replace(" grenade", "");
 
-if (name.startsWith('Missile launcher, '))
-  name = name.replace('Missile launcher, ', '')
+if (name.startsWith("Missile launcher, "))
+  name = name.replace("Missile launcher, ", "");
 
-if (differentProfiles && name.includes(' - '))
-  name = name.split(' - ')[1]
+if (differentProfiles && name.includes(" - ")) name = name.split(" - ")[1];
 </script>
 
 <template>
   <tr :class="classes">
-    <td style="border-top: none;">
-      <div
-        v-if="differentProfiles"
-        class="flex justify-center"
-      >
+    <td style="border-top: none">
+      <div v-if="differentProfiles" class="flex justify-center">
         <svg
           viewBox="0 0 16 8"
           width="1.2rem"
@@ -68,10 +69,17 @@ if (differentProfiles && name.includes(' - '))
       </div>
     </td>
     <td
-      style="text-align: left;"
+      style="text-align: left"
       :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
     >
-      <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0px 4px;">
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 0px 4px;
+        "
+      >
         <template v-if="differentProfiles && selectionName">
           {{ selectionName }} -
         </template>
@@ -84,7 +92,13 @@ if (differentProfiles && name.includes(' - '))
         </template>
         <span
           v-if="type && type !== '-'"
-          style="font-size: 0.8em;font-weight: 700;color: var(--primary-color);text-transform: uppercase;line-height: 1;"
+          style="
+            font-size: 0.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            line-height: 1;
+          "
         >
           [{{ type }}]
         </span>
@@ -106,13 +120,9 @@ if (differentProfiles && name.includes(' - '))
       class="align-middle"
       :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
     >
-      {{ isMelee
-        ? ws.join
-          ? ws.join("|")
-          : ws
-        : bs.join
-          ? bs.join("|")
-          : bs }}
+      {{
+        isMelee ? (ws.join ? ws.join("|") : ws) : bs.join ? bs.join("|") : bs
+      }}
     </td>
     <td
       class="align-middle"
@@ -134,14 +144,17 @@ if (differentProfiles && name.includes(' - '))
     </td>
   </tr>
 
-  <tr
-    v-if="abilities && abilities !== '-'"
-    :class="`${classes} noBorderTop`"
-  >
+  <tr v-if="abilities && abilities !== '-'" :class="`${classes} noBorderTop`">
     <td style="background-color: #dfe0e2" />
     <td
       colspan="7"
-      style="text-align: left; font-size: 0.9em; padding-top:0;padding-bottom: 1px; line-height: 1.4"
+      style="
+        text-align: left;
+        font-size: 0.9em;
+        padding-top: 0;
+        padding-bottom: 1px;
+        line-height: 1.4;
+      "
     >
       {{ abilities }}
     </td>
@@ -150,7 +163,7 @@ if (differentProfiles && name.includes(' - '))
 
 <style>
 .weapons-table td {
-  padding: 1px .4rem;
+  padding: 1px 0.4rem;
   border-top: 1px dotted #9e9fa1;
   text-align: center;
 }

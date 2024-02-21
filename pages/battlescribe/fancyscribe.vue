@@ -1,16 +1,15 @@
 <script setup>
 definePageMeta({
-  layout: 'default',
-})
-const { data, pending } = useFetch('/api/battlescribe/fancyscribe', { transform: data => data.data })
-const primaryColor = '#536766'
+  layout: "default",
+});
+const { data, pending } = useFetch("/api/battlescribe/fancyscribe", {
+  transform: (data) => data.data,
+});
+const primaryColor = "#536766";
 </script>
 
 <template>
-  <div
-    v-if="pending || true"
-    class="container"
-  >
+  <div v-if="pending || true" class="container">
     <Spinner class="mx-auto h-64px w-64px" />
   </div>
   <span v-else-if="!data">No data found</span>

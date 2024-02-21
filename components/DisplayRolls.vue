@@ -1,28 +1,23 @@
 <script setup lang="ts">
-import occurrences from '~/utils/occurrences'
+import occurrences from "~/utils/occurrences";
 
 const props = defineProps<{
-  rolls: number[]
-  reverse?: boolean
-}>()
+  rolls: number[];
+  reverse?: boolean;
+}>();
 const entries = computed(() => {
-  const entries = Object.entries(occurrences(props.rolls))
-  if (props.reverse)
-    return entries.reverse()
+  const entries = Object.entries(occurrences(props.rolls));
+  if (props.reverse) return entries.reverse();
 
-  return entries
-})
+  return entries;
+});
 </script>
 
 <template>
   <table>
     <thead>
       <tr>
-        <th
-          v-for="[key] of entries"
-          :key="key"
-          class="px-1 text-right"
-        >
+        <th v-for="[key] of entries" :key="key" class="px-1 text-right">
           {{ key }}
         </th>
       </tr>

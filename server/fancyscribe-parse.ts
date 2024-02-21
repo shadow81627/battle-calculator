@@ -1,171 +1,164 @@
 export class BaseNotes {
-  name = ''
+  name = "";
 
   equal(other: { name: string }) {
-    if (other == null)
-      return false
+    if (other == null) return false;
     // Weapons in 40k have unique names
-    return this.name === other.name
+    return this.name === other.name;
   }
 }
 
 /** A `selection` attached to a unit or model. */
 export class Upgrade extends BaseNotes {
-  cost = new Costs()
-  count = 1
+  cost = new Costs();
+  count = 1;
 
   getSelectionName() {
-    return this.name
+    return this.name;
   }
 
   toString() {
-    let string = this.getSelectionName()
-    if (this.count > 1)
-      string = `${this.count}x ${string}`
-    if (this.cost.hasValues())
-      string += ` ${this.cost.toString()}`
-    return string
+    let string = this.getSelectionName();
+    if (this.count > 1) string = `${this.count}x ${string}`;
+    if (this.cost.hasValues()) string += ` ${this.cost.toString()}`;
+    return string;
   }
 }
 
 /** A weapon `profile` that is under a `selection`. */
 export class Weapon extends Upgrade {
-  selectionName = ''
+  selectionName = "";
 
-  range = ''
-  type = ''
-  str = 'user'
-  ap = ''
-  damage = ''
-  attacks = ''
-  bs = ''
-  ws = ''
+  range = "";
+  type = "";
+  str = "user";
+  ap = "";
+  damage = "";
+  attacks = "";
+  bs = "";
+  ws = "";
 
-  abilities = ''
+  abilities = "";
 
   /**
    * Name of this weapon's `selection`. This is different from name() because
    * name() is used for sorting and deduping weapon profiles.
    */
   getSelectionName() {
-    return this.selectionName || this.name
+    return this.selectionName || this.name;
   }
 }
 
 export class WoundTracker extends BaseNotes {
-  name = ''
-  table = new Map()
+  name = "";
+  table = new Map();
 }
 
 export class Explosion extends BaseNotes {
-  name = ''
-  diceRoll = ''
-  distance = ''
-  mortalWounds = ''
+  name = "";
+  diceRoll = "";
+  distance = "";
+  mortalWounds = "";
 }
 
 export class Psyker extends BaseNotes {
-  cast = ''
-  deny = ''
-  powers = ''
-  other = ''
+  cast = "";
+  deny = "";
+  powers = "";
+  other = "";
 }
 
 export class PsychicPower extends BaseNotes {
-  name = ''
-  manifest = 0
-  range = ''
-  details = ''
+  name = "";
+  manifest = 0;
+  range = "";
+  details = "";
 }
 
 export const UnitRole = {
-  NONE: 'NONE',
+  NONE: "NONE",
 
   // 40k
-  Character: 'Character',
-  Battleline: 'Battleline',
-  DedicatedTransport: 'DedicatedTransport',
-} as const
+  Character: "Character",
+  Battleline: "Battleline",
+  DedicatedTransport: "DedicatedTransport",
+} as const;
 
 export const UnitRoleSorting = {
   Character: 0,
   Battleline: 1,
   DedicatedTransport: 2,
   NONE: 3,
-}
+};
 
 export class Model extends BaseNotes {
-  count = 0
+  count = 0;
 
   // Characteristics
-  move = '0"'
-  ws = ''
-  bs = ''
-  str = 4
-  toughness = 4
-  wounds = 1
-  attacks = ''
-  leadership: string | number = 7
-  save = ''
-  oc = ''
+  move = '0"';
+  ws = "";
+  bs = "";
+  str = 4;
+  toughness = 4;
+  wounds = 1;
+  attacks = "";
+  leadership: string | number = 7;
+  save = "";
+  oc = "";
 
-  rangedWeapons: Weapon[] = []
-  meleeWeapons: Weapon[] = []
-  upgrades: Upgrade[] = []
+  rangedWeapons: Weapon[] = [];
+  meleeWeapons: Weapon[] = [];
+  upgrades: Upgrade[] = [];
   // TODO model upgrades (i.e. tau support systems)
-  psyker?: Psyker | null = null
-  psychicPowers: PsychicPower[] = []
-  explosions = []
+  psyker?: Psyker | null = null;
+  psychicPowers: PsychicPower[] = [];
+  explosions = [];
 
   equal(model: Model) {
-    if (model == null)
-      return false
+    if (model == null) return false;
 
     if (
-      this.name === model.name
-      && this.count === model.count
-      && this.rangedWeapons.length === model.rangedWeapons.length
-      && this.meleeWeapons.length === model.meleeWeapons.length
-      && this.upgrades.length === model.upgrades.length
+      this.name === model.name &&
+      this.count === model.count &&
+      this.rangedWeapons.length === model.rangedWeapons.length &&
+      this.meleeWeapons.length === model.meleeWeapons.length &&
+      this.upgrades.length === model.upgrades.length
     ) {
       for (let wi = 0; wi < this.rangedWeapons.length; wi++) {
         if (!this.rangedWeapons[wi].equal(model.rangedWeapons[wi]))
-          return false
+          return false;
       }
       for (let wi = 0; wi < this.meleeWeapons.length; wi++) {
-        if (!this.meleeWeapons[wi].equal(model.meleeWeapons[wi]))
-          return false
+        if (!this.meleeWeapons[wi].equal(model.meleeWeapons[wi])) return false;
       }
       for (let wi = 0; wi < this.upgrades.length; wi++) {
-        if (!this.upgrades[wi].equal(model.upgrades[wi]))
-          return false
+        if (!this.upgrades[wi].equal(model.upgrades[wi])) return false;
       }
 
       // TODO: check for the same psychic powers
-      if (this.psyker != null || model.psyker != null)
-        return false
+      if (this.psyker != null || model.psyker != null) return false;
 
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   nameAndGear() {
-    let name = this.name
+    let name = this.name;
 
     if (
-      this.meleeWeapons.length > 0
-      || this.rangedWeapons.length > 0
-      || this.upgrades.length > 0
+      this.meleeWeapons.length > 0 ||
+      this.rangedWeapons.length > 0 ||
+      this.upgrades.length > 0
     ) {
-      const gear = this.getDedupedWeaponsAndUpgrades()
-      name += ` (${gear.map(u => u.toString()).join(', ')})`
+      const gear = this.getDedupedWeaponsAndUpgrades();
+      name += ` (${gear.map((u) => u.toString()).join(", ")})`;
     }
-    return name
+    return name;
   }
 
   getDedupedWeaponsAndUpgrades() {
-    const deduped: Upgrade[] = []
+    const deduped: Upgrade[] = [];
 
     for (const upgrade of [
       ...this.rangedWeapons,
@@ -174,96 +167,92 @@ export class Model extends BaseNotes {
     ]) {
       if (
         !deduped.some(
-          e => upgrade.getSelectionName() === e.getSelectionName(),
+          (e) => upgrade.getSelectionName() === e.getSelectionName(),
         )
       )
-        deduped.push(upgrade)
+        deduped.push(upgrade);
     }
-    return deduped
+    return deduped;
   }
 
   normalize() {
-    this.rangedWeapons.sort(CompareWeapon)
-    this.meleeWeapons.sort(CompareWeapon)
-    this.upgrades.sort(CompareObj)
+    this.rangedWeapons.sort(CompareWeapon);
+    this.meleeWeapons.sort(CompareWeapon);
+    this.upgrades.sort(CompareObj);
 
-    this.normalizeUpgrades(this.rangedWeapons)
-    this.normalizeUpgrades(this.meleeWeapons)
-    this.normalizeUpgrades(this.upgrades)
+    this.normalizeUpgrades(this.rangedWeapons);
+    this.normalizeUpgrades(this.meleeWeapons);
+    this.normalizeUpgrades(this.upgrades);
   }
 
   normalizeUpgrades(upgrades: Upgrade[]) {
     for (let i = 0; i < upgrades.length - 1; i++) {
-      const upgrade = upgrades[i]
+      const upgrade = upgrades[i];
       if (upgrade.name === upgrades[i + 1].name) {
-        upgrade.count += upgrades[i + 1].count
-        upgrade.cost.add(upgrades[i + 1].cost)
-        upgrades.splice(i + 1, 1)
-        i--
+        upgrade.count += upgrades[i + 1].count;
+        upgrade.cost.add(upgrades[i + 1].cost);
+        upgrades.splice(i + 1, 1);
+        i--;
       }
     }
     for (const upgrade of upgrades) {
       if (upgrade.count % this.count === 0) {
-        upgrade.count /= this.count
-        upgrade.cost.points /= this.count
+        upgrade.count /= this.count;
+        upgrade.cost.points /= this.count;
       }
     }
   }
 }
 
 export class Unit extends BaseNotes {
-  role: typeof UnitRole[keyof typeof UnitRole] = UnitRole.NONE
-  factions = new Set()
-  keywords = new Set()
+  role: (typeof UnitRole)[keyof typeof UnitRole] = UnitRole.NONE;
+  factions = new Set();
+  keywords = new Set();
 
-  abilities = new Map()
-  rules = new Map()
+  abilities = new Map();
+  rules = new Map();
 
-  models: Model[] = []
-  modelStats: Model[] = []
-  modelList: string[] = []
-  rangedWeapons: Upgrade[] = []
-  meleeWeapons: Upgrade[] = []
-  spells: PsychicPower[] = []
-  psykers: Psyker[] = []
-  explosions = []
+  models: Model[] = [];
+  modelStats: Model[] = [];
+  modelList: string[] = [];
+  rangedWeapons: Upgrade[] = [];
+  meleeWeapons: Upgrade[] = [];
+  spells: PsychicPower[] = [];
+  psykers: Psyker[] = [];
+  explosions = [];
 
-  cost = new Costs()
+  cost = new Costs();
 
-  woundTracker: WoundTracker[] = []
+  woundTracker: WoundTracker[] = [];
 
   nameWithExtraCosts() {
-    const extraCosts = [] // Track extra costs like cabal points.
+    const extraCosts = []; // Track extra costs like cabal points.
     for (const freeformCostType in this.cost.freeformValues) {
-      if (this.cost.freeformValues[freeformCostType] === 0)
-        continue
+      if (this.cost.freeformValues[freeformCostType] === 0) continue;
       extraCosts.push(
         `${this.cost.freeformValues[freeformCostType]}${freeformCostType}`,
-      )
+      );
     }
     return extraCosts.length
-      ? `${this.name} [${extraCosts.join(', ')}]`
-      : this.name
+      ? `${this.name} [${extraCosts.join(", ")}]`
+      : this.name;
   }
 
   equal(unit: Unit) {
-    if (unit == null)
-      return false
+    if (unit == null) return false;
 
     if (
-      unit.name === this.name
-      && unit.role === this.role
-      && unit.models.length === this.models.length
-      && unit.modelStats.length === this.modelStats.length
+      unit.name === this.name &&
+      unit.role === this.role &&
+      unit.models.length === this.models.length &&
+      unit.modelStats.length === this.modelStats.length
     ) {
       for (let mi = 0; mi < this.models.length; mi++) {
-        if (!this.models[mi].equal(unit.models[mi]))
-          return false
+        if (!this.models[mi].equal(unit.models[mi])) return false;
       }
 
       for (let mi = 0; mi < this.modelStats.length; mi++) {
-        if (!this.modelStats[mi].equal(unit.modelStats[mi]))
-          return false
+        if (!this.modelStats[mi].equal(unit.modelStats[mi])) return false;
       }
 
       // Check how to replace without lodash
@@ -273,476 +262,454 @@ export class Unit extends BaseNotes {
         return false;
       } */
 
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   normalize() {
     // Sort force units by role and name
-    this.models.sort(CompareModel)
+    this.models.sort(CompareModel);
     this.modelStats = this.modelStats.sort((a, b) => {
-      const wounds_order
-        = (Number.isNaN(Number.parseInt(a.wounds as unknown as string)) ? -1 : Number.parseInt(a.wounds as unknown as string))
-        - (Number.isNaN(Number.parseInt(b.wounds as unknown as string)) ? -1 : Number.parseInt(b.wounds as unknown as string))
-      const leadership_order = Number.parseInt(a.leadership as unknown as string) - Number.parseInt(b.leadership as unknown as string)
-      const move_order = Number.parseInt(a.move) - Number.parseInt(b.move)
+      const wounds_order =
+        (Number.isNaN(Number.parseInt(a.wounds as unknown as string))
+          ? -1
+          : Number.parseInt(a.wounds as unknown as string)) -
+        (Number.isNaN(Number.parseInt(b.wounds as unknown as string))
+          ? -1
+          : Number.parseInt(b.wounds as unknown as string));
+      const leadership_order =
+        Number.parseInt(a.leadership as unknown as string) -
+        Number.parseInt(b.leadership as unknown as string);
+      const move_order = Number.parseInt(a.move) - Number.parseInt(b.move);
       return (
-        -wounds_order
-        || -leadership_order
-        || -move_order
-        || b.name.length - a.name.length
-      )
-    })
+        -wounds_order ||
+        -leadership_order ||
+        -move_order ||
+        b.name.length - a.name.length
+      );
+    });
 
-    for (const model of this.models)
-      model.normalize()
+    for (const model of this.models) model.normalize();
 
     for (let i = 0; i < this.models.length - 1; i++) {
-      const model = this.models[i]
+      const model = this.models[i];
 
       if (model.nameAndGear() === this.models[i + 1].nameAndGear()) {
-        model.count++
-        this.models.splice(i + 1, 1)
-        i--
+        model.count++;
+        this.models.splice(i + 1, 1);
+        i--;
       }
     }
 
     for (let i = 0; i < this.modelStats.length - 1; i++) {
-      const model = this.modelStats[i]
+      const model = this.modelStats[i];
 
       if (model.equal(this.modelStats[i + 1])) {
-        this.modelStats.splice(i + 1, 1)
-        i--
+        this.modelStats.splice(i + 1, 1);
+        i--;
       }
     }
 
     this.modelList = this.models.map(
-      model =>
-        (model.count > 1 ? `${model.count}x ` : '') + model.nameAndGear(),
-    )
+      (model) =>
+        (model.count > 1 ? `${model.count}x ` : "") + model.nameAndGear(),
+    );
     this.rangedWeapons = this.models
-      .map(m => m.rangedWeapons)
+      .map((m) => m.rangedWeapons)
       .reduce((acc, val) => acc.concat(val), [])
       .sort(CompareWeapon)
-      .filter((weap, i, array) => weap.name !== array[i - 1]?.name)
+      .filter((weap, i, array) => weap.name !== array[i - 1]?.name);
     this.meleeWeapons = this.models
-      .map(m => m.meleeWeapons)
+      .map((m) => m.meleeWeapons)
       .reduce((acc, val) => acc.concat(val), [])
       .sort(CompareWeapon)
-      .filter((weap, i, array) => weap.name !== array[i - 1]?.name)
+      .filter((weap, i, array) => weap.name !== array[i - 1]?.name);
     this.spells.push(
       ...this.models
-        .map(m => m.psychicPowers)
+        .map((m) => m.psychicPowers)
         .reduce((acc, val) => acc.concat(val), []),
-    )
-    this.psykers.push(...this.models.map(m => m.psyker).filter((p): p is Psyker => !!(p && p.name)))
+    );
+    this.psykers.push(
+      ...this.models
+        .map((m) => m.psyker)
+        .filter((p): p is Psyker => !!(p && p.name)),
+    );
 
     this.explosions.push(
       ...this.models
-        .map(m => m.explosions)
+        .map((m) => m.explosions)
         .reduce((acc, val) => acc.concat(val), []),
-    )
+    );
   }
 }
 
 export class Force extends BaseNotes {
-  catalog = ''
-  faction = 'Unknown'
-  factionRules = new Map()
-  configurations: string[] = []
-  rules = new Map()
-  units: Unit[] = []
+  catalog = "";
+  faction = "Unknown";
+  factionRules = new Map();
+  configurations: string[] = [];
+  rules = new Map();
+  units: Unit[] = [];
 }
 
 export class Roster40k extends BaseNotes {
-  cost = new Costs()
-  forces: Force[] = []
-  gameType = ''
+  cost = new Costs();
+  forces: Force[] = [];
+  gameType = "";
 }
 
 export class Costs {
-  points = 0
-  freeformValues?: Record<string, number> = undefined
+  points = 0;
+  freeformValues?: Record<string, number> = undefined;
 
   hasValues() {
-    return this.points !== 0
+    return this.points !== 0;
   }
 
   toString() {
-    const values = []
-    if (this.points !== 0)
-      values.push(`${this.points} pts`)
-    return `[${values.join(' / ')}]`
+    const values = [];
+    if (this.points !== 0) values.push(`${this.points} pts`);
+    return `[${values.join(" / ")}]`;
   }
 
   add(other: Costs) {
-    this.points += other.points
+    this.points += other.points;
     for (const name in other.freeformValues)
-      this.addFreeformValue(name, other.freeformValues[name])
+      this.addFreeformValue(name, other.freeformValues[name]);
   }
 
   addFreeformValue(name: string, value: number) {
-    if (!this.freeformValues)
-      this.freeformValues = {}
-    const oldValue = this.freeformValues[name] || 0
-    this.freeformValues[name] = oldValue + value
+    if (!this.freeformValues) this.freeformValues = {};
+    const oldValue = this.freeformValues[name] || 0;
+    this.freeformValues[name] = oldValue + value;
   }
 }
 
 export function Create40kRoster10th(doc: Document, gameType: string) {
   // Determine roster type (game system).
-  const info = doc.querySelector('roster')
+  const info = doc.querySelector("roster");
   if (info) {
-    const roster = new Roster40k()
-    roster.gameType = gameType
-    const name = info.getAttributeNode('name')?.nodeValue
-    if (name)
-      roster.name = name
-    else
-      roster.name = '40k Army Roster'
+    const roster = new Roster40k();
+    roster.gameType = gameType;
+    const name = info.getAttributeNode("name")?.nodeValue;
+    if (name) roster.name = name;
+    else roster.name = "40k Army Roster";
 
-    ParseRosterPoints(doc, roster)
-    ParseForces(doc, roster)
+    ParseRosterPoints(doc, roster);
+    ParseForces(doc, roster);
 
-    return roster
+    return roster;
   }
 }
 
 function ParseRosterPoints(doc: Document, roster: Roster40k) {
-  const costs = doc.querySelectorAll('roster>costs>cost')
-  for (const cost of costs)
-    roster.cost.add(ParseCost(cost))
+  const costs = doc.querySelectorAll("roster>costs>cost");
+  for (const cost of costs) roster.cost.add(ParseCost(cost));
 }
 
 function ParseForces(doc: Document, roster: Roster40k) {
-  const forcesRoot = doc.querySelectorAll('roster>forces>force')
+  const forcesRoot = doc.querySelectorAll("roster>forces>force");
   for (const root of forcesRoot) {
-    if (root.hasAttribute('name') && root.hasAttribute('catalogueName')) {
-      const f = new Force()
+    if (root.hasAttribute("name") && root.hasAttribute("catalogueName")) {
+      const f = new Force();
 
-      const which = root.getAttributeNode('name')?.nodeValue
-      const value = root.getAttributeNode('catalogueName')?.nodeValue
+      const which = root.getAttributeNode("name")?.nodeValue;
+      const value = root.getAttributeNode("catalogueName")?.nodeValue;
 
-      if (which)
-        f.name = which
+      if (which) f.name = which;
 
-      if (value)
-        f.catalog = value
+      if (value) f.catalog = value;
 
       // TODO: Determine force faction and faction specific rules.
 
       // Only include the allegiance rules once.
       if (!DuplicateForce(f, roster)) {
-        const rules = root.querySelectorAll('force>rules>rule')
-        for (const rule of rules)
-          ExtractRuleDescription(rule, f.rules)
+        const rules = root.querySelectorAll("force>rules>rule");
+        for (const rule of rules) ExtractRuleDescription(rule, f.rules);
       }
 
-      ParseSelections(root, f)
+      ParseSelections(root, f);
 
-      roster.forces.push(f)
+      roster.forces.push(f);
     }
   }
 }
 
 function ParseSelections(root: Element, force: Force) {
-  const selections = root.querySelectorAll('force>selections>selection')
+  const selections = root.querySelectorAll("force>selections>selection");
 
   for (const selection of selections) {
     // What kind of selection is this
-    const selectionName = selection.getAttributeNode('name')?.nodeValue
-    if (!selectionName)
-      continue
+    const selectionName = selection.getAttributeNode("name")?.nodeValue;
+    if (!selectionName) continue;
 
-    if (selectionName.includes('Detachment Command Cost')) {
+    if (selectionName.includes("Detachment Command Cost")) {
       // Ignore Detachment Command cost
-    }
-    else if (
-      selectionName === 'Battle Size'
-      || selectionName === 'Gametype'
+    } else if (
+      selectionName === "Battle Size" ||
+      selectionName === "Gametype"
     ) {
-      ParseConfiguration(selection, force)
-    }
-    else if (selection.querySelector('profile[typeName="Unit"]')) {
-      const unit = ParseUnit(selection)
-      force.units.push(unit)
+      ParseConfiguration(selection, force);
+    } else if (selection.querySelector('profile[typeName="Unit"]')) {
+      const unit = ParseUnit(selection);
+      force.units.push(unit);
       for (const entry of unit.rules.entries())
-        force.rules.set(entry[0], entry[1])
-    }
-    else if (selection.getAttribute('type') === 'upgrade') {
-      ExtractRuleFromSelection(selection, force.rules)
-      ParseConfiguration(selection, force)
-      const props = selection.querySelectorAll('selections>selection')
+        force.rules.set(entry[0], entry[1]);
+    } else if (selection.getAttribute("type") === "upgrade") {
+      ExtractRuleFromSelection(selection, force.rules);
+      ParseConfiguration(selection, force);
+      const props = selection.querySelectorAll("selections>selection");
       for (const prop of props) {
         // sub-faction
-        const name = prop.getAttribute('name')
-        if (name && prop.getAttribute('type') === 'upgrade') {
-          if (force.faction === 'Unknown') {
+        const name = prop.getAttribute("name");
+        if (name && prop.getAttribute("type") === "upgrade") {
+          if (force.faction === "Unknown") {
             // pick the first upgrade we see
-            force.faction = name
+            force.faction = name;
           }
-          ExtractRuleFromSelection(prop, force.factionRules)
+          ExtractRuleFromSelection(prop, force.factionRules);
         }
       }
-    }
-    else {
+    } else {
       // eslint-disable-next-line no-console
-      console.log('** UNEXPECTED SELECTION **', selectionName, selection)
+      console.log("** UNEXPECTED SELECTION **", selectionName, selection);
     }
   }
 
-  for (const key of force.factionRules.keys())
-    force.rules.delete(key)
+  for (const key of force.factionRules.keys()) force.rules.delete(key);
 
   // Sort force units by role and name#
   force.units.sort((a, b) => {
     if (UnitRoleSorting[a.role] > UnitRoleSorting[b.role]) {
-      return 1
+      return 1;
+    } else if (UnitRoleSorting[a.role] === UnitRoleSorting[b.role]) {
+      if (a.name > b.name) return 1;
+      else if (a.name === b.name) return 0;
+      return -1;
     }
-    else if (UnitRoleSorting[a.role] === UnitRoleSorting[b.role]) {
-      if (a.name > b.name)
-        return 1
-      else if (a.name === b.name)
-        return 0
-      return -1
-    }
-    return -1
-  })
+    return -1;
+  });
 }
 
 function ParseConfiguration(selection: Element, force: Force) {
-  const name = selection.getAttribute('name')
-  if (!name)
-    return
+  const name = selection.getAttribute("name");
+  if (!name) return;
 
-  const category = selection.querySelector('category')?.getAttribute('name')
-  const subSelections = selection.querySelectorAll('selections>selection')
-  const details = []
-  const costs = GetSelectionCosts(selection)
+  const category = selection.querySelector("category")?.getAttribute("name");
+  const subSelections = selection.querySelectorAll("selections>selection");
+  const details = [];
+  const costs = GetSelectionCosts(selection);
   for (const sel of subSelections) {
-    details.push(sel.getAttribute('name'))
-    costs.add(GetSelectionCosts(sel))
+    details.push(sel.getAttribute("name"));
+    costs.add(GetSelectionCosts(sel));
   }
 
-  let configuration
-    = !category || category === 'Configuration' ? name : `${category} - ${name}`
-  if (details.length > 0)
-    configuration += `: ${details.join(', ')}`
-  if (costs.hasValues())
-    configuration += ` ${costs.toString()}`
+  let configuration =
+    !category || category === "Configuration" ? name : `${category} - ${name}`;
+  if (details.length > 0) configuration += `: ${details.join(", ")}`;
+  if (costs.hasValues()) configuration += ` ${costs.toString()}`;
 
-  force.configurations.push(configuration)
+  force.configurations.push(configuration);
 }
 
 function DuplicateForce(force: Force, roster: Roster40k) {
-  if (!roster || !force)
-    return false
+  if (!roster || !force) return false;
 
   for (const f of roster.forces) {
-    if (f.catalog === force.catalog)
-      return true
+    if (f.catalog === force.catalog) return true;
   }
 
-  return false
+  return false;
 }
 
 function ExtractRuleFromSelection(root: Element, map: Map<string, string>) {
-  const profiles = root.querySelectorAll('profiles>profile')
+  const profiles = root.querySelectorAll("profiles>profile");
   for (const profile of profiles) {
     // detachment rules
-    const profileName = profile.getAttribute('name')
-    if (!profileName)
-      continue
+    const profileName = profile.getAttribute("name");
+    if (!profileName) continue;
 
-    const profileType = profile.getAttribute('typeName')
+    const profileType = profile.getAttribute("typeName");
     if (
-      profileType === 'Abilities'
-      || profileType === 'Dynastic Code'
-      || profileType === 'Household Tradition'
+      profileType === "Abilities" ||
+      profileType === "Dynastic Code" ||
+      profileType === "Household Tradition"
     )
-      ParseProfileCharacteristics(profile, profileName, profileType, map)
+      ParseProfileCharacteristics(profile, profileName, profileType, map);
   }
 
-  const rules = root.querySelectorAll('rules>rule')
-  for (const rule of rules)
-    ExtractRuleDescription(rule, map)
+  const rules = root.querySelectorAll("rules>rule");
+  for (const rule of rules) ExtractRuleDescription(rule, map);
 }
 
 function ExtractRuleDescription(rule: Element, map: Map<string, string>) {
-  const ruleName = rule.getAttribute('name')
-  const desc = rule.querySelector('description')
-  if (ruleName && desc?.textContent)
-    map.set(ruleName, desc.textContent)
+  const ruleName = rule.getAttribute("name");
+  const desc = rule.querySelector("description");
+  if (ruleName && desc?.textContent) map.set(ruleName, desc.textContent);
 }
 
-function LookupRole(roleText: string): typeof UnitRole[keyof typeof UnitRole] {
+function LookupRole(
+  roleText: string,
+): (typeof UnitRole)[keyof typeof UnitRole] {
   switch (roleText) {
-    case 'Character':
-      return UnitRole.Character
-    case 'Battleline':
-      return UnitRole.Battleline
-    case 'Dedicated Transport':
-      return UnitRole.DedicatedTransport
+    case "Character":
+      return UnitRole.Character;
+    case "Battleline":
+      return UnitRole.Battleline;
+    case "Dedicated Transport":
+      return UnitRole.DedicatedTransport;
   }
-  return UnitRole.NONE
+  return UnitRole.NONE;
 }
 
 function ExpandBaseNotes(root: Element, obj: { name?: string | null }) {
-  obj.name = root.getAttributeNode('name')?.nodeValue
-  return obj.name
+  obj.name = root.getAttributeNode("name")?.nodeValue;
+  return obj.name;
 }
 
 function ExtractNumberFromParent(root: Element) {
   // Get parent node (a selection) to determine model count.
   if (root.parentElement && root.parentElement.parentElement) {
-    const parentSelection = root.parentElement.parentElement
-    const countValue = parentSelection.getAttributeNode('number')?.nodeValue
-    if (countValue)
-      return +countValue
+    const parentSelection = root.parentElement.parentElement;
+    const countValue = parentSelection.getAttributeNode("number")?.nodeValue;
+    if (countValue) return +countValue;
   }
 
-  return 0
+  return 0;
 }
 
 function GetImmediateSelections(root: Element) {
   // querySelectorAll(':scope > tagname') doesn't work with jsdom, so we hack
   // around it: https://github.com/jsdom/jsdom/issues/2998
-  const selections = []
+  const selections = [];
   for (const child of root.children) {
-    if (child.tagName === 'selections') {
+    if (child.tagName === "selections") {
       for (const subChild of child.children) {
-        if (subChild.tagName === 'selection')
-          selections.push(subChild)
+        if (subChild.tagName === "selection") selections.push(subChild);
       }
     }
   }
-  return selections
+  return selections;
 }
 
 function HasImmediateProfileWithTypeName(root: Element, typeName: string) {
   // querySelectorAll(':scope > tagname') doesn't work with jsdom, so we hack
   // around it: https://github.com/jsdom/jsdom/issues/2998
   for (const child of root.children) {
-    if (child.tagName === 'profiles') {
+    if (child.tagName === "profiles") {
       for (const subChild of child.children) {
         if (
-          subChild.tagName === 'profile'
-          && subChild.getAttribute('typeName') === typeName
+          subChild.tagName === "profile" &&
+          subChild.getAttribute("typeName") === typeName
         )
-          return true
+          return true;
       }
     }
   }
-  return false
+  return false;
 }
 
 function GetSelectionCosts(selection: Element) {
   // querySelectorAll(':scope > tagname') doesn't work with jsdom, so we hack
   // around it: https://github.com/jsdom/jsdom/issues/2998
 
-  const costs = new Costs()
+  const costs = new Costs();
   for (const child of selection.children) {
-    if (child.tagName === 'costs') {
-      for (const subChild of child.children)
-        costs.add(ParseCost(subChild))
+    if (child.tagName === "costs") {
+      for (const subChild of child.children) costs.add(ParseCost(subChild));
     }
   }
-  return costs
+  return costs;
 }
 
 function ParseCost(cost: Element) {
-  const costs = new Costs()
-  const which = cost.getAttribute('name')
-  const value = cost.getAttribute('value')
+  const costs = new Costs();
+  const which = cost.getAttribute("name");
+  const value = cost.getAttribute("value");
   if (which && value) {
-    if (which === 'pts')
-      costs.points += +value
-    else
-      costs.addFreeformValue(which, +value)
+    if (which === "pts") costs.points += +value;
+    else costs.addFreeformValue(which, +value);
   }
-  return costs
+  return costs;
 }
 
 function ParseUnit(root: Element) {
-  const unit = new Unit()
-  ExpandBaseNotes(root, unit)
+  const unit = new Unit();
+  ExpandBaseNotes(root, unit);
 
-  const categories = root.querySelectorAll('categories>category')
+  const categories = root.querySelectorAll("categories>category");
 
   for (const cat of categories) {
-    const catName = cat.getAttributeNode('name')?.nodeValue
+    const catName = cat.getAttributeNode("name")?.nodeValue;
     if (catName) {
-      const factPattern = 'Faction: '
-      const factIndex = catName.lastIndexOf(factPattern)
+      const factPattern = "Faction: ";
+      const factIndex = catName.lastIndexOf(factPattern);
       if (factIndex >= 0) {
-        const factKeyword = catName.slice(factIndex + factPattern.length)
-        unit.factions.add(factKeyword)
-      }
-      else {
-        const roleText = catName.trim()
-        const unitRole = LookupRole(roleText)
-        if (unitRole !== UnitRole.NONE)
-          unit.role = unitRole
+        const factKeyword = catName.slice(factIndex + factPattern.length);
+        unit.factions.add(factKeyword);
+      } else {
+        const roleText = catName.trim();
+        const unitRole = LookupRole(roleText);
+        if (unitRole !== UnitRole.NONE) unit.role = unitRole;
 
-        unit.keywords.add(catName)
+        unit.keywords.add(catName);
       }
     }
   }
 
-  const seenProfiles: Element[] = []
+  const seenProfiles: Element[] = [];
 
   // First, find model stats. These have typeName=Unit.
   const modelStatsProfiles = Array.from(
     root.querySelectorAll('profile[typeName="Unit"],profile[typeName="Model"]'),
-  )
-  ParseModelStatsProfiles(modelStatsProfiles, unit)
-  seenProfiles.push(...modelStatsProfiles)
+  );
+  ParseModelStatsProfiles(modelStatsProfiles, unit);
+  seenProfiles.push(...modelStatsProfiles);
 
   // Next, look for selections with models. These usually have type="model",
   // but may have type="upgrade" containing a profile of type="Unit".
-  const modelSelections = []
-  if (root.getAttribute('type') === 'model') {
-    modelSelections.push(root) // Single-model unit.
-  }
-  else {
-    const immediateSelections = GetImmediateSelections(root)
+  const modelSelections = [];
+  if (root.getAttribute("type") === "model") {
+    modelSelections.push(root); // Single-model unit.
+  } else {
+    const immediateSelections = GetImmediateSelections(root);
     for (const selection of immediateSelections) {
       if (
-        selection.getAttribute('type') === 'model'
-        || HasImmediateProfileWithTypeName(selection, 'Unit')
+        selection.getAttribute("type") === "model" ||
+        HasImmediateProfileWithTypeName(selection, "Unit")
       )
-        modelSelections.push(selection)
+        modelSelections.push(selection);
     }
     // Some units are under a root selection with type="upgrade".
     if (modelSelections.length === 0) {
       modelSelections.push(
         ...Array.from(root.querySelectorAll('selection[type="model"]')),
-      )
+      );
     }
     // Some single-model units have type="unit" or type="upgrade".
     if (
-      modelSelections.length === 0
-      && HasImmediateProfileWithTypeName(root, 'Unit')
+      modelSelections.length === 0 &&
+      HasImmediateProfileWithTypeName(root, "Unit")
     )
-      modelSelections.push(root)
+      modelSelections.push(root);
   }
 
   // Now, parse the model -- profiles for stats, and selections for upgrades.
   for (const modelSelection of modelSelections) {
     const profiles = Array.from(
-      modelSelection.querySelectorAll('profiles>profile'),
-    )
-    const unseenProfiles = profiles.filter(e => !seenProfiles.includes(e))
-    seenProfiles.push(...unseenProfiles)
+      modelSelection.querySelectorAll("profiles>profile"),
+    );
+    const unseenProfiles = profiles.filter((e) => !seenProfiles.includes(e));
+    seenProfiles.push(...unseenProfiles);
 
-    const model = new Model()
-    model.name = modelSelection.getAttribute('name') || 'Unknown Model'
-    model.count = Number(modelSelection.getAttribute('number') || 1)
-    unit.models.push(model)
+    const model = new Model();
+    model.name = modelSelection.getAttribute("name") || "Unknown Model";
+    model.count = Number(modelSelection.getAttribute("number") || 1);
+    unit.models.push(model);
 
     // Find stats for all profiles (weapons, powers, abilities, etc).
-    ParseModelProfiles(profiles, model, unit)
+    ParseModelProfiles(profiles, model, unit);
 
     // Find all upgrades on the model. This may include weapons that were
     // parsed from profiles (above), so dedupe those in nameAndGear().
@@ -754,18 +721,18 @@ function ParseUnit(root: Element) {
       if (
         upgradeSelection.querySelector(
           'selections>selection[type="upgrade"]',
-        )
-        && !HasImmediateProfileWithTypeName(upgradeSelection, 'Abilities')
+        ) &&
+        !HasImmediateProfileWithTypeName(upgradeSelection, "Abilities")
       )
-        continue
+        continue;
 
-      const upgradeName = upgradeSelection.getAttribute('name')
+      const upgradeName = upgradeSelection.getAttribute("name");
       if (upgradeName) {
-        const upgrade = new Upgrade()
-        upgrade.name = upgradeName
-        upgrade.cost = GetSelectionCosts(upgradeSelection)
-        upgrade.count = Number(upgradeSelection.getAttribute('number'))
-        model.upgrades.push(upgrade)
+        const upgrade = new Upgrade();
+        upgrade.name = upgradeName;
+        upgrade.cost = GetSelectionCosts(upgradeSelection);
+        upgrade.count = Number(upgradeSelection.getAttribute("number"));
+        model.upgrades.push(upgrade);
       }
     }
   }
@@ -774,13 +741,13 @@ function ParseUnit(root: Element) {
   //    a) model loadouts, if it's selection with a Weapon (eg Immortals)
   //    b) unit loadout, if it's a selection with an Ability (eg Bomb Squigs)
   //    c) abilities for the unit, if it's not under a child selection
-  const profiles = Array.from(root.querySelectorAll('profiles>profile'))
-  const unseenProfiles = profiles.filter(e => !seenProfiles.includes(e))
-  seenProfiles.push(...unseenProfiles)
+  const profiles = Array.from(root.querySelectorAll("profiles>profile"));
+  const unseenProfiles = profiles.filter((e) => !seenProfiles.includes(e));
+  seenProfiles.push(...unseenProfiles);
   if (unseenProfiles.length > 0) {
-    const unitUpgradesModel = new Model()
-    unitUpgradesModel.name = 'Unit Upgrades'
-    ParseModelProfiles(unseenProfiles, unitUpgradesModel, unit)
+    const unitUpgradesModel = new Model();
+    unitUpgradesModel.name = "Unit Upgrades";
+    ParseModelProfiles(unseenProfiles, unitUpgradesModel, unit);
     /* if (unitUpgradesModel.meleeWeapons.length > 0 && unit.models.length > 0) {
       // Apply weapons at the unit level to all models in the unit.
       for (const model of unit.models) {
@@ -798,117 +765,111 @@ function ParseUnit(root: Element) {
     if (unitUpgradesModel.psychicPowers.length > 0) {
       // Add spells to the unit's spell list. However, we'll still need
       // to add spell upgrade selections to the upgrade list, below.
-      unit.spells.push(...unitUpgradesModel.psychicPowers)
-      unitUpgradesModel.psychicPowers.length = 0
+      unit.spells.push(...unitUpgradesModel.psychicPowers);
+      unitUpgradesModel.psychicPowers.length = 0;
     }
     if (unitUpgradesModel.psyker) {
-      unit.psykers.push(unitUpgradesModel.psyker)
-      unitUpgradesModel.psyker = null
+      unit.psykers.push(unitUpgradesModel.psyker);
+      unitUpgradesModel.psyker = null;
     }
     if (unitUpgradesModel.explosions.length > 0) {
-      unit.explosions.push(...unitUpgradesModel.explosions)
-      unitUpgradesModel.explosions.length = 0
+      unit.explosions.push(...unitUpgradesModel.explosions);
+      unitUpgradesModel.explosions.length = 0;
     }
 
     // Look for any unit-level upgrade selections that we didn't catch
     // previously, and stuff them in the "Unit Upgrades" model.
     for (const selection of GetImmediateSelections(root)) {
-      if (selection.getAttribute('type') !== 'upgrade')
-        continue
+      if (selection.getAttribute("type") !== "upgrade") continue;
       // Ignore model selections (which were already processed).
-      if (modelSelections.includes(selection))
-        continue
+      if (modelSelections.includes(selection)) continue;
       // Ignore unit-level weapon selections; these were handled above.
       if (selection.querySelector('profiles>profile[typeName="Weapon"]'))
-        continue
+        continue;
 
-      const name = selection.getAttribute('name')
-      if (!name)
-        continue
+      const name = selection.getAttribute("name");
+      if (!name) continue;
 
-      const upgrade = new Upgrade()
-      upgrade.name = name
-      upgrade.cost = GetSelectionCosts(selection)
-      upgrade.count = Number(selection.getAttribute('number'))
-      unitUpgradesModel.upgrades.push(upgrade)
+      const upgrade = new Upgrade();
+      upgrade.name = name;
+      upgrade.cost = GetSelectionCosts(selection);
+      upgrade.count = Number(selection.getAttribute("number"));
+      unitUpgradesModel.upgrades.push(upgrade);
     }
 
     if (
-      unitUpgradesModel.rangedWeapons.length > 0
-      || unitUpgradesModel.meleeWeapons.length > 0
-      || unitUpgradesModel.upgrades.length > 0
+      unitUpgradesModel.rangedWeapons.length > 0 ||
+      unitUpgradesModel.meleeWeapons.length > 0 ||
+      unitUpgradesModel.upgrades.length > 0
     )
-      unit.models.push(unitUpgradesModel)
+      unit.models.push(unitUpgradesModel);
   }
 
   // Only match costs->costs associated with the unit and not its children (model and weapon) costs.
-  const costs = root.querySelectorAll('costs>cost')
-  for (const cost of costs)
-    unit.cost.add(ParseCost(cost))
+  const costs = root.querySelectorAll("costs>cost");
+  for (const cost of costs) unit.cost.add(ParseCost(cost));
 
-  const rules = root.querySelectorAll('rules > rule')
+  const rules = root.querySelectorAll("rules > rule");
   for (const rule of rules) {
-    if (rule.parentElement?.parentElement?.getAttribute('type') === 'upgrade')
-      continue
+    if (rule.parentElement?.parentElement?.getAttribute("type") === "upgrade")
+      continue;
 
-    ExtractRuleDescription(rule, unit.rules)
+    ExtractRuleDescription(rule, unit.rules);
   }
 
-  unit.normalize()
-  return unit
+  unit.normalize();
+  return unit;
 }
 
 function ParseModelStatsProfiles(profiles: Element[], unit: Unit) {
   for (const profile of profiles) {
-    const profileName = profile.getAttribute('name')
-    const profileType = profile.getAttribute('typeName')
-    if (!profileName || !profileType)
-      return
+    const profileName = profile.getAttribute("name");
+    const profileType = profile.getAttribute("typeName");
+    if (!profileName || !profileType) return;
 
-    const model = new Model()
-    model.name = profileName
-    unit.modelStats.push(model)
+    const model = new Model();
+    model.name = profileName;
+    unit.modelStats.push(model);
 
-    ExpandBaseNotes(profile, model)
+    ExpandBaseNotes(profile, model);
 
-    const chars = profile.querySelectorAll('characteristics>characteristic')
+    const chars = profile.querySelectorAll("characteristics>characteristic");
     for (const char of chars) {
-      const charName = char.getAttribute('name')
-      if (!charName)
-        continue
+      const charName = char.getAttribute("name");
+      if (!charName) continue;
 
       if (char.textContent) {
         switch (charName) {
-          case 'M':
-            model.move = char.textContent
-            break
-          case 'WS':
-            model.ws = char.textContent
-            break
-          case 'BS':
-            model.bs = char.textContent
-            break
-          case 'S':
-            model.str = +char.textContent
-            break
-          case 'T':
-            model.toughness = +char.textContent
-            break
-          case 'W':
-            model.wounds = +char.textContent
-            break
-          case 'A':
-            model.attacks = char.textContent
-            break
-          case 'LD':
-            model.leadership = char.textContent
-            break
-          case 'SV':
-            model.save = char.textContent
-            break
-          case 'OC':
-            model.oc = char.textContent
-            break
+          case "M":
+            model.move = char.textContent;
+            break;
+          case "WS":
+            model.ws = char.textContent;
+            break;
+          case "BS":
+            model.bs = char.textContent;
+            break;
+          case "S":
+            model.str = +char.textContent;
+            break;
+          case "T":
+            model.toughness = +char.textContent;
+            break;
+          case "W":
+            model.wounds = +char.textContent;
+            break;
+          case "A":
+            model.attacks = char.textContent;
+            break;
+          case "LD":
+            model.leadership = char.textContent;
+            break;
+          case "SV":
+            model.save = char.textContent;
+            break;
+          case "OC":
+            model.oc = char.textContent;
+            break;
         }
       }
     }
@@ -917,218 +878,207 @@ function ParseModelStatsProfiles(profiles: Element[], unit: Unit) {
 
 function ParseModelProfiles(profiles: Element[], model: Model, unit: Unit) {
   for (const profile of profiles) {
-    const profileName = profile.getAttribute('name')
-    const typeName = profile.getAttribute('typeName')
-    if (!profileName || !typeName)
-      continue
+    const profileName = profile.getAttribute("name");
+    const typeName = profile.getAttribute("typeName");
+    if (!profileName || !typeName) continue;
 
     if (
-      typeName === 'Unit'
-      || typeName === 'Model'
-      || profile.getAttribute('type') === 'model'
+      typeName === "Unit" ||
+      typeName === "Model" ||
+      profile.getAttribute("type") === "model"
     ) {
       // Do nothing; these were already handled.
-    }
-    else if (typeName === 'Ranged Weapons') {
-      const weapon = ParseWeaponProfile(profile)
-      model.rangedWeapons.push(weapon)
-    }
-    else if (typeName === 'Melee Weapons') {
-      const weapon = ParseWeaponProfile(profile)
-      model.meleeWeapons.push(weapon)
-    }
-    else if (
-      typeName.includes('Wound Track')
-      || typeName.includes('Stat Damage')
-      || typeName.includes(' Wounds')
+    } else if (typeName === "Ranged Weapons") {
+      const weapon = ParseWeaponProfile(profile);
+      model.rangedWeapons.push(weapon);
+    } else if (typeName === "Melee Weapons") {
+      const weapon = ParseWeaponProfile(profile);
+      model.meleeWeapons.push(weapon);
+    } else if (
+      typeName.includes("Wound Track") ||
+      typeName.includes("Stat Damage") ||
+      typeName.includes(" Wounds")
     ) {
-      const tracker = ParseWoundTrackerProfile(profile)
-      unit.woundTracker.push(tracker)
-    }
-    else if (typeName === 'Psychic Power') {
-      const power = ParsePsychicPowerProfile(profile)
-      model.psychicPowers.push(power)
-    }
-    else if (typeName === 'Abilities') {
-      if (!unit.abilities.get('Abilities'))
-        unit.abilities.set('Abilities', new Map())
+      const tracker = ParseWoundTrackerProfile(profile);
+      unit.woundTracker.push(tracker);
+    } else if (typeName === "Psychic Power") {
+      const power = ParsePsychicPowerProfile(profile);
+      model.psychicPowers.push(power);
+    } else if (typeName === "Abilities") {
+      if (!unit.abilities.get("Abilities"))
+        unit.abilities.set("Abilities", new Map());
       ParseProfileCharacteristics(
         profile,
         profileName,
         typeName,
-        unit.abilities.get('Abilities'),
-      )
-    }
-    else {
+        unit.abilities.get("Abilities"),
+      );
+    } else {
       // Everything else, like Prayers and Warlord Traits.
       if (!unit.abilities.get(typeName))
-        unit.abilities.set(typeName, new Map())
+        unit.abilities.set(typeName, new Map());
       ParseProfileCharacteristics(
         profile,
         profileName,
         typeName,
         unit.abilities.get(typeName),
-      )
+      );
     }
   }
 }
 
-function ParseProfileCharacteristics(profile: Element, profileName: string, typeName: string, map: Unit['abilities']) {
-  const chars = profile.querySelectorAll('characteristics>characteristic')
+function ParseProfileCharacteristics(
+  profile: Element,
+  profileName: string,
+  typeName: string,
+  map: Unit["abilities"],
+) {
+  const chars = profile.querySelectorAll("characteristics>characteristic");
   for (const char of chars) {
-    if (!char.textContent)
-      continue
-    const charName = char.getAttribute('name')
+    if (!char.textContent) continue;
+    const charName = char.getAttribute("name");
     if (charName && chars.length > 1) {
       // Profiles with multiple characteristics need to distinguish them by name.
-      map.set([profileName, charName.toString()].join(' - '), char.textContent)
-    }
-    else {
+      map.set([profileName, charName.toString()].join(" - "), char.textContent);
+    } else {
       // Profiles with a single characteristic can ignore the char name.
       if (!map)
         // eslint-disable-next-line no-debugger, no-restricted-syntax
-        debugger
+        debugger;
 
-      map.set(profileName, char.textContent)
+      map.set(profileName, char.textContent);
     }
   }
 }
 
 function ParseWeaponProfile(profile: Element) {
-  const weapon = new Weapon()
-  ExpandBaseNotes(profile, weapon)
-  weapon.count = ExtractNumberFromParent(profile)
+  const weapon = new Weapon();
+  ExpandBaseNotes(profile, weapon);
+  weapon.count = ExtractNumberFromParent(profile);
 
-  const chars = profile.querySelectorAll('characteristics>characteristic')
+  const chars = profile.querySelectorAll("characteristics>characteristic");
   for (const char of chars) {
-    const charName = char.getAttribute('name')
+    const charName = char.getAttribute("name");
     if (charName) {
       if (char.textContent) {
         switch (charName) {
-          case 'Range':
-            weapon.range = char.textContent
-            break
-          case 'Type':
-            weapon.type = char.textContent
-            break
-          case 'S':
-            weapon.str = char.textContent
-            break
-          case 'AP':
-            weapon.ap = char.textContent
-            break
-          case 'D':
-            weapon.damage = char.textContent
-            break
-          case 'Abilities':
-            weapon.abilities = char.textContent
-            break
-          case 'BS':
-            weapon.bs = char.textContent
-            break
-          case 'WS':
-            weapon.ws = char.textContent
-            break
-          case 'A':
-            weapon.attacks = char.textContent
-            break
-          case 'Keywords':
-            weapon.type = char.textContent
-            break
+          case "Range":
+            weapon.range = char.textContent;
+            break;
+          case "Type":
+            weapon.type = char.textContent;
+            break;
+          case "S":
+            weapon.str = char.textContent;
+            break;
+          case "AP":
+            weapon.ap = char.textContent;
+            break;
+          case "D":
+            weapon.damage = char.textContent;
+            break;
+          case "Abilities":
+            weapon.abilities = char.textContent;
+            break;
+          case "BS":
+            weapon.bs = char.textContent;
+            break;
+          case "WS":
+            weapon.ws = char.textContent;
+            break;
+          case "A":
+            weapon.attacks = char.textContent;
+            break;
+          case "Keywords":
+            weapon.type = char.textContent;
+            break;
         }
       }
     }
   }
   // Keep track of the weapon's parent selection for its name, unless the
   // weapon is directly under the unit's profile.
-  const selection = profile.parentElement?.parentElement
-  const selectionName = selection?.getAttribute('name')
-  if (selection?.getAttribute('type') === 'upgrade' && selectionName) {
-    weapon.selectionName = selectionName
-    weapon.cost = GetSelectionCosts(selection)
+  const selection = profile.parentElement?.parentElement;
+  const selectionName = selection?.getAttribute("name");
+  if (selection?.getAttribute("type") === "upgrade" && selectionName) {
+    weapon.selectionName = selectionName;
+    weapon.cost = GetSelectionCosts(selection);
   }
-  return weapon
+  return weapon;
 }
 
 function ParseWoundTrackerProfile(profile: Element) {
-  const tracker = new WoundTracker()
-  ExpandBaseNotes(profile, tracker)
-  const chars = profile.querySelectorAll('characteristics>characteristic')
+  const tracker = new WoundTracker();
+  ExpandBaseNotes(profile, tracker);
+  const chars = profile.querySelectorAll("characteristics>characteristic");
   for (const char of chars) {
-    const charName = char.getAttribute('name')
+    const charName = char.getAttribute("name");
     if (charName) {
-      if (char.textContent)
-        tracker.table.set(charName, char.textContent)
-      else
-        tracker.table.set(charName, '-')
+      if (char.textContent) tracker.table.set(charName, char.textContent);
+      else tracker.table.set(charName, "-");
     }
   }
-  return tracker
+  return tracker;
 }
 
 function ParsePsychicPowerProfile(profile: Element) {
-  const power = new PsychicPower()
-  ExpandBaseNotes(profile, power)
+  const power = new PsychicPower();
+  ExpandBaseNotes(profile, power);
 
-  const chars = profile.querySelectorAll('characteristics>characteristic')
+  const chars = profile.querySelectorAll("characteristics>characteristic");
   for (const char of chars) {
-    const charName = char.getAttribute('name')
+    const charName = char.getAttribute("name");
     if (charName && char.textContent) {
       switch (charName) {
-        case 'Range':
-          power.range = char.textContent
-          break
-        case 'Warp Charge':
-          power.manifest = +char.textContent
-          break
-        case 'Details':
-          power.details = char.textContent
-          break
+        case "Range":
+          power.range = char.textContent;
+          break;
+        case "Warp Charge":
+          power.manifest = +char.textContent;
+          break;
+        case "Details":
+          power.details = char.textContent;
+          break;
       }
     }
   }
-  return power
+  return power;
 }
 
 function CompareObj(a: { name: string }, b: { name: string }) {
-  return Compare(a.name, b.name)
+  return Compare(a.name, b.name);
 }
 
 function CompareModel(a: Model, b: Model) {
   if (a.name === b.name) {
-    return Compare(a.nameAndGear(), b.nameAndGear())
-  }
-  else if (a.name === 'Unit Upgrades') {
+    return Compare(a.nameAndGear(), b.nameAndGear());
+  } else if (a.name === "Unit Upgrades") {
     // "Unit Upgrades", a special model name, is always sorted last.
-    return 1
-  }
-  else if (b.name === 'Unit Upgrades') {
+    return 1;
+  } else if (b.name === "Unit Upgrades") {
     // "Unit Upgrades", a special model name, is always sorted last.
-    return -1
-  }
-  else {
-    return Compare(a.name, b.name)
+    return -1;
+  } else {
+    return Compare(a.name, b.name);
   }
 }
 
 export function CompareWeapon(a: Weapon, b: Weapon) {
-  const aType = a.type.startsWith('Grenade')
+  const aType = a.type.startsWith("Grenade")
     ? 2
-    : a.type.startsWith('Melee')
+    : a.type.startsWith("Melee")
       ? 1
-      : 0
-  const bType = b.type.startsWith('Grenade')
+      : 0;
+  const bType = b.type.startsWith("Grenade")
     ? 2
-    : b.type.startsWith('Melee')
+    : b.type.startsWith("Melee")
       ? 1
-      : 0
-  return aType - bType || a.name.localeCompare(b.name)
+      : 0;
+  return aType - bType || a.name.localeCompare(b.name);
 }
 
 export function Compare(a: string, b: string) {
-  if (a > b)
-    return 1
-  else if (a === b)
-    return 0
-  return -1
+  if (a > b) return 1;
+  else if (a === b) return 0;
+  return -1;
 }

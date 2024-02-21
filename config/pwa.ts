@@ -1,10 +1,10 @@
-import type { ModuleOptions } from '@vite-pwa/nuxt'
-import { appDescription, appName } from '../constants/index'
+import type { ModuleOptions } from "@vite-pwa/nuxt";
+import { appDescription, appName } from "../constants/index";
 
-const scope = '/'
+const scope = "/";
 
 export const pwa: ModuleOptions = {
-  registerType: 'autoUpdate',
+  registerType: "autoUpdate",
   scope,
   base: scope,
   manifest: {
@@ -13,42 +13,42 @@ export const pwa: ModuleOptions = {
     name: appName,
     short_name: appName,
     description: appDescription,
-    theme_color: '#ffffff',
+    theme_color: "#ffffff",
     icons: [
       {
-        src: 'pwa-64x64.png',
-        sizes: '64x64',
-        type: 'image/png',
+        src: "pwa-64x64.png",
+        sizes: "64x64",
+        type: "image/png",
       },
       {
-        src: 'pwa-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
+        src: "pwa-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
       },
       {
-        src: 'pwa-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
+        src: "pwa-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
       },
       {
-        src: 'maskable-icon-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'any maskable',
+        src: "maskable-icon-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any maskable",
       },
     ],
   },
   workbox: {
-    globPatterns: ['**/*.{js,css,html,txt,png,ico,svg}', '**/_payload.json'],
+    globPatterns: ["**/*.{js,css,html,txt,png,ico,svg}", "**/_payload.json"],
     navigateFallbackDenylist: [/^\/api\//],
-    navigateFallback: '/',
+    navigateFallback: "/",
     cleanupOutdatedCaches: true,
     runtimeCaching: [
       {
         urlPattern: /^https:\/\/fonts.googleapis.com\/.*/i,
-        handler: 'CacheFirst',
+        handler: "CacheFirst",
         options: {
-          cacheName: 'google-fonts-cache',
+          cacheName: "google-fonts-cache",
           expiration: {
             maxEntries: 10,
             maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
@@ -60,9 +60,9 @@ export const pwa: ModuleOptions = {
       },
       {
         urlPattern: /^https:\/\/fonts.gstatic.com\/.*/i,
-        handler: 'CacheFirst',
+        handler: "CacheFirst",
         options: {
-          cacheName: 'gstatic-fonts-cache',
+          cacheName: "gstatic-fonts-cache",
           expiration: {
             maxEntries: 10,
             maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
@@ -77,7 +77,7 @@ export const pwa: ModuleOptions = {
   registerWebManifestInRouteRules: true,
   writePlugin: true,
   devOptions: {
-    enabled: process.env.VITE_PLUGIN_PWA === 'true',
+    enabled: process.env.VITE_PLUGIN_PWA === "true",
     navigateFallback: scope,
   },
-}
+};

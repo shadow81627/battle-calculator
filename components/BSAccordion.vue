@@ -1,16 +1,11 @@
 <script setup>
-defineProps(['selections'])
+defineProps(["selections"]);
 </script>
 
 <template>
   <div class="ml-4">
-    <Accordion
-      v-for="selection of selections"
-      :key="selection.id"
-    >
-      <template #header>
-        {{ selection.name }} {{ selection.type }}
-      </template>
+    <Accordion v-for="selection of selections" :key="selection.id">
+      <template #header> {{ selection.name }} {{ selection.type }} </template>
       <div>
         <!-- <div v-if="selection.constraints.length">
           Constraints
@@ -18,21 +13,39 @@ defineProps(['selections'])
             {{ constraint.type }} {{ constraint.value }}
           </div>
         </div> -->
-        <div
-          v-for="cost of selection.costs"
-          :key="cost.id"
-        >
+        <div v-for="cost of selection.costs" :key="cost.id">
           {{ cost.value }} {{ cost.name }}
         </div>
         <Attributes
-          v-for="profile of selection.profiles.filter(profile => profile.W)"
+          v-for="profile of selection.profiles.filter((profile) => profile.W)"
           :key="profile.name"
-          :unit="{ attributes: { movement: profile.M, toughness: profile.T, save: profile.SV, wound: profile.W, leadership: profile.LD, control: profile.OC } }"
+          :unit="{
+            attributes: {
+              movement: profile.M,
+              toughness: profile.T,
+              save: profile.SV,
+              wound: profile.W,
+              leadership: profile.LD,
+              control: profile.OC,
+            },
+          }"
         />
         <WeaponAttributes
-          v-for="profile of selection.profiles.filter(profile => profile.A)"
+          v-for="profile of selection.profiles.filter((profile) => profile.A)"
           :key="profile.id"
-          :unit="{ weapons: [{ name: profile.name, range: profile.Range, attack: profile.A, accuracy: profile.WS || profile.BS, strength: profile.S, piercing: profile.AP, damage: profile.D }] }"
+          :unit="{
+            weapons: [
+              {
+                name: profile.name,
+                range: profile.Range,
+                attack: profile.A,
+                accuracy: profile.WS || profile.BS,
+                strength: profile.S,
+                piercing: profile.AP,
+                damage: profile.D,
+              },
+            ],
+          }"
           class="w-full"
         />
         <div v-if="selection.abilities.length">
@@ -56,7 +69,8 @@ defineProps(['selections'])
               v-for="(keyword, index) of selection.categories"
               :key="keyword.id"
             >
-              {{ keyword.name }}<span v-if="index + 1 !== selection.categories.length">, </span>
+              {{ keyword.name
+              }}<span v-if="index + 1 !== selection.categories.length">, </span>
             </span>
           </div>
         </section>

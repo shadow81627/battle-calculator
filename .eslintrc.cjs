@@ -1,7 +1,13 @@
-{
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+  },
   "extends": [
     "@unocss",
-    "@nuxt/eslint-config"
+    "@nuxt/eslint-config",
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "vue/multi-word-component-names": "off",

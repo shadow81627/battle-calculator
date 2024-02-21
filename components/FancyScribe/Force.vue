@@ -1,7 +1,7 @@
 <script setup>
-const props = defineProps({ force: {type: Object, required: true} })
-const { units, factionRules, rules, catalog } = props.force
-const mergedRules = { ...factionRules, ...rules }
+const props = defineProps({ force: { type: Object, required: true } });
+const { units, factionRules, rules, catalog } = props.force;
+const mergedRules = { ...factionRules, ...rules };
 </script>
 
 <template>

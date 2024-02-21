@@ -1,60 +1,83 @@
 <script setup>
-import { groupBy, startCase } from 'lodash-es'
+import { groupBy, startCase } from "lodash-es";
 
-const route = useRoute()
-const router = useRouter()
-const turns = ref(1)
-const distance = ref(24)
-const { data: unitOptions } = await useAsyncData('lists', () => queryContent('lists').find(), {
-  transform(data) {
-    const options = data.map(item => ({ value: item._path, label: item.name }))
-    return options
+const route = useRoute();
+const router = useRouter();
+const turns = ref(1);
+const distance = ref(24);
+const { data: unitOptions } = await useAsyncData(
+  "lists",
+  () => queryContent("lists").find(),
+  {
+    transform(data) {
+      const options = data.map((item) => ({
+        value: item._path,
+        label: item.name,
+      }));
+      return options;
+    },
   },
-})
+);
 const groupedUnitOptions = computed(() => {
   const grouped = groupBy(unitOptions.value, (option) => {
-    return startCase(option.value.split('/').slice(-2, -1))
-  })
-  return Object.entries(grouped)
-})
+    return startCase(option.value.split("/").slice(-2, -1));
+  });
+  return Object.entries(grouped);
+});
 const attackerId = computed({
   get() {
-    const id = decodeURIComponent(route.query.attackerId)
-    if (unitOptions.value.find(option => option.value === id))
-      return id
-    return '/lists/damien-infantry-artillery/scout-sentinels'
+    const id = decodeURIComponent(route.query.attackerId);
+    if (unitOptions.value.find((option) => option.value === id)) return id;
+    return "/lists/damien-infantry-artillery/scout-sentinels";
   },
   set(value) {
-    router.replace({ query: { ...route.query, attackerId: encodeURIComponent(value) } })
+    router.replace({
+      query: { ...route.query, attackerId: encodeURIComponent(value) },
+    });
   },
-})
+});
 const defenderId = computed({
   get() {
-    const id = decodeURIComponent(route.query.defenderId)
-    if (unitOptions.value.find(option => option.value === id))
-      return id
-    return '/lists/braydon-thousand-sons/mutalith-vortex-beast'
+    const id = decodeURIComponent(route.query.defenderId);
+    if (unitOptions.value.find((option) => option.value === id)) return id;
+    return "/lists/braydon-thousand-sons/mutalith-vortex-beast";
   },
   set(value) {
-    router.replace({ query: { ...route.query, defenderId: encodeURIComponent(value) } })
+    router.replace({
+      query: { ...route.query, defenderId: encodeURIComponent(value) },
+    });
   },
-})
-const { data: attacker, refresh: refreshAttacker, pending: loadingAttacker } = await useAsyncData(attackerId.value, () => queryContent(attackerId.value).findOne())
-const { data: defender, refresh: refreshDefender, pending: loadingDefender } = await useAsyncData(defenderId.value, () => queryContent(defenderId.value).findOne())
+});
+const {
+  data: attacker,
+  refresh: refreshAttacker,
+  pending: loadingAttacker,
+} = await useAsyncData(attackerId.value, () =>
+  queryContent(attackerId.value).findOne(),
+);
+const {
+  data: defender,
+  refresh: refreshDefender,
+  pending: loadingDefender,
+} = await useAsyncData(defenderId.value, () =>
+  queryContent(defenderId.value).findOne(),
+);
 </script>
 
 <template>
   <div>
     <section class="container">
-      <h1 class="text-left h2">
-        MathHammer
-      </h1>
+      <h1 class="text-left h2">MathHammer</h1>
       <div>
-        <p>Determine the expected outcome of dice when units attack in games like Warhammer 40,000 (10th Edition).</p>
+        <p>
+          Determine the expected outcome of dice when units attack in games like
+          Warhammer 40,000 (10th Edition).
+        </p>
 
         <p>
-          This practice is often referred to as "MathHammer" and is commonly used to help make optimum unit selections as
-          well as improve overall strategic decisions.
+          This practice is often referred to as "MathHammer" and is commonly
+          used to help make optimum unit selections as well as improve overall
+          strategic decisions.
         </p>
       </div>
     </section>
@@ -82,7 +105,7 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
                     type="number"
                     max="5"
                     min="1"
-                  >
+                  />
                 </td>
                 <td class="p-1">
                   <input
@@ -91,7 +114,7 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
                     class="max-w-250px input"
                     type="number"
                     min="1"
-                  >
+                  />
                 </td>
               </tr>
             </tbody>
@@ -120,7 +143,9 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
                     v-for="option of group"
                     :key="option.value"
                     :value="option.value"
-                    :selected="attackerId === option.value ? option.value : undefined"
+                    :selected="
+                      attackerId === option.value ? option.value : undefined
+                    "
                   >
                     {{ option.label }}
                   </option>
@@ -155,7 +180,9 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
                     v-for="option of group"
                     :key="option.value"
                     :value="option.value"
-                    :selected="defenderId === option.value ? option.value : undefined"
+                    :selected="
+                      defenderId === option.value ? option.value : undefined
+                    "
                   >
                     {{ option.label }}
                   </option>

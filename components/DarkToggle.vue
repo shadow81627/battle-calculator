@@ -1,19 +1,19 @@
 <script lang="ts">
 export default {
   setup() {
-    const color = useColorMode()
-    const toggle = computed(() => (color.value === 'dark' ? 'light' : 'dark'))
+    const color = useColorMode();
+    const toggle = computed(() => (color.value === "dark" ? "light" : "dark"));
     return {
       toggle,
       color,
-    }
+    };
   },
   methods: {
     toggleDark() {
-      this.color.preference = this.toggle
+      this.color.preference = this.toggle;
     },
   },
-}
+};
 </script>
 
 <template>

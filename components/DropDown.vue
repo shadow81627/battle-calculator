@@ -1,32 +1,36 @@
 <script setup>
-import { startCase, uniqBy } from 'lodash-es'
-import { vOnClickOutside } from '@vueuse/components'
+import { startCase, uniqBy } from "lodash-es";
+import { vOnClickOutside } from "@vueuse/components";
 
-const show = ref(false)
+const show = ref(false);
 function toggleShow() {
-  show.value = !show.value
+  show.value = !show.value;
 }
 function close() {
-  show.value = false
+  show.value = false;
 }
 
-const { data: unitOptions } = await useAsyncData('lists-dropdown', () => queryContent('lists').find(), {
-  transform(data) {
-    const options = uniqBy(data.map((item) => {
-      const value = item._path.split('/').slice(-2, -1)
-      const label = startCase(value)
-      return { value, label }
-    }), 'label').filter(item => item.label !== 'Lists')
-    return options
+const { data: unitOptions } = await useAsyncData(
+  "lists-dropdown",
+  () => queryContent("lists").find(),
+  {
+    transform(data) {
+      const options = uniqBy(
+        data.map((item) => {
+          const value = item._path.split("/").slice(-2, -1);
+          const label = startCase(value);
+          return { value, label };
+        }),
+        "label",
+      ).filter((item) => item.label !== "Lists");
+      return options;
+    },
   },
-})
+);
 </script>
 
 <template>
-  <div
-    v-on-click-outside="close"
-    class="relative inline-block text-left"
-  >
+  <div v-on-click-outside="close" class="relative inline-block text-left">
     <div>
       <button
         type="button"
@@ -70,10 +74,7 @@ const { data: unitOptions } = await useAsyncData('lists-dropdown', () => queryCo
       aria-labelledby="menu-button"
       tabindex="-1"
     >
-      <div
-        class="py-1"
-        role="none"
-      >
+      <div class="py-1" role="none">
         <nuxt-link
           v-for="option in unitOptions"
           :key="option.value"
