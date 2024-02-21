@@ -1,6 +1,7 @@
 {
   "extends": [
-    "@antfu",
-    "@unocss"
+    // "@antfu",
+    "@unocss",
+    "@nuxt/eslint-config"
   ]
 }
