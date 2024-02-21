@@ -3,6 +3,7 @@ import parseRolls from "~/utils/parseRolls";
 import getModifier from "~/utils/getModifier";
 import AverageWeaponCombatWorker from "~/assets/workers/averageWeaponCombat?worker";
 import averageWeaponCombat from "~/utils/averageWeaponCombat";
+import { v4 as uuid } from 'uuid'
 
 const props = defineProps({
   strength: { type: Number },
@@ -60,7 +61,7 @@ const averageWeaponCombatWorkerResults = useState(
 );
 
 const averageWeaponCombatData = computed(() => {
-  const id = globalThis.crypto.randomUUID();
+  const id = uuid();
   const numberOfRolls = 100;
   return JSON.parse(
     JSON.stringify({
