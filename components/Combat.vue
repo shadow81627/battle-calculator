@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import parseRolls from '~/utils/parseRolls'
 import getModifier from '~/utils/getModifier'
 import AverageWeaponCombatWorker from '~/assets/workers/averageWeaponCombat?worker'
+import averageWeaponCombat from '~/utils/averageWeaponCombat'
 
 const props = defineProps({
   strength: { type: Number },
@@ -53,34 +54,50 @@ const additional = computed(() => ({
   selections: props.selections,
 }))
 
-const randomTotals = useState(`randomTotals-${props.weapon.name}`, () => computed(() => weaponCombat(props.weapon, props.unit, props.target, additional.value)))
+const averageWeaponCombatWorkerResults = useState(`${props.weapon?.name}_averageWeaponCombatWorkerResults`, () => [])
 
-function averageWeaponCombatWorker() {
-  return new Promise((resolve, reject) => {
-    if (globalThis.Worker) {
-      const worker = new AverageWeaponCombatWorker()
-      const data = JSON.parse(JSON.stringify({
-        weapon: { ...props.weapon, modifiers: props.modifiers },
-        unit: props.unit,
-        target: props.target,
-        additional: additional.value,
-      }))
+const averageWeaponCombatData = computed(() => {
+  const id = globalThis.crypto.randomUUID()
+  const numberOfRolls = 100
+  return JSON.parse(JSON.stringify({
+    id,
+    numberOfRolls,
+    weapon: { ...props.weapon, modifiers: props.modifiers },
+    unit: props.unit,
+    target: props.target,
+    additional: additional.value,
+  }))
+})
+
+const averages = computed(() => {
+  if (averageWeaponCombatWorkerResults.value)
+    return averageWeaponCombat({ ...averageWeaponCombatData.value, rolls: averageWeaponCombatWorkerResults.value })
+})
+
+function averageWeaponCombatWorker(data) {
+  if (globalThis.Worker) {
+    const worker = new AverageWeaponCombatWorker()
+    const numberOfRolls = 100
+    for (let i = 0; i < numberOfRolls; i++)
       worker.postMessage(data)
-      worker.addEventListener('message', (e) => {
-        if (e.data)
-          resolve(e.data)
+
+    worker.addEventListener('message', (e) => {
+      if (e.data && e.data.id === data.id)
+        averageWeaponCombatWorkerResults.value.push(e.data)
+
+      if (averageWeaponCombatWorkerResults.value.length === numberOfRolls)
         worker.terminate()
-      }, false)
-    }
-    else {
-      reject(new Error('No Worker'))
-    }
-  })
+    }, false)
+  }
 }
 
-const averages = computedAsync(async () => {
-  return await averageWeaponCombatWorker()
-})
+const randomTotals = useState(`randomTotals_${props.weapon?.name}`, () => weaponCombat(props.weapon, props.unit, props.target, additional.value))
+
+watch(averageWeaponCombatData, async (data) => {
+  averageWeaponCombatWorkerResults.value = []
+  averageWeaponCombatWorker(data)
+  randomTotals.value = weaponCombat(data.weapon, data.unit, data.target, data.additional)
+}, { immediate: true })
 
 const targetIsVehicleOrMonster = computed(() => props.target?.keywords?.some(keyword => ['VEHICLE', 'MONSTER'].includes(keyword.toUpperCase())))
 
@@ -298,7 +315,7 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
             {{ pain }}+
           </td>
         </tr>
-        <tr>
+        <tr xv-if="false">
           <td class="p-1 text-left">
             Calculated
           </td>
@@ -339,7 +356,7 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
           </td>
           <template v-if="averages">
             <td class="p-1">
-              {{ averages.averageAttacksTotal }}
+              {{ formatAverage(averages.averageAttacksTotal) }}
             </td>
             <td class="p-1">
               <template v-if="averages.averageSustainedHitsTotal">
@@ -347,24 +364,24 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
                 + {{ averages.averageSustainedHitsTotal }} Sustained Hit(s)
               </template>
               <template v-else>
-                {{ averages.averageHitTotal }}
+                {{ formatAverage(averages.averageHitTotal) }}
               </template>
             </td>
             <td class="p-1">
-              {{ averages.averageWoundTotal }}
+              {{ formatAverage(averages.averageWoundTotal) }}
             </td>
             <td v-if="save" class="p-1">
-              {{ averages.averageSaveTotal }}
+              {{ formatAverage(averages.averageSaveTotal) }}
             </td>
             <td v-if="damage" class="p-1">
-              {{ averages.averageDamageTotal }}
+              {{ formatAverage(averages.averageDamageTotal) }}
             </td>
             <td v-if="pain" class="p-1">
-              {{ averages.averagePainTotal }}
+              {{ formatAverage(averages.averagePainTotal) }}
             </td>
           </template>
         </tr>
-        <tr>
+        <tr v-if="false">
           <td class="p-1 text-left" @click="toggleShowRolls">
             <span>Rolls</span>
             <span class="ml-2">
