@@ -109,16 +109,22 @@ function updateImage(e) {
 
 <template>
   <div
-    style="width:282mm; height:210mm; display: flex;" class="avoid-page-break mx-auto" :class="{
+    style="width:282mm; height:210mm; display: flex;"
+    class="avoid-page-break mx-auto"
+    :class="{
       'page-break': onePerPage, '!print:hidden': hide,
     }"
   >
     <div
-      class="mx-auto" style="font-weight: 500; margin-bottom: 32px; display: flex;
+      class="mx-auto"
+      style="font-weight: 500; margin-bottom: 32px; display: flex;
   flex-direction: column; flex-grow: 1;"
     >
       <label class="flex justify-end gap-4 pb-2 print:hidden">
-        <input v-model="hide" type="checkbox">
+        <input
+          v-model="hide"
+          type="checkbox"
+        >
         <span class="print:hidden">Don't print this card.</span>
       </label>
       <div
@@ -130,7 +136,13 @@ function updateImage(e) {
             <div style="background-color: var(--primary-color-transparent); height: 80px; min-width: 35%;" />
             <div style="height: 80px; width: 100%;">
               <div style="background-color: var(--primary-color-transparent); height: 40px;" />
-              <svg height="400px" width="1000px" viewBox="0 0 100 40" style="fill: var(--primary-color-transparent); width: 100px; height: 40px;" class="mr-auto">
+              <svg
+                height="400px"
+                width="1000px"
+                viewBox="0 0 100 40"
+                style="fill: var(--primary-color-transparent); width: 100px; height: 40px;"
+                class="mr-auto"
+              >
                 <path d="m0 0h100c-32 0-68 40-100 40z" />
               </svg>
             </div>
@@ -148,28 +160,41 @@ function updateImage(e) {
 
           <div style="display: flex; flex-direction: column; gap: 6px; z-index: 1; position: relative;">
             <FancyScribeModelStats
-              v-for="(model, index) of modelStats " :key="index" :index="index"
-              :model-stats="modelStats" :model-stat="model" :model-list="modelList" :show-name="modelStats.length > 1"
+              v-for="(model, index) of modelStats "
+              :key="index"
+              :index="index"
+              :model-stats="modelStats"
+              :model-stat="model"
+              :model-list="modelList"
+              :show-name="modelStats.length > 1"
             />
           </div>
         </div>
         <ClientOnly>
           <div style="position: absolute; right: 0px; top: 0px; height: 240px; bottom: 0px; width: 500px;">
-            <img v-if="hasImage" :src="image" alt="" style="width: 100%; height: 100%; object-fit: contain;">
+            <img
+              v-if="hasImage"
+              :src="image"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain;"
+            >
             <div class="absolute right-[1px] top-[2px] flex gap-1 print:hidden">
               <label
                 class="text-dark btn print:hidden"
                 style="border: 1px solid #999; padding: 1px 4px; font-size: 0.8rem; background-color: #f0f0f0;"
               >
                 <input
-                  type="file" class="print:hidden"
+                  type="file"
+                  class="print:hidden"
                   accept=".jpg,.png,.jpeg,.gif,.bmp,.tif,.tiff,.webp,.svg,.jfif,.pjpeg,.pjp,.avif,.apng,.ico,.cur,.ani"
-                  style="display: none" @change="updateImage"
+                  style="display: none"
+                  @change="updateImage"
                 >
                 {{ hasImage ? "Change image" : "Upload image " }}
               </label>
               <button
-                v-if="hasImage" class="text-dark btn print:hidden"
+                v-if="hasImage"
+                class="text-dark btn print:hidden"
                 style="border: 1px solid #999; padding: 1px 4px; font-size: 0.8rem; background-color: #f0f0f0;"
                 @click="() => image = undefined"
               >
@@ -187,32 +212,53 @@ function updateImage(e) {
           class="pt-5"
           style="flex: 1 1 0%; border-right: 2px solid var(--primary-color); position: relative; padding-bottom: 40px; display: flex; flex-direction: column;"
         >
-          <table cellspacing="0" class="weapons-table" style="width: 100%">
+          <table
+            cellspacing="0"
+            class="weapons-table"
+            style="width: 100%"
+          >
             <FancyScribeWeapons
-              title="RANGED WEAPONS" :weapons="rangedWeapons" :model-stats="modelStats"
+              title="RANGED WEAPONS"
+              :weapons="rangedWeapons"
+              :model-stats="modelStats"
               :force-rules="forceRules"
             />
             <FancyScribeWeapons
-              title="MELEE WEAPONS" :weapons="meleeWeapons" :model-stats="modelStats"
+              title="MELEE WEAPONS"
+              :weapons="meleeWeapons"
+              :model-stats="modelStats"
               :force-rules="forceRules"
             />
           </table>
           <div style="flex: 1 1 0%;" />
-          <table cellspacing="0" class="weapons-table" style="width: 100%; border-collapse: collapse;">
+          <table
+            cellspacing="0"
+            class="weapons-table"
+            style="width: 100%; border-collapse: collapse;"
+          >
             <tbody>
               <tr
                 v-if="modelsWithDifferentProfiles.length > 0
                   && !weaponDescriptions.length
-                " class="noBorderTop h-22.5px"
+                "
+                class="noBorderTop h-22.5px"
               >
                 <td style="border-top: none; vertical-align: middle;">
                   <div class="flex justify-center">
-                    <svg viewBox="0 0 16 8" width="1.2rem" height="8" fill="var(--primary-color)">
+                    <svg
+                      viewBox="0 0 16 8"
+                      width="1.2rem"
+                      height="8"
+                      fill="var(--primary-color)"
+                    >
                       <path d="m0 0h10l6 4-6 4h-10z" />
                     </svg>
                   </div>
                 </td>
-                <td colspan="7" style="text-align: left; font-size: 0.8em; padding-left: 0; vertical-align: middle;">
+                <td
+                  colspan="7"
+                  style="text-align: left; font-size: 0.8em; padding-left: 0; vertical-align: middle;"
+                >
                   Before selecting targets for this weapon, select one of
                   its profiles to make attacks with.
                 </td>

@@ -6,7 +6,13 @@ const mergedRules = { ...factionRules, ...rules }
 
 <template>
   <div style="display: contents">
-    <FancyScribeUnit v-for="(unit, index) of units" :key="unit.name" :index="index" :unit="unit" :catalog="catalog" />
+    <FancyScribeUnit
+      v-for="(unit, index) of units"
+      :key="unit.name"
+      :index="index"
+      :unit="unit"
+      :catalog="catalog"
+    />
 
     <FancyScribeForceRules :rules="mergedRules" />
   </div>

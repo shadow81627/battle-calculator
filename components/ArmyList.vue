@@ -64,7 +64,10 @@ const route = useRoute()
       </tr>
     </thead>
     <tbody>
-      <template v-for="unit of _data" :key="unit.name">
+      <template
+        v-for="unit of _data"
+        :key="unit.name"
+      >
         <tr>
           <td class="p-1 text-left">
             <NuxtLink :to="`${route.path}/units/${unit._path.split('/').slice(-1)}`">
@@ -80,8 +83,16 @@ const route = useRoute()
           <td class="p-1 text-right">
             {{ unit.points }}
           </td>
-          <td v-if="unit.offers" class="p-1 text-right">
-            <a v-if="unitBestOffer(unit)?.url" :href="unitBestOffer(unit)?.url" class="text-blue-600 dark:text-blue-300" target="_blank">
+          <td
+            v-if="unit.offers"
+            class="p-1 text-right"
+          >
+            <a
+              v-if="unitBestOffer(unit)?.url"
+              :href="unitBestOffer(unit)?.url"
+              class="text-blue-600 dark:text-blue-300"
+              target="_blank"
+            >
               ${{ unitPrice(unit) }}
             </a>
             <template v-else>
@@ -89,7 +100,10 @@ const route = useRoute()
             </template>
           </td>
         </tr>
-        <tr v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
+        <tr
+          v-for="enhancement of (unit.enhancements ?? [])"
+          :key="enhancement.name"
+        >
           <td class="p-1 text-left">
             Enhancement: {{ enhancement.name }}
           </td>
@@ -129,26 +143,41 @@ const route = useRoute()
     </tbody>
   </table>
   <section class="my-5">
-    <div v-for="unit of _data" :key="unit.name">
+    <div
+      v-for="unit of _data"
+      :key="unit.name"
+    >
       <div>
         <NuxtLink :to="`${route.path}/units/${unit._path.split('/').slice(-1)}`">
           {{ unit.name }}
         </NuxtLink>
         ({{ unit.points }})
       </div>
-      <div v-for="weapon of unit.weapons" :key="weapon.name">
+      <div
+        v-for="weapon of unit.weapons"
+        :key="weapon.name"
+      >
         <span>&nbsp;&nbsp;•&nbsp;</span>
         <span>{{ weapon.models ?? unit.models }}x&nbsp;</span>
         <span>{{ weapon.name }}</span>
       </div>
-      <div v-for="enhancement of (unit.enhancements ?? [])" :key="enhancement.name">
+      <div
+        v-for="enhancement of (unit.enhancements ?? [])"
+        :key="enhancement.name"
+      >
         <span>&nbsp;&nbsp;•&nbsp;</span>Enhancement:
         {{ enhancement.name }} ({{ enhancement.points }})
       </div>
-      <div v-for="member of unit.members" :key="member.name">
+      <div
+        v-for="member of unit.members"
+        :key="member.name"
+      >
         <span>&nbsp;&nbsp;•&nbsp;</span>
         {{ member.name }}
-        <div v-for="weapon of member.weapons" :key="weapon.name">
+        <div
+          v-for="weapon of member.weapons"
+          :key="weapon.name"
+        >
           <span>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;</span>
           <span>{{ weapon.models ?? member.models ?? unit.models }}x&nbsp;</span>
           <span>{{ weapon.name }}</span>

@@ -75,10 +75,23 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
           <tbody>
             <tr>
               <td class="p-1">
-                <input v-model="turns" name="turns" class="max-w-250px input" type="number" max="5" min="1">
+                <input
+                  v-model="turns"
+                  name="turns"
+                  class="max-w-250px input"
+                  type="number"
+                  max="5"
+                  min="1"
+                >
               </td>
               <td class="p-1">
-                <input v-model="distance" name="distance" class="max-w-250px input" type="number" min="1">
+                <input
+                  v-model="distance"
+                  name="distance"
+                  class="max-w-250px input"
+                  type="number"
+                  min="1"
+                >
               </td>
             </tr>
           </tbody>
@@ -93,13 +106,21 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
         <div class="text-left">
           <h2 class="h2">
             Attacker
-            <select v-model="attackerId" class="inline w-250px select" name="attacker" @change="refreshAttacker">
+            <select
+              v-model="attackerId"
+              class="inline w-250px select"
+              name="attacker"
+              @change="refreshAttacker"
+            >
               <optgroup
-                v-for="[key, group] of groupedUnitOptions" :key="key"
+                v-for="[key, group] of groupedUnitOptions"
+                :key="key"
                 :label="key === 'Lists' ? 'Unassigned' : key"
               >
                 <option
-                  v-for="option of group" :key="option.value" :value="option.value"
+                  v-for="option of group"
+                  :key="option.value"
+                  :value="option.value"
                   :selected="attackerId === option.value ? option.value : undefined"
                 >
                   {{ option.label }}
@@ -109,19 +130,32 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
           </h2>
         </div>
         <Spinner v-if="loadingAttacker" />
-        <UnitCombat v-else-if="attacker && defender" :unit="attacker" :target="defender" v-bind="{ turns, distance }" />
+        <UnitCombat
+          v-else-if="attacker && defender"
+          :unit="attacker"
+          :target="defender"
+          v-bind="{ turns, distance }"
+        />
       </div>
       <div class="col md:col-6">
         <div class="text-left">
           <h2 class="h2">
             Defender
-            <select v-model="defenderId" class="inline w-250px select" name="defender" @change="refreshDefender">
+            <select
+              v-model="defenderId"
+              class="inline w-250px select"
+              name="defender"
+              @change="refreshDefender"
+            >
               <optgroup
-                v-for="[key, group] of groupedUnitOptions" :key="key"
+                v-for="[key, group] of groupedUnitOptions"
+                :key="key"
                 :label="key === 'Lists' ? 'Unassigned' : key"
               >
                 <option
-                  v-for="option of group" :key="option.value" :value="option.value"
+                  v-for="option of group"
+                  :key="option.value"
+                  :value="option.value"
                   :selected="defenderId === option.value ? option.value : undefined"
                 >
                   {{ option.label }}
@@ -131,7 +165,12 @@ const { data: defender, refresh: refreshDefender, pending: loadingDefender } = a
           </h2>
         </div>
         <Spinner v-if="loadingDefender" />
-        <UnitCombat v-else-if="defender && attacker" :unit="defender" :target="attacker" v-bind="{ turns, distance }" />
+        <UnitCombat
+          v-else-if="defender && attacker"
+          :unit="defender"
+          :target="attacker"
+          v-bind="{ turns, distance }"
+        />
       </div>
     </div>
   </section>

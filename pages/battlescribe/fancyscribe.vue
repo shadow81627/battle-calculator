@@ -7,15 +7,21 @@ const primaryColor = '#536766'
 </script>
 
 <template>
-  <div v-if="pending || true" class="container">
+  <div
+    v-if="pending || true"
+    class="container"
+  >
     <Spinner class="mx-auto h-64px w-64px" />
   </div>
   <span v-else-if="!data">No data found</span>
   <FancyScribeRoster
-    v-else :roster="data" :style="{
+    v-else
+    :roster="data"
+    :style="{
       '--primary-color': primaryColor,
       '--primary-color-transparent': `${primaryColor}60`,
-    }" class="bg-light text-dark"
+    }"
+    class="bg-light text-dark"
   />
 </template>
 

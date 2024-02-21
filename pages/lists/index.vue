@@ -49,7 +49,10 @@ const { data: lists } = await useAsyncData('lists-index', () => queryContent('li
         </th>
       </thead>
       <tbody>
-        <tr v-for="list of lists" :key="list.slug">
+        <tr
+          v-for="list of lists"
+          :key="list.slug"
+        >
           <td class="p-1 text-left">
             <NuxtLink :to="`${route.path}/${list.slug}`">
               {{ list.label }}

@@ -221,7 +221,10 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
     <span>{{ name }}</span>
 
     <template v-if="modifiers && modifiers.length">
-      [<span v-for="(modifier, index) of modifiers" :key="modifier.name"><span
+      [<span
+        v-for="(modifier, index) of modifiers"
+        :key="modifier.name"
+      ><span
         :class="{
           'text-red-500': (rapidFire && modifier.name.startsWith('RAPID FIRE')) || (anti && modifier.name.startsWith('ANTI')),
           'text-gray-500': !hasLethalHits && modifier.name.startsWith('LETHAL HITS'),
@@ -233,7 +236,10 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
     </template>
   </p>
 
-  <div style="overflow-x:auto;" class="text-center">
+  <div
+    style="overflow-x:auto;"
+    class="text-center"
+  >
     <table class="w-full">
       <thead>
         <tr>
@@ -255,7 +261,10 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
           <th class="p-1">
             Damage
           </th>
-          <th v-if="pain" class="p-1">
+          <th
+            v-if="pain"
+            class="p-1"
+          >
             Feel no pain
           </th>
         </tr>
@@ -311,7 +320,10 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
           <td class="p-1">
             {{ damage }}
           </td>
-          <td v-if="pain" class="p-1">
+          <td
+            v-if="pain"
+            class="p-1"
+          >
             {{ pain }}+
           </td>
         </tr>
@@ -340,13 +352,22 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
               {{ formatAverage(woundTotal) }}
             </template>
           </td>
-          <td v-if="save" class="p-1">
+          <td
+            v-if="save"
+            class="p-1"
+          >
             {{ formatAverage(saveTotal) }}
           </td>
-          <td v-if="damage" class="p-1">
+          <td
+            v-if="damage"
+            class="p-1"
+          >
             {{ formatAverage(damageTotal) }}
           </td>
-          <td v-if="pain" class="p-1">
+          <td
+            v-if="pain"
+            class="p-1"
+          >
             {{ formatAverage(painTotal) }}
           </td>
         </tr>
@@ -370,27 +391,47 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
             <td class="p-1">
               {{ formatAverage(averages.averageWoundTotal) }}
             </td>
-            <td v-if="save" class="p-1">
+            <td
+              v-if="save"
+              class="p-1"
+            >
               {{ formatAverage(averages.averageSaveTotal) }}
             </td>
-            <td v-if="damage" class="p-1">
+            <td
+              v-if="damage"
+              class="p-1"
+            >
               {{ formatAverage(averages.averageDamageTotal) }}
             </td>
-            <td v-if="pain" class="p-1">
+            <td
+              v-if="pain"
+              class="p-1"
+            >
               {{ formatAverage(averages.averagePainTotal) }}
             </td>
           </template>
         </tr>
         <tr v-if="false">
-          <td class="p-1 text-left" @click="toggleShowRolls">
+          <td
+            class="p-1 text-left"
+            @click="toggleShowRolls"
+          >
             <span>Rolls</span>
             <span class="ml-2">
               <svg
-                data-accordion-icon :class="{ 'rotate-180': !showRolls }" class="inline h-3 w-3 shrink-0" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"
+                data-accordion-icon
+                :class="{ 'rotate-180': !showRolls }"
+                class="inline h-3 w-3 shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
               >
                 <path
-                  stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
                   d="M9 5 5 1 1 5"
                 />
               </svg>
@@ -433,7 +474,10 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
           <td class="p-1">
             {{ randomDamageTotal }}
           </td>
-          <td v-if="pain" class="p-1">
+          <td
+            v-if="pain"
+            class="p-1"
+          >
             {{ randomPainTotal }}
           </td>
         </tr>
@@ -442,7 +486,11 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
             Random
           </td>
           <td class="p-1">
-            <DisplayRolls v-if="randomAttackRolls && randomAttackRolls.length" :rolls="randomAttackRolls" class="mx-auto" />
+            <DisplayRolls
+              v-if="randomAttackRolls && randomAttackRolls.length"
+              :rolls="randomAttackRolls"
+              class="mx-auto"
+            />
             <template v-else>
               {{ randomAttacksTotal }}
             </template>
@@ -452,25 +500,44 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
               N/A
             </template>
             <template v-else>
-              <DisplayRolls :rolls="randomHitRolls" class="mx-auto" />
+              <DisplayRolls
+                :rolls="randomHitRolls"
+                class="mx-auto"
+              />
             </template>
           </td>
           <td class="p-1">
-            <DisplayRolls :rolls="randomWoundRolls" class="mx-auto" />
+            <DisplayRolls
+              :rolls="randomWoundRolls"
+              class="mx-auto"
+            />
           </td>
           <td class="p-1">
-            <DisplayRolls :rolls="randomSaveRolls" :reverse="true" class="mx-auto" />
+            <DisplayRolls
+              :rolls="randomSaveRolls"
+              :reverse="true"
+              class="mx-auto"
+            />
           </td>
           <td class="p-1">
             <template v-if="randomDamageRolls && randomDamageRolls.length">
-              <DisplayRolls :rolls="randomDamageRolls" class="mx-auto" />
+              <DisplayRolls
+                :rolls="randomDamageRolls"
+                class="mx-auto"
+              />
             </template>
             <template v-else>
               {{ randomSaveTotal }} x {{ damage }}
             </template>
           </td>
-          <td v-if="pain" class="p-1">
-            <DisplayRolls :rolls="randomPainRolls" class="mx-auto" />
+          <td
+            v-if="pain"
+            class="p-1"
+          >
+            <DisplayRolls
+              :rolls="randomPainRolls"
+              class="mx-auto"
+            />
           </td>
         </tr>
         <tr v-show="showRolls && (hasHitReRolls || hasWoundReRolls)">
@@ -482,13 +549,21 @@ const painTotal = computed(() => damageTotal.value * dice.defend(pain.value))
             &nbsp;
           </td>
           <td class="p-1 text-left">
-            <DisplayRolls v-if="hasHitReRolls" :rolls="randomHitReRolls" class="mx-auto" />
+            <DisplayRolls
+              v-if="hasHitReRolls"
+              :rolls="randomHitReRolls"
+              class="mx-auto"
+            />
             <template v-else>
               &nbsp;
             </template>
           </td>
           <td class="p-1 text-left">
-            <DisplayRolls v-if="hasWoundReRolls" :rolls="randomWoundReRolls" class="mx-auto" />
+            <DisplayRolls
+              v-if="hasWoundReRolls"
+              :rolls="randomWoundReRolls"
+              class="mx-auto"
+            />
             <template v-else>
               &nbsp;
             </template>

@@ -4,7 +4,10 @@ defineProps(['title', 'characteristic', 'index'])
 
 <template>
   <div style="display: flex; flex-direction: column; align-items: center">
-    <div v-if="index === 0" style="font-size: 0.9em; font-weight: 800">
+    <div
+      v-if="index === 0"
+      style="font-size: 0.9em; font-weight: 800"
+    >
       {{ title }}
     </div>
     <div style="color: var(--primary-color); padding: 2px; background: var(--primary-color); clip-path: polygon(12% 0px, 100% 0px, 100% 20%, 100% 88%, 88% 100%, 20% 100%, 0px 100%, 0px 12%);">

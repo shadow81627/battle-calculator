@@ -66,7 +66,11 @@ const selections = ref({})
 <template>
   <div>
     <div class="text-left">
-      <NuxtLink v-if="url" :to="url" target="_blank">
+      <NuxtLink
+        v-if="url"
+        :to="url"
+        target="_blank"
+      >
         <p>{{ _unit.models }} {{ _unit.name }} {{ _unit.points }}pts</p>
       </NuxtLink>
       <p v-else>
@@ -81,31 +85,59 @@ const selections = ref({})
               </div>
             </div>
           </div> -->
-    <Attributes class="mb-5" :unit="unit" />
-    <section class="my-5" style="overflow-x:auto;">
+    <Attributes
+      class="mb-5"
+      :unit="unit"
+    />
+    <section
+      class="my-5"
+      style="overflow-x:auto;"
+    >
       <Accordion>
         <template #header>
           Weapons
         </template>
-        <WeaponAttributes v-if="_unit.weapons?.length" :unit="unit" class="w-full" />
-        <div v-for="enhancement of (_unit.enhancements ?? [])" :key="enhancement.name">
+        <WeaponAttributes
+          v-if="_unit.weapons?.length"
+          :unit="unit"
+          class="w-full"
+        />
+        <div
+          v-for="enhancement of (_unit.enhancements ?? [])"
+          :key="enhancement.name"
+        >
           Enhancement:
           {{ enhancement.name }} ({{ enhancement.points }})
         </div>
-        <div v-for="member of _unit.members" :key="member.name">
+        <div
+          v-for="member of _unit.members"
+          :key="member.name"
+        >
           <div class="text-left font-700 font-barlow uppercase">
             {{ member.name }}
           </div>
-          <WeaponAttributes :unit="member" class="w-full" />
+          <WeaponAttributes
+            :unit="member"
+            class="w-full"
+          />
         </div>
       </Accordion>
       <br>
     </section>
     <section class="my-5 flex">
-      <span v-if="hasFaction(unit, 'ASTRA MILITARUM')" class="flex flex-col p-1">
+      <span
+        v-if="hasFaction(unit, 'ASTRA MILITARUM')"
+        class="flex flex-col p-1"
+      >
         <label class="block p-1">Orders</label>
-        <select v-model="order" class="inline w-250px select">
-          <option value="" selected>
+        <select
+          v-model="order"
+          class="inline w-250px select"
+        >
+          <option
+            value=""
+            selected
+          >
             None
           </option>
           <option value="take-aim">
@@ -141,9 +173,15 @@ const selections = ref({})
           </option>
         </select>
       </span> -->
-      <span v-if="hasFaction(unit, 'ORKS')" class="flex flex-col p-1">
+      <span
+        v-if="hasFaction(unit, 'ORKS')"
+        class="flex flex-col p-1"
+      >
         <label class="block p-1">Army Rule</label>
-        <select v-model="order" class="inline w-250px select">
+        <select
+          v-model="order"
+          class="inline w-250px select"
+        >
           <option value="">
             None
           </option>
@@ -152,26 +190,45 @@ const selections = ref({})
           </option>
         </select>
       </span>
-      <span v-show="hasFaction(unit, 'ORKS')" class="flex flex-col p-1">
+      <span
+        v-show="hasFaction(unit, 'ORKS')"
+        class="flex flex-col p-1"
+      >
         <label class="p-1">Stratagem</label>
-        <select v-model="stratagem" class="inline w-250px select">
+        <select
+          v-model="stratagem"
+          class="inline w-250px select"
+        >
           <option value="">
             None
           </option>
-          <option v-if="hasFaction(unit, 'ORKS')" value="UNBRIDLED CARNAGE">
+          <option
+            v-if="hasFaction(unit, 'ORKS')"
+            value="UNBRIDLED CARNAGE"
+          >
             UNBRIDLED CARNAGE
           </option>
         </select>
       </span>
     </section>
 
-    <section v-for="weapon of weapons" :key="weapon.name" class="border-y border-solid py-5">
+    <section
+      v-for="weapon of weapons"
+      :key="weapon.name"
+      class="border-y border-solid py-5"
+    >
       <Combat
         v-if="!weapon.profiles && !weapon.alternatives?.find(alternative => alternative.name === weapon.name)"
-        v-bind="{ ...weapon }" :distance="distance" :weapon="weapon" :unit="unit"
+        v-bind="{ ...weapon }"
+        :distance="distance"
+        :weapon="weapon"
+        :unit="unit"
         :modifiers="[...weapon.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, weapon) }].filter(item => item?.name)"
-        :abilities="_unit.abilities ?? []" :models="weapon.models ?? _unit.models" :toughness="target.attributes.toughness"
-        :turns="turns" :target="target"
+        :abilities="_unit.abilities ?? []"
+        :models="weapon.models ?? _unit.models"
+        :toughness="target.attributes.toughness"
+        :turns="turns"
+        :target="target"
         :order="_order"
         :stratagem="stratagem"
         :selections="selections"
@@ -180,16 +237,24 @@ const selections = ref({})
         <p class="pt-5">
           This model’s {{ weapon.name }} can be replaced with one of the following:
         </p>
-        <Accordion v-for="profile of weapon.alternatives" :key="profile.name">
+        <Accordion
+          v-for="profile of weapon.alternatives"
+          :key="profile.name"
+        >
           <template #header>
             {{ profile.name }}
           </template>
           <Combat
-            v-bind="{ ...profile }" :distance="distance" :weapon="profile" :unit="unit"
+            v-bind="{ ...profile }"
+            :distance="distance"
+            :weapon="profile"
+            :unit="unit"
             :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
-            :abilities="_unit.abilities ?? []" :models="profile.models ?? _unit.models"
+            :abilities="_unit.abilities ?? []"
+            :models="profile.models ?? _unit.models"
             :toughness="target.attributes.toughness"
-            :turns="turns" :target="target"
+            :turns="turns"
+            :target="target"
             :order="_order"
             :stratagem="stratagem"
             :selections="selections"
@@ -197,13 +262,21 @@ const selections = ref({})
         </Accordion>
       </template>
       <template v-if="weapon.profiles?.length">
-        <template v-for="(profile, index) of weapon.profiles" :key="profile.name">
+        <template
+          v-for="(profile, index) of weapon.profiles"
+          :key="profile.name"
+        >
           <Combat
-            v-bind="{ ...profile }" :distance="distance" :weapon="profile" :unit="unit"
+            v-bind="{ ...profile }"
+            :distance="distance"
+            :weapon="profile"
+            :unit="unit"
             :modifiers="[...profile.modifiers ?? [], { name: getDetachmentRuleAttackModifier(unit, profile) }].filter(item => item?.name)"
-            :abilities="_unit.abilities ?? []" :models="profile.models ?? _unit.models"
+            :abilities="_unit.abilities ?? []"
+            :models="profile.models ?? _unit.models"
             :toughness="target.attributes.toughness"
-            :turns="turns" :target="target"
+            :turns="turns"
+            :target="target"
             :order="_order"
             :stratagem="stratagem"
           />

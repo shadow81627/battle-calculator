@@ -17,6 +17,9 @@ if (!hasData)
     <div v-if="pending">
       Loading ...
     </div>
-    <ArmyList v-else-if="hasData" :data="data" />
+    <ArmyList
+      v-else-if="hasData"
+      :data="data"
+    />
   </div>
 </template>

@@ -22,7 +22,10 @@ const props = defineProps(['factions'])
     <span style="font-size: 0.9em; font-weight: 400;">
       FACTION KEYWORDS:
     </span>
-    <span style="font-size: 0.8em; font-weight: 600;" class="uppercase">
+    <span
+      style="font-size: 0.8em; font-weight: 600;"
+      class="uppercase"
+    >
       {{ factions.join(", ") }}
     </span>
   </div>

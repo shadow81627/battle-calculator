@@ -48,9 +48,13 @@ const _additions = computed(() => {
 
 <template>
   <div class="container">
-    <div v-if="unit?.attributes" class="row">
+    <div
+      v-if="unit?.attributes"
+      class="row"
+    >
       <div
-        v-for="[key, value] of Object.entries(unit?.attributes)" :key="`${key}-${value}`"
+        v-for="[key, value] of Object.entries(unit?.attributes)"
+        :key="`${key}-${value}`"
         class="col-6 lg:col-2 md:col-2 sm:col-4 pr-5 !print:w-auto"
       >
         <div class="text-center capitalize">
@@ -70,10 +74,14 @@ const _additions = computed(() => {
         </div>
       </div>
     </div>
-    <div v-if="_additions && Object.entries(pickBy(_additions, Boolean)).length" class="row">
+    <div
+      v-if="_additions && Object.entries(pickBy(_additions, Boolean)).length"
+      class="row"
+    >
       <div
         v-for="[key, value] of Object.entries(pickBy(_additions, Boolean)).sort(sortAdditions)"
-        :key="`${key}-${value}`" class="col-6 lg:col-2 md:col-3 sm:col-4 flex flex-col pr-5 !print:w-auto"
+        :key="`${key}-${value}`"
+        class="col-6 lg:col-2 md:col-3 sm:col-4 flex flex-col pr-5 !print:w-auto"
       >
         <div class="flex flex-grow-1 items-center justify-center text-center capitalize">
           {{ labels[key] ?? key }}
@@ -83,7 +91,10 @@ const _additions = computed(() => {
         </div>
       </div>
     </div>
-    <div v-else class="row">
+    <div
+      v-else
+      class="row"
+    >
       <div class="col col-2 pr-5">
         <div class="text-center capitalize">
           &nbsp;

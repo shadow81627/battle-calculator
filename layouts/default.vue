@@ -7,8 +7,14 @@ const draw = ref(false)
 
 <template>
   <div class="body min-h-screen flex flex-col justify-start">
-    <Navigation v-model:draw="draw" :items="items" />
-    <SideNav v-model:draw="draw" :items="items" />
+    <Navigation
+      v-model:draw="draw"
+      :items="items"
+    />
+    <SideNav
+      v-model:draw="draw"
+      :items="items"
+    />
     <div
       class="w-full grow flex-col flex-wrap self-stretch"
       style="max-width: 100%; padding-top: 64px; transition: .2s cubic-bezier(.4,0,.2,1);"
@@ -23,7 +29,11 @@ const draw = ref(false)
             <div class="col">
               <p>
                 <span>Site by </span>
-                <a href="https://daim.dev" class="underline" target="_blank">Daim Digital</a>
+                <a
+                  href="https://daim.dev"
+                  class="underline"
+                  target="_blank"
+                >Daim Digital</a>
               </p>
             </div>
             <div class="col">
