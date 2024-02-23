@@ -3,13 +3,15 @@ import { Create40kRoster10th } from "~/server/fancyscribe-parse";
 
 export default defineEventHandler(async () => {
   const file = await useStorage("assets:server").getItem("Crusade.ros");
-  if (!file) throw createError({ message: "Unable to get file", status: 400 });
+  if (!file || typeof file !== "string")
+    throw createError({ message: "Unable to get file", status: 400 });
 
   const dom = new JSDOM(file, { contentType: "text/xml" });
   const doc = dom.window.document;
 
   const info = doc.querySelector("roster");
-  const gameType = info.getAttribute("gameSystemName");
+  const gameType =
+    info?.getAttribute("gameSystemName") ?? "Warhammer 40,000 10th Edition";
   // const rosterName = info.getAttribute("name");
 
   const roster = Create40kRoster10th(doc, gameType);
