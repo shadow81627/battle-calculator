@@ -5485,6 +5485,7 @@ __metadata:
     eslint: "npm:8.43.0"
     eslint-config-prettier: "npm:9.1.0"
     eslint-plugin-prettier: "npm:5.1.3"
+    fast-xml-parser: "npm:4.2.4"
     jsdom: "npm:24.0.0"
     lodash-es: "npm:4.17.21"
     nuxt: "npm:3.9.3"
@@ -7963,6 +7964,17 @@ __metadata:
   version: 2.0.6
   resolution: "fast-levenshtein@npm:2.0.6"
   checksum: 10c0/111972b37338bcb88f7d9e2c5907862c280ebf4234433b95bc611e518d192ccb2d38119c4ac86e26b668d75f7f3894f4ff5c4982899afced7ca78633b08287c4
+  languageName: node
+  linkType: hard
+
+"fast-xml-parser@npm:4.2.4":
+  version: 4.2.4
+  resolution: "fast-xml-parser@npm:4.2.4"
+  dependencies:
+    strnum: "npm:^1.0.5"
+  bin:
+    fxparser: src/cli/cli.js
+  checksum: 10c0/c620def035fe300aec7c1a36d2906b1bcc506a805d3c1233038143fd2c292d5072784a7f97285b65f3e567299d8614872de23c32c228faa34155e97e555d2b3f
   languageName: node
   linkType: hard
 
@@ -14838,6 +14850,13 @@ __metadata:
   dependencies:
     js-tokens: "npm:^8.0.2"
   checksum: 10c0/63a6e4224ac7088ff93fd19fc0f6882705020da2f0767dbbecb929cbf9d49022e72350420f47be635866823608da9b9a5caf34f518004721895b6031199fc3c8
+  languageName: node
+  linkType: hard
+
+"strnum@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "strnum@npm:1.0.5"
+  checksum: 10c0/64fb8cc2effbd585a6821faa73ad97d4b553c8927e49086a162ffd2cc818787643390b89d567460a8e74300148d11ac052e21c921ef2049f2987f4b1b89a7ff1
   languageName: node
   linkType: hard
 
