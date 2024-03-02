@@ -61,6 +61,8 @@ export default defineNuxtConfig({
 
   pwa,
 
+  sourcemap: true,
+
   devtools: {
     enabled: false,
   },
