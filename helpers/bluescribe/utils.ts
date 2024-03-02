@@ -148,8 +148,8 @@ export const createRoster = (name, gameSystem) => {
 };
 
 const getMinForceCount = (entry, roster) =>
-  (!entry.hidden &&
-    entry.constraints?.find(
+  (!entry?.hidden &&
+    entry?.constraints?.find(
       (c) =>
         c.type === "min" &&
         (c.scope === "force" ||
