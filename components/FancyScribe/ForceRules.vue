@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
-  rules: { type: Array, required: true },
-  onePerPage: { type: Boolean, required: true },
+  rules: { type: Object, required: true },
+  onePerPage: { type: Boolean, required: false },
 });
 const keys = Object.keys(props.rules);
 const hide = ref(false);

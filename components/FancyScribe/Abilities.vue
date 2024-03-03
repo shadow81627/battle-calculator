@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({ abilities: { type: Array, required: true } });
+const props = defineProps({ abilities: { type: Object, required: true } });
 const keys = Object.keys(props.abilities);
 </script>
 

@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   title: { type: String, required: true },
-  characteristic: { type: String, required: true },
+  characteristic: { type: [String, Number], required: true },
   index: { type: Number, required: true },
 });
 </script>

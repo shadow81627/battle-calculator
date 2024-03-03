@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({ rules: { type: Array, required: true } });
+const props = defineProps({ rules: { type: Object, required: true } });
 const keys = Object.keys(props.rules);
 </script>
 

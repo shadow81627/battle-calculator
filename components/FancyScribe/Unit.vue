@@ -6,7 +6,7 @@ const props = defineProps({
   index: { type: Number, required: true },
   catalog: { type: String, required: true },
   onePerPage: { type: Boolean, default: false },
-  forceRules: { type: Object, required: true },
+  forceRules: { type: Object, required: false },
 });
 const {
   name,
