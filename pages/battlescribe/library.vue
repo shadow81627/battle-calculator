@@ -1,5 +1,5 @@
 <script setup>
-const { data, pending } = await useFetch("/api/battlescribe/bluescribe");
+const { data, pending } = await useFetch("/api/battlescribe/library");
 const primaryColor = "#536766";
 </script>
 
