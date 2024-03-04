@@ -361,7 +361,7 @@ const addRules = (selection, selectionEntry) => {
       hidden: rule.hidden,
       publicationId: rule.publicationId,
       page: rule.page,
-      description: rule.description,
+      description: { "#text": rule.description },
     })),
   );
 };
