@@ -10,12 +10,8 @@ const draw = ref(false);
     <Navigation v-model:draw="draw" :items="items" />
     <SideNav v-model:draw="draw" :items="items" />
     <div
-      class="w-full grow flex-col flex-wrap self-stretch"
-      style="
-        max-width: 100%;
-        padding-top: 64px;
-        transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      "
+      class="w-full grow flex-col flex-wrap self-stretch p-t-[64px] !print:p-l-0 !print:p-t-0"
+      style="max-width: 100%; transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1)"
       :class="{ 'md:pl-[256px]': draw }"
     >
       <main style="min-height: 100vh">
