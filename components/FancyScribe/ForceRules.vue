@@ -37,7 +37,7 @@ const hide = ref(false);
           style="line-height: 1.4"
           class="mx-auto py-[8px] prose"
         >
-          <span style="font-weight: 700">{{ rule }}:</span>
+          <span style="font-weight: 700">{{ rule }}: </span>
           <span style="white-space: pre-line">{{ rules[rule] }}</span>
         </div>
       </div>
