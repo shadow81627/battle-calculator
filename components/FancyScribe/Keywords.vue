@@ -5,8 +5,8 @@ const joinedKeywords = [...props.keywords].join(", ");
 
 <template>
   <div
+    class="relative md:absolute"
     style="
-      position: absolute;
       right: -2px;
       bottom: -16px;
       padding: 0px 42px 0px 8px;
