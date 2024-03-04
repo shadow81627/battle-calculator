@@ -1,4 +1,4 @@
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 
 export default defineEventHandler(async () => {
   const data = await useStorage("assets:server").getItem(
