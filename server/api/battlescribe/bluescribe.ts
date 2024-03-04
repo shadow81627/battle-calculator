@@ -208,7 +208,7 @@ export default defineEventHandler(async () => {
   index(gameData, gameData);
   delete gameData.ids[gameData.id];
 
-  const newRoster = createRoster("test", gameData.gameSystem);
+  const newRoster = createRoster(catalogue.name, gameData.gameSystem);
   const forceId = "bb9d-299a-ed60-2d8a";
   const factionId = "b0ae-12a5-c84-ea45";
   gameData.catalogues = {
