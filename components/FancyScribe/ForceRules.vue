@@ -23,7 +23,7 @@ const hide = ref(false);
 
       <!-- balanced column layout https://stackoverflow.com/a/66915792 -->
       <div
-        class="[column-fill:_balance] mx-auto box-border columns-2 gap-10 after:box-inherit before:box-inherit 2xl:columns-3"
+        class="[column-fill:_balance] mx-auto box-border columns-1 gap-10 after:box-inherit before:box-inherit 2xl:columns-3 sm:columns-2"
         style="
           gap: 8px;
           padding: 20px;
