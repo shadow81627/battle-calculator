@@ -202,7 +202,7 @@ function updateImage(e) {
             />
           </div>
           <div
-            class="text-4xl font-barlow"
+            class="flex-wrap text-4xl font-barlow"
             style="
               letter-spacing: 0.1px;
               line-height: 1;
@@ -245,11 +245,11 @@ function updateImage(e) {
           <div
             style="
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 0;
               height: 240px;
-              bottom: 0px;
+              bottom: 0;
               width: 500px;
+              max-width: 100%;
             "
           >
             <img
@@ -258,7 +258,9 @@ function updateImage(e) {
               alt=""
               style="width: 100%; height: 100%; object-fit: contain"
             />
-            <div class="absolute right-[1px] top-[2px] flex gap-1 print:hidden">
+            <div
+              class="absolute right-[1px] top-[2px] hidden gap-1 print:hidden md:flex"
+            >
               <label
                 class="text-dark btn print:hidden"
                 style="
@@ -295,7 +297,7 @@ function updateImage(e) {
         </ClientOnly>
       </div>
       <div
-        class="flex-grow border-2 border-t-0 border-solid !print:border-t-2"
+        class="flex-grow flex-wrap border-2 border-t-0 border-solid !print:border-t-2"
         style="
           display: flex;
           border-color: var(--primary-color);
@@ -372,7 +374,7 @@ function updateImage(e) {
           <FancyScribeKeywords :keywords="keywords" />
         </div>
         <div
-          class="relative max-w-[400px] flex-1 p-1 pb-[50px] pt-5 md:p-[20px] print:p-[20px] sm:p-2 md:pb-[50px] md:pt-5 sm:pb-[50px] sm:pt-5 md:print:p-[20px] sm:print:p-[20px] md:print:pb-[50px] sm:print:pb-[50px]"
+          class="relative w-full p-1 pb-[50px] pt-5 md:max-w-[400px] md:p-[20px] print:p-[20px] sm:p-2 md:pb-[50px] md:pt-5 sm:pb-[50px] sm:pt-5 md:print:p-[20px] sm:print:p-[20px] md:print:pb-[50px] sm:print:pb-[50px]"
         >
           <div
             style="
