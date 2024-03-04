@@ -9,7 +9,7 @@ const hide = ref(false);
 
 <template>
   <div
-    style="width: 282mm"
+    style="max-width: 282mm"
     class="mx-auto flex py-6"
     :class="{
       '!print:hidden': hide,
