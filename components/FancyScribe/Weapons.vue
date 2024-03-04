@@ -88,7 +88,7 @@ function getWeaponClassNames(weapons, index) {
       :classes="getWeaponClassNames(weapons, index)"
     />
     <tr v-if="weapons.length" class="h-22.5px">
-      <td style="border-top: none" />
+      <td class="border-t !sm:border-t-none" />
       <td colspan="7" />
     </tr>
   </tbody>
