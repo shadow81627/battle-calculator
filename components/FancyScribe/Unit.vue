@@ -319,15 +319,8 @@ function updateImage(e) {
             <FancyScribeWeapons
               title="RANGED WEAPONS"
               :weapons="rangedWeapons"
-              :model-stats="modelStats"
-              :force-rules="forceRules"
             />
-            <FancyScribeWeapons
-              title="MELEE WEAPONS"
-              :weapons="meleeWeapons"
-              :model-stats="modelStats"
-              :force-rules="forceRules"
-            />
+            <FancyScribeWeapons title="MELEE WEAPONS" :weapons="meleeWeapons" />
           </table>
           <div style="flex: 1 1 0%" />
           <table
