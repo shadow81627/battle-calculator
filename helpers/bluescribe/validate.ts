@@ -901,6 +901,10 @@ export const getEntry = (roster, path, id, gameData, ignoreCache) => {
 
   entry.infoLinks?.forEach(handleLink);
   delete entry.infoLinks;
+  entry.infoGroups?.forEach((link) =>
+    handleLink({ ...link, type: "infoGroup" }),
+  );
+  delete entry.infoGroups;
 
   entry.selectionEntries?.forEach((selectionEntry, index) => {
     Object.defineProperty(entry.selectionEntries, index, {
