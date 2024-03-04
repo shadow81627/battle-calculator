@@ -13,7 +13,7 @@ const showWeapons = props.index === 0;
 </script>
 
 <template>
-  <div style="display: flex; gap: 1.2rem">
+  <div style="gap: 1.2rem" class="flex flex-wrap">
     <FancyScribeCharacteristic
       title="M"
       :characteristic="move"
