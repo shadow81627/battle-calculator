@@ -111,7 +111,7 @@ function updateImage(e) {
 
 <template>
   <div
-    style="width: 282mm; height: 210mm; display: flex"
+    style="max-width: 282mm; min-height: 210mm; display: flex"
     class="avoid-page-break mx-auto"
     :class="{
       'page-break': onePerPage,
