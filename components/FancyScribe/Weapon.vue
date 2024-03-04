@@ -55,8 +55,58 @@ if (differentProfiles && name.includes(" - ")) name = name.split(" - ")[1];
 </script>
 
 <template>
+  <tr>
+    <td
+      style="text-align: left"
+      :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
+      class="table-cell border-none text-center sm:hidden"
+      colspan="7"
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 0px 4px;
+        "
+      >
+        <div v-if="differentProfiles" class="flex justify-center">
+          <svg
+            viewBox="0 0 16 8"
+            width="1.2rem"
+            height="8"
+            fill="var(--primary-color)"
+          >
+            <path d="m0 0h10l6 4-6 4h-10z" />
+          </svg>
+        </div>
+        <template v-if="differentProfiles && selectionName">
+          {{ selectionName }} -
+        </template>
+
+        <template v-if="differentProfiles">
+          {{ name.replaceAll(selectionName, "").replaceAll(", ", "") }}
+        </template>
+        <template v-else>
+          {{ name }}
+        </template>
+        <span
+          v-if="type && type !== '-'"
+          style="
+            font-size: 0.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            line-height: 1;
+          "
+        >
+          [{{ type }}]
+        </span>
+      </div>
+    </td>
+  </tr>
   <tr :class="classes">
-    <td style="border-top: none">
+    <td style="border-top: none" class="hidden sm:table-cell">
       <div v-if="differentProfiles" class="flex justify-center">
         <svg
           viewBox="0 0 16 8"
@@ -69,6 +119,7 @@ if (differentProfiles && name.includes(" - ")) name = name.split(" - ")[1];
       </div>
     </td>
     <td
+      class="hidden sm:table-cell"
       style="text-align: left"
       :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
     >

@@ -35,7 +35,7 @@ function getWeaponClassNames(weapons, index) {
     <tr
       style="background-color: var(--primary-color); color: rgb(255, 255, 255)"
     >
-      <th class="w-[2.2em]">
+      <th class="hidden w-[2.2em] sm:table-cell">
         <div style="display: flex; min-width: 0.7em; justify-content: center">
           <img
             v-if="isMelee"
@@ -64,7 +64,7 @@ function getWeaponClassNames(weapons, index) {
           </svg>
         </div>
       </th>
-      <th style="text-align: left">
+      <th style="text-align: left" class="hidden sm:table-cell">
         {{ title }}
       </th>
       <th class="w-[5%]">RANGE</th>
