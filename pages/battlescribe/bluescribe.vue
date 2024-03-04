@@ -145,3 +145,17 @@ const primaryColor = "#536766";
     </div>
   </div>
 </template>
+
+<style>
+@page {
+  margin: 0;
+  size: A4 landscape;
+  page-orientation: upright;
+}
+
+.avoid-page-break {
+  position: relative;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+</style>
