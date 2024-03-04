@@ -247,7 +247,7 @@ function updateImage(e) {
               position: absolute;
               right: 0;
               height: 240px;
-              bottom: 0;
+              top: 0;
               width: 500px;
               max-width: 100%;
             "
