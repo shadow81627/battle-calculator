@@ -92,7 +92,7 @@ if (areAllModelsTheSame(modelStats)) modelStats = [modelStats[0]];
 
 if (modelList.length === 1) {
   modelList[0] = modelList[0]
-    .replace(name, "")
+    // .replace(name, "")
     .replace("(", "")
     .replace(")", "");
 }

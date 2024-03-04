@@ -1,17 +1,17 @@
 <script setup>
 const props = defineProps({ force: { type: Object, required: true } });
-const { units, factionRules, rules, catalog } = props.force;
+const { factionRules, rules } = props.force;
 const mergedRules = { ...factionRules, ...rules };
 </script>
 
 <template>
   <div style="display: contents">
     <FancyScribeUnit
-      v-for="(unit, index) of units"
+      v-for="(unit, index) of force.units"
       :key="unit.name"
       :index="index"
       :unit="unit"
-      :catalog="catalog"
+      :catalog="force.catalog"
     />
 
     <FancyScribeForceRules :rules="mergedRules" />

@@ -1,9 +1,8 @@
 <script setup>
-const props = defineProps({
+defineProps({
   roster: { type: Object, required: true },
   onePerPage: { type: Boolean, default: false },
 });
-const { name, cost, forces } = props.roster;
 </script>
 
 <template>
@@ -20,10 +19,10 @@ const { name, cost, forces } = props.roster;
         margin-bottom: 12px;
       "
     >
-      {{ name }} [{{ cost.points }} pts]
+      {{ roster.name }} [{{ roster.cost.points }} pts]
     </div>
     <FancyScribeForce
-      v-for="(force, index) of forces"
+      v-for="(force, index) of roster.forces"
       :key="index"
       :force="force"
       :one-per-page="onePerPage"
