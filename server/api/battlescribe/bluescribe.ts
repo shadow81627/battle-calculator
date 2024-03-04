@@ -1,7 +1,18 @@
 import { XMLParser } from "fast-xml-parser";
-// import fs from "fs/promises";
-// import slugify from "slugify";
-// import deepSort from "~/utils/deepSort";
+import {
+  refreshRoster,
+  createRoster,
+  addForce,
+  addSelection,
+  getMaxCount,
+  gatherCatalogues,
+  sumCosts,
+  getCatalogue,
+} from "~/helpers/bluescribe/utils";
+import { getEntry } from "~/helpers/bluescribe/validate";
+import _ from "lodash";
+import { Create40kRoster10th } from "~/server/fancyscribe-parse";
+import xmlData from "~/helpers/bluescribe/xmlData";
 
 export default defineEventHandler(async () => {
   const catalogueFile = await useStorage("assets:server").getItem(
@@ -133,61 +144,147 @@ export default defineEventHandler(async () => {
     xmlns: undefined,
   });
 
-  // const entries = [];
-  // for (const entry of catalogue.entryLinks) {
-  //   if (entry.name && !entry.name.includes("[Legends]")) {
-  //     entries.push(entry);
-  //   }
-  // }
+  const buildIndex = (gameData) => {
+    const ids = {};
 
-  // const units = [];
-  // const models = [];
-  // for (const entry of library.sharedSelectionEntries) {
-  //   if (
-  //     entry.name &&
-  //     !entry.name.includes("[Legends]") &&
-  //     [
-  //       "Lord Solar Leontus",
-  //       "Death Korps of Krieg",
-  //       "Rogal Dorn Battle Tank",
-  //       "Regimental Enginseer",
-  //     ].includes(entry.name)
-  //   ) {
-  //     if (entry.type === "unit") {
-  //       units.push(entry);
-  //     }
-  //     if (entry.type === "model") {
-  //       models.push(entry);
-  //     }
-  //   }
-  // }
+    function coallate(x, file) {
+      if (x?.id) {
+        ids[x.id] = x;
+        file.ids = file.ids || {};
+        file.ids[x.id] = x;
+      }
 
-  // const catalogueName = catalogue.name;
-  // for (const [key, value] of Object.entries({
-  //   entries,
-  //   models,
-  //   units,
-  // })) {
-  //   for (const item of value) {
-  //     if (item.name && catalogueName) {
-  //       const folder = `data/battlescribe/catalogues/${slugify(catalogueName, { lower: true, strict: true })}/${key}/`;
-  //       await fs.mkdir(folder, { recursive: true });
-  //       const filename = `${folder}/${slugify(item.id ?? item.name, { lower: true, strict: true })}.json`;
-  //       await fs.writeFile(
-  //         filename,
-  //         `${JSON.stringify(deepSort(item), undefined, 2)}\n`,
-  //         { flag: "w" },
-  //       );
-  //     }
-  //   }
-  // }
+      for (const attr in x) {
+        if (x[attr] instanceof Array) {
+          x[attr].forEach((x) => {
+            x.__type = containerTags[attr];
+            coallate(x, file);
+          });
+        }
+      }
+    }
+
+    Object.values(_.omit(gameData, ["gameSystem", "ids"])).forEach((x) =>
+      coallate(x, x),
+    );
+
+    return ids;
+  };
+  gameData.ids = buildIndex(gameData);
+
+  catalogue.ids = {};
+  library.ids = {};
+  function index(x, root) {
+    if (x.id) {
+      root.ids[x.id] = x;
+    }
+    delete x.import;
+    for (const attr in x) {
+      if (/^\s*$/s.test(x[attr])) {
+        delete x[attr];
+      }
+      if (x[attr] instanceof Array) {
+        if (attr === "selectionEntryGroups") {
+          x[attr].forEach((group) =>
+            group.selectionEntries?.forEach((entry) => (entry.from = "group")),
+          );
+        }
+        x[attr].forEach((item) => index(item, root));
+        if (attr.startsWith("shared")) {
+          delete x[attr];
+        }
+      }
+    }
+  }
+
+  gameData.gameSystem.ids = {};
+  index(gameData.gameSystem, gameData.gameSystem);
+  delete gameData.gameSystem[gameData.gameSystem.id];
+
+  index(catalogue, catalogue);
+  delete catalogue.ids[catalogue.id];
+  index(library, library);
+  delete library.ids[library.id];
+  index(gameData, gameData);
+  delete gameData.ids[gameData.id];
+
+  const newRoster = createRoster("test", gameData.gameSystem);
+  const forceId = "bb9d-299a-ed60-2d8a";
+  const factionId = "b0ae-12a5-c84-ea45";
+  gameData.catalogues = {
+    [forceId]: gameData,
+    [factionId]: catalogue,
+    "5a44-f048-114b-e3ff": library,
+  };
+  addForce(newRoster, forceId, factionId, gameData);
+
+  let roster = refreshRoster(newRoster, gameData);
+
+  const path = "forces.force.0";
+  const entries = {};
+  const parseEntry = (entryLink) => {
+    const entry = getEntry(roster, path, entryLink.id, gameData);
+    if (!entry.hidden && getMaxCount(entry) !== 0) {
+      const primary =
+        _.find(entry.categoryLinks, "primary")?.targetId || "(No Category)";
+      entries[primary] = entries[primary] || [];
+      entries[primary].push(entry);
+    }
+  };
+  const freshCatalogue = getCatalogue(roster, path, gameData);
+  gatherCatalogues(freshCatalogue, gameData).forEach((c) => {
+    c.entryLinks?.forEach(parseEntry);
+    c.selectionEntries?.forEach(parseEntry);
+  });
+
+  for (const catEntry in entries) {
+    entries[catEntry].forEach((entry) => {
+      addSelection(roster.forces.force[0], entry, gameData, null, library);
+    });
+  }
+
+  roster = refreshRoster(roster, gameData);
+
+  const xmldata = xmlData({
+    roster: {
+      ...roster,
+      costs: {
+        cost: Object.entries(sumCosts(roster)).map(([name, value]) => ({
+          name,
+          value,
+          typeId: gameData.gameSystem.costTypes.find((ct) => ct.name === name)
+            .id,
+        })),
+      },
+    },
+  });
+
+  async function getXmlDoc() {
+    if (typeof DOMParser === "function") {
+      return new DOMParser().parseFromString(xmldata, "text/xml");
+    }
+    const { JSDOM } = await import("jsdom");
+    return new JSDOM(xmldata, { contentType: "text/xml" }).window.document;
+  }
+
+  const doc = await getXmlDoc();
+
+  const info = doc.querySelector("roster");
+  const gameType = info.getAttribute("gameSystemName");
+  const fancyscribeRaw = Create40kRoster10th(doc, gameType);
+  const fancyscribe = JSON.parse(
+    JSON.stringify(fancyscribeRaw, (_key, value) => {
+      if (value instanceof Set) return [...value];
+      if (value instanceof Map) return Object.fromEntries(value.entries());
+      return value;
+    }),
+  );
 
   return {
-    // units,
-    // models,
-    // entries,
-    library,
-    catalogue,
-    gameData,
+    // library,
+    // catalogue,
+    // gameData,
+    // roster,
+    fancyscribe,
   };
 });
