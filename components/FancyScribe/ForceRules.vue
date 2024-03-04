@@ -3,7 +3,24 @@ const props = defineProps({
   rules: { type: Object, required: true },
   onePerPage: { type: Boolean, required: false },
 });
-const keys = Object.keys(props.rules);
+const duplicateKeyTypes = [
+  "Deadly Demise",
+  "Scouts",
+  "Feel no pain",
+  "Firing Deck",
+];
+const _rules = computed(() => {
+  const result = {};
+  for (const key in props.rules) {
+    const _key =
+      duplicateKeyTypes.find((item) =>
+        key.toLocaleLowerCase().includes(item.toLocaleLowerCase()),
+      ) ?? key;
+    result[_key] = props.rules[key];
+  }
+  return result;
+});
+const keys = Object.keys(_rules.value);
 const hide = ref(false);
 </script>
 
@@ -38,7 +55,7 @@ const hide = ref(false);
           class="mx-auto py-[8px] prose"
         >
           <span style="font-weight: 700">{{ rule }}: </span>
-          <span style="white-space: pre-line">{{ rules[rule] }}</span>
+          <span style="white-space: pre-line">{{ _rules[rule] }}</span>
         </div>
       </div>
     </div>
