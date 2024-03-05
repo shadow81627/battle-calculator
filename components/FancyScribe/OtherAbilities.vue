@@ -1,6 +1,8 @@
 <script setup>
 const props = defineProps({ abilities: { type: Object, required: true } });
-const keys = Object.keys(props.abilities)?.filter((key) => key !== "Abilities");
+const keys = computed(() =>
+  Object.keys(props.abilities)?.filter((key) => key !== "Abilities"),
+);
 </script>
 
 <template>
