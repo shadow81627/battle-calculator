@@ -166,9 +166,9 @@ const fancyscribe = computed(() => {
 });
 </script>
 <template>
-  <div class="container flex">
+  <div class="container flex flex-wrap gap-[16px]">
     <div
-      class="min-w-[200px] overflow-y-scroll border-1 p-2"
+      class="min-w-[200px] flex-grow-1 overflow-y-scroll border-1 p-2"
       style="max-height: calc(100vh - 64px)"
     >
       <div class="w-full flex print:hidden">
