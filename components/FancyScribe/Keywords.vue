@@ -5,14 +5,13 @@ const joinedKeywords = [...props.keywords].join(", ");
 
 <template>
   <div
-    class="relative md:absolute"
+    class="relative bg-[#bcbcbe] md:absolute dark:bg-[#212121] !print:bg-[#bcbcbe]"
     style="
       right: -2px;
       bottom: -16px;
       padding: 0px 42px 0px 8px;
       display: flex;
       align-items: center;
-      background-color: rgb(188, 188, 190);
       border: 2px solid var(--primary-color);
       width: calc(100% - 0.9rem);
       background-size: contain;

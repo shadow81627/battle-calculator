@@ -225,13 +225,16 @@ const fancyscribe = computed(() => {
           '--primary-color': primaryColor,
           '--primary-color-transparent': `${primaryColor}60`,
         }"
-        class="relative bg-light text-dark"
+        class="relative print:bg-light print:text-dark"
       >
         <div
           v-if="fancyscribe && ['unit', 'model'].includes(fancyscribe.type)"
           style="display: contents"
         >
-          <FancyScribeUnit :unit="fancyscribe"></FancyScribeUnit>
+          <FancyScribeUnit
+            :unit="fancyscribe"
+            :show-print-options="false"
+          ></FancyScribeUnit>
         </div>
       </div>
 

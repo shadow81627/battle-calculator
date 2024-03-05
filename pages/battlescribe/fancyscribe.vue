@@ -21,7 +21,7 @@ const primaryColor = "#536766";
         '--primary-color': primaryColor,
         '--primary-color-transparent': `${primaryColor}60`,
       }"
-      class="bg-light text-dark"
+      class="print:bg-light print:text-dark"
     />
   </div>
 </template>

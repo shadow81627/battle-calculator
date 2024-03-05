@@ -3,6 +3,7 @@ const props = defineProps({
   unit: { type: Object, required: true },
   onePerPage: { type: Boolean, default: false },
   forceRules: { type: Object, required: false },
+  showPrintOptions: { type: Boolean, default: true },
 });
 const { rules, modelList } = props.unit;
 
@@ -106,7 +107,10 @@ const hide = ref(false);
         flex-grow: 1;
       "
     >
-      <label class="flex justify-end gap-4 pb-2 print:hidden">
+      <label
+        v-show="showPrintOptions"
+        class="flex justify-end gap-4 pb-2 print:hidden"
+      >
         <input v-model="hide" type="checkbox" />
         <span class="print:hidden">Don't print this card.</span>
       </label>
@@ -222,12 +226,8 @@ const hide = ref(false);
         <FancyScribeUnitImage :image-id="imageId"></FancyScribeUnitImage>
       </div>
       <div
-        class="flex-grow flex-wrap border-2 border-t-0 border-solid !print:border-t-2"
-        style="
-          display: flex;
-          border-color: var(--primary-color);
-          background-color: #dfe0e2;
-        "
+        class="flex-grow flex-wrap border-2 border-t-0 border-solid bg-[#dfe0e2] dark:bg-[#303030] !print:border-t-2 !print:bg-[#dfe0e2]"
+        style="display: flex; border-color: var(--primary-color)"
       >
         <div
           class="pt-5"

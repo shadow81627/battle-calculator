@@ -52,13 +52,19 @@ if (name.startsWith("Missile launcher, "))
   name = name.replace("Missile launcher, ", "");
 
 if (differentProfiles && name.includes(" - ")) name = name.split(" - ")[1];
+
+const rowOtherColorClasses = computed(() => ({
+  "bg-[#d0d1d3]": props.classes.includes("rowOtherColor"),
+  "!print:bg-[#d0d1d3]": props.classes.includes("rowOtherColor"),
+  "dark:bg-[#424242]": props.classes.includes("rowOtherColor"),
+}));
 </script>
 
 <template>
   <tr>
     <td
       style="text-align: left"
-      :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
+      :class="rowOtherColorClasses"
       class="table-cell border-none text-center sm:hidden"
       colspan="7"
     >
@@ -95,7 +101,7 @@ if (differentProfiles && name.includes(" - ")) name = name.split(" - ")[1];
           style="
             font-size: 0.8em;
             font-weight: 700;
-            color: var(--primary-color);
+            xcolor: var(--primary-color);
             text-transform: uppercase;
             line-height: 1;
           "
@@ -121,7 +127,7 @@ if (differentProfiles && name.includes(" - ")) name = name.split(" - ")[1];
     <td
       class="hidden sm:table-cell"
       style="text-align: left"
-      :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
+      :class="rowOtherColorClasses"
     >
       <div
         style="
@@ -146,7 +152,7 @@ if (differentProfiles && name.includes(" - ")) name = name.split(" - ")[1];
           style="
             font-size: 0.8em;
             font-weight: 700;
-            color: var(--primary-color);
+            xcolor: var(--primary-color);
             text-transform: uppercase;
             line-height: 1;
           "
@@ -155,42 +161,24 @@ if (differentProfiles && name.includes(" - ")) name = name.split(" - ")[1];
         </span>
       </div>
     </td>
-    <td
-      class="align-middle"
-      :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
-    >
+    <td class="align-middle" :class="rowOtherColorClasses">
       {{ range }}
     </td>
-    <td
-      class="align-middle"
-      :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
-    >
+    <td class="align-middle" :class="rowOtherColorClasses">
       {{ attacks }}
     </td>
-    <td
-      class="align-middle"
-      :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
-    >
+    <td class="align-middle" :class="rowOtherColorClasses">
       {{
         isMelee ? (ws.join ? ws.join("|") : ws) : bs.join ? bs.join("|") : bs
       }}
     </td>
-    <td
-      class="align-middle"
-      :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
-    >
+    <td class="align-middle" :class="rowOtherColorClasses">
       {{ str }}
     </td>
-    <td
-      class="align-middle"
-      :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
-    >
+    <td class="align-middle" :class="rowOtherColorClasses">
       {{ ap }}
     </td>
-    <td
-      class="align-middle"
-      :class="{ 'bg-[#d0d1d3]': classes.includes('rowOtherColor') }"
-    >
+    <td class="align-middle" :class="rowOtherColorClasses">
       {{ damage }}
     </td>
   </tr>
