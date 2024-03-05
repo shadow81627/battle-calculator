@@ -1,41 +1,29 @@
 <script setup>
-import { useStorage } from "@vueuse/core";
-
 const props = defineProps({
   unit: { type: Object, required: true },
-  index: { type: Number, required: true },
-  catalog: { type: String, required: true },
   onePerPage: { type: Boolean, default: false },
   forceRules: { type: Object, required: false },
 });
-const {
-  name,
-  meleeWeapons,
-  rangedWeapons,
-  abilities,
-  keywords,
-  factions,
-  rules,
-  modelList,
-  cost,
-} = props.unit;
+const { rules, modelList } = props.unit;
 
 let { modelStats } = props.unit;
-const image = useStorage(`image${name}`);
-const hasImage = computed(() => image.value && image.value !== "undefined");
+const imageId = computed(() => `image${props.unit.name}`);
 
-const weapons = [...meleeWeapons, ...rangedWeapons];
+const weapons = computed(() => [
+  ...props.unit.meleeWeapons,
+  ...props.unit.rangedWeapons,
+]);
 
-const weaponDescriptions = weapons
+const weaponDescriptions = weapons.value
   .filter(
     (weapon) =>
       (weapon.range === "-" || weapon.range === "") && weapon.abilities,
   )
   .sort((a, b) => a.selectionName.localeCompare(b.selectionName));
-const modelsWithDifferentProfiles = weapons.filter((weapon, index) => {
+const modelsWithDifferentProfiles = weapons.value.filter((weapon, index) => {
   const { selectionName, name } = weapon;
-  const previousWeapon = weapons[index - 1];
-  const nextWeapon = weapons[index + 1];
+  const previousWeapon = weapons.value[index - 1];
+  const nextWeapon = weapons.value[index + 1];
   const hasDifferentProfiles = (selectionName, name) => {
     return selectionName && selectionName.toLowerCase() !== name.toLowerCase();
   };
@@ -97,16 +85,6 @@ if (modelList.length === 1) {
     .replace(")", "");
 }
 const hide = ref(false);
-
-function updateImage(e) {
-  if (e.target.files && e.target.files[0]) {
-    const reader = new FileReader();
-    reader.onload = function (ev) {
-      image.value = ev.target.result;
-    };
-    reader.readAsDataURL(e.target.files[0]);
-  }
-}
 </script>
 
 <template>
@@ -215,9 +193,9 @@ function updateImage(e) {
               margin-bottom: 2px;
             "
           >
-            {{ name }}
+            {{ unit.name }}
             <span style="text-transform: initial; font-size: 1.2rem">
-              {{ cost.points }}pts
+              {{ unit.cost.points }}pts
             </span>
           </div>
 
@@ -231,70 +209,17 @@ function updateImage(e) {
             "
           >
             <FancyScribeModelStats
-              v-for="(model, modelIndex) of modelStats"
+              v-for="(model, modelIndex) of unit.modelStats"
               :key="modelIndex"
               :index="modelIndex"
-              :model-stats="modelStats"
+              :model-stats="unit.modelStats"
               :model-stat="model"
-              :model-list="modelList"
-              :show-name="modelStats.length > 1"
+              :model-list="unit.modelList"
+              :show-name="unit.modelStats.length > 1"
             />
           </div>
         </div>
-        <ClientOnly>
-          <div
-            style="
-              position: absolute;
-              right: 0;
-              height: 240px;
-              top: 0;
-              width: 500px;
-              max-width: 100%;
-            "
-          >
-            <img
-              v-if="hasImage"
-              :src="image"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
-            <div
-              class="absolute right-[1px] top-[2px] hidden gap-1 print:hidden md:flex"
-            >
-              <label
-                class="text-dark btn print:hidden"
-                style="
-                  border: 1px solid #999;
-                  padding: 1px 4px;
-                  font-size: 0.8rem;
-                  background-color: #f0f0f0;
-                "
-              >
-                <input
-                  type="file"
-                  class="print:hidden"
-                  accept=".jpg,.png,.jpeg,.gif,.bmp,.tif,.tiff,.webp,.svg,.jfif,.pjpeg,.pjp,.avif,.apng,.ico,.cur,.ani"
-                  style="display: none"
-                  @change="updateImage"
-                />
-                {{ hasImage ? "Change image" : "Upload image " }}
-              </label>
-              <button
-                v-if="hasImage"
-                class="text-dark btn print:hidden"
-                style="
-                  border: 1px solid #999;
-                  padding: 1px 4px;
-                  font-size: 0.8rem;
-                  background-color: #f0f0f0;
-                "
-                @click="() => (image = undefined)"
-              >
-                Clear image
-              </button>
-            </div>
-          </div>
-        </ClientOnly>
+        <FancyScribeUnitImage :image-id="imageId"></FancyScribeUnitImage>
       </div>
       <div
         class="flex-grow flex-wrap border-2 border-t-0 border-solid !print:border-t-2"
@@ -318,9 +243,12 @@ function updateImage(e) {
           <table cellspacing="0" class="weapons-table" style="width: 100%">
             <FancyScribeWeapons
               title="RANGED WEAPONS"
-              :weapons="rangedWeapons"
+              :weapons="unit.rangedWeapons"
             />
-            <FancyScribeWeapons title="MELEE WEAPONS" :weapons="meleeWeapons" />
+            <FancyScribeWeapons
+              title="MELEE WEAPONS"
+              :weapons="unit.meleeWeapons"
+            />
           </table>
           <div style="flex: 1 1 0%" />
           <table
@@ -364,7 +292,7 @@ function updateImage(e) {
             </tbody>
           </table>
 
-          <FancyScribeKeywords :keywords="keywords" />
+          <FancyScribeKeywords :keywords="unit.keywords" />
         </div>
         <div
           class="relative w-full p-1 pb-[50px] pt-5 md:max-w-[400px] md:p-[20px] print:p-[20px] sm:p-2 md:pb-[50px] md:pt-5 sm:pb-[50px] sm:pt-5 md:print:p-[20px] sm:print:p-[20px] md:print:pb-[50px] sm:print:pb-[50px]"
@@ -384,11 +312,11 @@ function updateImage(e) {
             ABILITIES
           </div>
           <FancyScribeRules :rules="rules" />
-          <FancyScribeAbilities :abilities="abilities.Abilities" />
-          <FancyScribeOtherAbilities :abilities="abilities" />
+          <FancyScribeAbilities :abilities="unit.abilities.Abilities" />
+          <FancyScribeOtherAbilities :abilities="unit.abilities" />
 
-          <FancyScribeFactions :factions="factions" />
-          <FancyScribeFactionIcon :catalog="catalog" />
+          <FancyScribeFactions :factions="unit.factions" />
+          <FancyScribeFactionIcon />
         </div>
       </div>
     </div>

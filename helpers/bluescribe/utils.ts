@@ -38,12 +38,12 @@ export const gatherCatalogues = (
 };
 
 export const findId = (gameData, catalogue, id) => {
-  if (gameData.gameSystem.ids[id]) {
+  if (gameData.gameSystem?.ids?.[id]) {
     return gameData.gameSystem.ids[id];
-  } else if (catalogue.ids[id]) {
+  } else if (catalogue?.ids?.[id]) {
     return catalogue.ids[id];
   } else {
-    for (const cl of catalogue.catalogueLinks || []) {
+    for (const cl of catalogue?.catalogueLinks || []) {
       const found = findId(gameData, gameData.catalogues[cl.targetId], id);
       if (found) {
         return found;
@@ -331,7 +331,7 @@ const addCategories = (selection, selectionEntry, gameData, catalogue) => {
   selection.categories.category.push(
     ...(selectionEntry.categoryLinks || []).map((c) => ({
       id: randomId(),
-      name: findId(gameData, catalogue, c.targetId).name,
+      name: findId(gameData, catalogue, c.targetId)?.name || c.name,
       entryId: c.targetId,
       primary: c.primary,
     })),

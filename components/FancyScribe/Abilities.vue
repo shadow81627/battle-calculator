@@ -1,6 +1,5 @@
 <script setup>
-const props = defineProps({ abilities: { type: Object, required: true } });
-const keys = Object.keys(props.abilities);
+defineProps({ abilities: { type: Object, required: true } });
 </script>
 
 <template>
@@ -15,12 +14,12 @@ const keys = Object.keys(props.abilities);
     "
   >
     <div
-      v-for="ability of keys"
-      :key="ability"
+      v-for="[key, value] of Object.entries(abilities)"
+      :key="key"
       style="font-size: 0.8em; line-height: 1.4"
     >
-      <span style="font-weight: 700">{{ ability }}:</span>{{ " " }}
-      {{ abilities[ability] }}
+      <span style="font-weight: 700">{{ key }}:</span>{{ " " }}
+      {{ value }}
     </div>
   </div>
 </template>

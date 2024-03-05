@@ -11,7 +11,6 @@ const mergedRules = { ...factionRules, ...rules };
       :key="unit.name"
       :index="index"
       :unit="unit"
-      :catalog="force.catalog"
     />
 
     <FancyScribeForceRules :rules="mergedRules" />

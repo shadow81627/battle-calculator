@@ -15,7 +15,12 @@
     "
   >
     <div
-      style="background-color: #bcbcbe; center center; min-height: 75px; min-width: 76px; transform: rotate(45deg);"
+      style="
+        background-color: #bcbcbe;
+        min-height: 75px;
+        min-width: 76px;
+        transform: rotate(45deg);
+      "
     />
   </div>
 </template>
