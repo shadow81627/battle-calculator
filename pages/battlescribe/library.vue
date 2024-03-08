@@ -67,7 +67,7 @@ const roster = computed(() => {
         '--primary-color': primaryColor,
         '--primary-color-transparent': `${primaryColor}60`,
       }"
-      class="bg-light text-dark"
+      class="print:bg-light print:text-dark"
     />
     <Spinner v-if="pending" class="mx-auto h-64px w-64px" />
     <span v-else-if="!data">No data found</span>
