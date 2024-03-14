@@ -3,7 +3,9 @@ import { uniqBy } from "lodash-es";
 import { addSelection } from "~/helpers/bluescribe/utils";
 
 const { data, pending } = await useFetch("/api/battlescribe/bluescribe");
-const selected = ref();
+const selected = computed(() => {
+  return searchItems.value.find((item) => item.name === search.value);
+});
 const search = ref();
 const primaryColor = "#536766";
 const bluescribe = computed(() => {
@@ -164,103 +166,105 @@ const fancyscribe = computed(() => {
   const selection = bluescribe.value;
   return parse(selection);
 });
+
+const searchItems = computed(() => {
+  const result = [];
+  const categories = data.value.categories.filter(
+    (category) =>
+      data.value.entries[category.entryId]?.filter(searchFilter).length,
+  );
+  for (const category of categories) {
+    result.push(...data.value.entries[category.entryId].filter(searchFilter));
+  }
+
+  return result;
+});
 </script>
 <template>
-  <div class="container flex flex-wrap gap-[16px]">
-    <div
-      class="min-w-[200px] overflow-y-scroll border-1 p-2"
-      style="max-height: calc(100vh - 64px)"
-    >
-      <div class="w-full flex print:hidden">
-        <label
-          for="search"
-          class="peer-focus:text-primary dark:peer-focus:text-primary mb-0 flex border-2 rounded rounded-r-none border-r-none bg-transparent p-2 text-neutral-200 transition-all duration-200 ease-out peer-focus:scale-[0.8] dark:text-neutral-200 motion-reduce:transition-none peer-focus:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] peer-data-[te-input-state-active]:-translate-y-[0.9rem]"
-        >
-          <Icon
-            name="carbon:search"
-            class="my-auto"
-            style="width: 32px; height: 32px"
-          />
-        </label>
-        <input
-          id="search"
-          v-model="search"
-          type="text"
-          name="search"
-          class="peer peer-focus:text-primary dark:peer-focus:text-primary block min-h-[auto] flex-grow-1 border-2 rounded rounded-l-none border-l-none bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear dark:text-neutral-200 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 focus:placeholder:opacity-100"
-        />
-      </div>
-      <Spinner v-if="pending" class="mx-auto h-64px w-64px" />
-      <template v-else-if="data && data.categories">
-        <div
-          v-for="category of data.categories.filter(
-            (category) =>
-              data.entries[category.entryId]?.filter(searchFilter).length,
-          )"
-          :key="category.name"
-        >
-          <strong>{{ category.name }}</strong>
+  <div class="container">
+    <div class="w-full flex print:hidden">
+      <SearchInput
+        v-if="data && data.categories"
+        v-model:search="search"
+        :items="searchItems"
+      ></SearchInput>
+    </div>
+    <div class="flex flex-wrap gap-[16px]">
+      <div
+        class="hidden w-[300px] overflow-y-scroll border-1 p-2 xl:block"
+        style="max-height: calc(100vh - 64px)"
+      >
+        <template v-if="data && data.categories">
           <div
-            v-for="entry of data.entries[category.entryId].filter(searchFilter)"
-            :key="entry.id"
-            class="ml-4 block btn hover:bg-gray-500/10"
-            @click="selected = entry"
+            v-for="category of data.categories.filter(
+              (category) => data.entries[category.entryId]?.length,
+            )"
+            :key="category.name"
           >
-            {{ entry.name }}
-            <span
-              v-for="(cost, index) of entry.costs?.filter(
-                (i) => ![0, '0'].includes(i.value),
-              )"
-              :key="index"
-              >{{ cost.value }}{{ cost.name }}</span
+            <strong>{{ category.name }}</strong>
+            <div
+              v-for="entry of data.entries[category.entryId]"
+              :key="entry.id"
+              class="ml-4 block btn hover:bg-gray-500/10"
+              @click="search = entry.name"
             >
+              {{ entry.name }}
+              <span
+                v-for="(cost, index) of entry.costs?.filter(
+                  (i) => ![0, '0'].includes(i.value),
+                )"
+                :key="index"
+                >{{ cost.value }}{{ cost.name }}</span
+              >
+            </div>
+          </div>
+        </template>
+      </div>
+      <div class="flex flex-grow-1 flex-col overflow-hidden">
+        <div
+          :style="{
+            '--primary-color': primaryColor,
+            '--primary-color-transparent': `${primaryColor}60`,
+          }"
+          class="relative print:bg-light print:text-dark"
+        >
+          <Spinner v-if="pending" class="mx-auto h-64px w-64px" />
+          <span v-else-if="!data">No data found</span>
+          <div
+            v-if="fancyscribe && ['unit', 'model'].includes(fancyscribe.type)"
+            style="display: contents"
+          >
+            <FancyScribeUnit
+              :unit="fancyscribe"
+              :show-print-options="false"
+            ></FancyScribeUnit>
           </div>
         </div>
-      </template>
-      <span v-else-if="!data">No data found</span>
-    </div>
-    <div class="flex flex-grow-1 flex-col overflow-hidden">
-      <div
-        :style="{
-          '--primary-color': primaryColor,
-          '--primary-color-transparent': `${primaryColor}60`,
-        }"
-        class="relative print:bg-light print:text-dark"
-      >
-        <div
-          v-if="fancyscribe && ['unit', 'model'].includes(fancyscribe.type)"
-          style="display: contents"
-        >
-          <FancyScribeUnit
-            :unit="fancyscribe"
-            :show-print-options="false"
-          ></FancyScribeUnit>
+
+        <div v-if="selected" class="ml-3 mt-3 border-1 p-2">
+          <strong>Selection Options</strong>
+          <template v-if="selected.selectionEntries">
+            <BattleScribeSelectionEntry
+              v-for="selectionEntry of selected.selectionEntries"
+              :key="selectionEntry.name"
+              class="ml-3"
+              :selection-entry="selectionEntry"
+            ></BattleScribeSelectionEntry>
+          </template>
+          <template v-if="selected.selectionEntryGroups">
+            <BattleScribeSelectionGroup
+              v-for="selectionGroup of selected.selectionEntryGroups"
+              :key="selectionGroup.name"
+              :selection-group="selectionGroup"
+              class="ml-3 border"
+            ></BattleScribeSelectionGroup>
+          </template>
         </div>
-      </div>
 
-      <div v-if="selected" class="ml-3 mt-3 border-1 p-2">
-        <strong>Selection Options</strong>
-        <template v-if="selected.selectionEntries">
-          <BattleScribeSelectionEntry
-            v-for="selectionEntry of selected.selectionEntries"
-            :key="selectionEntry.name"
-            class="ml-3"
-            :selection-entry="selectionEntry"
-          ></BattleScribeSelectionEntry>
-        </template>
-        <template v-if="selected.selectionEntryGroups">
-          <BattleScribeSelectionGroup
-            v-for="selectionGroup of selected.selectionEntryGroups"
-            :key="selectionGroup.name"
-            :selection-group="selectionGroup"
-            class="ml-3 border"
-          ></BattleScribeSelectionGroup>
-        </template>
+        <!-- <pre v-if="fancyscribe">{{ fancyscribe }}</pre> -->
+        <!-- <pre>{{ selected }}</pre> -->
+        <!-- <pre>{{ bluescribe }}</pre> -->
       </div>
-
-      <!-- <pre v-if="fancyscribe">{{ fancyscribe }}</pre> -->
-      <!-- <pre>{{ selected }}</pre> -->
-      <!-- <pre>{{ bluescribe }}</pre> -->
     </div>
   </div>
 </template>
