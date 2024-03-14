@@ -250,7 +250,7 @@ const searchItems = computed(() => {
             ></FancyScribeUnit>
           </div>
           <div
-            v-else
+            v-else-if="!selected"
             class="flex items-center justify-center"
             style="min-height: 210mm"
           >
