@@ -262,7 +262,9 @@ const searchItems = computed(() => {
           <strong>Selection Options</strong>
           <template v-if="selected.selectionEntries">
             <BattleScribeSelectionEntry
-              v-for="selectionEntry of selected.selectionEntries"
+              v-for="selectionEntry of selected.selectionEntries.filter(
+                Boolean,
+              )"
               :key="selectionEntry.name"
               class="ml-3"
               :selection-entry="selectionEntry"
@@ -270,7 +272,9 @@ const searchItems = computed(() => {
           </template>
           <template v-if="selected.selectionEntryGroups">
             <BattleScribeSelectionGroup
-              v-for="selectionGroup of selected.selectionEntryGroups"
+              v-for="selectionGroup of selected.selectionEntryGroups.filter(
+                Boolean,
+              )"
               :key="selectionGroup.name"
               :selection-group="selectionGroup"
               class="ml-3 border"
