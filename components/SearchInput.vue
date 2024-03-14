@@ -14,7 +14,7 @@ function setSearch(value) {
 
 <template>
   <OnClickOutside class="w-full" @trigger="open = false">
-    <div class="max-w-[320px] flex border-2 rounded">
+    <div class="w-full flex border-2 rounded">
       <label
         for="search"
         class="peer-focus:text-primary dark:peer-focus:text-primary mb-0 flex bg-transparent p-2 text-neutral-200 transition-all duration-200 ease-out peer-focus:scale-[0.8] dark:text-neutral-200 motion-reduce:transition-none peer-focus:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] peer-data-[te-input-state-active]:-translate-y-[0.9rem]"
@@ -57,7 +57,7 @@ function setSearch(value) {
           'opacity-100': open,
           'pointer-events-none': !open,
         }"
-        class="absolute left-0 right-0 z-1000 max-h-[240px] w-[320px] overflow-y-scroll rounded-2 bg-white shadow-lg transition-all duration-500 dark:bg-slate-800"
+        class="absolute left-0 right-0 z-1000 max-h-[240px] w-full overflow-y-scroll rounded-2 bg-white shadow-lg transition-all duration-500 dark:bg-slate-800"
       >
         <div class="flex flex-col px-4 py-2">
           <div

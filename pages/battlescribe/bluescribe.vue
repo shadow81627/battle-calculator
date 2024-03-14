@@ -4,9 +4,11 @@ import { addSelection } from "~/helpers/bluescribe/utils";
 
 const { data, pending } = await useFetch("/api/battlescribe/bluescribe");
 const selected = computed(() => {
-  return searchItems.value.find((item) => item.name === search.value);
+  return searchItems.value.find((item) =>
+    item.name.toLowerCase().includes(search.value?.toLowerCase()),
+  );
 });
-const search = ref();
+const search = ref("");
 const primaryColor = "#536766";
 const bluescribe = computed(() => {
   if (selected.value) {
@@ -182,6 +184,14 @@ const searchItems = computed(() => {
 </script>
 <template>
   <div class="container">
+    <div class="block w-full xl:hidden !print:hidden">
+      <SearchInput
+        v-if="data && data.categories"
+        v-model:search="search"
+        :items="searchItems"
+        class="w-full"
+      ></SearchInput>
+    </div>
     <div class="flex flex-wrap gap-[16px]">
       <div
         class="box-border hidden w-[320px] overflow-x-hidden overflow-y-scroll border-1 p-2 xl:block !print:hidden"
