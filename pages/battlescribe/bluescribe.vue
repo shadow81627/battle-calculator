@@ -4,9 +4,11 @@ import { addSelection } from "~/helpers/bluescribe/utils";
 
 const { data, pending } = await useFetch("/api/battlescribe/bluescribe");
 const selected = computed(() => {
-  return searchItems.value.find((item) =>
-    item.name.toLowerCase().includes(search.value?.toLowerCase()),
-  );
+  if (search.value) {
+    return searchItems.value.find((item) =>
+      item.name.toLowerCase().includes(search.value.toLowerCase()),
+    );
+  }
 });
 const search = ref("");
 const primaryColor = "#536766";
@@ -246,6 +248,13 @@ const searchItems = computed(() => {
               :unit="fancyscribe"
               :show-print-options="false"
             ></FancyScribeUnit>
+          </div>
+          <div
+            v-else
+            class="flex items-center justify-center"
+            style="min-height: 210mm"
+          >
+            Select a Data Sheet to view
           </div>
         </div>
 
