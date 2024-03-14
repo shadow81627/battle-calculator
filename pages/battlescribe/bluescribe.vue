@@ -182,18 +182,16 @@ const searchItems = computed(() => {
 </script>
 <template>
   <div class="container">
-    <div class="w-full flex print:hidden">
-      <SearchInput
-        v-if="data && data.categories"
-        v-model:search="search"
-        :items="searchItems"
-      ></SearchInput>
-    </div>
     <div class="flex flex-wrap gap-[16px]">
       <div
-        class="hidden w-[300px] overflow-y-scroll border-1 p-2 xl:block"
+        class="box-border hidden w-[320px] overflow-x-hidden overflow-y-scroll border-1 p-2 xl:block !print:hidden"
         style="max-height: calc(100vh - 64px)"
       >
+        <SearchInput
+          v-if="data && data.categories"
+          v-model:search="search"
+          :items="searchItems"
+        ></SearchInput>
         <template v-if="data && data.categories">
           <div
             v-for="category of data.categories.filter(
