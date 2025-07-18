@@ -36,7 +36,7 @@ const keys = computed(() =>
         style="font-size: 0.8em; line-height: 1.4"
       >
         <span style="font-weight: 700">{{ name }}:</span>{{ " " }}
-        {{ value }}
+        {{ value.replaceAll("^^**", "").replaceAll("**^^", "") }}
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@ import { JSDOM } from "jsdom";
 import { Create40kRoster10th } from "~/server/fancyscribe-parse";
 
 export default defineEventHandler(async () => {
-  const file = await useStorage("assets:server").getItem("Crusade.ros");
+  const file = await useStorage("assets:server").getItem("Double Dorn.ros");
   if (!file || typeof file !== "string")
     throw createError({ message: "Unable to get file", status: 400 });
 

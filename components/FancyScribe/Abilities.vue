@@ -19,7 +19,7 @@ defineProps({ abilities: { type: Object, required: true } });
       style="font-size: 0.8em; line-height: 1.4"
     >
       <span style="font-weight: 700">{{ key }}:</span>{{ " " }}
-      {{ value }}
+      {{ value.replaceAll("^^**", "").replaceAll("**^^", "") }}
     </div>
   </div>
 </template>

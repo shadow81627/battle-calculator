@@ -55,7 +55,9 @@ const hide = ref(false);
           class="mx-auto py-[8px] prose"
         >
           <span style="font-weight: 700">{{ rule }}: </span>
-          <span style="white-space: pre-line">{{ _rules[rule] }}</span>
+          <span style="white-space: pre-line">{{
+            _rules[rule].replaceAll("^^**", "").replaceAll("**^^", "")
+          }}</span>
         </div>
       </div>
     </div>
