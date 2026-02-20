@@ -20,6 +20,13 @@ const _rules = computed(() => {
   }
   return result;
 });
+
+function getPara(rule) {
+  return _rules.value[rule]
+    .replaceAll("^^**", "")
+    .replaceAll("**^^", "")
+    .split(/\r?\n|\r/);
+}
 const keys = Object.keys(_rules.value);
 const hide = ref(false);
 </script>
@@ -40,7 +47,7 @@ const hide = ref(false);
 
       <!-- balanced column layout https://stackoverflow.com/a/66915792 -->
       <div
-        class="[column-fill:_balance] mx-auto box-border columns-1 gap-10 after:box-inherit before:box-inherit 2xl:columns-3 sm:columns-2"
+        class="[column-fill:balance] mx-auto box-border columns-1 gap-10 after:box-inherit before:box-inherit 2xl:columns-3 sm:columns-2"
         style="
           gap: 8px;
           padding: 20px;
@@ -52,12 +59,25 @@ const hide = ref(false);
           v-for="rule of keys"
           :key="rule"
           style="line-height: 1.4"
-          class="mx-auto py-[8px] prose"
+          class="grid mx-auto gap-1 py-[8px] prose"
         >
-          <span style="font-weight: 700">{{ rule }}: </span>
-          <span style="white-space: pre-line">{{
-            _rules[rule].replaceAll("^^**", "").replaceAll("**^^", "")
-          }}</span>
+          <div class="avoid-page-break grid gap-1">
+            <div style="font-weight: 700">{{ rule }}:</div>
+            <div style="white-space: pre-line">
+              {{ getPara(rule).at(0) }}
+            </div>
+          </div>
+
+          <div class="grid gap-1">
+            <div
+              v-for="para of getPara(rule).slice(1)"
+              :key="para"
+              class="avoid-page-break"
+              style="white-space: pre-line"
+            >
+              {{ para }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
