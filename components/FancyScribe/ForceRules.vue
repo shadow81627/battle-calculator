@@ -27,7 +27,10 @@ function getPara(rule) {
     .replaceAll("**^^", "")
     .split(/\r?\n|\r/);
 }
-const keys = Object.keys(_rules.value);
+const keys = Object.keys(_rules.value).sort(
+  // longest first (descending order)
+  (a, b) => _rules.value[b].length - _rules.value[a].length,
+);
 const hide = ref(false);
 </script>
 
