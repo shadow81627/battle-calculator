@@ -41,7 +41,7 @@ const showWeapons = props.index === 0;
     />
     <FancyScribeCharacteristic title="OC" :characteristic="oc" :index="index" />
     <div
-      class="flex flex-wrap items-center gap-2"
+      class="max-w-65ch flex flex-wrap items-center gap-2"
       style="margin-top: 16px; text-shadow: rgb(0, 0, 0) 0px 0px 5px"
     >
       <div v-if="showName" style="white-space: nowrap">
