@@ -1,6 +1,14 @@
 <script setup>
 const props = defineProps({ keywords: { type: Array, required: true } });
-const joinedKeywords = [...props.keywords].join(", ");
+const ignores = [
+  "Melee Weapon",
+  "Ranged Weapon",
+  "Attacks Dx Weapon",
+  "Damage Dx Weapon",
+];
+const joinedKeywords = [...props.keywords]
+  .filter((word) => !ignores.includes(word))
+  .join(", ");
 </script>
 
 <template>
